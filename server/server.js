@@ -1,27 +1,52 @@
 import express from "express";
-import "dotenv/config"
-import cors from "cors"
+import "dotenv/config";
+import cors from "cors";
 import connectToMongoose from "./util/connect-to-mongoose.js";
-import apiroutes from "./routes/api-routes.js"
-import authRoutes from "./routes/auth-routes.js"
+import apiroutes from "./routes/api-routes.js";
+import authRoutes from "./routes/auth-routes.js";
 import cookieParser from "cookie-parser";
+import { Server } from "socket.io";
+import { createServer } from "http";
 
-const port = process.env.PORT || 3000;
-const app = express()
-app.use(express.json())
-app.use(cookieParser())
+const port = process.env.PORT || 4000;
+const app = express();
+app.use(express.json());
+app.use(cookieParser());
+app.use(cors());
 
-app.get("/", (req,res) => {
-    res.send('Hi World')
-})
+const server = createServer(app);
+const io = new Server(server, {
+  cors: {
+    origin: "http://localhost:3000",
+    methods: ["GET", "POST"],
+  },
+});
 
-app.use(apiroutes)
-app.use(authRoutes)
+app.get("/", (req, res) => {
+  res.send("Hi World");
+});
 
+app.use(apiroutes);
+app.use(authRoutes);
 
-if(await connectToMongoose()) {
-    app.listen(port, err => {
-      if(err) console.error(err);
-      console.log(`listening to Port ${port}`)
-    })
-  }
+io.on("connection", (socket) => {
+  console.log(`User Connected: ${socket.id}`);
+
+  socket.on("join_room", (data) => {
+    socket.join(data);
+  });
+
+  socket.on("send_message", (data) => {
+    socket.to(data.room).emit("receive_message", data);
+  });
+});
+
+// server.listen(port, () => {
+//   console.log("server listening on port 3001");
+// });
+if (await connectToMongoose()) {
+  server.listen(port, (err) => {
+    if (err) console.error(err);
+    console.log(`listening to Port ${port}`);
+  });
+}

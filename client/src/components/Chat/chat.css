@@ -1,0 +1,32 @@
+.messages-box {
+  height: 70vh;
+  overflow: scroll;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  margin: 0 auto;
+}
+
+.message-box {
+  /* display: block; */
+  padding: 0.2rem 1rem;
+  width: 60%;
+  border-radius: 5px;
+  margin: 0.5rem;
+  color: white;
+}
+
+.message-sent {
+  background-color: gray;
+  text-align: left;
+  align-self: flex-start;
+}
+
+.message-received {
+  text-align: right;
+  align-self: flex-end;
+
+  background-color: #0d6efd;
+}
+
+.message-box p {
+  margin: 0;
+}
