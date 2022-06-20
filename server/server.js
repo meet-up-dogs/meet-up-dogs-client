@@ -2,7 +2,7 @@ import express from "express";
 import "dotenv/config";
 import cors from "cors";
 import connectToMongoose from "./util/connect-to-mongoose.js";
-import apiroutes from "./routes/api-routes.js";
+import apiRoutes from "./routes/api-routes.js";
 import authRoutes from "./routes/auth-routes.js";
 import cookieParser from "cookie-parser";
 import { Server } from "socket.io";
@@ -26,7 +26,7 @@ app.get("/", (req, res) => {
   res.send("Hi World");
 });
 
-app.use(apiroutes);
+app.use(apiRoutes);
 app.use(authRoutes);
 
 io.on("connection", (socket) => {

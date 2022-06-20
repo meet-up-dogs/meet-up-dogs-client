@@ -5,8 +5,9 @@ import UserModel from "../models/user-model.js"
 
 
 export const postSignUp = async (req,res) => {
-try{
-    const newUser = new UserModel(req.body)
+    try{
+        const newUser = new UserModel(req.body)
+        console.log(newUser)
     await newUser.save()
     return res.status(201).json({ success: true, insertedData: newUser })
 }catch(error){
@@ -14,7 +15,7 @@ try{
 }
 }
 
-const EXPIRATION_ACCESTOKEN = '10m';
+const EXPIRATION_ACCESTOKEN = '360m';
 
 export const postLogin = async (req, res ) => {
     const {email , password} = req.body;
@@ -25,6 +26,7 @@ export const postLogin = async (req, res ) => {
     let loggingUser;
     try {
         loggingUser = await UserModel.findOne({email})
+        console.log("logginUser is successful",loggingUser)
         if(!loggingUser) return res.status(401).json({error: msgUserPwdCombination})
     }catch(error){
         console.error(error);
