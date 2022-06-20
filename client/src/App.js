@@ -3,6 +3,7 @@ import React, { useRef, useEffect, useState } from "react";
 import Map from "./components/Map/Map";
 import SignUp from "./components/signUp";
 import {Route , Routes} from "react-router-dom"
+import { MainContextProvider } from "./context/MainContext";
 
 
 function App() {
@@ -14,13 +15,9 @@ function App() {
   // socket.connect
 
   return (
+    <MainContextProvider>
     <div className="App">
 
-     <Routes>
-      <Route path="signup" element={ <SignUp />}/>
-
-
-     </Routes>
 
 
 
@@ -37,6 +34,7 @@ function App() {
         </button>
       </p> */}
     </div>
+    </MainContextProvider>
   );
 }
 
