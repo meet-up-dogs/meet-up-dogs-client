@@ -1,7 +1,10 @@
 import "./App.css";
 import React, { useRef, useEffect, useState } from "react";
-
 import Map from "./components/Map/Map";
+import SignUp from "./components/signUp";
+import {Route , Routes} from "react-router-dom"
+
+
 function App() {
   const [lng, setLng] = useState(13.408971);
   const [lat, setLat] = useState(52.520417);
@@ -12,7 +15,17 @@ function App() {
 
   return (
     <div className="App">
-      {isMapVisible ? <Map setLng={setLng} setLat={setLat} /> : null}
+
+     <Routes>
+      <Route path="signup" element={ <SignUp />}/>
+
+
+     </Routes>
+
+
+
+
+      {/* {isMapVisible ? <Map setLng={setLng} setLat={setLat} /> : null}
       <p>
         lng:{lng} lat:{lat}
         <button
@@ -22,7 +35,7 @@ function App() {
         >
           open Map
         </button>
-      </p>
+      </p> */}
     </div>
   );
 }
