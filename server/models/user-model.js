@@ -64,6 +64,7 @@ const userSchema = new Schema({
     }
 })
 
+
 userSchema.pre('save', async function (next) {
     console.log("UserSchema ist in pre reingegangen")
     this.password = await bcrypt.hash(this.password, 15);
