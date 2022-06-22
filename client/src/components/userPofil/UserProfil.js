@@ -47,6 +47,10 @@ export default function UserProfil(props) {
       dayTime: "",
       weekDay: "",
     },
+    quader: {
+      bottomLeft: [],
+      topRight: [],
+    },
   });
 
   const handleChange = (event) => {
@@ -291,6 +295,19 @@ export default function UserProfil(props) {
         </FormControl>
 
         <Map setBottomLeft={setBottomLeft} setTopRight={setTopRight} />
+        <Button
+          onClick={() => {
+            setUserProfil({
+              ...userProfil,
+              quader: {
+                bottomLeft: [bottomLeft.lat, bottomLeft.lng],
+                topRight: [topRight.lat, topRight.lng],
+              },
+            });
+          }}
+        >
+          Save quader
+        </Button>
 
         <Outlet />
         <Button sx={margin} type="submit" variant="contained">
