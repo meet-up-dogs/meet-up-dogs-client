@@ -1,12 +1,12 @@
 import TextField from "@mui/material/TextField";
 import SignUp from "../Signup/SignUp";
 import Button from "@mui/material/Button";
-import { useState, useContext } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import React from "react";
 
-const Login = (props) => {
+const Login = ({ setCurrentUser }) => {
   const [inputLogin, setInputLogin] = useState({
     email: "",
     password: "",
@@ -38,7 +38,16 @@ const Login = (props) => {
     }
     // setInput({email:"", pwd:""})
   };
-
+  useEffect(() => {
+    const getCurrentUser = async () => {
+      const resp = await axios.get("http://localhost:4000/getUser", {
+        withCredentials: true,
+      });
+      console.log(resp.data);
+      setCurrentUser(resp.data);
+    };
+    getCurrentUser();
+  }, [isLogin]);
   return (
     <>
       <form

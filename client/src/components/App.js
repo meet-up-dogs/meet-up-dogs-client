@@ -7,18 +7,21 @@ import ChatHistory from "./ChatHistory/ChatHistory";
 import { Route, Routes } from "react-router-dom";
 import { MainContextProvider } from "../context/MainContext";
 import Login from "./Login/Login";
+import jwt_decode from "jwt-decode";
+import axios from "axios";
 
 function App() {
   // const [lng, setLng] = useState(13.408971);
   // const [lat, setLat] = useState(52.520417);
   // const [isMapVisible, setIsMapVisible] = useState(false);
+  const [currentUser, setCurrentUser] = useState({});
 
   // console.log(lng, lat);
 
   // socket.connect
-
+  console.log(currentUser);
   const [inputSignUp, setInputSignUp] = useState({
-    username: "",
+    username: currentUser.username,
     email: "",
     password: "",
   });
@@ -26,8 +29,9 @@ function App() {
   return (
     <div className="App">
       <MainContextProvider>
+        <p>{currentUser.username}</p>
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={<Login setCurrentUser={setCurrentUser} />} />
           <Route
             path="/userprofil"
             element={
