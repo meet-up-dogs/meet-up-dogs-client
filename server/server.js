@@ -5,7 +5,7 @@ import connectToMongoose from "./util/connect-to-mongoose.js";
 import apiRoutes from "./routes/api-routes.js";
 import authRoutes from "./routes/auth-routes.js";
 import cookieParser from "cookie-parser";
-import { Server } from "socket.io";
+// import { Server } from "socket.io";
 import { createServer } from "http";
 
 const port = process.env.PORT || 4000;
@@ -15,12 +15,14 @@ app.use(cookieParser());
 app.use(cors());
 
 const server = createServer(app);
-const io = new Server(server, {
-  cors: {
-    origin: "http://localhost:3000",
-    methods: ["GET", "POST"],
-  },
-});
+// const io = new Server(server, {
+//   cors: {
+//     origin: "http://localhost:3000",
+//     methods: ["GET", "POST"],
+//   },
+// });
+
+// io.use(cors())
 
 app.get("/", (req, res) => {
   res.send("Hi World");
@@ -29,17 +31,17 @@ app.get("/", (req, res) => {
 app.use(apiRoutes);
 app.use(authRoutes);
 
-io.on("connection", (socket) => {
-  console.log(`User Connected: ${socket.id}`);
+// io.on("connection", (socket) => {
+//   console.log(`User Connected: ${socket.id}`);
 
-  socket.on("join_room", (data) => {
-    socket.join(data);
-  });
+//   socket.on("join_room", (data) => {
+//     socket.join(data);
+//   });
 
-  socket.on("send_message", (data) => {
-    socket.to(data.room).emit("receive_message", data);
-  });
-});
+//   socket.on("send_message", (data) => {
+//     socket.to(data.room).emit("receive_message", data);
+//   });
+// });
 
 // server.listen(port, () => {
 //   console.log("server listening on port 3001");

@@ -5,12 +5,12 @@ const Schema = mongoose.Schema;
 const availabilitySchema = new mongoose.Schema({
     dayTime: {
         type: Array,
-        default: [],
+        default: "",
 
     },
     weekDay: {
         type: Array,
-        default: [],
+        default: "",
     },
     _id: false
 })
