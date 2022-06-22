@@ -19,7 +19,10 @@ const Login = (props) => {
     try {
       const axiosResp = await axios.post(
         "http://localhost:4000/login",
-        inputLogin
+        inputLogin,
+        {
+          withCredentials: true,
+        }
       );
       setIsLogin(true);
       console.debug("axiosResp.data:", axiosResp);
