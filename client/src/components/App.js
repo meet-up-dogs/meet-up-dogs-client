@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import SignUp from "./Signup/SignUp";
 import UserProfil from "./userPofil/UserProfil";
 import ChatHistory from "./ChatHistory/ChatHistory";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes , Navigate} from "react-router-dom";
 import { MainContextProvider } from "../context/MainContext";
 import Login from "./Login/Login";
 import jwt_decode from "jwt-decode";
@@ -34,13 +34,10 @@ function App() {
           <Route path="/" element={<Login setCurrentUser={setCurrentUser} />} />
           <Route
             path="/userprofil"
-            element={
-              <UserProfil
-                inputSignUp={inputSignUp}
-                setInputSignUp={setInputSignUp}
+            element={<UserProfil inputSignUp={inputSignUp} setInputSignUp={setInputSignUp}/>}
               />
-            }
-          />
+          <Route path="/redirect" element={ <Navigate to="/userprofil"/> } />
+         
           <Route
             path="/signup"
             element={
