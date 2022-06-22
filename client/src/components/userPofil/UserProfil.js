@@ -186,8 +186,15 @@ export default function UserProfil(props) {
           <FormLabel id="demo-radio-buttons-group-label">Gender</FormLabel>
           <RadioGroup
             aria-labelledby="demo-radio-buttons-group-label"
-            defaultValue="female"
+            defaultValue=""
             name="radio-buttons-group"
+            onChange={(e) =>
+              setUserProfil({
+                ...userProfil,
+                gender: e.target.value,
+              })
+            }
+            required
           >
             <FormControlLabel
               value="female"
