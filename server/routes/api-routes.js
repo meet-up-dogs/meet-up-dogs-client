@@ -11,7 +11,7 @@ router.post("/json", (req, res) => {
 
 
 router.get("/getSecretMsg", isAuth,(req, res) => {
-    res.json({success: true, secretMessage: `${req.username}, die Antwort auf die große Frage.... `})
+    res.json({success: true, secretMessage: `${req.userName}, ${req.userId} die Antwort auf die große Frage.... `})
 })
 
 
