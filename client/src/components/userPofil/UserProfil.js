@@ -16,6 +16,7 @@ import Map from "../Map/Map";
 import Header from "../Header/Header";
 import Box from "@mui/material/Box";
 import {useNavigate} from "react-router-dom"
+import { useEffect } from "react"
 
 // import {useToggle} from "../hooks/useToggle"
 
@@ -42,11 +43,26 @@ export default function UserProfil(props) {
       dayTime: "",
       weekDay: "",
     },
+    description: "",
     quader: {
       bottomLeft: [],
       topRight: [],
     },
   });
+  let logOut;
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    logOut = async () => {
+        const resp = await axios.get("http://localhost:4000/logout" ,
+      {withCredentials: true})
+      console.log(resp.data.msg)
+    }
+    if(!login){
+      logOut()
+    }
+    }
+    , [login])
+
 
  
   const navigate = useNavigate()
@@ -57,6 +73,7 @@ export default function UserProfil(props) {
     console.log(loginVariable)
     if(!loginVariable){
       console.log("navigate")
+      logOut()
       navigate("/")
     }
     console.log(loginVariable)
@@ -234,6 +251,16 @@ export default function UserProfil(props) {
             <MenuItem value={"Abends"}>Abends</MenuItem>
           </Select>
         </FormControl>
+
+        <textarea id="w3review" name="w3review" rows="4" cols="50" value={userProfil.description}  onChange={(e) => {
+              setUserProfil({
+                ...userProfil,
+                availability: { weekDay: e.target.value },
+              });
+            }} style={{margin: "10px 10px"}} 
+            placeholder="Tell us about your Dog and yourself">
+            Tell me about your Dog and yourself
+</textarea>
 
         <Map setBottomLeft={setBottomLeft} setTopRight={setTopRight} />
         <Button

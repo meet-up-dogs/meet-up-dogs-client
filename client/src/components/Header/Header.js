@@ -11,23 +11,12 @@ import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Box from "@mui/material/Box";
-import { useEffect } from "react"
-import axios from "axios"
+
+
 
 export default function Header(props) {
 
 
-  useEffect(() => {
-    const logOut = async () => {
-        const resp = await axios.get("http://localhost:4000/logout" ,
-      {withCredentials: true})
-      console.log(resp.data.msg)
-    }
-    if(!props.login){
-      logOut()
-    }
-    }
-    , [props.login])
 
 
   return (
