@@ -27,9 +27,7 @@ export default function UserProfil(props) {
   const [bottomLeft, setBottomLeft] = useState({});
   const [topRight, setTopRight] = useState({});
   // const [isEdit , setIsEdit] = useToggle(false)
-  // const [value, setValue] = useState < DateRange < Date >> ([null, null])
 
-  const [value, setValue] = React.useState(null);
 
   const [userProfil, setUserProfil] = useState({
     username: props.currentUser.username,
@@ -96,14 +94,7 @@ export default function UserProfil(props) {
     };
     getCurrentUser();
   }, []);
-  //
-  // const putUserName = async () => {
-  //   const res = await axios.put("http://localhost:4000",{
-  //     id: props.inputSignUp.ObjectId,
-  //     username: props.inputSignUp.username
-  //   })
-  // }
-
+  
   const margin = { m: 1 };
   console.log("bottomLeft", bottomLeft);
 

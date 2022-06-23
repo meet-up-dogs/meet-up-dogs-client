@@ -17,7 +17,7 @@ import axios from "axios";
 export default function Header(props) {
   return (
     <div>
-      <Box sx={{ flexGrow: 1 }}>
+      <Box sx={{ flexGrow: 3 }}>
         <FormGroup>
           <FormControlLabel
             control={
