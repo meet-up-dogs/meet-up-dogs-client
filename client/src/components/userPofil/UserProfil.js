@@ -32,7 +32,7 @@ export default function UserProfil(props) {
   const [value, setValue] = React.useState(null);
 
   const [userProfil, setUserProfil] = useState({
-    username: "",
+    username: props.currentUser.username,
     gender: "",
     language: "",
     dogBreed: "",
