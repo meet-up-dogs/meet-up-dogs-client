@@ -11,25 +11,10 @@ import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Box from "@mui/material/Box";
-import { useEffect } from "react"
-import axios from "axios"
+import { useEffect } from "react";
+import axios from "axios";
 
 export default function Header(props) {
-
-
-  useEffect(() => {
-    const logOut = async () => {
-        const resp = await axios.get("http://localhost:4000/logout" ,
-      {withCredentials: true})
-      console.log(resp.data.msg)
-    }
-    if(!props.login){
-      logOut()
-    }
-    }
-    , [props.login])
-
-
   return (
     <div>
       <Box sx={{ flexGrow: 1 }}>
@@ -37,7 +22,7 @@ export default function Header(props) {
           <FormControlLabel
             control={
               <Switch
-                checked={(props.login)}
+                checked={props.login}
                 onChange={props.handleChange}
                 aria-label="login switch"
               />
@@ -83,7 +68,7 @@ export default function Header(props) {
                     vertical: "top",
                     horizontal: "right",
                   }}
-                //   open={Boolean(anchorEl)}
+                  //   open={Boolean(anchorEl)}
                 >
                   <MenuItem>Profile</MenuItem>
                 </Menu>
@@ -97,13 +82,13 @@ export default function Header(props) {
         label="Username"
         variant="standard"
         sx={props.margin}
-      // value={props.inputSignUp.username}
-      // onChange={(e) =>
-      //   props.setInputSignUp({
-      //     ...props.inputSignUp,
-      //     username: e.target.value,
-      //   })
-      // }
+        // value={props.inputSignUp.username}
+        // onChange={(e) =>
+        //   props.setInputSignUp({
+        //     ...props.inputSignUp,
+        //     username: e.target.value,
+        //   })
+        // }
       />
     </div>
   );

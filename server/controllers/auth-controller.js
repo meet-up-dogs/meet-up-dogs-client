@@ -63,52 +63,51 @@ export const postLogin = async (req, res) => {
   );
   //   debugger;
   res
-    .cookie("token", token, { httpOnly: true, sameSite: "lax" })
-    .send({logging : true});
+    .cookie("token", token, { httpOnly: false, sameSite: "lax" })
+    .send({ logging: true });
   console.log("token", token);
   //   res.send("cookie");
 };
 
-
 /** @param {express.Response} res */
 export const postLogout = async (req, res) => {
-
   // Hatte der Nutzer ein Refresh Token Cookie?
-  const refreshToken = req.cookies?.refreshToken;
-  if(!refreshToken) return res.sendStatus(204); // Wenn cookie nicht da ist, kann man hier auch nicht mehr tun
-
+  // const refreshToken = req.cookies?.refreshToken;
+  // if (!refreshToken) return res.sendStatus(204); // Wenn cookie nicht da ist, kann man hier auch nicht mehr tun
+  // console.log(req);
   // Lösche Cookies beim Client
-  res.clearCookie('refreshToken');
-  res.clearCookie('isLogged')
-
+  // res.clearCookie("refreshToken");
+  // res.clearCookie("isLogged");
+  res.clearCookie("token");
   // Lösche Refresh Token aus Datenbank
-  try {
-    const databaseResponse = await UserModel.updateOne({refreshToken}, {refreshToken:''})
-    // Refresh Token nicht gefunden?
-    if(databaseResponse.matchedCount === 0) return res.sendStatus(204);
-  } catch (error) {
-    console.error({error});
-    return res.status(500).json({ msg: "logged out, but couldn't delete refresh Token from DB", error})
-  }
+  // try {
+  //   const databaseResponse = await UserModel.updateOne({refreshToken}, {refreshToken:''})
+  //   // Refresh Token nicht gefunden?
+  //   if(databaseResponse.matchedCount === 0) return res.sendStatus(204);
+  // } catch (error) {
+  //   console.error({error});
+  //   return res.status(500).json({ msg: "logged out, but couldn't delete refresh Token from DB", error})
+  // }
 
   // Alles ok: Cookies und erfolgreich aus Datenbank gelöscht
-  return res.status(200).send({ msg: 'successfully logged out' })
-}
+  return res.status(200).send({ msg: "successfully logged out" });
+};
 
 /** @param {express.Response} res */
 export const postRefreshToken = async (req, res) => {
-
   // refreshToken cookie vorhanden?
   // kein refresh token cookie => kein neues access token
   const refreshToken = req.cookies.refreshToken;
-  if (!refreshToken) return res.status(401).send({error:'No refresh token cookie'}); // Unauthorized (keine Anmeldedaten vorhanden)
+  if (!refreshToken)
+    return res.status(401).send({ error: "No refresh token cookie" }); // Unauthorized (keine Anmeldedaten vorhanden)
 
   // Refresh Token noch in Datenbank?
   // Nein? => "abgelaufen" => kein neues access-token
   let loggedUser;
   try {
     loggedUser = await UserModel.findOne({ refreshToken });
-    if (!loggedUser) return res.status(403).send({error:'refresh token not found'}); //Forbidden  (Anmeldedaten vorhanden, aber nicht gültig)
+    if (!loggedUser)
+      return res.status(403).send({ error: "refresh token not found" }); //Forbidden  (Anmeldedaten vorhanden, aber nicht gültig)
     console.debug({ loggedUser });
   } catch (error) {
     console.error(error);
@@ -117,12 +116,16 @@ export const postRefreshToken = async (req, res) => {
 
   // Refresh Token verifizieren (vorhanden in Datenbank, aber z.b. abgelaufen?)
   try {
-    const decodedJwt = jwt.verify(refreshToken,process.env.REFRESH_TOKEN_SECRET);
+    const decodedJwt = jwt.verify(
+      refreshToken,
+      process.env.REFRESH_TOKEN_SECRET
+    );
     // zuätzliche Überprüfung:
     // Befindet sich im Token die gleiche _id wie in der Datebnak beim Nutzer, der das Refresh Token hat?
-    if (loggedUser._id.toString() !== decodedJwt.userId) return res.sendStatus(403);
+    if (loggedUser._id.toString() !== decodedJwt.userId)
+      return res.sendStatus(403);
   } catch (error) {
-    console.error('Refresh Token verify error', error);
+    console.error("Refresh Token verify error", error);
     return res.sendStatus(403);
   }
 
@@ -130,12 +133,15 @@ export const postRefreshToken = async (req, res) => {
   const accessToken = jwt.sign(
     {
       userName: loggedUser.name,
-      userId: loggedUser._id
-    }
-    , process.env.TOKEN_SECRET,
+      userId: loggedUser._id,
+    },
+    process.env.TOKEN_SECRET,
     { expiresIn: EXPIRATION_ACCESTOKEN }
   );
 
-  return res.status(200).json({ msg: 'successfully refreshed token', accessToken, userName: loggedUser.name })
-
-}
+  return res.status(200).json({
+    msg: "successfully refreshed token",
+    accessToken,
+    userName: loggedUser.name,
+  });
+};

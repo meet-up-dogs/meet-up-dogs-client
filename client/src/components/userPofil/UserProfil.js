@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect } from "react";
 import Button from "@mui/material/Button";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -15,13 +15,12 @@ import axios from "axios";
 import Map from "../Map/Map";
 import Header from "../Header/Header";
 import Box from "@mui/material/Box";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 // import {useToggle} from "../hooks/useToggle"
 
 export default function UserProfil(props) {
-
-  let loginVariable = true
+  let loginVariable = true;
   const [login, setLogin] = useState(loginVariable);
   // const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -48,18 +47,15 @@ export default function UserProfil(props) {
     },
   });
 
- 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
-    loginVariable = event.target.checked
+    loginVariable = event.target.checked;
     setLogin(loginVariable);
-    console.log(loginVariable)
-    if(!loginVariable){
-      console.log("navigate")
-      navigate("/")
+    if (!loginVariable) {
+      console.log("navigate");
+      navigate("/");
     }
-    console.log(loginVariable)
   };
 
   // const handleMenu = (event) => {
@@ -90,6 +86,17 @@ export default function UserProfil(props) {
     }
   };
 
+  useEffect(() => {
+    const getCurrentUser = async () => {
+      const resp = await axios.get("http://localhost:4000/getUser", {
+        withCredentials: true,
+      });
+      console.log(resp.data);
+      props.setCurrentUser(resp.data);
+    };
+    getCurrentUser();
+  }, []);
+  //
   // const putUserName = async () => {
   //   const res = await axios.put("http://localhost:4000",{
   //     id: props.inputSignUp.ObjectId,
@@ -106,7 +113,7 @@ export default function UserProfil(props) {
         login={login}
         handleChange={handleChange}
         margin={margin}
-        userName={props.userName}
+        userName={props.currentUser.username}
       />
       <form
         action="/userprofil"
