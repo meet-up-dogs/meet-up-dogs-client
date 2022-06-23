@@ -122,7 +122,7 @@ export default function UserProfil(props) {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              {`Hello ${props.inputSignUp.username}`}
+              {`Hello ${props.userName}`}
             </Typography>
             {auth && (
               <div>
@@ -164,15 +164,14 @@ export default function UserProfil(props) {
         label="Username"
         variant="standard"
         sx={margin}
-        value={props.inputSignUp.username}
-        onChange={(e) =>
-          props.setInputSignUp({
-            ...props.inputSignUp,
-            username: e.target.value,
-          })
-        }
+        // value={props.inputSignUp.username}
+        // onChange={(e) =>
+        //   props.setInputSignUp({
+        //     ...props.inputSignUp,
+        //     username: e.target.value,
+        //   })
+        // }
       />
-      <Box component="span">{`${props.inputSignUp.username}`}</Box>
 
       <form
         action="/userprofil"

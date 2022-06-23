@@ -3,7 +3,7 @@ import SignUp from "../Signup/SignUp";
 import Button from "@mui/material/Button";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link , useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React from "react";
 
 const Login = ({ setCurrentUser }) => {
@@ -13,20 +13,16 @@ const Login = ({ setCurrentUser }) => {
   });
   const [isLogin, setIsLogin] = useState(false);
 
-  const history = useNavigate()
+  const history = useNavigate();
 
   const loginHandler = async (e) => {
     e.preventDefault();
     let axiosResp;
     try {
-        axiosResp = await axios.post(
-        "http://localhost:4000/login",
-        inputLogin,
-        {
-          withCredentials: true,
-        }
-      );
-      
+      axiosResp = await axios.post("http://localhost:4000/login", inputLogin, {
+        withCredentials: true,
+      });
+
       console.debug("axiosResp.data:", axiosResp);
       if (!axiosResp) {
         console.debug("axiosResp.data:", axiosResp.data.response);
@@ -39,10 +35,10 @@ const Login = ({ setCurrentUser }) => {
       // Info: alert is bad practise here!
     }
     // antwort als kommentar vom Server
-    if(axiosResp.data.logging){
-      history("./userprofil")
-    }else {
-      console.lof("logging was not successfully")
+    if (axiosResp.data.logging) {
+      history("./userprofil");
+    } else {
+      console.lof("logging was not successfully");
     }
     // setInput({email:"", pwd:""})
   };
@@ -55,7 +51,7 @@ const Login = ({ setCurrentUser }) => {
       setCurrentUser(resp.data);
     };
     getCurrentUser();
-  }, [isLogin]);
+  }, [isLogin, setCurrentUser]);
   return (
     <>
       <form
