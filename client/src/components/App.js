@@ -29,14 +29,15 @@ function App() {
     <div className="App">
       <MainContextProvider>
         <Routes>
-          <Route path="/" element={<Login setCurrentUser={setCurrentUser} />} />
+          <Route path="/" element={<Login />} />
           <Route
             path="/userprofil"
             element={
               <UserProfil
                 // inputSignUp={inputSignUp}
                 // setInputSignUp={setInputSignUp}
-                userName={currentUser.username}
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}
               />
             }
           />

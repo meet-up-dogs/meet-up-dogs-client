@@ -26,7 +26,7 @@ export default function Header(props) {
           <FormControlLabel
             control={
               <Switch
-                checked={(props.login)}
+                checked={props.login}
                 onChange={props.handleChange}
                 aria-label="login switch"
               />
@@ -72,7 +72,7 @@ export default function Header(props) {
                     vertical: "top",
                     horizontal: "right",
                   }}
-                //   open={Boolean(anchorEl)}
+                  //   open={Boolean(anchorEl)}
                 >
                   <MenuItem>Profile</MenuItem>
                 </Menu>
@@ -86,13 +86,13 @@ export default function Header(props) {
         label="Username"
         variant="standard"
         sx={props.margin}
-      // value={props.inputSignUp.username}
-      // onChange={(e) =>
-      //   props.setInputSignUp({
-      //     ...props.inputSignUp,
-      //     username: e.target.value,
-      //   })
-      // }
+        // value={props.inputSignUp.username}
+        // onChange={(e) =>
+        //   props.setInputSignUp({
+        //     ...props.inputSignUp,
+        //     username: e.target.value,
+        //   })
+        // }
       />
     </div>
   );

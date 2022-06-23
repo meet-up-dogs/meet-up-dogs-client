@@ -15,7 +15,6 @@ router.get("/getUser", isAuth, (req, res) => {
   //     success: true,
   //     secretMessage: `${req.userName}, die Antwort auf die große Frage.... `,
   //   });
-  console.log(req.userName);
   res.send({ logging: true, username: req.userName, userId: req.userId });
 });
 

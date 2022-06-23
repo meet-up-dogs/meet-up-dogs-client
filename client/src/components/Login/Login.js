@@ -42,16 +42,21 @@ const Login = ({ setCurrentUser }) => {
     }
     // setInput({email:"", pwd:""})
   };
+
   useEffect(() => {
-    const getCurrentUser = async () => {
-      const resp = await axios.get("http://localhost:4000/getUser", {
-        withCredentials: true,
-      });
-      console.log(resp.data);
-      setCurrentUser(resp.data);
+    const logOut = async () => {
+      const resp = await axios.post(
+        "http://localhost:4000/logout",
+        {},
+        {
+          withCredentials: true,
+        }
+      );
+      console.log(resp.data.msg);
     };
-    getCurrentUser();
-  }, [isLogin, setCurrentUser]);
+    logOut();
+  }, []);
+
   return (
     <>
       <form
