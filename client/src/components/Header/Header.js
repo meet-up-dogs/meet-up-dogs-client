@@ -1,26 +1,35 @@
 import React from "react";
 import AppBar from "@mui/material/AppBar";
-
 import Toolbar from "@mui/material/Toolbar";
-
 import Typography from "@mui/material/Typography";
-
 import IconButton from "@mui/material/IconButton";
-
 import MenuIcon from "@mui/icons-material/Menu";
-
 import AccountCircle from "@mui/icons-material/AccountCircle";
-
 import Switch from "@mui/material/Switch";
-
 import FormGroup from "@mui/material/FormGroup";
 import MenuItem from "@mui/material/MenuItem";
-
 import Menu from "@mui/material/Menu";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Box from "@mui/material/Box";
+import { useEffect } from "react"
+import axios from "axios"
 
 export default function Header(props) {
+
+
+  useEffect(() => {
+    const logOut = async () => {
+        const resp = await axios.get("http://localhost:4000/logout" ,
+      {withCredentials: true})
+      console.log(resp.data.msg)
+    }
+    if(!props.login){
+      logOut()
+    }
+    }
+    , [props.login])
+
+
   return (
     <div>
       <Box sx={{ flexGrow: 1 }}>
@@ -28,12 +37,12 @@ export default function Header(props) {
           <FormControlLabel
             control={
               <Switch
-                checked={props.login}
+                checked={(props.login)}
                 onChange={props.handleChange}
                 aria-label="login switch"
               />
             }
-            label={props.login ? "Logout" : "props.Login"}
+            label={props.login ? "Logout" : "Login"}
           />
         </FormGroup>
         <AppBar position="static">
@@ -74,7 +83,7 @@ export default function Header(props) {
                     vertical: "top",
                     horizontal: "right",
                   }}
-                  //   open={Boolean(anchorEl)}
+                //   open={Boolean(anchorEl)}
                 >
                   <MenuItem>Profile</MenuItem>
                 </Menu>
@@ -88,13 +97,13 @@ export default function Header(props) {
         label="Username"
         variant="standard"
         sx={props.margin}
-        // value={props.inputSignUp.username}
-        // onChange={(e) =>
-        //   props.setInputSignUp({
-        //     ...props.inputSignUp,
-        //     username: e.target.value,
-        //   })
-        // }
+      // value={props.inputSignUp.username}
+      // onChange={(e) =>
+      //   props.setInputSignUp({
+      //     ...props.inputSignUp,
+      //     username: e.target.value,
+      //   })
+      // }
       />
     </div>
   );

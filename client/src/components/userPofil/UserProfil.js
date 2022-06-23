@@ -15,11 +15,14 @@ import axios from "axios";
 import Map from "../Map/Map";
 import Header from "../Header/Header";
 import Box from "@mui/material/Box";
+import {useNavigate} from "react-router-dom"
 
 // import {useToggle} from "../hooks/useToggle"
 
 export default function UserProfil(props) {
-  const [login, setLogin] = React.useState(true);
+
+  let loginVariable = true
+  const [login, setLogin] = useState(loginVariable);
   // const [anchorEl, setAnchorEl] = React.useState(null);
 
   const [bottomLeft, setBottomLeft] = useState({});
@@ -45,8 +48,18 @@ export default function UserProfil(props) {
     },
   });
 
+ 
+  const navigate = useNavigate()
+
   const handleChange = (event) => {
-    setLogin(event.target.checked);
+    loginVariable = event.target.checked
+    setLogin(loginVariable);
+    console.log(loginVariable)
+    if(!loginVariable){
+      console.log("navigate")
+      navigate("/")
+    }
+    console.log(loginVariable)
   };
 
   // const handleMenu = (event) => {

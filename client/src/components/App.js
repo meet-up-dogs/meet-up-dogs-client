@@ -7,7 +7,6 @@ import ChatHistory from "./ChatHistory/ChatHistory";
 import { Route, Routes, Navigate } from "react-router-dom";
 import { MainContextProvider } from "../context/MainContext";
 import Login from "./Login/Login";
-import jwt_decode from "jwt-decode";
 import axios from "axios";
 
 function App() {
