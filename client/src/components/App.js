@@ -8,6 +8,7 @@ import { Route, Routes, Navigate } from "react-router-dom";
 import { MainContextProvider } from "../context/MainContext";
 import Login from "./Login/Login";
 import axios from "axios";
+import "../App.css"
 
 function App() {
   // const [lng, setLng] = useState(13.408971);
@@ -29,7 +30,7 @@ function App() {
     <div className="App">
       <MainContextProvider>
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={<Login />} className="Login" />
           <Route
             path="/userprofil"
             element={

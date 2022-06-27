@@ -5,8 +5,10 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import React from "react";
+import "./login.css"
 
 const Login = ({ setCurrentUser }) => {
+  
   const [inputLogin, setInputLogin] = useState({
     email: "",
     password: "",
@@ -65,6 +67,7 @@ const Login = ({ setCurrentUser }) => {
         onSubmit={(e) => {
           loginHandler(e);
         }}
+        className="loginForm"
       >
         <h2>Login</h2>
         <TextField
@@ -90,10 +93,10 @@ const Login = ({ setCurrentUser }) => {
         <Button type="submit" variant="contained">
           Log In
         </Button>
-      </form>
       <p>
         Are you not Already a memeber <Link to="/signup">SignUp</Link>{" "}
       </p>
+      </form>
     </>
   );
 };

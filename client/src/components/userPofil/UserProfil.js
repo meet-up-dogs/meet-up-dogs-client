@@ -9,31 +9,21 @@ import Radio from "@mui/material/Radio";
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import InputLabel from "@mui/material/InputLabel";
-// import { DatePicker, DateRange } from "@material-ui/lab"
 import Select from "@mui/material/Select";
 import axios from "axios";
 import Map from "../Map/Map";
 import Header from "../Header/Header";
-import Box from "@mui/material/Box";
 import {useNavigate} from "react-router-dom"
-import { useEffect } from "react"
-
 // import {useToggle} from "../hooks/useToggle"
+import "./userProfil.css"
 
 export default function UserProfil(props) {
   let loginVariable = true;
   const [login, setLogin] = useState(loginVariable);
-  // const [anchorEl, setAnchorEl] = React.useState(null);
-
   const [bottomLeft, setBottomLeft] = useState({});
   const [topRight, setTopRight] = useState({});
-  // const [isEdit , setIsEdit] = useToggle(false)
-  // const [value, setValue] = useState < DateRange < Date >> ([null, null])
-
-  const [value, setValue] = React.useState(null);
-
   const [userProfil, setUserProfil] = useState({
-    username: "",
+    username: props.currentUser.username,
     gender: "",
     language: "",
     dogBreed: "",
@@ -48,47 +38,21 @@ export default function UserProfil(props) {
       topRight: [],
     },
   });
-  let logOut;
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    logOut = async () => {
-        const resp = await axios.get("http://localhost:4000/logout" ,
-      {withCredentials: true})
-      console.log(resp.data.msg)
-    }
-    if(!login){
-      logOut()
-    }
-    }
-    , [login])
 
+  
 
   const navigate = useNavigate();
 
   const handleChange = (event) => {
     loginVariable = event.target.checked;
     setLogin(loginVariable);
-<<<<<<< HEAD
     console.log(loginVariable)
     if(!loginVariable){
       console.log("navigate")
-      logOut()
       navigate("/")
-=======
-    if (!loginVariable) {
-      console.log("navigate");
-      navigate("/");
->>>>>>> dev
     }
   };
 
-  // const handleMenu = (event) => {
-  //   setAnchorEl(event.currentTarget);
-  // };
-
-  // const handleClose = () => {
-  //   setAnchorEl(null);
-  // };
 
   const userProfilHandler = async (e) => {
     console.log(userProfil);
@@ -120,16 +84,10 @@ export default function UserProfil(props) {
     };
     getCurrentUser();
   }, []);
-  //
-  // const putUserName = async () => {
-  //   const res = await axios.put("http://localhost:4000",{
-  //     id: props.inputSignUp.ObjectId,
-  //     username: props.inputSignUp.username
-  //   })
-  // }
+
 
   const margin = { m: 1 };
-  console.log("bottomLeft", bottomLeft);
+ 
 
   return (
     <>
@@ -146,6 +104,7 @@ export default function UserProfil(props) {
         onSubmit={(e) => {
           userProfilHandler(e);
         }}
+        className="userProfilForm"
       >
         <FormControl>
           <FormLabel id="demo-radio-buttons-group-label">Gender</FormLabel>
@@ -267,10 +226,196 @@ export default function UserProfil(props) {
         </FormControl>
 
         <textarea id="w3review" name="w3review" rows="4" cols="50" value={userProfil.description}  onChange={(e) => {
-              setUserProfil({
-                ...userProfil,
-                availability: { weekDay: e.target.value },
-              });
+              setUserProfil({ ...userProfil, description
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+                : e.target.value });
             }} style={{margin: "10px 10px"}} 
             placeholder="Tell us about your Dog and yourself">
             Tell me about your Dog and yourself

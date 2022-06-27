@@ -4,6 +4,7 @@ import { useState, useContext } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import axios from "axios";
+import {useNavigate, userNavigate} from "react-router-dom"
 // eslint-disable-next-line no-unused-vars
 import "./signup.css";
 
@@ -23,12 +24,14 @@ const SignUp = (props) => {
   //     console.log(inputSignUp)
   // }
 
+  const navigate = useNavigate()
+
   const signUpHandler = async (e) => {
     console.log(inputSignUp);
     e.preventDefault();
-
+    let axiosResp
     try {
-      const axiosResp = await axios.post(
+      axiosResp = await axios.post(
         "http://localhost:4000/signup",
         inputSignUp
       );
@@ -41,8 +44,13 @@ const SignUp = (props) => {
     } catch (error) {
       console.log("Error while sending with axios", error);
     }
+    if(axiosResp.data){
+      navigate("/");
+    }else{
+      console.log("sign up was not successfully")
+    }
   };
-  const margin = { m: 1 };
+  const margin = { m: 0 };
 
   return (
     <>
@@ -58,7 +66,7 @@ const SignUp = (props) => {
         <TextField
           name="username"
           label="Username"
-          variant="standard"
+          variant="filled"
           sx={margin}
           value={inputSignUp.username}
           onChange={(e) =>
@@ -68,7 +76,7 @@ const SignUp = (props) => {
         <TextField
           name="email"
           label="E-Mail"
-          variant="standard"
+          variant="filled"
           value={inputSignUp.email}
           sx={margin}
           onChange={(e) =>
@@ -78,7 +86,7 @@ const SignUp = (props) => {
         <TextField
           name="password"
           label="Password"
-          variant="standard"
+          variant="filled"
           value={inputSignUp.password}
           sx={margin}
           onChange={(e) =>

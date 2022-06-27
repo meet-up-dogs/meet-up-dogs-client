@@ -11,6 +11,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Box from "@mui/material/Box";
+import "./header.css"
 
 
 
@@ -20,7 +21,8 @@ export default function Header(props) {
 
 
   return (
-    <div>
+    <>
+    <div className="header">
       <Box sx={{ flexGrow: 1 }}>
         <FormGroup>
           <FormControlLabel
@@ -95,5 +97,6 @@ export default function Header(props) {
         // }
       />
     </div>
+    </>
   );
 }
