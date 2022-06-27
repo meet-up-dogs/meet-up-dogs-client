@@ -13,9 +13,11 @@ import Select from "@mui/material/Select";
 import axios from "axios";
 import Map from "../Map/Map";
 import Header from "../Header/Header";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 // import {useToggle} from "../hooks/useToggle"
-import "./userProfil.css"
+import Compress from "react-image-file-resizer";
+
+import "./userProfil.css";
 
 export default function UserProfil(props) {
   let loginVariable = true;
@@ -39,20 +41,17 @@ export default function UserProfil(props) {
     },
   });
 
-  
-
   const navigate = useNavigate();
 
   const handleChange = (event) => {
     loginVariable = event.target.checked;
     setLogin(loginVariable);
-    console.log(loginVariable)
-    if(!loginVariable){
-      console.log("navigate")
-      navigate("/")
+    console.log(loginVariable);
+    if (!loginVariable) {
+      console.log("navigate");
+      navigate("/");
     }
   };
-
 
   const userProfilHandler = async (e) => {
     console.log(userProfil);
@@ -85,9 +84,28 @@ export default function UserProfil(props) {
     getCurrentUser();
   }, []);
 
-
   const margin = { m: 1 };
- 
+  const [resizedImage, setResizedImage] = useState(null);
+  const onFileResize = async (e) => {
+    const file = e.target.files[0];
+    console.log(file);
+
+    await Compress.imageFileResizer(
+      file, // the file from input
+      300, // width
+      300, // height
+      "JPEG", // compress format WEBP, JPEG, PNG
+      60, // quality
+      0, // rotation
+      (uri) => {
+        // console.log(uri);
+        // You upload logic goes here
+        console.log(uri);
+        setResizedImage(uri);
+      },
+      "base64" // blob or base64 default base64
+    );
+  };
 
   return (
     <>
@@ -106,6 +124,7 @@ export default function UserProfil(props) {
         }}
         className="userProfilForm"
       >
+        <input type="file" accept="image/*" onChange={onFileResize} />
         <FormControl>
           <FormLabel id="demo-radio-buttons-group-label">Gender</FormLabel>
           <RadioGroup
@@ -225,12 +244,20 @@ export default function UserProfil(props) {
           </Select>
         </FormControl>
 
-        <textarea id="w3review" name="w3review" rows="4" cols="50" value={userProfil.description}  onChange={(e) => {
-              setUserProfil({ ...userProfil, description: e.target.value });
-            }} style={{margin: "10px 10px"}} 
-            placeholder="Tell us about your Dog and yourself">
-            Tell me about your Dog and yourself
-</textarea>
+        <textarea
+          id="w3review"
+          name="w3review"
+          rows="4"
+          cols="50"
+          value={userProfil.description}
+          onChange={(e) => {
+            setUserProfil({ ...userProfil, description: e.target.value });
+          }}
+          style={{ margin: "10px 10px" }}
+          placeholder="Tell us about your Dog and yourself"
+        >
+          Tell me about your Dog and yourself
+        </textarea>
 
         <Map setBottomLeft={setBottomLeft} setTopRight={setTopRight} />
         <Button
