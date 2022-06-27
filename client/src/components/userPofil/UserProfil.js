@@ -24,12 +24,13 @@ export default function UserProfil(props) {
   const [login, setLogin] = useState(loginVariable);
   const [bottomLeft, setBottomLeft] = useState({});
   const [topRight, setTopRight] = useState({});
+  const [resizedImage, setResizedImage] = useState("");
   const [userProfil, setUserProfil] = useState({
     username: props.currentUser.username,
     gender: "",
     language: "",
     dogBreed: "",
-    photoDog: "",
+    userImage: "",
     availability: {
       dayTime: "",
       weekDay: "",
@@ -84,8 +85,14 @@ export default function UserProfil(props) {
     getCurrentUser();
   }, []);
 
+  useEffect(() => {
+    setUserProfil({
+      ...userProfil,
+      userImage: resizedImage,
+    });
+  }, [resizedImage]);
+
   const margin = { m: 1 };
-  const [resizedImage, setResizedImage] = useState(null);
   const onFileResize = async (e) => {
     const file = e.target.files[0];
     console.log(file);
