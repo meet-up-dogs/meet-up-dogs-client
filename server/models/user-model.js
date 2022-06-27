@@ -42,7 +42,7 @@ const userSchema = new Schema({
     language: {
         type: String,
     },
-    breed: {
+    dogBreed: {
         type: String
     },
     availability: availabilitySchema,

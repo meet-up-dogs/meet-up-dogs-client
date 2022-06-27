@@ -17,11 +17,14 @@ export const postSignUp = async (req, res) => {
 
 export const userProfil = async (req,res) => {
   try{
+   let accLog = await UserModel.where("username")
+   console.log(accLog)
+    if(accLog){
     const newUser = new UserModel(req.body);
     console.log("newUser bei UserProfil.js", newUser)
     await newUser.save()
     return res.status(201).json({success: true , insertedData})
-
+  }
 
   }catch(error){
     res.status(200).json({error: error.message})
