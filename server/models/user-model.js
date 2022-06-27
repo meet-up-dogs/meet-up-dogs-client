@@ -35,12 +35,9 @@ const userSchema = new Schema({
         type: String,
     },
     location: {
-        lat: {
-            type: Number
-        },
-        lon: {
-            type: Number
-        }
+        bottomLeft:[],
+        topRight:[],
+        
     },
     language: {
         type: String,

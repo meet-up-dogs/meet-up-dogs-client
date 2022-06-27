@@ -33,7 +33,7 @@ export default function UserProfil(props) {
       weekDay: "",
     },
     description: "",
-    quader: {
+    location: {
       bottomLeft: [],
       topRight: [],
     },
@@ -426,7 +426,7 @@ export default function UserProfil(props) {
           onClick={() => {
             setUserProfil({
               ...userProfil,
-              quader: {
+              location: {
                 bottomLeft: [bottomLeft.lat, bottomLeft.lng],
                 topRight: [topRight.lat, topRight.lng],
               },
