@@ -25,16 +25,7 @@ export default function Header(props) {
     <div className="header">
       <Box sx={{ flexGrow: 1 }}>
         <FormGroup>
-          <FormControlLabel
-            control={
-              <Switch
-                checked={props.login}
-                onChange={props.handleChange}
-                aria-label="login switch"
-              />
-            }
-            label={props.login ? "Logout" : "Login"}
-          />
+        
         </FormGroup>
         <AppBar position="static">
           <Toolbar>
@@ -45,11 +36,20 @@ export default function Header(props) {
               aria-label="menu"
               sx={{ mr: 2 }}
             >
-              <MenuIcon />
             </IconButton>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               {`Hello ${props.userName}`}
             </Typography>
+            <FormControlLabel
+            control={
+              <Switch
+                checked={props.login}
+                onChange={props.handleChange}
+                aria-label="login switch"
+              />
+            }
+            label={props.login ? "Logout" : "Login"}
+          />
             {props.login && (
               <div>
                 <IconButton
@@ -60,7 +60,7 @@ export default function Header(props) {
                   //   onClick={handleMenu}
                   color="inherit"
                 >
-                  <AccountCircle />
+                 
                 </IconButton>
                 <Menu
                   id="menu-appbar"

@@ -130,7 +130,6 @@ export default function UserProfil(props) {
         }}
         className="userProfilForm"
       >
-        <input type="file" accept="image/*" onChange={onFileResize} />
         <FormControl>
           <FormLabel id="demo-radio-buttons-group-label">Gender</FormLabel>
           <RadioGroup
@@ -253,6 +252,7 @@ export default function UserProfil(props) {
             <MenuItem value={"Abends"}>Abends</MenuItem>
           </Select>
         </FormControl>
+        <input type="file" accept="image/*" onChange={onFileResize} />
 
         <textarea
           id="w3review"
