@@ -22,7 +22,6 @@ import "./userProfil.css";
 
 export default function UserProfil(props) {
   let loginVariable = true;
-  console.log(props.currentUser);
   const [login, setLogin] = useState(loginVariable);
   const [bottomLeft, setBottomLeft] = useState({});
   const [topRight, setTopRight] = useState({});
@@ -95,7 +94,6 @@ export default function UserProfil(props) {
   const margin = { m: 1 };
   const onFileResize = async (e) => {
     const file = e.target.files[0];
-    console.log(file);
 
     await Compress.imageFileResizer(
       file, // the file from input
