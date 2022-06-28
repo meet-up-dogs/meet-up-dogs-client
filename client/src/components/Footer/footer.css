@@ -1,0 +1,13 @@
+.footer {
+  background-color: lightgreen
+}
+
+.navlink {
+  margin-left: auto;
+    margin-right: auto;
+  padding: 2rem;
+}
+
+a { 
+  text-decoration: none;
+}
