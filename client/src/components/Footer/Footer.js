@@ -41,6 +41,7 @@ export const Footer = () => {
             <BottomNavigationAction
                 // component={NavLink}
                 label="Match" 
+                to="/matcheslist"
                 icon={<TravelExploreIcon />}  
                 />
             <BottomNavigationAction

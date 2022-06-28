@@ -7,8 +7,9 @@ import ChatHistory from "./ChatHistory/ChatHistory";
 import { Route, Routes, Navigate } from "react-router-dom";
 import { MainContextProvider } from "../context/MainContext";
 import Login from "./Login/Login";
-import axios from "axios";
 import "../App.css"
+import MatchesList from './ShowMatches/MatchesList';
+import MatchCard from './ShowMatches/MatchCard';
 
 function App() {
   // const [lng, setLng] = useState(13.408971);
@@ -53,7 +54,7 @@ function App() {
               />
             }
           />
-
+          <Route path="/matcheslist" element={<MatchesList />} />
           <Route path="/chatHistory" element={<ChatHistory />} />
           <Route path="/signup" element={<SignUp />} />
         </Routes>
