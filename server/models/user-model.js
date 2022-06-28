@@ -58,6 +58,9 @@ const userSchema = new Schema({
     updatedAt: {
         type: Date,
         default: () => new Date()
+    },
+    description: {
+        type: String
     }
 })
 
