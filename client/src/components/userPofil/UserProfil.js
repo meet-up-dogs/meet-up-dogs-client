@@ -13,6 +13,7 @@ import Select from "@mui/material/Select";
 import axios from "axios";
 import Map from "../Map/Map";
 import Header from "../Header/Header";
+import Footer from '../Footer/Footer'
 import { useNavigate } from "react-router-dom";
 // import {useToggle} from "../hooks/useToggle"
 import Compress from "react-image-file-resizer";
@@ -288,6 +289,7 @@ export default function UserProfil(props) {
           Save
         </Button>
       </form>
+      <Footer />
     </>
   );
 }
