@@ -39,7 +39,7 @@ export const Footer = () => {
           onChange={(event, newValue) => handleChange(event, newValue)} 
       >
             <BottomNavigationAction
-                // component={NavLink}
+                component={NavLink}
                 label="Match" 
                 to="/matcheslist"
                 icon={<TravelExploreIcon />}  
