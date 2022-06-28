@@ -14,22 +14,25 @@ export const postSignUp = async (req, res) => {
   }
 };
 
-
-export const userProfil = async (req,res) => {
-  try{
-   let accLog = await UserModel.where("username")
-   console.log(accLog)
-    if(accLog){
-    const newUser = new UserModel(req.body);
-    console.log("newUser bei UserProfil.js", newUser)
-    await newUser.save()
-    return res.status(201).json({success: true , insertedData})
+export const userProfil = async (req, res) => {
+  try {
+    // let accLog = await UserModel.where("username").equals("Karol");
+    // const cond = { username: req.body.username };
+    // if (accLog) {
+    // const newUser = new UserModel(req.body);
+    // console.log("newUser bei UserProfil.js", newUser);
+    const updatedUser = await UserModel.findOneAndUpdate(
+      { username: req.body.username },
+      req.body,
+      { new: true }
+    );
+    console.log("updatedUser");
+    return res.status(201).json({ success: true, insertedData });
+    // }
+  } catch (error) {
+    res.status(200).json({ error: error.message });
   }
-
-  }catch(error){
-    res.status(200).json({error: error.message})
-  }
-}
+};
 
 const EXPIRATION_ACCESTOKEN = "360m";
 
@@ -93,8 +96,7 @@ export const postLogout = async (req, res) => {
   // if (!refreshToken) return res.sendStatus(204); // Wenn cookie nicht da ist, kann man hier auch nicht mehr tun
   // console.log(req);
   // Lösche Cookies beim Client
-  res.clearCookie('token');
-  
+  res.clearCookie("token");
 
   // Lösche Refresh Token aus Datenbank
   // try {

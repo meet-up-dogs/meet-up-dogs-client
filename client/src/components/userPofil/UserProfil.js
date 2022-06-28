@@ -21,12 +21,13 @@ import "./userProfil.css";
 
 export default function UserProfil(props) {
   let loginVariable = true;
+  console.log(props.currentUser);
   const [login, setLogin] = useState(loginVariable);
   const [bottomLeft, setBottomLeft] = useState({});
   const [topRight, setTopRight] = useState({});
   const [resizedImage, setResizedImage] = useState("");
   const [userProfil, setUserProfil] = useState({
-    username: props.currentUser.username,
+    username: "",
     gender: "",
     language: "",
     dogBreed: "",
@@ -55,7 +56,6 @@ export default function UserProfil(props) {
   };
 
   const userProfilHandler = async (e) => {
-    console.log(userProfil);
     e.preventDefault();
 
     try {
@@ -79,11 +79,10 @@ export default function UserProfil(props) {
       const resp = await axios.get("http://localhost:4000/getUser", {
         withCredentials: true,
       });
-      console.log(resp.data);
       props.setCurrentUser(resp.data);
     };
     getCurrentUser();
-  }, []);
+  }, [userProfil]);
 
   useEffect(() => {
     setUserProfil({
@@ -107,7 +106,6 @@ export default function UserProfil(props) {
       (uri) => {
         // console.log(uri);
         // You upload logic goes here
-        console.log(uri);
         setResizedImage(uri);
       },
       "base64" // blob or base64 default base64
@@ -165,7 +163,11 @@ export default function UserProfil(props) {
             id="demo-simple-select-autowidth"
             value={userProfil.language}
             onChange={(e) => {
-              setUserProfil({ ...userProfil, language: e.target.value });
+              setUserProfil({
+                ...userProfil,
+                username: props.currentUser.username,
+                language: e.target.value,
+              });
             }}
             autoWidth
             label="Langueges"
