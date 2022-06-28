@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Chat from "../Chat/Chat";
 import { FaAngleLeft } from "react-icons/fa";
+import Footer from '../Footer/Footer'
 
 const users = [
   { username: "Evi" },
@@ -46,6 +47,7 @@ export default function ChatHistory() {
           : null}
       </div>
       <div> {isChatOpen ? <Chat roomId={roomId} /> : null}</div>
+      <Footer />
     </>
   );
 }
