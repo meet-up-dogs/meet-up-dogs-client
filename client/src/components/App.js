@@ -67,8 +67,16 @@ function App() {
               />
             }
           />
-          <Route path="/matcheslist" element={<MatchesList />} />
-          <Route path="/chatHistory" element={<ChatHistory />} />
+          <Route 
+            path="/matcheslist" element={<MatchesList
+              currentUser={currentUser}
+              setCurrentUser={setCurrentUser}
+             />} />
+          <Route path="/chatHistory" element={<ChatHistory
+              currentUser={currentUser}
+              setCurrentUser={setCurrentUser}
+            
+            />} />
           <Route path="/signup" element={<SignUp />} />
         </Routes>
       </MainContextProvider>
