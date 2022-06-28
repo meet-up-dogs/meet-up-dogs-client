@@ -13,7 +13,7 @@ import Select from "@mui/material/Select";
 import axios from "axios";
 import Map from "../Map/Map";
 import Header from "../Header/Header";
-import Footer from '../Footer/Footer'
+import Footer from "../Footer/Footer";
 import { useNavigate } from "react-router-dom";
 // import {useToggle} from "../hooks/useToggle"
 import Compress from "react-image-file-resizer";
@@ -22,7 +22,6 @@ import "./userProfil.css";
 
 export default function UserProfil(props) {
   let loginVariable = true;
-  console.log(props.currentUser);
   const [login, setLogin] = useState(loginVariable);
   const [bottomLeft, setBottomLeft] = useState({});
   const [topRight, setTopRight] = useState({});
@@ -86,6 +85,16 @@ export default function UserProfil(props) {
   }, [userProfil]);
 
   useEffect(() => {
+    const getUser = async () => {
+      const resp = await axios.get("http://localhost:4000/currentUser", {
+        withCredentials: true,
+      });
+      props.setUser(resp.data);
+    };
+    getUser();
+  }, [userProfil]);
+
+  useEffect(() => {
     setUserProfil({
       ...userProfil,
       userImage: resizedImage,
@@ -120,6 +129,7 @@ export default function UserProfil(props) {
         handleChange={handleChange}
         margin={margin}
         userName={props.currentUser.username}
+        user={props.user}
       />
       <form
         action="/userprofil"

@@ -8,13 +8,14 @@ import { Route, Routes, Navigate } from "react-router-dom";
 import { MainContextProvider } from "../context/MainContext";
 import Login from "./Login/Login";
 import axios from "axios";
-import "../App.css"
+import "../App.css";
 
 function App() {
   // const [lng, setLng] = useState(13.408971);
   // const [lat, setLat] = useState(52.520417);
   // const [isMapVisible, setIsMapVisible] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
+  const [user, setUser] = useState({});
 
   // console.log(lng, lat);
 
@@ -39,6 +40,8 @@ function App() {
                 // setInputSignUp={setInputSignUp}
                 currentUser={currentUser}
                 setCurrentUser={setCurrentUser}
+                setUser={setUser}
+                user={user}
               />
             }
           />
