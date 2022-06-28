@@ -17,6 +17,11 @@ import Footer from "../Footer/Footer";
 import { useNavigate } from "react-router-dom";
 // import {useToggle} from "../hooks/useToggle"
 import Compress from "react-image-file-resizer";
+import MatchesList from '../ShowMatches/MatchesList.js';
+import Chat from '../Chat/Chat';
+import ChatHistory from '../ChatHistory/ChatHistory.js';
+import { Route, Routes, Navigate } from "react-router-dom";
+
 
 import "./userProfil.css";
 
@@ -298,6 +303,15 @@ export default function UserProfil(props) {
           Save
         </Button>
       </form>
+      <Route 
+            path="/matcheslist" element={<MatchesList
+              userProfil={userProfil}
+              setUserProfil={setUserProfil}
+             />} />
+          <Route path="/chatHistory" element={<ChatHistory
+              userProfil={userProfil}
+              setUserProfil={setUserProfil}
+            />} />
       <Footer />
     </>
   );
