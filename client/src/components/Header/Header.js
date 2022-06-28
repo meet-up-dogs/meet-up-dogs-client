@@ -28,6 +28,11 @@ export default function Header(props) {
                 aria-label="menu"
                 sx={{ mr: 2 }}
               ></IconButton>
+              <img
+                src={props.user.userImage}
+                alt=""
+                style={{ width: "50px", height: "50px" }}
+              />
               <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                 {`Hello ${props.userName}`}
               </Typography>
