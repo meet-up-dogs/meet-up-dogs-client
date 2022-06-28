@@ -17,6 +17,7 @@ function App() {
   // const [lat, setLat] = useState(52.520417);
   // const [isMapVisible, setIsMapVisible] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
+  const [user, setUser] = useState({});
 
   // console.log(lng, lat);
 
@@ -50,6 +51,8 @@ function App() {
                 // setInputSignUp={setInputSignUp}
                 currentUser={currentUser}
                 setCurrentUser={setCurrentUser}
+                setUser={setUser}
+                user={user}
               />
             }
           />

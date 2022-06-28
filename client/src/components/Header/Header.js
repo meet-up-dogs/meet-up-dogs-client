@@ -11,92 +11,81 @@ import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Box from "@mui/material/Box";
-import "./header.css"
-
-
+import "./header.css";
 
 export default function Header(props) {
-
-
-
-
   return (
     <>
-    <div className="header">
-      <Box sx={{ flexGrow: 1 }}>
-        <FormGroup>
-        
-        </FormGroup>
-        <AppBar position="static">
-          <Toolbar>
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              sx={{ mr: 2 }}
-            >
-            </IconButton>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              {`Hello ${props.userName}`}
-            </Typography>
-            <FormControlLabel
-            control={
-              <Switch
-                checked={props.login}
-                onChange={props.handleChange}
-                aria-label="login switch"
+      <div className="header">
+        <Box sx={{ flexGrow: 1 }}>
+          <FormGroup></FormGroup>
+          <AppBar position="static">
+            <Toolbar>
+              <IconButton
+                size="large"
+                edge="start"
+                color="inherit"
+                aria-label="menu"
+                sx={{ mr: 2 }}
+              ></IconButton>
+              <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                {`Hello ${props.userName}`}
+              </Typography>
+              <FormControlLabel
+                control={
+                  <Switch
+                    checked={props.login}
+                    onChange={props.handleChange}
+                    aria-label="login switch"
+                  />
+                }
+                label={props.login ? "Logout" : "Login"}
               />
-            }
-            label={props.login ? "Logout" : "Login"}
-          />
-            {props.login && (
-              <div>
-                <IconButton
-                  size="large"
-                  aria-label="account of current user"
-                  aria-controls="menu-appbar"
-                  aria-haspopup="true"
-                  //   onClick={handleMenu}
-                  color="inherit"
-                >
-                 
-                </IconButton>
-                <Menu
-                  id="menu-appbar"
-                  //   anchorEl={anchorEl}
-                  anchorOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                  //   open={Boolean(anchorEl)}
-                >
-                  <MenuItem>Profile</MenuItem>
-                </Menu>
-              </div>
-            )}
-          </Toolbar>
-        </AppBar>
-      </Box>
-      <Box
-        name="username"
-        label="Username"
-        variant="standard"
-        sx={props.margin}
-        // value={props.inputSignUp.username}
-        // onChange={(e) =>
-        //   props.setInputSignUp({
-        //     ...props.inputSignUp,
-        //     username: e.target.value,
-        //   })
-        // }
-      />
-    </div>
+              {props.login && (
+                <div>
+                  <IconButton
+                    size="large"
+                    aria-label="account of current user"
+                    aria-controls="menu-appbar"
+                    aria-haspopup="true"
+                    //   onClick={handleMenu}
+                    color="inherit"
+                  ></IconButton>
+                  <Menu
+                    id="menu-appbar"
+                    //   anchorEl={anchorEl}
+                    anchorOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                    keepMounted
+                    transformOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                    //   open={Boolean(anchorEl)}
+                  >
+                    <MenuItem>Profile</MenuItem>
+                  </Menu>
+                </div>
+              )}
+            </Toolbar>
+          </AppBar>
+        </Box>
+        <Box
+          name="username"
+          label="Username"
+          variant="standard"
+          sx={props.margin}
+          // value={props.inputSignUp.username}
+          // onChange={(e) =>
+          //   props.setInputSignUp({
+          //     ...props.inputSignUp,
+          //     username: e.target.value,
+          //   })
+          // }
+        />
+      </div>
     </>
   );
 }
