@@ -1,40 +1,49 @@
-import express from "express";
+import UserModel from "../models/user-model.js";
 
-const locationUser1 = {
-  bottomLeft: [52.540611691599544, 13.272677876569658],
-  topRight: [52.54718549935826, 13.29775299525641],
-};
+export const algorithm = async (req, res) => {
+  console.log(req.userName);
+  const loggedUser = req.userName;
 
-const users = [
-  {
-    name: "user1",
-    bottomLeft: [52.540611691123456, 13.272677876569658],
-    topRight: [52.54718549935826, 13.29775299525641],
-  },
+  const loggedUserLocation = await UserModel.find({
+    username: loggedUser,
+  }).select({ location: 1, _id: false });
 
-  {
-    name: "user2",
-    bottomLeft: [52.540611691654321, 13.272677876569658],
-    topRight: [52.54718549935826, 13.29775299525641],
-  },
+  const bottomLeft = loggedUserLocation[0].location.bottomLeft;
+  const topRight = loggedUserLocation[0].location.topRight;
 
-  {
-    name: "user3",
-    bottomLeft: [52.540611691987123, 13.272677876569658],
-    topRight: [52.54718549935826, 13.29775299525641],
-  },
-];
+  const allUsers = await UserModel.find({
+    username: { $nin: [loggedUser] },
+  }).select({ username: 1, location: 1 });
 
-const Nrange = [52.540611691599544, 52.54718549935826];
-const Erange = [13.272677876569658, 13.29775299525641];
+  const matchedUsers = allUsers.filter((user) => {
+    let firstMatch = false;
+    let secMatch = false;
 
-const res = users.filter((user) => {
-  for (let i = user.bottomLeft[0]; i < user.topRight[0]; i += 0.0001) {
-    console.log(i);
-    if (i > Nrange[0] && i < Nrange[1]) {
-      console.log("Match");
+    for (
+      let i = user.location.bottomLeft[0];
+      i <= user.location.topRight[0];
+      i += 0.0001
+    ) {
+      if (i > bottomLeft[0] && i < topRight[0]) {
+        firstMatch = true;
+      }
     }
-  }
-});
+    if (firstMatch) {
+      for (
+        let i = user.location.bottomLeft[1];
+        i <= user.location.topRight[1];
+        i += 0.0001
+      ) {
+        if (i > bottomLeft[1] && i < topRight[1]) {
+          secMatch = true;
+        }
+      }
+    }
 
-console.log(res);
+    if (firstMatch && secMatch) return user;
+    return;
+  });
+
+  console.log(matchedUsers);
+  res.send(loggedUser);
+};
