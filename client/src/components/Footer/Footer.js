@@ -1,4 +1,5 @@
 import React from "react";
+import { makeStyles } from '@material-ui/core/styles';
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import PersonIcon from '@mui/icons-material/Person';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
@@ -7,39 +8,54 @@ import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import { NavLink, Routes, Route, Navigate } from 'react-router-dom';
 import Chat from '../Chat/Chat'
 import UserProfil from '../userPofil/UserProfil.js'
+import ChatHistory from '../ChatHistory/ChatHistory'
 
 import "./footer.css"
+
+const useStyles = makeStyles({
+  root: { 
+    width: '100vw',
+    backgroundColor: '#8e8e8e'
+   }
+})
 
 
 export const Footer = () => {
 
+  const classes = useStyles()
 
+  const [value, setValue] = React.useState(0)
 
-
-
+  const handleChange = (event, newValue) => {
+    setValue(newValue)
+  }
 
   return (
     <>
-      <BottomNavigation className="footer"
-      showLabels
-      // value={value}
-      // onChange={(event, newValue) => {
-      //   setValue(newValue);
-      // }} 
+      <BottomNavigation 
+          className={classes.root}
+          showLabels
+          value={value}
+          onChange={(event, newValue) => handleChange(event, newValue)} 
       >
-        <BottomNavigationAction label="Match" icon={<TravelExploreIcon />} />
-        <BottomNavigationAction label="Chat" icon={<ChatBubbleOutlineIcon />} element={<Chat />} />
-        <BottomNavigationAction label="Profil" icon={<PersonIcon />} element={<UserProfil />} />
+            <BottomNavigationAction
+                // component={NavLink}
+                label="Match" 
+                icon={<TravelExploreIcon />}  
+                />
+            <BottomNavigationAction
+                component={NavLink}
+                to="/chathistory" 
+                label="Chat" 
+                icon={<ChatBubbleOutlineIcon />}
+                 />
+            <BottomNavigationAction 
+                component={NavLink}
+                to="/userprofil" 
+                label="Profil" icon={<PersonIcon />}
+                />
       </BottomNavigation>
 
-      {/* <NavLink to="/welcome">Match</NavLink> |{' '} */}
-			<NavLink className="navlink" to="/chathistory"   ></NavLink>
-			<NavLink to="/userprofil">Profil</NavLink>
-
-      <Routes>
-        <Route path="/chathistory" element={<Chat />} />
-        <Route path="/userprofil" element={<UserProfil />} />
-      </Routes>
     </>
   );
 };
