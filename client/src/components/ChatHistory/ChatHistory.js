@@ -12,7 +12,7 @@ const users = [
 
 const logedninUser = "Karol";
 
-export default function ChatHistory() {
+export default function ChatHistory(props) {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [roomId, setRoomId] = useState("");
 
@@ -33,7 +33,12 @@ export default function ChatHistory() {
   }
   return (
     <>
-      <Header />
+      <Header
+        user={props.user}
+        userName={props.currentUser.username}
+        login={props.login}
+        handleChange={props.handleChange}
+      />
       {isChatOpen ? (
         <p className="close-chat" onClick={closeChat}>
           <FaAngleLeft />
@@ -42,10 +47,10 @@ export default function ChatHistory() {
       <div>
         {!isChatOpen
           ? users.map((user) => (
-              <p key={user.username} onClick={() => roomIdHandle(user)}>
-                {user.username}
-              </p>
-            ))
+            <p key={user.username} onClick={() => roomIdHandle(user)}>
+              {user.username}
+            </p>
+          ))
           : null}
       </div>
       <div> {isChatOpen ? <Chat roomId={roomId} /> : null}</div>

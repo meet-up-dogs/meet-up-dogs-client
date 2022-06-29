@@ -6,10 +6,17 @@ import Header from "../Header/Header.js"
 import Footer from '../Footer/Footer';
 
 
-const MatchList = () => {
+const MatchList = (props) => {
   return (
     <>
-      <Header />
+      <Header
+        user={props.user}
+        userName={props.currentUser.username}
+        login={props.login}
+        handleChange={props.handleChange}
+        />
+        
+
       <h2>Match List - x Treffer:</h2>
       <p>nnn</p>
       <Footer />
