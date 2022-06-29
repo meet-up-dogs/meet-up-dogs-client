@@ -9,8 +9,6 @@ import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import { NavLink } from "react-router-dom";
 
 const MatchList = (props) => {
-
-
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -26,12 +24,18 @@ const MatchList = (props) => {
       />
       <main className="matchedList">
         <ul>
-          {props.matchUser.map((user) => {
+          {props.matchUsers.map((user) => {
             return (
               <>
                 <div
                   className="matched-card"
-                  onClick={() => props.clickHandle(user.username)}
+                  onClick={() => {
+                    props.setCurrentMatchedUser(
+                      props.matchUsers.find(
+                        (matchUser) => matchUser.username === user.username
+                      )
+                    );
+                  }}
                 >
                   <li>Name:{user.username}</li>
                   <li>DogBreed:{user.dogBreed}</li>

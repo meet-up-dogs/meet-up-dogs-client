@@ -9,28 +9,26 @@ import { MainContextProvider } from "../context/MainContext";
 import Login from "./Login/Login";
 import "../App.css";
 import MatchesList from "./ShowMatches/MatchesList";
-import MatchCard from "./ShowMatches/MatchCard"
+import MatchCard from "./ShowMatches/MatchCard";
 import axios from "axios";
 
 function App() {
   // Current User state. Get logged user from MongoDB
   const [user, setUser] = useState({});
-  const [matchUser, setMatchUser] = useState([]);
+  const [matchUsers, setMatchUsers] = useState([]);
+  const [currentMatchedUser, setCurrentMatchedUser] = useState({});
+
   const getMatchedUsers = async () => {
     const resp = await axios.get("http://localhost:4000/getMatchedUsers", {
       withCredentials: true,
     });
-    setMatchUser(resp.data);
+    setMatchUsers(resp.data);
     console.log("matchUser", resp.data);
   };
 
   useEffect(() => {
     getMatchedUsers();
   }, []);
-  let currentMatchedUser;
-  const clickHandle = (username) => { matchUser.find((user) => user.username === username) };
-  console.log(currentMatchedUser)
-  console.log("clickhandle",clickHandle())
 
   // Variable and State to logged out Current user and delete token
   let loginVariable = true;
@@ -81,9 +79,9 @@ function App() {
                 user={user}
                 login={login}
                 handleChange={handleChange}
-                matchUser={matchUser}
-                setMatchUser={setMatchUser}
-                clickHandle={clickHandle()}
+                matchUsers={matchUsers}
+                setMatchUsers={setMatchUsers}
+                setCurrentMatchedUser={setCurrentMatchedUser}
               />
             }
           />
@@ -104,7 +102,7 @@ function App() {
                 user={user}
                 login={login}
                 handleChange={handleChange}
-                // currentUser={currentMatchedUser}
+                currentUser={currentMatchedUser}
               />
             }
           />
