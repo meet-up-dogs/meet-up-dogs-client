@@ -4,37 +4,25 @@ import { useState, useContext } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import axios from "axios";
-import {useNavigate, userNavigate} from "react-router-dom"
+import { useNavigate, userNavigate } from "react-router-dom";
 // eslint-disable-next-line no-unused-vars
 import "./signup.css";
 
-const SignUp = (props) => {
-  // const [input, setInput] = useContext(MainContext)
+const SignUp = () => {
   const [inputSignUp, setInputSignUp] = useState({
     username: "",
     email: "",
     password: "",
   });
 
-  // const inputHandler = (e) => {
-  //     console.log(e)
-  //     setInputSignUp({
-  //         ...inputSignUp,[e.target.value]: e.targe.value
-  //     })
-  //     console.log(inputSignUp)
-  // }
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const signUpHandler = async (e) => {
     console.log(inputSignUp);
     e.preventDefault();
-    let axiosResp
+    let axiosResp;
     try {
-      axiosResp = await axios.post(
-        "http://localhost:4000/signup",
-        inputSignUp
-      );
+      axiosResp = await axios.post("http://localhost:4000/signup", inputSignUp);
       console.log("axiosResp.data:", inputSignUp);
       if (!axiosResp) {
         console.debug("axiosResp.data:", axiosResp);
@@ -44,10 +32,10 @@ const SignUp = (props) => {
     } catch (error) {
       console.log("Error while sending with axios", error);
     }
-    if(axiosResp.data){
+    if (axiosResp.data) {
       navigate("/");
-    }else{
-      console.log("sign up was not successfully")
+    } else {
+      console.log("sign up was not successfully");
     }
   };
   const margin = { m: 0 };

@@ -14,19 +14,11 @@ import axios from "axios";
 import Map from "../Map/Map";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-import { Route, Routes, useNavigate } from "react-router-dom";
-// import {useToggle} from "../hooks/useToggle"
 import Compress from "react-image-file-resizer";
-import MatchesList from "../ShowMatches/MatchesList.js";
-import Chat from "../Chat/Chat";
-
-import ChatHistory from "../ChatHistory/ChatHistory.js";
 
 import "./userProfil.css";
 
 export default function UserProfil(props) {
-  let loginVariable = true;
-  const [login, setLogin] = useState(loginVariable);
   const [bottomLeft, setBottomLeft] = useState({});
   const [topRight, setTopRight] = useState({});
   const [resizedImage, setResizedImage] = useState("");
@@ -46,18 +38,6 @@ export default function UserProfil(props) {
       topRight: [],
     },
   });
-
-  const navigate = useNavigate();
-
-  const handleChange = (event) => {
-    loginVariable = event.target.checked;
-    setLogin(loginVariable);
-    console.log(loginVariable);
-    if (!loginVariable) {
-      console.log("navigate");
-      navigate("/");
-    }
-  };
 
   const userProfilHandler = async (e) => {
     e.preventDefault();
@@ -79,13 +59,6 @@ export default function UserProfil(props) {
   };
 
   useEffect(() => {
-    const getCurrentUser = async () => {
-      const resp = await axios.get("http://localhost:4000/getUser", {
-        withCredentials: true,
-      });
-      props.setCurrentUser(resp.data);
-    };
-    getCurrentUser();
     const getUser = async () => {
       const resp = await axios.get("http://localhost:4000/currentUser", {
         withCredentials: true,
@@ -125,10 +98,9 @@ export default function UserProfil(props) {
   return (
     <>
       <Header
-        login={login}
-        handleChange={handleChange}
+        login={props.login}
+        handleChange={props.handleChange}
         margin={margin}
-        userName={props.user.username}
         user={props.user}
       />
       <form
@@ -175,7 +147,7 @@ export default function UserProfil(props) {
             onChange={(e) => {
               setUserProfil({
                 ...userProfil,
-                username: props.currentUser.username,
+                username: props.user.username,
                 language: e.target.value,
               });
             }}
@@ -299,16 +271,7 @@ export default function UserProfil(props) {
           Save
         </Button>
       </form>
-      <Routes>
-        <Route
-          path="/matcheslist"
-          element={<MatchesList user={props.user} />}
-        />
-        <Route
-          path="/chatHistory"
-          element={<ChatHistory user={props.user} />}
-        />
-      </Routes>
+
       <Footer />
     </>
   );

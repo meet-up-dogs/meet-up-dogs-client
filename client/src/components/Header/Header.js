@@ -3,8 +3,6 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
-import AccountCircle from "@mui/icons-material/AccountCircle";
 import Switch from "@mui/material/Switch";
 import FormGroup from "@mui/material/FormGroup";
 import MenuItem from "@mui/material/MenuItem";
@@ -34,18 +32,18 @@ export default function Header(props) {
               <FormControlLabel
                 control={
                   <Switch
-                  checked={props.login}
-                  onChange={props.handleChange}
-                  aria-label="login switch"
+                    checked={props.login}
+                    onChange={props.handleChange}
+                    aria-label="login switch"
                   />
                 }
                 label={props.login ? "Logout" : "Login"}
               />
-                <img
-                  src={props.user.userImage}
-                  alt=""
-                  style={{ width: "50px", height: "50px" }}
-                />
+              <img
+                src={props.user.userImage}
+                alt=""
+                style={{ width: "50px", height: "50px" }}
+              />
               {props.login && (
                 <div>
                   <IconButton
@@ -53,12 +51,10 @@ export default function Header(props) {
                     aria-label="account of current user"
                     aria-controls="menu-appbar"
                     aria-haspopup="true"
-                    //   onClick={handleMenu}
                     color="inherit"
                   ></IconButton>
                   <Menu
                     id="menu-appbar"
-                    //   anchorEl={anchorEl}
                     anchorOrigin={{
                       vertical: "top",
                       horizontal: "right",
@@ -68,7 +64,6 @@ export default function Header(props) {
                       vertical: "top",
                       horizontal: "right",
                     }}
-                    //   open={Boolean(anchorEl)}
                   >
                     <MenuItem>Profile</MenuItem>
                   </Menu>
@@ -82,13 +77,6 @@ export default function Header(props) {
           label="Username"
           variant="standard"
           sx={props.margin}
-          // value={props.inputSignUp.username}
-          // onChange={(e) =>
-          //   props.setInputSignUp({
-          //     ...props.inputSignUp,
-          //     username: e.target.value,
-          //   })
-          // }
         />
       </div>
     </>
