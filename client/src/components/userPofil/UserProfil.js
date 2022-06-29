@@ -132,7 +132,7 @@ export default function UserProfil(props) {
         login={login}
         handleChange={handleChange}
         margin={margin}
-        userName={props.currentUser.username}
+        userName={props.user.username}
         user={props.user}
       />
       <form
@@ -303,15 +303,15 @@ export default function UserProfil(props) {
           Save
         </Button>
       </form>
-      <Route 
-            path="/matcheslist" element={<MatchesList
-              userProfil={userProfil}
-              setUserProfil={setUserProfil}
-             />} />
-          <Route path="/chatHistory" element={<ChatHistory
-              userProfil={userProfil}
-              setUserProfil={setUserProfil}
-            />} />
+      <Routes>
+        <Route
+          path="/matcheslist" element={<MatchesList
+            user={props.user}
+          />} />
+        <Route path="/chatHistory" element={<ChatHistory
+          user={props.user}
+        />} />
+      </Routes>
       <Footer />
     </>
   );

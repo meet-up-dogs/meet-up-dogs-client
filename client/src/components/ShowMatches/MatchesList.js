@@ -6,10 +6,18 @@ import Header from "../Header/Header.js"
 import Footer from '../Footer/Footer';
 
 
-const MatchList = () => {
+const MatchList = (props) => {
   return (
     <>
-      <Header />
+      <Header 
+        username = {props.user}
+        userimage = {props.user}
+        />
+
+
+
+
+
       <h2>Match List - x Treffer:</h2>
       <p>nnn</p>
       <Footer />
