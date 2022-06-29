@@ -9,6 +9,7 @@ import { MainContextProvider } from "../context/MainContext";
 import Login from "./Login/Login";
 import "../App.css";
 import MatchesList from "./ShowMatches/MatchesList";
+import MatchCard from "./ShowMatches/MatchCard"
 import axios from "axios";
 
 function App() {
@@ -70,6 +71,16 @@ function App() {
             path="/chatHistory"
             element={
               <ChatHistory
+                user={user}
+                login={login}
+                handleChange={handleChange}
+              />
+            }
+          />
+          <Route
+            path="/matchcard"
+            element={
+              <MatchCard
                 user={user}
                 login={login}
                 handleChange={handleChange}

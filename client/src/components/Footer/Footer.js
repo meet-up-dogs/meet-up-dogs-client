@@ -27,6 +27,7 @@ export const Footer = () => {
 
   return (
     <>
+      <footer className="footer">
       <BottomNavigation
         className={classes.root}
         showLabels
@@ -52,6 +53,7 @@ export const Footer = () => {
           icon={<PersonIcon />}
         />
       </BottomNavigation>
+      </footer>
     </>
   );
 };
