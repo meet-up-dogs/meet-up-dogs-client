@@ -7,10 +7,12 @@ import Footer from "../Footer/Footer";
 import "./matchList.css"
 
 const MatchList = (props) => {
+  const [matchUser,setMatchUser] = useState({})
   const getMatchedUsers = async () => {
     const resp = await axios.get("http://localhost:4000/getMatchedUsers", {
       withCredentials: true,
     });
+    setMatchUser(resp.data)
     console.log(resp.data);
   };
 
@@ -51,7 +53,7 @@ const MatchList = (props) => {
         handleChange={props.handleChange}
       />
       <main className="matchedList">
-      {Users.map((user)=>{
+      {matchUser.map((user)=>{
         return(
           <p>{user.name}</p>
         )
