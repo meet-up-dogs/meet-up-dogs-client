@@ -29,7 +29,7 @@ export default function Header(props) {
                 sx={{ mr: 2 }}
               ></IconButton>
               <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                {`Hello ${props.userName}`}
+                {`Hello ${props.user.username}`}
               </Typography>
               <FormControlLabel
                 control={

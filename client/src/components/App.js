@@ -23,76 +23,71 @@ function App() {
     password: "",
   });
 
-  // Matching Algorithm
-
-  const getMatchedUsers = async () => {
-    const resp = await axios.get("http://localhost:4000/getMatchedUsers", {
-      withCredentials: true,
-    });
-    console.log(resp.data);
-  };
-
-
   const handleChange = (event) => {
     loginVariable = event.target.checked;
     setLogin(loginVariable);
-  }
+  };
 
+  return (
+    <div className="App">
+      <MainContextProvider>
+        <Routes>
+          <Route path="/" element={<Login />} className="Login" />
+          <Route
+            path="/userprofil"
+            element={
+              <UserProfil
+                // inputSignUp={inputSignUp}
+                // setInputSignUp={setInputSignUp}
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}
+                setUser={setUser}
+                user={user}
+              />
+            }
+          />
+          <Route path="/redirect" element={<Navigate to="/userprofil" />} />
 
-return (
-  <div className="App">
-    <button onClick={getMatchedUsers}>Match</button>
-    <MainContextProvider>
-      <Routes>
-        <Route path="/" element={<Login />} className="Login" />
-        <Route
-          path="/userprofil"
-          element={
-            <UserProfil
-              // inputSignUp={inputSignUp}
-              // setInputSignUp={setInputSignUp}
-              currentUser={currentUser}
-              setCurrentUser={setCurrentUser}
-              setUser={setUser}
-              user={user}
-            />
-          }
-        />
-        <Route path="/redirect" element={<Navigate to="/userprofil" />} />
-
-        <Route
-          path="/signup"
-          element={
-            <SignUp
-              inputSignUp={inputSignUp}
-              setInputSignUp={setInputSignUp}
-            />
-          }
-        />
-        <Route
-          path="/matcheslist" element={<MatchesList
-            user={user}
-            setUser={setUser}
-            currentUser={currentUser}
-            setCurrentUser={setCurrentUser}
-            login={login}
-            handleChange={handleChange}
-          />} />
-        <Route path="/chatHistory" element={<ChatHistory
-          user={user}
-          setUser={setUser}
-          currentUser={currentUser}
-          setCurrentUser={setCurrentUser}
-          login={login}
-          handleChange={handleChange}
-
-        />} />
-        <Route path="/signup" element={<SignUp />} />
-      </Routes>
-    </MainContextProvider>
-  </div>
-
-);
+          <Route
+            path="/signup"
+            element={
+              <SignUp
+                inputSignUp={inputSignUp}
+                setInputSignUp={setInputSignUp}
+              />
+            }
+          />
+          <Route
+            path="/matcheslist"
+            element={
+              <MatchesList
+                user={user}
+                setUser={setUser}
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}
+                login={login}
+                handleChange={handleChange}
+              />
+            }
+          />
+          <Route
+            path="/chatHistory"
+            element={
+              <ChatHistory
+                user={user}
+                setUser={setUser}
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}
+                login={login}
+                handleChange={handleChange}
+              />
+            }
+          />
+          <Route path="/signup" element={<SignUp />} />
+        </Routes>
+      </MainContextProvider>
+    </div>
+  );
 }
 
 export default App;
