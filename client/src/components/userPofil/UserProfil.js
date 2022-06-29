@@ -57,13 +57,13 @@ export default function UserProfil(props) {
       console.log("Error while sending with axios", error);
     }
   };
-
   useEffect(() => {
     const getUser = async () => {
       const resp = await axios.get("http://localhost:4000/currentUser", {
         withCredentials: true,
       });
       props.setUser(resp.data);
+      console.log("as");
     };
     getUser();
   }, [userProfil]);
