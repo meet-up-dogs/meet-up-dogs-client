@@ -3,23 +3,17 @@ import React, { useRef, useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import SignUp from "./Signup/SignUp";
 import UserProfil from "./userPofil/UserProfil";
-import ChatHistory from "./ChatHistory/ChatHistory";
 import { Route, Routes, Navigate } from "react-router-dom";
 import { MainContextProvider } from "../context/MainContext";
 import Login from "./Login/Login";
 import "../App.css";
-import MatchesList from "./ShowMatches/MatchesList";
-import MatchCard from "./ShowMatches/MatchCard";
 import axios from "axios";
 
 function App() {
-  // const [lng, setLng] = useState(13.408971);
-  // const [lat, setLat] = useState(52.520417);
-  // const [isMapVisible, setIsMapVisible] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
   const [user, setUser] = useState({});
 
-  // console.log(lng, lat);
+
 
   // socket.connect
   const [inputSignUp, setInputSignUp] = useState({
@@ -44,11 +38,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} className="Login" />
           <Route
-            path="/userprofil"
-            element={
-              <UserProfil
-                // inputSignUp={inputSignUp}
-                // setInputSignUp={setInputSignUp}
+            path="/userprofil" element={ <UserProfil
                 currentUser={currentUser}
                 setCurrentUser={setCurrentUser}
                 setUser={setUser}
@@ -56,53 +46,20 @@ function App() {
               />
             }
           />
-          <Route path="/redirect" element={<Navigate to="/userprofil" />} />
 
           <Route
-            path="/signup"
-            element={
-              <SignUp
+            path="/signup" element={  <SignUp
                 inputSignUp={inputSignUp}
                 setInputSignUp={setInputSignUp}
               />
             }
           />
-          <Route 
-            path="/matcheslist" element={<MatchesList
-              currentUser={currentUser}
-              setCurrentUser={setCurrentUser}
-             />} />
-          <Route path="/chatHistory" element={<ChatHistory
-              currentUser={currentUser}
-              setCurrentUser={setCurrentUser}
-            
-            />} />
-          <Route path="/signup" element={<SignUp />} />
+
+  
         </Routes>
       </MainContextProvider>
     </div>
-    //   {/* {isMapVisible ? <Map setLng={setLng} setLat={setLat} /> : null}
-    // <MainContextProvider>
-    //   <div className="App">
-    //     <Routes>
-    //       <Route path="/" element={<Login />} />
-    //       <Route path="/signup" element={<SignUp />} />
-
-    //     </Routes>
-
-    //     {/* {isMapVisible ? <Map setLng={setLng} setLat={setLat} /> : null}
-    //   <p>
-    //     lng:{lng} lat:{lat}
-    //     <button
-    //       onClick={() => {
-    //         setIsMapVisible(true);
-    //       }}
-    //     >
-    //       open Map
-    //     </button>
-    //   </p> */}
-    //   {/* </div>
-    // </MainContextProvider> */}
+    
   );
 }
 

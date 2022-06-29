@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Chat from "../Chat/Chat";
 import { FaAngleLeft } from "react-icons/fa";
 import Footer from '../Footer/Footer'
+import Header from "../Header/Header";
 
 const users = [
   { username: "Evi" },
@@ -32,6 +33,7 @@ export default function ChatHistory() {
   }
   return (
     <>
+      <Header />
       {isChatOpen ? (
         <p className="close-chat" onClick={closeChat}>
           <FaAngleLeft />

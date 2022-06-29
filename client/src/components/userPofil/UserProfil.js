@@ -14,9 +14,11 @@ import axios from "axios";
 import Map from "../Map/Map";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-import { useNavigate } from "react-router-dom";
+import { Route, Routes,useNavigate } from "react-router-dom";
 // import {useToggle} from "../hooks/useToggle"
 import Compress from "react-image-file-resizer";
+
+
 
 import "./userProfil.css";
 
@@ -123,6 +125,7 @@ export default function UserProfil(props) {
 
   return (
     <>
+
       <Header
         login={login}
         handleChange={handleChange}
@@ -299,6 +302,7 @@ export default function UserProfil(props) {
         </Button>
       </form>
       <Footer />
+  
     </>
   );
 }

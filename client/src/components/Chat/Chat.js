@@ -62,16 +62,6 @@ export default function Chat({ roomId }) {
             send
           </Button>
         </Form.Group>
-        {/* <Form.Group>
-          <Button
-            variant="primary"
-            type="submit"
-            onClick={joinRoom}
-            className="mt-5"
-          >
-            Join Room
-          </Button>
-        </Form.Group> */}
       </Form>
     </div>
   );
