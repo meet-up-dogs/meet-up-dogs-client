@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import React from "react";
 import Header from "../Header/Header.js";
 import Footer from "../Footer/Footer";
+import "./matchList.css"
 
 const MatchList = (props) => {
   const getMatchedUsers = async () => {
@@ -16,6 +17,31 @@ const MatchList = (props) => {
   useEffect(() => {
     getMatchedUsers();
   }, []);
+
+  const Users = [
+    {
+      name: "alex",
+      city: "Berlin",
+      languages: "En"
+    },
+    {
+      name: "Joe",
+      city: "Hamburg",
+      languages: "En"
+    },
+    {
+      name: "Mark",
+      city: "Berlin",
+      languages: "De"
+    }, {
+      name: "John",
+      city: "Frankfurt",
+      languages: "En"
+    }
+
+  ]
+
+
   return (
     <>
       <Header
@@ -24,9 +50,16 @@ const MatchList = (props) => {
         login={props.login}
         handleChange={props.handleChange}
       />
+      <main className="matchedList">
+      {Users.map((user)=>{
+        return(
+          <p>{user.name}</p>
+        )
+      })}
 
-      <h2>Match List - x Treffer:</h2>
-      <p>nnn</p>
+
+      </main>
+
       <Footer />
     </>
   );
