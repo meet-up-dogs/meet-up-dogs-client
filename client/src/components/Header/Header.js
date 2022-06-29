@@ -39,11 +39,15 @@ export default function Header(props) {
                 }
                 label={props.login ? "Logout" : "Login"}
               />
-              <img
-                src={props.user.userImage}
-                alt=""
-                style={{ width: "50px", height: "50px" }}
-              />
+              {props.user.userImage ? (
+                <img
+                  src={props.user.userImage}
+                  alt=""
+                  style={{ width: "50px", height: "50px" }}
+                />
+              ) : (
+                false
+              )}
               {props.login && (
                 <div>
                   <IconButton

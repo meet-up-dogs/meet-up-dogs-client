@@ -9,6 +9,7 @@ import { MainContextProvider } from "../context/MainContext";
 import Login from "./Login/Login";
 import "../App.css";
 import MatchesList from "./ShowMatches/MatchesList";
+import axios from "axios";
 
 function App() {
   // Current User state. Get logged user from MongoDB
@@ -26,7 +27,16 @@ function App() {
       navigate("/");
     }
   };
-
+  useEffect(() => {
+    const getUser = async () => {
+      const resp = await axios.get("http://localhost:4000/currentUser", {
+        withCredentials: true,
+      });
+      setUser(resp.data);
+      console.log("as");
+    };
+    getUser();
+  }, []);
   return (
     <div className="App">
       <MainContextProvider>

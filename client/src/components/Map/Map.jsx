@@ -40,7 +40,7 @@ const DrawMap = ({ setBottomLeft, setTopRight }) => {
         center={center}
         zoom={ZOOM_LEVEL}
         ref={mapRef}
-        style={{ width: "90vw", height: "40vh", margin: "1rem auto" }}
+        style={{ width: "90vw", height: "30vh", margin: "1rem auto" }}
       >
         <FeatureGroup>
           <EditControl
