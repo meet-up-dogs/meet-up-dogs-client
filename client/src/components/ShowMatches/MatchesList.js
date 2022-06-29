@@ -9,18 +9,7 @@ import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import { NavLink } from "react-router-dom";
 
 const MatchList = (props) => {
-  const [matchUser, setMatchUser] = useState([]);
-  const getMatchedUsers = async () => {
-    const resp = await axios.get("http://localhost:4000/getMatchedUsers", {
-      withCredentials: true,
-    });
-    setMatchUser(resp.data);
-    console.log(resp.data);
-  };
 
-  useEffect(() => {
-    getMatchedUsers();
-  }, []);
 
   const [value, setValue] = React.useState(0);
 
@@ -39,7 +28,7 @@ const MatchList = (props) => {
       />
       <main className="matchedList">
         <ul>
-          {matchUser.map((user) => {
+          {props.matchUser.map((user) => {
             return (
               <>
                 <div

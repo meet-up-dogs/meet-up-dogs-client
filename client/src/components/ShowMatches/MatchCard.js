@@ -17,9 +17,10 @@ const MatchCard = (props) => {
       />
       <main className="matchedCard">
         <h2>single matchcard</h2>
-        <img src={props.user.userImage} alt="" />
-        <p>{props.user.description}</p>
-        <li>{props.user.gender}</li>
+        <li>{props.matchUser.username}</li>
+        <img src={props.matchUser.userImage} alt="" />
+        <p>{props.matchUser.description}</p>
+        <li>{props.matchUser.gender}</li>
       </main>
       <Footer />
     </>

@@ -15,6 +15,21 @@ import axios from "axios";
 function App() {
   // Current User state. Get logged user from MongoDB
   const [user, setUser] = useState({});
+  const [matchUser, setMatchUser] = useState([]);
+  const getMatchedUsers = async () => {
+    const resp = await axios.get("http://localhost:4000/getMatchedUsers", {
+      withCredentials: true,
+    });
+    setMatchUser(resp.data);
+    console.log(resp.data);
+  };
+
+  useEffect(() => {
+    getMatchedUsers();
+  }, []);
+
+
+
 
   // Variable and State to logged out Current user and delete token
   let loginVariable = true;
@@ -65,6 +80,9 @@ function App() {
                 user={user}
                 login={login}
                 handleChange={handleChange}
+                matchUser={matchUser}
+                setMatchUser={setMatchUser}
+
               />
             }
           />
@@ -85,6 +103,8 @@ function App() {
                 user={user}
                 login={login}
                 handleChange={handleChange}
+                matchUser={matchUser}
+                setMatchUser={setMatchUser}
               />
             }
           />
