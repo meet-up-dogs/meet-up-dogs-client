@@ -1,5 +1,13 @@
 .userProfilForm {
-    display: flex;
-    flex-direction: column;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  padding: 0.5em 0.5em;
+}
+
+.userProfilForm > div,
+.userProfilForm > label {
+  margin: 0.5rem min-content;
+}
+
+.userProfilForm textarea {
+}

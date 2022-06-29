@@ -9,6 +9,7 @@ import Radio from "@mui/material/Radio";
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import InputLabel from "@mui/material/InputLabel";
+import { TextField } from "@material-ui/core";
 import Select from "@mui/material/Select";
 import axios from "axios";
 import Map from "../Map/Map";
@@ -240,20 +241,28 @@ export default function UserProfil(props) {
         </FormControl>
         <input type="file" accept="image/*" onChange={onFileResize} />
 
-        <textarea
+        {/* <textarea
           id="w3review"
           name="w3review"
           rows="4"
           cols="50"
-          value={userProfil.description}
-          onChange={(e) => {
-            setUserProfil({ ...userProfil, description: e.target.value });
-          }}
           style={{ margin: "10px 10px" }}
           placeholder="Tell us about your Dog and yourself"
         >
           Tell me about your Dog and yourself
-        </textarea>
+        </textarea> */}
+
+        <TextField
+          variant="outlined"
+          placeholder="Tell us about your Dog and yourself"
+          multiline
+          value={userProfil.description}
+          rows="6"
+          rowsMax="6"
+          onChange={(e) => {
+            setUserProfil({ ...userProfil, description: e.target.value });
+          }}
+        />
 
         <Map setBottomLeft={setBottomLeft} setTopRight={setTopRight} />
         <Button
