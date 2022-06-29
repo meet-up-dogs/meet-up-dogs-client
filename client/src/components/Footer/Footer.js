@@ -5,10 +5,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
-import { NavLink, Routes, Route, Navigate } from "react-router-dom";
-import Chat from "../Chat/Chat";
-import UserProfil from "../userPofil/UserProfil.js";
-import ChatHistory from "../ChatHistory/ChatHistory";
+import { NavLink } from "react-router-dom";
 
 import "./footer.css";
 

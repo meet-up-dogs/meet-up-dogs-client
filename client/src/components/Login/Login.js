@@ -5,15 +5,13 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import React from "react";
-import "./login.css"
+import "./login.css";
 
-const Login = ({ setCurrentUser }) => {
-  
+const Login = () => {
   const [inputLogin, setInputLogin] = useState({
     email: "",
     password: "",
   });
-  const [isLogin, setIsLogin] = useState(false);
 
   const history = useNavigate();
 
@@ -93,9 +91,9 @@ const Login = ({ setCurrentUser }) => {
         <Button type="submit" variant="contained">
           Log In
         </Button>
-      <p>
-        Are you not Already a memeber <Link to="/signup">SignUp</Link>{" "}
-      </p>
+        <p>
+          Are you not Already a memeber <Link to="/signup">SignUp</Link>{" "}
+        </p>
       </form>
     </>
   );

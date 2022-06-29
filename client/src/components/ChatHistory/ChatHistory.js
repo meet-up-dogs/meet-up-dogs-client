@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Chat from "../Chat/Chat";
 import { FaAngleLeft } from "react-icons/fa";
-import Footer from '../Footer/Footer'
+import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 
 const users = [
@@ -19,7 +19,7 @@ export default function ChatHistory(props) {
   function roomIdHandle(user) {
     const room = [
       logedninUser.toLocaleLowerCase(),
-      user.username.toLocaleLowerCase(),
+      props.user.username.toLocaleLowerCase(),
     ]
       .sort()
       .join("-");
@@ -35,7 +35,6 @@ export default function ChatHistory(props) {
     <>
       <Header
         user={props.user}
-        userName={props.currentUser.username}
         login={props.login}
         handleChange={props.handleChange}
       />
@@ -47,10 +46,10 @@ export default function ChatHistory(props) {
       <div>
         {!isChatOpen
           ? users.map((user) => (
-            <p key={user.username} onClick={() => roomIdHandle(user)}>
-              {user.username}
-            </p>
-          ))
+              <p key={user.username} onClick={() => roomIdHandle(user)}>
+                {user.username}
+              </p>
+            ))
           : null}
       </div>
       <div> {isChatOpen ? <Chat roomId={roomId} /> : null}</div>
