@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect , useState} from "react";
 import axios from "axios";
 import React from "react";
 import Header from "../Header/Header.js";
@@ -6,7 +6,7 @@ import Footer from "../Footer/Footer";
 import "./matchList.css"
 
 const MatchList = (props) => {
-  const [matchUser,setMatchUser] = useState({})
+  const [matchUser,setMatchUser] = useState([])
   const getMatchedUsers = async () => {
     const resp = await axios.get("http://localhost:4000/getMatchedUsers", {
       withCredentials: true,
@@ -51,12 +51,18 @@ const MatchList = (props) => {
         handleChange={props.handleChange}
       />
       <main className="matchedList">
+        <ul>
       {matchUser.map((user)=>{
         return(
-          <p>{user.name}</p>
+          <>
+          <li>{user.username}</li>
+          <li>{user.dogBreed}</li>
+          <img src={user.userImage} alt="userPhoto" style={{width: "50px" , height: "50px"}}/>
+          </>
         )
       })}
 
+</ul>
 
       </main>
 

@@ -6,14 +6,14 @@ export const algorithm = async (req, res) => {
 
   const loggedUserLocation = await UserModel.find({
     username: loggedUser,
-  }).select({ location: 1, _id: false });
+  });
 
   const bottomLeft = loggedUserLocation[0].location.bottomLeft;
   const topRight = loggedUserLocation[0].location.topRight;
 
   const allUsers = await UserModel.find({
     username: { $nin: [loggedUser] },
-  }).select({ username: 1, location: 1 });
+  });
 
   const matchedUsers = allUsers.filter((user) => {
     let firstMatch = false;
