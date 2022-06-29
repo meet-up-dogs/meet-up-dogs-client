@@ -8,6 +8,10 @@ import "./matchCard.css"
 
 
 const MatchCard = (props) => {
+
+
+
+
   return (
     <>
       <Header
@@ -15,13 +19,21 @@ const MatchCard = (props) => {
         login={props.login}
         handleChange={props.handleChange}
       />
-      <main className="matchedCard">
+      <p>{props.currentUser.username}</p>
+      {/* <main className="matchedCard">
         <h2>single matchcard</h2>
-        <li>{props.matchUser.username}</li>
-        <img src={props.matchUser.userImage} alt="" />
-        <p>{props.matchUser.description}</p>
-        <li>{props.matchUser.gender}</li>
-      </main>
+        {props.matchUser.map((user) => {
+          return (
+            <>
+              <li>{user.username}</li>
+              <img src={user.userImage} alt="" />
+              <p>{user.description}</p>
+              <li>{user.gender}</li>
+            </>
+          )
+        })}
+
+      </main> */}
       <Footer />
     </>
   );

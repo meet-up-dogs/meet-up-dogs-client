@@ -21,15 +21,16 @@ function App() {
       withCredentials: true,
     });
     setMatchUser(resp.data);
-    console.log(resp.data);
+    console.log("matchUser", resp.data);
   };
 
   useEffect(() => {
     getMatchedUsers();
   }, []);
-
-
-
+  let currentMatchedUser;
+  const clickHandle = (username) => { matchUser.find((user) => user.username === username) };
+  console.log(currentMatchedUser)
+  console.log("clickhandle",clickHandle())
 
   // Variable and State to logged out Current user and delete token
   let loginVariable = true;
@@ -82,7 +83,7 @@ function App() {
                 handleChange={handleChange}
                 matchUser={matchUser}
                 setMatchUser={setMatchUser}
-
+                clickHandle={clickHandle()}
               />
             }
           />
@@ -103,8 +104,7 @@ function App() {
                 user={user}
                 login={login}
                 handleChange={handleChange}
-                matchUser={matchUser}
-                setMatchUser={setMatchUser}
+                // currentUser={currentMatchedUser}
               />
             }
           />

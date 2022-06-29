@@ -16,9 +16,7 @@ const MatchList = (props) => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  const clickHandle = (username) => {
-    console.log(username);
-  };
+
   return (
     <>
       <Header
@@ -33,7 +31,7 @@ const MatchList = (props) => {
               <>
                 <div
                   className="matched-card"
-                  onClick={() => clickHandle(user.username)}
+                  onClick={() => props.clickHandle(user.username)}
                 >
                   <li>Name:{user.username}</li>
                   <li>DogBreed:{user.dogBreed}</li>
