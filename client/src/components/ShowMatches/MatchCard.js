@@ -20,20 +20,19 @@ const MatchCard = (props) => {
         handleChange={props.handleChange}
       />
       <p>{props.currentUser.username}</p>
-      {/* <main className="matchedCard">
+      <main className="matchedCard">
         <h2>single matchcard</h2>
-        {props.matchUser.map((user) => {
-          return (
+       
+  
             <>
-              <li>{user.username}</li>
-              <img src={user.userImage} alt="" />
-              <p>{user.description}</p>
-              <li>{user.gender}</li>
+              <li>{props.currentUser.username}</li>
+              <img src={props.currentUser.userImage} alt="" />
+              <p>{props.currentUser.description}</p>
+              <li>{props.currentUser.gender}</li>
             </>
-          )
-        })}
+      
 
-      </main> */}
+      </main>
       <Footer />
     </>
   );
