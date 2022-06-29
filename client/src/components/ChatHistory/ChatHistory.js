@@ -3,6 +3,7 @@ import Chat from "../Chat/Chat";
 import { FaAngleLeft } from "react-icons/fa";
 import Footer from '../Footer/Footer'
 import Header from "../Header/Header";
+import "./chatHistory.css"
 
 const users = [
   { username: "Evi" },
@@ -44,7 +45,7 @@ export default function ChatHistory(props) {
           <FaAngleLeft />
         </p>
       ) : null}
-      <div>
+      <div className="chathistory">
         {!isChatOpen
           ? users.map((user) => (
             <p key={user.username} onClick={() => roomIdHandle(user)}>
