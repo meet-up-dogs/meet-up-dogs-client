@@ -13,15 +13,10 @@ import MatchCard from "./ShowMatches/MatchCard";
 import axios from "axios";
 
 function App() {
-  // const [lng, setLng] = useState(13.408971);
-  // const [lat, setLat] = useState(52.520417);
-  // const [isMapVisible, setIsMapVisible] = useState(false);
+  let loginVariable = true;
+  const [login, setLogin] = useState(loginVariable);
   const [currentUser, setCurrentUser] = useState({});
   const [user, setUser] = useState({});
-
-  // console.log(lng, lat);
-
-  // socket.connect
   const [inputSignUp, setInputSignUp] = useState({
     username: "",
     email: "",
@@ -37,73 +32,67 @@ function App() {
     console.log(resp.data);
   };
 
-  return (
-    <div className="App">
-      <button onClick={getMatchedUsers}>Match</button>
-      <MainContextProvider>
-        <Routes>
-          <Route path="/" element={<Login />} className="Login" />
-          <Route
-            path="/userprofil"
-            element={
-              <UserProfil
-                // inputSignUp={inputSignUp}
-                // setInputSignUp={setInputSignUp}
-                currentUser={currentUser}
-                setCurrentUser={setCurrentUser}
-                setUser={setUser}
-                user={user}
-              />
-            }
-          />
-          <Route path="/redirect" element={<Navigate to="/userprofil" />} />
 
-          <Route
-            path="/signup"
-            element={
-              <SignUp
-                inputSignUp={inputSignUp}
-                setInputSignUp={setInputSignUp}
-              />
-            }
-          />
-          <Route 
-            path="/matcheslist" element={<MatchesList
+  const handleChange = (event) => {
+    loginVariable = event.target.checked;
+    setLogin(loginVariable);
+  }
+
+
+return (
+  <div className="App">
+    <button onClick={getMatchedUsers}>Match</button>
+    <MainContextProvider>
+      <Routes>
+        <Route path="/" element={<Login />} className="Login" />
+        <Route
+          path="/userprofil"
+          element={
+            <UserProfil
+              // inputSignUp={inputSignUp}
+              // setInputSignUp={setInputSignUp}
               currentUser={currentUser}
               setCurrentUser={setCurrentUser}
-             />} />
-          <Route path="/chatHistory" element={<ChatHistory
-              currentUser={currentUser}
-              setCurrentUser={setCurrentUser}
-            
-            />} />
-          <Route path="/signup" element={<SignUp />} />
-        </Routes>
-      </MainContextProvider>
-    </div>
-    //   {/* {isMapVisible ? <Map setLng={setLng} setLat={setLat} /> : null}
-    // <MainContextProvider>
-    //   <div className="App">
-    //     <Routes>
-    //       <Route path="/" element={<Login />} />
-    //       <Route path="/signup" element={<SignUp />} />
+              setUser={setUser}
+              user={user}
+            />
+          }
+        />
+        <Route path="/redirect" element={<Navigate to="/userprofil" />} />
 
-    //     </Routes>
+        <Route
+          path="/signup"
+          element={
+            <SignUp
+              inputSignUp={inputSignUp}
+              setInputSignUp={setInputSignUp}
+            />
+          }
+        />
+        <Route
+          path="/matcheslist" element={<MatchesList
+            user={user}
+            setUser={setUser}
+            currentUser={currentUser}
+            setCurrentUser={setCurrentUser}
+            login={login}
+            handleChange={handleChange}
+          />} />
+        <Route path="/chatHistory" element={<ChatHistory
+          user={user}
+          setUser={setUser}
+          currentUser={currentUser}
+          setCurrentUser={setCurrentUser}
+          login={login}
+          handleChange={handleChange}
 
-    //     {/* {isMapVisible ? <Map setLng={setLng} setLat={setLat} /> : null}
-    //   <p>
-    //     lng:{lng} lat:{lat}
-    //     <button
-    //       onClick={() => {
-    //         setIsMapVisible(true);
-    //       }}
-    //     >
-    //       open Map
-    //     </button>
-    //   </p> */}
-    //   {/* </div>
-    // </MainContextProvider> */}
-  );
+        />} />
+        <Route path="/signup" element={<SignUp />} />
+      </Routes>
+    </MainContextProvider>
+  </div>
+
+);
 }
 
 export default App;
