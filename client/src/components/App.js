@@ -34,6 +34,7 @@ function App() {
         withCredentials: true,
       });
       setUser(resp.data);
+      console.log(resp.data);
       console.log("as");
     };
     getUser();
