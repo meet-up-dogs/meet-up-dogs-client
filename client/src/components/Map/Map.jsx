@@ -7,6 +7,7 @@ import osm from "./osm-providers";
 import { useRef } from "react";
 import "leaflet/dist/leaflet.css";
 import "leaflet-draw/dist/leaflet.draw.css";
+import "./Map.css";
 
 delete L.Icon.Default.prototype._getIconUrl;
 
@@ -40,7 +41,7 @@ const DrawMap = ({ setBottomLeft, setTopRight }) => {
         center={center}
         zoom={ZOOM_LEVEL}
         ref={mapRef}
-        style={{ width: "90vw", height: "30vh", margin: "1rem auto" }}
+        className="map-container"
       >
         <FeatureGroup>
           <EditControl
