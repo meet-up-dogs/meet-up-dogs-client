@@ -45,5 +45,5 @@ export const algorithm = async (req, res) => {
   });
 
   console.log(matchedUsers);
-  res.send(loggedUser);
+  res.send(matchedUsers);
 };

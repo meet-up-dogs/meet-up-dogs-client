@@ -34,7 +34,7 @@ export default function Header(props) {
                 style={{ width: "50px", height: "50px" }}
               />
               <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                {`Hello ${props.userName}`}
+                {`Hello ${props.user.username}`}
               </Typography>
               <FormControlLabel
                 control={

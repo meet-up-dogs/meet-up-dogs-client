@@ -17,11 +17,10 @@ import Footer from "../Footer/Footer";
 import { useNavigate } from "react-router-dom";
 // import {useToggle} from "../hooks/useToggle"
 import Compress from "react-image-file-resizer";
-import MatchesList from '../ShowMatches/MatchesList.js';
-import Chat from '../Chat/Chat';
-import ChatHistory from '../ChatHistory/ChatHistory.js';
+import MatchesList from "../ShowMatches/MatchesList.js";
+import Chat from "../Chat/Chat";
+import ChatHistory from "../ChatHistory/ChatHistory.js";
 import { Route, Routes, Navigate } from "react-router-dom";
-
 
 import "./userProfil.css";
 
@@ -87,9 +86,6 @@ export default function UserProfil(props) {
       props.setCurrentUser(resp.data);
     };
     getCurrentUser();
-  }, [userProfil]);
-
-  useEffect(() => {
     const getUser = async () => {
       const resp = await axios.get("http://localhost:4000/currentUser", {
         withCredentials: true,
@@ -305,12 +301,13 @@ export default function UserProfil(props) {
       </form>
       <Routes>
         <Route
-          path="/matcheslist" element={<MatchesList
-            user={props.user}
-          />} />
-        <Route path="/chatHistory" element={<ChatHistory
-          user={props.user}
-        />} />
+          path="/matcheslist"
+          element={<MatchesList user={props.user} />}
+        />
+        <Route
+          path="/chatHistory"
+          element={<ChatHistory user={props.user} />}
+        />
       </Routes>
       <Footer />
     </>
