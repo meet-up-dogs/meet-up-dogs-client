@@ -63,10 +63,12 @@ export default function UserProfil(props) {
         withCredentials: true,
       });
       props.setUser(resp.data);
-      console.log("as");
+      if (resp.data.gender) {
+        setUserProfil(resp.data);
+      }
     };
     getUser();
-  }, [userProfil]);
+  }, []);
 
   useEffect(() => {
     setUserProfil({
@@ -116,7 +118,8 @@ export default function UserProfil(props) {
           <FormLabel id="demo-radio-buttons-group-label">Gender</FormLabel>
           <RadioGroup
             aria-labelledby="demo-radio-buttons-group-label"
-            defaultValue=""
+            value={userProfil.gender}
+            defaultValue={userProfil.gender}
             name="radio-buttons-group"
             onChange={(e) =>
               setUserProfil({
@@ -144,6 +147,7 @@ export default function UserProfil(props) {
             labelId="Languages"
             id="demo-simple-select-autowidth"
             value={userProfil.language}
+            defaultValue={userProfil.language}
             onChange={(e) => {
               setUserProfil({
                 ...userProfil,
@@ -152,7 +156,7 @@ export default function UserProfil(props) {
               });
             }}
             autoWidth
-            label="Langueges"
+            label="Languages"
           >
             <MenuItem value="">
               <em>None</em>
