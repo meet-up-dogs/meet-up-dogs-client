@@ -3,8 +3,9 @@ import { MainContext } from "../../context/MainContext";
 import { useState, useContext } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import axios from "axios";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { axiosPublic } from "../../util/axiosConfig";
+
 // eslint-disable-next-line no-unused-vars
 import "./signup.css";
 
@@ -22,7 +23,7 @@ const SignUp = () => {
     e.preventDefault();
     let axiosResp;
     try {
-      axiosResp = await axios.post("http://localhost:4000/signup", inputSignUp);
+      axiosResp = await axiosPublic.post("/signup", inputSignUp);
       console.log("axiosResp.data:", inputSignUp);
       if (!axiosResp) {
         console.debug("axiosResp.data:", axiosResp);

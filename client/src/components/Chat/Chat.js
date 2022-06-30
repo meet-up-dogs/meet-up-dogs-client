@@ -1,10 +1,11 @@
 import React from "react";
 import { Button, Form } from "react-bootstrap";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import io from "socket.io-client";
 import "./chat.css";
+import { axiosPublic } from "../../util/axiosConfig";
 
-const socket = io.connect("http://localhost:4000");
+const socket = io.connect("https://meet-up-dogs.herokuapp.com/");
 
 export default function Chat({ roomId }) {
   const [room, setRoom] = useState(roomId);
@@ -12,10 +13,6 @@ export default function Chat({ roomId }) {
   // Messages States
   const [message, setMessage] = useState("");
   const [conversation, setConversation] = useState([]);
-
-  const joinRoom = (e) => {
-    e.preventDefault();
-  };
   socket.emit("join_room", room);
 
   const sendMessage = (e) => {
@@ -29,7 +26,23 @@ export default function Chat({ roomId }) {
     socket.on("receive_message", (data) => {
       setConversation([...conversation, { received: data.message }]);
     });
+    // sendConversation();
+  }, []);
+
+  console.log(conversation);
+  useEffect(() => {
+    //  const sendConversation = async () => {
+    //    const resp = await axios.post(
+    //      "https://meet-up-dogs.herokuapp.com/sendConversation",
+    //      { room: conversation },
+    //      {
+    //        withCredentials: true,
+    //      }
+    //    );
+    //    console.log(resp);
+    //  };
   }, [conversation]);
+
   return (
     <div>
       <h2>Chat {roomId}</h2>

@@ -10,25 +10,14 @@ import Login from "./Login/Login";
 import "../App.css";
 import MatchesList from "./ShowMatches/MatchesList";
 import MatchCard from "./ShowMatches/MatchCard";
-import axios from "axios";
+import { axiosPublic } from "../util/axiosConfig";
+import Chat from "./Chat/Chat";
 
 function App() {
   // Current User state. Get logged user from MongoDB
   const [user, setUser] = useState({});
   const [matchUsers, setMatchUsers] = useState([]);
   const [currentMatchedUser, setCurrentMatchedUser] = useState({});
-
-  const getMatchedUsers = async () => {
-    const resp = await axios.get("http://localhost:4000/getMatchedUsers", {
-      withCredentials: true,
-    });
-    setMatchUsers(resp.data);
-    console.log("matchUser", resp.data);
-  };
-
-  useEffect(() => {
-    getMatchedUsers();
-  }, []);
 
   // Variable and State to logged out Current user and delete token
   let loginVariable = true;
@@ -44,15 +33,45 @@ function App() {
   };
   useEffect(() => {
     const getUser = async () => {
-      const resp = await axios.get("http://localhost:4000/currentUser", {
-        withCredentials: true,
-      });
+      const resp = await axiosPublic.get("/currentUser");
+
       setUser(resp.data);
       console.log(resp.data);
       console.log("as");
     };
     getUser();
+    getMatchedUsers();
   }, []);
+
+  const getMatchedUsers = async () => {
+    const resp = await axiosPublic.get("/getMatchedUsers");
+    await setMatchUsers(resp.data);
+    console.log("matchUser", resp.data);
+  };
+
+  useEffect(() => {
+    if (user.username && currentMatchedUser.username) {
+      roomIdHandle();
+      console.log("user: ", user.username);
+      console.log("currentMatchedUser.username: ", currentMatchedUser.username);
+    }
+  }, [currentMatchedUser, user]);
+
+  //Room Id after started Chat in MatchesCard
+  const [roomId, setRoomId] = useState("");
+
+  function roomIdHandle() {
+    // console.log("user.username: ", user.username);
+    // console.log("currentMatchedUser.username: ", currentMatchedUser.username);
+    const room = [
+      user.username.toLocaleLowerCase(),
+      currentMatchedUser.username.toLocaleLowerCase(),
+    ]
+      .sort()
+      .join("-");
+    setRoomId(room);
+    return room;
+  }
   return (
     <div className="App">
       <MainContextProvider>
@@ -107,6 +126,7 @@ function App() {
             }
           />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/chat" element={<Chat roomId={roomId} />} />
         </Routes>
       </MainContextProvider>
     </div>

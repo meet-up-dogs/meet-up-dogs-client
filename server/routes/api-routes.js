@@ -16,7 +16,11 @@ router.get("/getUser", isAuth, (req, res) => {
   //     success: true,
   //     secretMessage: `${req.userName}, die Antwort auf die große Frage.... `,
   //   });
-  res.send({ logging: true, username: req.userName, userId: req.userId });
+  try {
+    res.send({ logging: true, username: req.userName, userId: req.userId });
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 router.get("/currentUser", isAuth, async (req, res) => {
