@@ -239,20 +239,14 @@ export default function UserProfil(props) {
             <MenuItem value={"Abends"}>Abends</MenuItem>
           </Select>
         </FormControl>
-        <input type="file" accept="image/*" onChange={onFileResize} />
-
-        {/* <textarea
-          id="w3review"
-          name="w3review"
-          rows="4"
-          cols="50"
-          style={{ margin: "10px 10px" }}
-          placeholder="Tell us about your Dog and yourself"
-        >
-          Tell me about your Dog and yourself
-        </textarea> */}
+        {/* <input type="file" accept="image/*"  /> */}
+        <Button variant="contained" component="label">
+          Upload image with your dog
+          <input type="file" onChange={onFileResize} hidden />
+        </Button>
 
         <TextField
+          className="text-field"
           variant="outlined"
           placeholder="Tell us about your Dog and yourself"
           multiline
@@ -280,7 +274,7 @@ export default function UserProfil(props) {
         </Button>
 
         <Outlet />
-        <Button sx={margin} type="submit" variant="contained">
+        <Button type="submit" variant="contained">
           Save
         </Button>
       </form>
