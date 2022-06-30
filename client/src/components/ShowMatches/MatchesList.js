@@ -22,13 +22,13 @@ const MatchList = (props) => {
         login={props.login}
         handleChange={props.handleChange}
       />
-      <main className="matchedList">
-        <ul>
+      <div className="cards">
+        
           {props.matchUsers.map((user) => {
             return (
               <>
                 <div
-                  className="matched-card"
+                  className="card"
                   onClick={() => {
                     props.setCurrentMatchedUser(
                       props.matchUsers.find(
@@ -37,10 +37,10 @@ const MatchList = (props) => {
                     );
                   }}
                 >
-                  <li>Name:{user.username}</li>
-                  <li>DogBreed:{user.dogBreed}</li>
-
-                  <BottomNavigation
+                <p className="card-desc">{user.description}</p>
+                <div className="container">
+                   
+                <BottomNavigation
                     showLabels
                     value={value}
                     onChange={(event, newValue) =>
@@ -50,22 +50,26 @@ const MatchList = (props) => {
                     <BottomNavigationAction
                       component={NavLink}
                       to="/matchcard"
-                      label="Profil"
+                      label=""
                       icon={
                         <img
                           src={user.userImage}
                           alt="userPhoto"
-                          style={{ width: "50px", height: "50px" }}
+                          className="card-img"
                         />
                       }
                     />
                   </BottomNavigation>
+                  <li>Name:{user.username}</li>
+                  <li>DogBreed:{user.dogBreed}</li>
+
+                </div>
                 </div>
               </>
             );
           })}
-        </ul>
-      </main>
+      
+      </div>
 
       <Footer />
     </>
