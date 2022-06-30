@@ -1,13 +1,12 @@
 .footer {
-  margin-top: 20px;
   bottom: 0;
   height: 50px;
-  /* opacity: 1;
+  opacity: 1;
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 100; */
+  z-index: 10;
 }
 
 .navlink {

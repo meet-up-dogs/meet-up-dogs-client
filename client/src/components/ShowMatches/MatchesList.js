@@ -23,24 +23,25 @@ const MatchList = (props) => {
         handleChange={props.handleChange}
       />
       <div className="cards">
-        
-          {props.matchUsers.map((user) => {
-            return (
-              <>
+
+        {props.matchUsers.map((user) => {
+          return (
+            <>
+              <main>              
                 <div
-                  className="card"
-                  onClick={() => {
-                    props.setCurrentMatchedUser(
-                      props.matchUsers.find(
-                        (matchUser) => matchUser.username === user.username
-                      )
-                    );
-                  }}
-                >
+                className="card"
+                onClick={() => {
+                  props.setCurrentMatchedUser(
+                    props.matchUsers.find(
+                      (matchUser) => matchUser.username === user.username
+                    )
+                  );
+                }}
+              >
                 <p className="card-desc">{user.description}</p>
                 <div className="container">
-                   
-                <BottomNavigation
+
+                  <BottomNavigation
                     showLabels
                     value={value}
                     onChange={(event, newValue) =>
@@ -60,15 +61,18 @@ const MatchList = (props) => {
                       }
                     />
                   </BottomNavigation>
-                  <li>Name:{user.username}</li>
+                  <li>{user.username}</li>
                   <li>DogBreed:{user.dogBreed}</li>
+                  <li>Availability:{user.availability.weekDay}<span>({user.availability.dayTime})</span></li>
 
                 </div>
-                </div>
-              </>
-            );
-          })}
-      
+              </div>
+              </main>
+
+            </>
+          );
+        })}
+
       </div>
 
       <Footer />

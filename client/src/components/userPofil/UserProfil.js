@@ -234,9 +234,11 @@ export default function UserProfil(props) {
             autoWidth
             label="Time Slot"
           >
-            <MenuItem value={"Morgens"}>Morgens</MenuItem>
-            <MenuItem value={"Mittags"}>Mittags</MenuItem>
-            <MenuItem value={"Abends"}>Abends</MenuItem>
+            <MenuItem value={"noon"}>noon</MenuItem>
+            <MenuItem value={"in the evening"}>in the evening</MenuItem>
+            <MenuItem value={"morning"}>morning</MenuItem>
+            <MenuItem value={"evening"}>evening</MenuItem>
+          
           </Select>
         </FormControl>
         {/* <input type="file" accept="image/*"  /> */}
