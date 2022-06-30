@@ -13,21 +13,30 @@ const MatchCard = (props) => {
         login={props.login}
         handleChange={props.handleChange}
       />
-      <p>{props.currentUser.username}</p>
+
       <main className="matchedCard">
-        <h2>single matchcard</h2>
+       
+            <>
+              <img src={props.currentUser.userImage} alt="" className="profilbild"/>
+            <h2>{props.currentUser.username}</h2>
+            <ul>
+              
+              <li>Description: <br />{props.currentUser.description}</li>
 
-        <>
-          <li>{props.currentUser.username}</li>
-          <img src={props.currentUser.userImage} alt="" />
-          <p>{props.currentUser.description}</p>
-          <li>{props.currentUser.gender}</li>
-        </>
-      </main>
 
-      <Link to="/chat">
+              <li>Gender:{props.currentUser.gender}</li>
+              </ul>
+            
+            </>
+          <div className="buttons">
+          <button>Favorite</button>
+          <Link to="/chat">
         <button>Start Chat</button>
       </Link>
+          </div>
+      </main>
+
+        
       <Footer />
     </>
   );
