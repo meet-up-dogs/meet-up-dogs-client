@@ -10,7 +10,6 @@ export default async (req, res, next) => {
   // if (!token) return res.sendStatus(401);
 
   // console.log(token, process.env.TOKEN_SECRET);
-  console.log("req.cookies", req.cookies);
   try {
     const decodedToken = jwt.verify(
       req.cookies.token,

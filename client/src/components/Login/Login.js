@@ -6,8 +6,12 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import React from "react";
 import "./login.css";
+
 import background from "../images/happydog.jpg";
 import logo from '../images/pawfree.png'
+
+import { axiosPublic } from "../../util/axiosConfig";
+
 
 const Login = () => {
   const [inputLogin, setInputLogin] = useState({
@@ -21,10 +25,9 @@ const Login = () => {
     e.preventDefault();
     let axiosResp;
     try {
-      axiosResp = await axios.post("http://localhost:4000/login", inputLogin, {
+      axiosResp = await axiosPublic.post("/login", inputLogin, {
         withCredentials: true,
       });
-
       console.debug("axiosResp.data:", axiosResp);
       if (!axiosResp) {
         console.debug("axiosResp.data:", axiosResp.data.response);
@@ -47,8 +50,8 @@ const Login = () => {
 
   useEffect(() => {
     const logOut = async () => {
-      const resp = await axios.post(
-        "http://localhost:4000/logout",
+      const resp = await axiosPublic.post(
+        "/logout",
         {},
         {
           withCredentials: true,

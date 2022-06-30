@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import React from "react";
 import Header from "../Header/Header.js";
 import Footer from "../Footer/Footer";
@@ -22,23 +21,24 @@ const MatchList = (props) => {
         login={props.login}
         handleChange={props.handleChange}
       />
-      <main className="matchedList">
-        <ul>
-          {props.matchUsers.map((user) => {
-            return (
-              <>
+      <div className="cards">
+
+        {props.matchUsers.map((user) => {
+          return (
+            <>
+              <main>              
                 <div
-                  className="matched-card"
-                  onClick={() => {
-                    props.setCurrentMatchedUser(
-                      props.matchUsers.find(
-                        (matchUser) => matchUser.username === user.username
-                      )
-                    );
-                  }}
-                >
-                  <li>Name:{user.username}</li>
-                  <li>DogBreed:{user.dogBreed}</li>
+                className="card"
+                onClick={() => {
+                  props.setCurrentMatchedUser(
+                    props.matchUsers.find(
+                      (matchUser) => matchUser.username === user.username
+                    )
+                  );
+                }}
+              >
+                <p className="card-desc">{user.description}</p>
+                <div className="container">
 
                   <BottomNavigation
                     showLabels
@@ -50,22 +50,29 @@ const MatchList = (props) => {
                     <BottomNavigationAction
                       component={NavLink}
                       to="/matchcard"
-                      label="Profil"
+                      label=""
                       icon={
                         <img
                           src={user.userImage}
                           alt="userPhoto"
-                          style={{ width: "50px", height: "50px" }}
+                          className="card-img"
                         />
                       }
                     />
                   </BottomNavigation>
+                  <li>{user.username}</li>
+                  <li>DogBreed:{user.dogBreed}</li>
+                  <li>Availability:{user.availability.weekDay}<span>({user.availability.dayTime})</span></li>
+
                 </div>
-              </>
-            );
-          })}
-        </ul>
-      </main>
+              </div>
+              </main>
+
+            </>
+          );
+        })}
+
+      </div>
 
       <Footer />
     </>
