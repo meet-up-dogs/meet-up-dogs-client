@@ -1,17 +1,11 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import React from "react";
-import Header from "../Header/Header.js"
-import Footer from '../Footer/Footer';
-import "./matchCard.css"
-
+import Header from "../Header/Header.js";
+import Footer from "../Footer/Footer";
+import "./matchCard.css";
 
 const MatchCard = (props) => {
-
-
-
-
   return (
     <>
       <Header
@@ -34,10 +28,12 @@ const MatchCard = (props) => {
         })}
 
       </main> */}
+      <Link to="/chat">
+        <button>Start Chat</button>
+      </Link>
       <Footer />
     </>
   );
 };
-
 
 export default MatchCard;

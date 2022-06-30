@@ -11,7 +11,7 @@ import { Outlet } from "react-router-dom";
 import InputLabel from "@mui/material/InputLabel";
 import { TextField } from "@material-ui/core";
 import Select from "@mui/material/Select";
-import axios from "axios";
+import { axiosPublic } from "../../util/axiosConfig";
 import Map from "../Map/Map";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
@@ -44,10 +44,7 @@ export default function UserProfil(props) {
     e.preventDefault();
 
     try {
-      const axiosResp = await axios.post(
-        "http://localhost:4000/userprofil",
-        userProfil
-      );
+      const axiosResp = await axiosPublic.post("/userprofil", userProfil);
       console.log("axiosResp.data:", userProfil);
       if (!axiosResp) {
         console.debug("axiosResp.data:", axiosResp);
@@ -60,9 +57,7 @@ export default function UserProfil(props) {
   };
   useEffect(() => {
     const getUser = async () => {
-      const resp = await axios.get("http://localhost:4000/currentUser", {
-        withCredentials: true,
-      });
+      const resp = await axiosPublic.get("/currentUser");
       props.setUser(resp.data);
       if (resp.data.gender) {
         setUserProfil(resp.data);

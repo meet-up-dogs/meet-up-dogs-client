@@ -5,11 +5,11 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Karol",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.27.2",
@@ -23,5 +23,11 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.3.8",
     "socket.io": "^4.5.1"
+  },
+  "engines": {
+    "node": "17.5.0"
+  },
+  "devDependencies": {
+    "http-proxy-middleware": "^2.0.6"
   }
 }
