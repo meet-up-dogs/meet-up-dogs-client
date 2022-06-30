@@ -6,6 +6,8 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import React from "react";
 import "./login.css";
+import background from "../images/happydog.jpg";
+import logo from '../images/pawfree.png'
 
 const Login = () => {
   const [inputLogin, setInputLogin] = useState({
@@ -59,42 +61,58 @@ const Login = () => {
 
   return (
     <>
-      <form
-        action="/login"
-        method="post"
-        onSubmit={(e) => {
-          loginHandler(e);
-        }}
-        className="loginForm"
+
+      <div className="background"
+      //  style={{ 
+      //   backgroundImage: `url(${background})`, 
+      //   height: '100vh',
+      //   backgroundPosition: 'center',
+      //    }}
+
+      
       >
-        <h2>Login</h2>
-        <TextField
-          name="email"
-          label="E-Mail"
-          variant="filled"
-          value={inputLogin.email}
-          onChange={(e) =>
-            setInputLogin({ ...inputLogin, email: e.target.value })
-          }
-        />
-        <br /> <br />
-        <TextField
-          name="password"
-          label="Password"
-          variant="filled"
-          value={inputLogin.password}
-          onChange={(e) =>
-            setInputLogin({ ...inputLogin, password: e.target.value })
-          }
-        />
-        <br />
-        <Button type="submit" variant="contained">
-          Log In
-        </Button>
-        <p>
-          Are you not Already a memeber <Link to="/signup">SignUp</Link>{" "}
-        </p>
-      </form>
+      
+
+
+        <div className="loginForm">
+          <form
+            action="/login"
+            method="post"
+            onSubmit={(e) => {
+              loginHandler(e);
+            }}
+            
+          >
+            <h2>Login</h2>
+            <TextField
+              name="email"
+              label="E-Mail"
+              variant="filled"
+              value={inputLogin.email}
+              onChange={(e) =>
+                setInputLogin({ ...inputLogin, email: e.target.value })
+              }
+            />
+            <br /> <br />
+            <TextField
+              name="password"
+              label="Password"
+              variant="filled"
+              value={inputLogin.password}
+              onChange={(e) =>
+                setInputLogin({ ...inputLogin, password: e.target.value })
+              }
+            />
+            <br />
+            <Button type="submit" variant="contained">
+              Log In
+            </Button>
+            <p>
+              Are you not Already a memeber <Link to="/signup">SignUp</Link>{" "}
+            </p>
+          </form>
+        </div>
+      </div>
     </>
   );
 };
