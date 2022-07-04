@@ -37,7 +37,6 @@ const MatchList = (props) => {
                   );
                 }}
               >
-                <p className="card-desc">{user.description}</p>
                 <div className="container">
 
                   <BottomNavigation
@@ -60,10 +59,11 @@ const MatchList = (props) => {
                       }
                     />
                   </BottomNavigation>
+                  <div className="bio">
                   <li>{user.username}</li>
                   <li>DogBreed:{user.dogBreed}</li>
-                  <li>Availability:{user.availability.weekDay}<span>({user.availability.dayTime})</span></li>
-
+                  </div>
+                
                 </div>
               </div>
               </main>
