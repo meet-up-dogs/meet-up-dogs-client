@@ -22,7 +22,7 @@ const Login = () => {
 
   const loginHandler = async (e) => {
     e.preventDefault();
-    let axiosResp;
+    let result;
     // try {
     //   axiosResp = await axiosPublic.post("/login", inputLogin, {
     //     headers: {
@@ -44,21 +44,25 @@ const Login = () => {
     //   alert("Could not log in. Console for more Information");
     //   // Info: alert is bad practise here!
     // }
-
     try {
-      const resp = await fetch("https://meet-up-dogs.netlify.app/", {
+      const resp = await fetch("https://meet-up-dogs.herokuapp.com/login", {
         method: "POST",
-        mode: "cors",
+
         credentials: "include",
         headers: {
+          Accept: "application/json",
           "Content-Type": "application/json",
         },
+        body: JSON.stringify(inputLogin),
       });
+
+      result = await resp.json();
+      console.log(result);
     } catch (error) {
       console.log(error);
     }
     // antwort als kommentar vom Server
-    if (axiosResp.data.logging) {
+    if (result) {
       history("./userprofil");
     } else {
       console.lof("logging was not successfully");

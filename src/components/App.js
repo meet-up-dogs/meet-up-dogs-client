@@ -76,6 +76,7 @@ function App() {
     setRoomId(room);
     return room;
   }
+  console.log(currentMatchedUser);
   return (
     <div className="App">
       <MainContextProvider>
