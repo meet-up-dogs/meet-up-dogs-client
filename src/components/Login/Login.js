@@ -1,16 +1,12 @@
 import TextField from "@mui/material/TextField";
-import SignUp from "../Signup/SignUp";
 import Button from "@mui/material/Button";
 import { useState, useEffect } from "react";
-import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import React from "react";
 import "./login.css";
-
-import background from "../images/happydog.jpg";
-import logo from '../images/pawfree.png'
-
+import HeaderLogoPaw from '../Header/HeaderLogoPaw'
 import { axiosPublic } from "../../util/axiosConfig";
+import "@fontsource/shrikhand";
 
 
 const Login = () => {
@@ -48,6 +44,7 @@ const Login = () => {
     // setInput({email:"", pwd:""})
   };
 
+
   useEffect(() => {
     const logOut = async () => {
       const resp = await axiosPublic.post(
@@ -64,18 +61,10 @@ const Login = () => {
 
   return (
     <>
+    <div className="body-login">
+      < HeaderLogoPaw />
 
-      <div className="background"
-      //  style={{ 
-      //   backgroundImage: `url(${background})`, 
-      //   height: '100vh',
-      //   backgroundPosition: 'center',
-      //    }}
-
-      
-      >
-      
-
+      <div className="background">
 
         <div className="loginForm">
           <form
@@ -84,9 +73,9 @@ const Login = () => {
             onSubmit={(e) => {
               loginHandler(e);
             }}
-            
+
           >
-            <h2>Login</h2>
+            <h2 style={{ color: '#2B2B2B', fontFamily: "Shrikhand" }}>Login</h2>
             <TextField
               name="email"
               label="E-Mail"
@@ -101,20 +90,31 @@ const Login = () => {
               name="password"
               label="Password"
               variant="filled"
+              style={{ color: '#f7f9ef', fontFamily: "Shrikhand" }}
               value={inputLogin.password}
               onChange={(e) =>
                 setInputLogin({ ...inputLogin, password: e.target.value })
               }
             />
             <br />
-            <Button type="submit" variant="contained">
+            <Button type="submit" variant="contained" style={{
+              color: '#f7f9ef',
+              fontFamily: "Shrikhand",
+              backgroundColor: '#2B2B2B',
+              marginTop: "1rem",
+              padding: "0.5rem"
+            }} >
               Log In
             </Button>
-            <p>
-              Are you not Already a memeber <Link to="/signup">SignUp</Link>{" "}
+            <p style={{ color: '#2b2b2b', fontFamily: "Shrikhand" }}>
+              you are not a member yet? <Link to="/signup"
+                style={{ fontFamily: "Shrikhand" }}
+              >SignUp
+              </Link>{" "}
             </p>
           </form>
         </div>
+      </div>
       </div>
     </>
   );

@@ -1,0 +1,46 @@
+figure {
+  position: relative;
+}
+
+
+.logo-paw {
+  /* width: 50vw; */
+  height: 20vh;
+  position: absolute;
+  top: 0vh;
+  right: -10vw;
+}
+
+.logo-script {
+  width: 40vw;
+  position: absolute;
+  top: 0vh;
+  left: 0.5vw;
+}
+
+@media screen and (max-width: 413px) {
+  .logo-paw {
+    height: 30vh;
+    position: absolute;
+    top: 5vh;
+    right: -5vw;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .logo-paw {
+    height: 50vh;
+    position: absolute;
+    top: 0vh;
+    right: 30vw;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .logo-paw {
+    height: 50vh;
+    position: absolute;
+    top: 0vh;
+    right: 5vw;
+  }
+}

@@ -1,13 +1,15 @@
 import React from "react";
-import { MainContext } from "../../context/MainContext";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { useNavigate } from "react-router-dom";
 import { axiosPublic } from "../../util/axiosConfig";
+import HeaderLogoPaw from '../Header/HeaderLogoPaw';
+import '../Header/HeaderLogoPaw.css'
+import "@fontsource/shrikhand";
+import "./signup.css";
 
 // eslint-disable-next-line no-unused-vars
-import "./signup.css";
 
 const SignUp = () => {
   const [inputSignUp, setInputSignUp] = useState({
@@ -43,6 +45,8 @@ const SignUp = () => {
 
   return (
     <>
+    <div className="body-signup">
+      <HeaderLogoPaw />
       <form
         action="/signup"
         method="post"
@@ -51,7 +55,7 @@ const SignUp = () => {
           signUpHandler(e);
         }}
       >
-        <h2> Sign Up </h2>
+        <h2 style={{ color: '#2B2B2B', fontFamily: "Shrikhand" }}> Sign Up </h2>
         <TextField
           name="username"
           label="Username"
@@ -82,10 +86,17 @@ const SignUp = () => {
             setInputSignUp({ ...inputSignUp, password: e.target.value })
           }
         />
-        <Button type="submit" variant="contained">
+        <Button type="submit" variant="contained" style={{
+          color: '#f7f9ef',
+          fontFamily: "Shrikhand",
+          backgroundColor: '#2B2B2B',
+          marginTop: "1rem",
+          padding: "0.5rem"
+        }}>
           Sign Up
         </Button>
       </form>
+      </div>
     </>
   );
 };
