@@ -25,7 +25,9 @@ const SignUp = () => {
     e.preventDefault();
     let axiosResp;
     try {
-      axiosResp = await axiosPublic.post("/signup", inputSignUp);
+      axiosResp = await axiosPublic.post("/signup", inputSignUp, {
+        withCredentials: true,
+      });
       console.log("axiosResp.data:", inputSignUp);
       if (!axiosResp) {
         console.debug("axiosResp.data:", axiosResp);

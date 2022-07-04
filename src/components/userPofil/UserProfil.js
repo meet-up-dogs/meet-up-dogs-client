@@ -44,7 +44,9 @@ export default function UserProfil(props) {
     e.preventDefault();
 
     try {
-      const axiosResp = await axiosPublic.post("/userprofil", userProfil);
+      const axiosResp = await axiosPublic.post("/userprofil", userProfil, {
+        withCredentials: true,
+      });
       console.log("axiosResp.data:", userProfil);
       if (!axiosResp) {
         console.debug("axiosResp.data:", axiosResp);
@@ -57,7 +59,9 @@ export default function UserProfil(props) {
   };
   useEffect(() => {
     const getUser = async () => {
-      const resp = await axiosPublic.get("/currentUser");
+      const resp = await axiosPublic.get("/currentUser", {
+        withCredentials: true,
+      });
       props.setUser(resp.data);
       if (resp.data.gender) {
         setUserProfil(resp.data);
@@ -233,7 +237,6 @@ export default function UserProfil(props) {
             <MenuItem value={"in the evening"}>in the evening</MenuItem>
             <MenuItem value={"morning"}>morning</MenuItem>
             <MenuItem value={"evening"}>evening</MenuItem>
-          
           </Select>
         </FormControl>
         {/* <input type="file" accept="image/*"  /> */}

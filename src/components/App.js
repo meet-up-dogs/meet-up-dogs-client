@@ -33,7 +33,9 @@ function App() {
   };
   useEffect(() => {
     const getUser = async () => {
-      const resp = await axiosPublic.get("/currentUser");
+      const resp = await axiosPublic.get("/currentUser", {
+        withCredentials: true,
+      });
 
       setUser(resp.data);
       console.log(resp.data);
@@ -44,7 +46,9 @@ function App() {
   }, []);
 
   const getMatchedUsers = async () => {
-    const resp = await axiosPublic.get("/getMatchedUsers");
+    const resp = await axiosPublic.get("/getMatchedUsers", {
+      withCredentials: true,
+    });
     await setMatchUsers(resp.data);
     console.log("matchUser", resp.data);
   };
@@ -72,6 +76,7 @@ function App() {
     setRoomId(room);
     return room;
   }
+  console.log(currentMatchedUser);
   return (
     <div className="App">
       <MainContextProvider>
