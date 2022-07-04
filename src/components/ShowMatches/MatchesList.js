@@ -39,7 +39,7 @@ const MatchList = (props) => {
               >
                 <div className="container">
 
-                  <BottomNavigation
+                  {/* <BottomNavigation
                     showLabels
                     value={value}
                     onChange={(event, newValue) =>
@@ -58,7 +58,11 @@ const MatchList = (props) => {
                         />
                       }
                     />
-                  </BottomNavigation>
+                  </BottomNavigation> */}
+
+                  <NavLink to="/matchcard">
+                    <img src={user.userImage} alt="user-foto" className="card-img"/>
+                  </NavLink>
                   <div className="bio">
                   <li>{user.username}</li>
                   <li>DogBreed:{user.dogBreed}</li>

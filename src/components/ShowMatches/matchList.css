@@ -38,7 +38,7 @@ main {
     display: block;
     position: absolute;
     top: 0;
-    left: -116px;
+    left: 0;
     right: 0;
     box-shadow: 0 40px 60px -6px rgb(104, 104, 104);
     border-radius: 10%;
