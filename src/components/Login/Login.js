@@ -11,7 +11,7 @@ import logo from "../images/pawfree.png";
 
 import { axiosPublic } from "../../util/axiosConfig";
 import "@fontsource/shrikhand";
-
+console.log("Hallo");
 const Login = () => {
   const [inputLogin, setInputLogin] = useState({
     email: "",
