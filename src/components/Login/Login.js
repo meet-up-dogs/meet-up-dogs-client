@@ -8,10 +8,9 @@ import React from "react";
 import "./login.css";
 
 import background from "../images/happydog.jpg";
-import logo from '../images/pawfree.png'
+import logo from "../images/pawfree.png";
 
 import { axiosPublic } from "../../util/axiosConfig";
-
 
 const Login = () => {
   const [inputLogin, setInputLogin] = useState({
@@ -24,20 +23,39 @@ const Login = () => {
   const loginHandler = async (e) => {
     e.preventDefault();
     let axiosResp;
+    // try {
+    //   axiosResp = await axiosPublic.post("/login", inputLogin, {
+    //     headers: {
+    //       Accept: "application/json",
+    //       "Content-Type": "application/json",
+    //     },
+    //     mode: "cors",
+    //     credentials: "include",
+    //     withCredentials: true,
+    //   });
+    //   console.debug("axiosResp.data:suc", axiosResp);
+    //   if (!axiosResp) {
+    //     console.debug("axiosResp.data:suc", axiosResp.data.response);
+    //   } else {
+    //     console.debug("axiosResp.data:else", axiosResp);
+    //   }
+    // } catch (error) {
+    //   console.error(error);
+    //   alert("Could not log in. Console for more Information");
+    //   // Info: alert is bad practise here!
+    // }
+
     try {
-      axiosResp = await axiosPublic.post("/login", inputLogin, {
-        withCredentials: true,
+      const resp = await fetch("https://meet-up-dogs.netlify.app/", {
+        method: "POST",
+        mode: "cors",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
       });
-      console.debug("axiosResp.data:", axiosResp);
-      if (!axiosResp) {
-        console.debug("axiosResp.data:", axiosResp.data.response);
-      } else {
-        console.debug("axiosResp.data:", axiosResp);
-      }
     } catch (error) {
-      console.error(error);
-      alert("Could not log in. Console for more Information");
-      // Info: alert is bad practise here!
+      console.log(error);
     }
     // antwort als kommentar vom Server
     if (axiosResp.data.logging) {
@@ -64,19 +82,14 @@ const Login = () => {
 
   return (
     <>
-
-      <div className="background"
-      //  style={{ 
-      //   backgroundImage: `url(${background})`, 
-      //   height: '100vh',
-      //   backgroundPosition: 'center',
-      //    }}
-
-      
+      <div
+        className="background"
+        //  style={{
+        //   backgroundImage: `url(${background})`,
+        //   height: '100vh',
+        //   backgroundPosition: 'center',
+        //    }}
       >
-      
-
-
         <div className="loginForm">
           <form
             action="/login"
@@ -84,7 +97,6 @@ const Login = () => {
             onSubmit={(e) => {
               loginHandler(e);
             }}
-            
           >
             <h2>Login</h2>
             <TextField
