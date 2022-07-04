@@ -5,7 +5,8 @@ import io from "socket.io-client";
 import "./chat.css";
 import { axiosPublic } from "../../util/axiosConfig";
 
-const socket = io.connect("https://meet-up-dogs.herokuapp.com");
+// const socket = io.connect("https://meet-up-dogs.herokuapp.com");
+const socket = io.connect("http://localhost:8080");
 
 export default function Chat({ roomId }) {
   const [room, setRoom] = useState(roomId);

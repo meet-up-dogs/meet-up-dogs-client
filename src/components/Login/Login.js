@@ -44,8 +44,9 @@ const Login = () => {
     //   alert("Could not log in. Console for more Information");
     //   // Info: alert is bad practise here!
     // }
+    const heroku = "https://meet-up-dogs.herokuapp.com/login";
     try {
-      const resp = await fetch("https://meet-up-dogs.herokuapp.com/login", {
+      const resp = await fetch("http://localhost:8080/login", {
         method: "POST",
 
         credentials: "include",
