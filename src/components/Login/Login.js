@@ -1,5 +1,6 @@
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import Alert from "@mui/material/Alert";
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import React from "react";
@@ -18,11 +19,17 @@ const Login = () => {
     password: "",
   });
 
+const [alertOn, setAlertOn] =useState({
+  status: false,
+  error: ""
+})
+
   const history = useNavigate();
 
   const loginHandler = async (e) => {
     e.preventDefault();
     let result;
+    let axiosResp;
     // try {
     //   axiosResp = await axiosPublic.post("/login", inputLogin, {
     //     headers: {
@@ -42,11 +49,11 @@ const Login = () => {
     // } catch (error) {
     //   console.error(error);
     //   alert("Could not log in. Console for more Information");
-    //   // Info: alert is bad practise here!
+      // Info: alert is bad practise here!
     // }
-    const heroku = "https://meet-up-dogs.herokuapp.com/login";
     try {
       const resp = await fetch("http://localhost:8080/login", {
+        // const resp = await fetch("https://meet-up-dog.herokuapp.com/login", {
         method: "POST",
 
         credentials: "include",
@@ -62,11 +69,15 @@ const Login = () => {
     } catch (error) {
       console.log(error);
     }
-    // antwort als kommentar vom Server
-    if (result) {
-      history("./userprofil");
+    // antwort als kommentar vom Server 
+    // jetzt bug - wird immer geroutet - use insteanceof operator
+    console.log(result instanceof Error)
+    console.log(result.error)
+    if (result.error) {
+      console.log("logging was not successfully");
+      setAlertOn({status: true, error: result.error})
     } else {
-      console.lof("logging was not successfully");
+      history("./userprofil");
     }
     // setInput({email:"", pwd:""})
   };
@@ -99,6 +110,13 @@ const Login = () => {
                 loginHandler(e);
               }}
             >
+
+              {alertOn.status &&
+              <Alert onClose={() => {setAlertOn({status: false})}}  severity="error" >{alertOn.error} </Alert>
+              } 
+
+
+
               <h2 style={{ color: "#2B2B2B", fontFamily: "Shrikhand" }}>
                 Login
               </h2>
@@ -141,6 +159,8 @@ const Login = () => {
                 <Link to="/signup" style={{ fontFamily: "Shrikhand" }}>
                   SignUp
                 </Link>{" "}
+
+
               </p>
             </form>
           </div>
