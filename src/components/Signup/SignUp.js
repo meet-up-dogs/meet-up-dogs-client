@@ -62,6 +62,7 @@ const SignUp = () => {
           name="username"
           label="Username"
           variant="filled"
+          required
           sx={margin}
           value={inputSignUp.username}
           onChange={(e) =>
@@ -72,6 +73,7 @@ const SignUp = () => {
           name="email"
           label="E-Mail"
           variant="filled"
+          required
           value={inputSignUp.email}
           sx={margin}
           onChange={(e) =>
@@ -82,6 +84,7 @@ const SignUp = () => {
           name="password"
           label="Password"
           variant="filled"
+          required
           value={inputSignUp.password}
           sx={margin}
           onChange={(e) =>

@@ -6,13 +6,10 @@ import { Link, useNavigate } from "react-router-dom";
 import React from "react";
 import "./login.css";
 import HeaderLogoPaw from "../Header/HeaderLogoPaw";
-
-import background from "../images/happydog.jpg";
-import logo from "../images/pawfree.png";
-
 import { axiosPublic } from "../../util/axiosConfig";
 import "@fontsource/shrikhand";
-console.log("Hallo");
+import AlertComp from "../Alert/Alert";
+
 const Login = () => {
   const [inputLogin, setInputLogin] = useState({
     email: "",
@@ -112,7 +109,7 @@ const [alertOn, setAlertOn] =useState({
             >
 
               {alertOn.status &&
-              <Alert onClose={() => {setAlertOn({status: false})}}  severity="error" >{alertOn.error} </Alert>
+              <AlertComp alertOn={alertOn} setAlertOn={setAlertOn} />
               } 
 
 
