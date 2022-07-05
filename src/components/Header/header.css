@@ -1,6 +1,20 @@
 .header {
-  padding: 0;
-  margin: 0;
-  max-width: 100vw;
-  overflow: hidden;
+  bottom: 0;
+  height: 50px;
+  opacity: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  margin-bottom: 100px;
+}
+
+.navlink {
+  /* margin: 0 auto; */
+  padding: 2rem;
+}
+
+a {
+  text-decoration: none;
 }
