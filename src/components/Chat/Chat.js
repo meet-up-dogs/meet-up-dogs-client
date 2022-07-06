@@ -8,7 +8,7 @@ import { axiosPublic } from "../../util/axiosConfig";
 // const socket = io.connect("https://meet-up-dog.herokuapp.com");
 const socket = io.connect("http://localhost:8080");
 
-export default function Chat({ roomId }) {
+export default function Chat({ roomId, username }) {
   const [room, setRoom] = useState(roomId);
 
   // Messages States
@@ -18,30 +18,26 @@ export default function Chat({ roomId }) {
 
   const sendMessage = (e) => {
     e.preventDefault();
-    setConversation([...conversation, { sent: message }]);
+    setConversation([...conversation, { sent: true, message: message }]);
 
     socket.emit("send_message", { message, room });
   };
 
-  useEffect(() => {
-    socket.on("receive_message", (data) => {
-      setConversation([...conversation, { received: data.message }]);
-    });
-    // sendConversation();
-  }, []);
+  // useEffect(() => {
+  socket.on("receive_message", (data) => {
+    setConversation([...conversation, { sent: false, message: data.message }]);
+  });
+  // sendConversation();
+  // }, []);
 
-  console.log(conversation);
   useEffect(() => {
-    //  const sendConversation = async () => {
-    //    const resp = await axios.post(
-    //      "https://meet-up-dogs.herokuapp.com/sendConversation",
-    //      { room: conversation },
-    //      {
-    //        withCredentials: true,
-    //      }
-    //    );
-    //    console.log(resp);
-    //  };
+    console.log(conversation);
+    // const chat = conversation;
+    socket.emit("save", {
+      conversation: conversation,
+      room: room,
+      username: username,
+    });
   }, [conversation]);
 
   return (
@@ -52,11 +48,11 @@ export default function Chat({ roomId }) {
           {conversation.map((con) =>
             con.sent ? (
               <div className="message-box message-sent">
-                <p>{con.sent}</p>
+                <p>{con.message}</p>
               </div>
             ) : (
               <div className="message-box message-received">
-                <p>{con.received}</p>
+                <p>{con.message}</p>
               </div>
             )
           )}

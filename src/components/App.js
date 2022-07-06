@@ -131,7 +131,10 @@ function App() {
             }
           />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/chat" element={<Chat roomId={roomId} />} />
+          <Route
+            path="/chat"
+            element={<Chat roomId={roomId} username={user.username} />}
+          />
         </Routes>
       </MainContextProvider>
     </div>

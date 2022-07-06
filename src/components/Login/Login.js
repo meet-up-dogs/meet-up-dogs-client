@@ -16,10 +16,10 @@ const Login = () => {
     password: "",
   });
 
-const [alertOn, setAlertOn] =useState({
-  status: false,
-  error: ""
-})
+  const [alertOn, setAlertOn] = useState({
+    status: false,
+    error: "",
+  });
 
   const history = useNavigate();
 
@@ -46,7 +46,7 @@ const [alertOn, setAlertOn] =useState({
     // } catch (error) {
     //   console.error(error);
     //   alert("Could not log in. Console for more Information");
-      // Info: alert is bad practise here!
+    // Info: alert is bad practise here!
     // }
     try {
       const resp = await fetch("http://localhost:8080/login", {
@@ -66,13 +66,13 @@ const [alertOn, setAlertOn] =useState({
     } catch (error) {
       console.log(error);
     }
-    // antwort als kommentar vom Server 
+    // antwort als kommentar vom Server
     // jetzt bug - wird immer geroutet - use insteanceof operator
-    console.log(result instanceof Error)
-    console.log(result.error)
+    console.log(result instanceof Error);
+    console.log(result.error);
     if (result.error) {
       console.log("logging was not successfully");
-      setAlertOn({status: true, error: result.error})
+      setAlertOn({ status: true, error: result.error });
     } else {
       history("./userprofil");
     }
@@ -107,13 +107,9 @@ const [alertOn, setAlertOn] =useState({
                 loginHandler(e);
               }}
             >
-
-              {alertOn.status &&
-              <AlertComp alertOn={alertOn} setAlertOn={setAlertOn} />
-              } 
-
-
-
+              {alertOn.status && (
+                <AlertComp alertOn={alertOn} setAlertOn={setAlertOn} />
+              )}
               <h2 style={{ color: "#2B2B2B", fontFamily: "Shrikhand" }}>
                 Login
               </h2>
@@ -156,8 +152,6 @@ const [alertOn, setAlertOn] =useState({
                 <Link to="/signup" style={{ fontFamily: "Shrikhand" }}>
                   SignUp
                 </Link>{" "}
-
-
               </p>
             </form>
           </div>
