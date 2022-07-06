@@ -66,10 +66,15 @@ const Login = () => {
     } catch (error) {
       console.log(error);
     }
+<<<<<<< HEAD
     // antwort als kommentar vom Server
     // jetzt bug - wird immer geroutet - use insteanceof operator
     console.log(result instanceof Error);
     console.log(result.error);
+=======
+    // antwort als kommentar vom Server 
+
+>>>>>>> e41f8fc3ff9a2b34cfc4b566a6a545bc7eb88f97
     if (result.error) {
       console.log("logging was not successfully");
       setAlertOn({ status: true, error: result.error });

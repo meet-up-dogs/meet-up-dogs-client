@@ -16,6 +16,8 @@ import Map from "../Map/Map";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Compress from "react-image-file-resizer";
+import Toolbar from '@mui/material/Toolbar';
+import AccountCircle from '@mui/icons-material/AccountCircle';
 
 import "./userProfil.css";
 
@@ -241,7 +243,7 @@ export default function UserProfil(props) {
         </FormControl>
         {/* <input type="file" accept="image/*"  /> */}
         <Button variant="contained" component="label">
-          Upload image with your dog
+          Select image with your dog
           <input type="file" onChange={onFileResize} hidden />
         </Button>
 
@@ -275,7 +277,7 @@ export default function UserProfil(props) {
 
         <Outlet />
         <Button type="submit" variant="contained">
-          Save
+          Save Profil
         </Button>
       </form>
 
