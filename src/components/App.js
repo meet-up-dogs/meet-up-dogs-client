@@ -12,6 +12,7 @@ import MatchesList from "./ShowMatches/MatchesList";
 import MatchCard from "./ShowMatches/MatchCard";
 import { axiosPublic } from "../util/axiosConfig";
 import Chat from "./Chat/Chat";
+import About from './About/About';
 
 function App() {
   // Current User state. Get logged user from MongoDB
@@ -93,6 +94,19 @@ function App() {
               />
             }
           />
+
+          <Route
+            path="/about"
+            element={
+              <About
+                handleChange={handleChange}
+                login={login}
+                user={user}
+                setUser={setUser}
+              />
+            }
+          />
+
           <Route path="/redirect" element={<Navigate to="/userprofil" />} />
 
           <Route path="/signup" element={<SignUp />} />
