@@ -18,7 +18,7 @@ function App() {
   const [user, setUser] = useState({});
   const [matchUsers, setMatchUsers] = useState([]);
   const [currentMatchedUser, setCurrentMatchedUser] = useState({});
-
+  console.log("matchUsers vom app", matchUsers)
   // Variable and State to logged out Current user and delete token
   let loginVariable = true;
   const [login, setLogin] = useState(loginVariable);

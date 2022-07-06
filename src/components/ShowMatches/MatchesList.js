@@ -7,16 +7,17 @@ import { NavLink } from "react-router-dom";
 
 
 const MatchList = (props) => {
-  useEffect(()=>{
-    const checkedUser = async () => {
-      let savedUser = await localStorage.getItem(props.matchedUser);
-      if(savedUser) {
-        props.setCurrentMatchedUser(props.matchedUser)
-      }
-    } 
-    checkedUser()
-  })
-
+//   useEffect(()=>{
+//     const checkedUser = async () => {
+//       let savedUser = await localStorage.getItem(props.matchedUser);
+//       if(savedUser) {
+//         props.setCurrentMatchedUser(props.matchedUser)
+//       }
+//     } 
+//     checkedUser()
+//   })
+  console.log(props.matchUsers)
+  console.log(props.matchedUser)
   return (
     <>
       <Header

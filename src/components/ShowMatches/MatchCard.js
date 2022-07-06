@@ -8,18 +8,17 @@ import ChatIcon from '@mui/icons-material/Chat';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import IconButton from '@mui/material/IconButton';
-
 import "./matchCard.css";
 
 const MatchCard = (props) => {
-  const [fav, setFav] = useState(JSON.parse(localStorage.getItem("fav"))|| false);
-  // let handleFav
-  // useEffect(()=>{
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  //   handleFav = async () =>{
-  //     setFav(!fav)
-  //     if(fav === true){
-  //       localStorage.getItem(props.currentUser)
+   const [fav, setFav] = useState(true); 
+  // const handleFav = async () =>{
+  //     setFav(props.currentUser.favorite)
+  //     console.log(props.currentUser)
+  //     console.log(props.user)
+  //     console.log(fav)
+
+  //     if(props.currentUser.favorite){
   //       try {
   //         const axiosResp = await axiosPublic.post("/currentUser", props.currentUser, {
   //           withCredentials: true,
@@ -36,12 +35,12 @@ const MatchCard = (props) => {
   
   //     }
   //   }
-  // })
-  const handleFav = () => {
-    localStorage.setItem("fav", JSON.stringify(!fav))
-    setFav(!fav)
+  // const handleFav = () => {
+  //   localStorage.setItem("fav", JSON.stringify(!fav))
+  //   setFav(!fav)
+  //   props.setCurrentUser(props.currentUser)
     
-  }
+  // }
 
   return (
     <>
@@ -63,12 +62,12 @@ const MatchCard = (props) => {
               <button><ChatIcon /></button>
             </Link>
             {fav &&
-              <IconButton onClick={() => {handleFav()}} aria-label="delete" color="primary">
+              <IconButton onClick={() => {}} aria-label="delete" color="primary">
                 <FavoriteBorderIcon></FavoriteBorderIcon>
               </IconButton>
             }
             {!fav &&
-              <IconButton onClick={() => {handleFav()}} aria-label="delete" color="primary">
+              <IconButton onClick={() => {}} aria-label="delete" color="primary">
                 <FavoriteIcon></FavoriteIcon>
               </IconButton>
             }
