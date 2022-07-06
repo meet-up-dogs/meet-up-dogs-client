@@ -60,7 +60,7 @@ export default function Header(props) {
                 label={props.login ? "Logout" : "Login" }
               />
               {props.user.userImage ? (
-                <img
+                <img className="user-image"
                   src={props.user.userImage}
                   alt=""
                   style={{ width: "50px", height: "50px" }}
