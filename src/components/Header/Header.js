@@ -9,15 +9,32 @@ import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Box from "@mui/material/Box";
+import PawFree from "../images/pawfree.png";
+import "@fontsource/shrikhand";
 import "./header.css";
 
 export default function Header(props) {
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleMenu = (e) => {
+    setAnchorEl(e.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+
+
   return (
     <>
       <div className="header">
         <Box sx={{ flexGrow: 1 }}>
+
           <FormGroup></FormGroup>
-          <AppBar position="static">
+
+          <AppBar position="static" style={{ background: '#2B2B2B' }}>
             <Toolbar>
               <IconButton
                 size="large"
@@ -26,10 +43,13 @@ export default function Header(props) {
                 aria-label="menu"
                 sx={{ mr: 2 }}
               ></IconButton>
-              <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+
+
+              <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} style={{fontFamily: "Shrikhand" }}>
                 {`Hello ${props.user.username}`}
-              </Typography>
-              <FormControlLabel
+              </Typography >
+
+              <FormControlLabel  
                 control={
                   <Switch
                     checked={props.login}
@@ -37,17 +57,19 @@ export default function Header(props) {
                     aria-label="login switch"
                   />
                 }
-                label={props.login ? "Logout" : "Login"}
+                label={props.login ? "Logout" : "Login" }
               />
               {props.user.userImage ? (
                 <img
                   src={props.user.userImage}
                   alt=""
                   style={{ width: "50px", height: "50px" }}
+                  // sx={{ borderRadius: '50%' }}
                 />
               ) : (
                 false
               )}
+
               {props.login && (
                 <div>
                   <IconButton
@@ -68,8 +90,11 @@ export default function Header(props) {
                       vertical: "top",
                       horizontal: "right",
                     }}
+                    open={Boolean(anchorEl)}
+                    onClose={handleClose}
                   >
-                    <MenuItem>Profile</MenuItem>
+                    <MenuItem onClick={handleClose}>Profile</MenuItem>
+                  <MenuItem onClick={handleClose}>My account</MenuItem>
                   </Menu>
                 </div>
               )}

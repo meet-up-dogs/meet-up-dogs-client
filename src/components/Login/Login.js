@@ -67,9 +67,7 @@ const [alertOn, setAlertOn] =useState({
       console.log(error);
     }
     // antwort als kommentar vom Server 
-    // jetzt bug - wird immer geroutet - use insteanceof operator
-    console.log(result instanceof Error)
-    console.log(result.error)
+
     if (result.error) {
       console.log("logging was not successfully");
       setAlertOn({status: true, error: result.error})
