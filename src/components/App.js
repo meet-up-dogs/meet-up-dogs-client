@@ -45,6 +45,7 @@ function App() {
     getMatchedUsers();
   }, []);
 
+
   const getMatchedUsers = async () => {
     const resp = await axiosPublic.get("/getMatchedUsers", {
       withCredentials: true,
@@ -76,7 +77,7 @@ function App() {
     setRoomId(room);
     return room;
   }
-  console.log(currentMatchedUser);
+ 
   return (
     <div className="App">
       <MainContextProvider>
@@ -127,6 +128,11 @@ function App() {
                 login={login}
                 handleChange={handleChange}
                 currentUser={currentMatchedUser}
+                setCurrentMatchedUser={setCurrentMatchedUser}
+                setUser={setUser}
+                matchUsers={matchUsers}
+                setMatchUsers={setMatchUsers}
+                
               />
             }
           />

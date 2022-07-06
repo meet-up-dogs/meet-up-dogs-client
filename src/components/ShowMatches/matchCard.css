@@ -1,36 +1,39 @@
-.matchedCard {
-    margin-top: 20px;
-    max-height: 100%;
+.match-card {
+    margin: 10% auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
 }
 
-.profilbild {
-    margin-top: 0;
+.match-img {
     max-width: 100%;
-    height: auto;
+    border-radius: 5px 5px 0 0;
 }
 
+.match-container {
+padding: 2px 16px;
+}
 h2 {
     font-family: 'Times New Roman', Times, serif;
     color: rgb(3, 3, 163);
     text-align: center;
 }
 
-ul li {
-    list-style: none;
-}
-
-ul {
-    width: 50%;
-}
-
-.buttons {
-    margin: 0 auto;
+.btns {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    justify-items: flex-start;
+    justify-content: space-around;
+    margin: 0 auto;
+    align-items: flex-end;
 }
 
-.buttons>* {
-    margin: 20%;
+.btns > *{
+    font-size: 1rem;
+    margin: 10px;
 }
+
+.FavoriteIcon {
+    color: red;
+}
+
+
+
+

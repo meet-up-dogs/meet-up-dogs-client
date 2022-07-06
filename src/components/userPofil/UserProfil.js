@@ -38,6 +38,7 @@ export default function UserProfil(props) {
       bottomLeft: [],
       topRight: [],
     },
+    favorite: []
   });
 
   const userProfilHandler = async (e) => {
