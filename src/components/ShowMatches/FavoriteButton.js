@@ -1,6 +1,4 @@
-// import axios from "axios";
 // import React, { useState, useEffect } from "react";
-
 
 // const data = [
 //   { id: 1, name: "Marco" },
@@ -8,11 +6,16 @@
 //   { id: 3, name: "Aya" }
 // ];
 
-// export default function FavoriteButton(props) {
+// export default function App(props) {
+//   const [favorites, setFavorites] = useState([]);
 
+//   useEffect(() => {
+//     setFavorites(props.FavUser);
+//   }, []);
 
-
-
+//   useEffect(() => {
+//     console.log(favorites);
+//   }, [favorites]);
 
 //   function handleFavorite(id) {
 //     const newFavorites = favorites.map(item => {

@@ -4,6 +4,7 @@ import Header from "../Header/Header.js";
 import Footer from "../Footer/Footer";
 import "./matchList.css";
 import { NavLink } from "react-router-dom";
+import FavoriteButton from "./FavoriteButton.js";
 
 
 const MatchList = (props) => {
@@ -31,6 +32,7 @@ const MatchList = (props) => {
           return (
             <>
               <main>              
+            {/* <FavoriteButton FavUser={props.matchUser}/> */}
                 <div
                 className="card"
                 onClick={() => {
@@ -60,9 +62,8 @@ const MatchList = (props) => {
             </>
           );
         })}
-
+      
       </div>
-
       <Footer />
     </>
   );
