@@ -1,5 +1,5 @@
 .messages-box {
-  height: 70vh;
+  height: 50vh;
   overflow: scroll;
   border: 2px solid rgba(0, 0, 0, 0.2);
   margin: 0 auto;
@@ -29,4 +29,9 @@
 
 .message-box p {
   margin: 0;
+}
+
+.chat-btn {
+  margin-bottom: 2rem;
+  z-index: 20;
 }

@@ -3,17 +3,22 @@ import React from "react";
 import Header from "../Header/Header.js";
 import Footer from "../Footer/Footer";
 import "./matchList.css";
-import BottomNavigation from "@mui/material/BottomNavigation";
-import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import { NavLink } from "react-router-dom";
+import FavoriteButton from "./FavoriteButton.js";
+
 
 const MatchList = (props) => {
-  const [value, setValue] = React.useState(0);
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-
+//   useEffect(()=>{
+//     const checkedUser = async () => {
+//       let savedUser = await localStorage.getItem(props.matchedUser);
+//       if(savedUser) {
+//         props.setCurrentMatchedUser(props.matchedUser)
+//       }
+//     } 
+//     checkedUser()
+//   })
+  console.log(props.matchUsers)
+  console.log(props.matchedUser)
   return (
     <>
       <Header
@@ -27,38 +32,20 @@ const MatchList = (props) => {
           return (
             <>
               <main>              
+            {/* <FavoriteButton FavUser={props.matchUser}/> */}
                 <div
                 className="card"
                 onClick={() => {
+                  const matchedUser = props.matchUsers.find(
+                    (matchUser) => matchUser.username === user.username
+                  ) 
                   props.setCurrentMatchedUser(
-                    props.matchUsers.find(
-                      (matchUser) => matchUser.username === user.username
-                    )
+                    matchedUser
                   );
+                  localStorage.setItem(matchedUser)
                 }}
               >
                 <div className="container">
-              
-                  {/* <BottomNavigation
-                    showLabels
-                    value={value}
-                    onChange={(event, newValue) =>
-                      handleChange(event, newValue)
-                    }
-                  >
-                    <BottomNavigationAction
-                      component={NavLink}
-                      to="/matchcard"
-                      label=""
-                      icon={
-                        <img
-                          src={user.userImage}
-                          alt="userPhoto"
-                          className="card-img"
-                        />
-                      }
-                    />
-                  </BottomNavigation> */}
 
                   <NavLink to="/matchcard">
                     <img src={user.userImage} alt="user-foto" className="card-img"/>
@@ -71,13 +58,12 @@ const MatchList = (props) => {
                 </div>
               </div>
               </main>
-
+      
             </>
           );
         })}
-
+      
       </div>
-
       <Footer />
     </>
   );

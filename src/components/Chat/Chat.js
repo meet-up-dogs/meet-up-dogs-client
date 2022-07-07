@@ -67,6 +67,7 @@ export default function Chat({ roomId, username }) {
             variant="primary"
             type="submit"
             className="mt-5"
+            id="chat-btn"
             onClick={sendMessage}
           >
             send

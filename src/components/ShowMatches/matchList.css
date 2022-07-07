@@ -28,7 +28,7 @@ main {
     position: relative;
     width: 400px;
     height: 500px;
-    border-radius: 10%;
+    
 }
 
 
@@ -44,7 +44,7 @@ main {
     left: 0;
     right: 0;
     box-shadow: 0 40px 60px -6px rgb(104, 104, 104);
-    border-radius: 10%;
+  
   }
 
 

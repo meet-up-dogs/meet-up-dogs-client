@@ -19,7 +19,7 @@ function App() {
   const [user, setUser] = useState({});
   const [matchUsers, setMatchUsers] = useState([]);
   const [currentMatchedUser, setCurrentMatchedUser] = useState({});
-
+  console.log("matchUsers vom app", matchUsers)
   // Variable and State to logged out Current user and delete token
   let loginVariable = true;
   const [login, setLogin] = useState(loginVariable);
@@ -45,6 +45,7 @@ function App() {
     getUser();
     getMatchedUsers();
   }, []);
+
 
   const getMatchedUsers = async () => {
     const resp = await axiosPublic.get("/getMatchedUsers", {
@@ -77,7 +78,7 @@ function App() {
     setRoomId(room);
     return room;
   }
-  console.log(currentMatchedUser);
+ 
   return (
     <div className="App">
       <MainContextProvider>
@@ -141,6 +142,11 @@ function App() {
                 login={login}
                 handleChange={handleChange}
                 currentUser={currentMatchedUser}
+                setCurrentMatchedUser={setCurrentMatchedUser}
+                setUser={setUser}
+                matchUsers={matchUsers}
+                setMatchUsers={setMatchUsers}
+                
               />
             }
           />
