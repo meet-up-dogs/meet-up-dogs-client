@@ -22,20 +22,22 @@ export default function About(props) {
         user={props.user}
       />
 
+
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         component="img"
         height="140"
-        image="/static/images/cards/contemplative-reptile.jpg"
-        alt="green iguana"
+        image="./images/farid.png"
+        alt="avatar farid"
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          Lizard
+          Farid Tavoli
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+        motivated young programmer from hamburg....
+        motivated young programmer from hamburg....
+        motivated young programmer from hamburg....
         </Typography>
       </CardContent>
       <CardActions>
