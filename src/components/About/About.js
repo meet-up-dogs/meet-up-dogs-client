@@ -8,6 +8,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import AvatarFarid from '../images/farid.png'
 import ImageEvi from '../images/evi.jpg';
 import ImageKarol from '../images/karol.jpg';
@@ -19,10 +20,12 @@ export default function About(props) {
   const styles = {
     card: {
       maxWidth: 345,
+      margin: '0 auto',
     },
     media: {
       height: '600',
       width: '200',
+      margin: '0 auto',
     },
     container: {
       marginTop: '3rem',
@@ -45,7 +48,7 @@ export default function About(props) {
       <Container className="container-farid" maxWidth="sm"
         style={styles.container}
       >
-        <Card className="card-farid" sx={{ maxWidth: 345 }}>
+        <Card className="card-farid" >
           <CardMedia
             // style={{paddingBottom: '5rem'}}
             style={styles.media}
@@ -65,7 +68,11 @@ export default function About(props) {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button size="small">Learn More</Button>
+            <Button size="small">
+              <a href="https://github.com/FaridTvK" target="_blank">
+                more about me
+              </a >
+            </Button>
           </CardActions>
         </Card>
 
@@ -76,7 +83,7 @@ export default function About(props) {
         style={styles.container}
       >
 
-        <Card className="card-evi" sx={{ maxWidth: 345 }}>
+        <Card className="card-evi" >
           <CardMedia
             style={styles.media}
             component="img"
@@ -94,7 +101,11 @@ export default function About(props) {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button size="small">Learn More</Button>
+            <Button size="small">
+              <a href="https://github.com/FaridTvK" target="_blank">
+                more about me
+              </a >
+            </Button>
           </CardActions>
         </Card>
       </Container >
@@ -114,13 +125,17 @@ export default function About(props) {
               Karol Wasemann
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              motivated young programmer from hamburg....
+              motivated young programmer from Berlin....
               motivated young programmer from hamburg....
               motivated young programmer from hamburg....
             </Typography>
           </CardContent>
           <CardActions>
-            <Button size="small">Learn More</Button>
+            <Button size="small">
+               <a href="https://github.com/karolwasemann" target="_blank">
+                more about me
+              </a >
+            </Button>
           </CardActions>
         </Card>
 
