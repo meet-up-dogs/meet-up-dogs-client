@@ -21,15 +21,17 @@ export default function About(props) {
     card: {
       maxWidth: 345,
       margin: '0 auto',
+      marginTop: '10%',
     },
     media: {
-      height: '600',
+      height: '800',
       width: '200',
       margin: '0 auto',
     },
     container: {
-      marginTop: '3rem',
+      marginTop: '10%',
       marginBottom: '3rem',
+      height: 'max-content',
       backgroundColor: '#eee'
     }
   };
@@ -102,7 +104,7 @@ export default function About(props) {
           </CardContent>
           <CardActions>
             <Button size="small">
-              <a href="https://github.com/FaridTvK" target="_blank">
+              <a href="https://github.com/EveKlieber" target="_blank">
                 more about me
               </a >
             </Button>
@@ -113,7 +115,7 @@ export default function About(props) {
       <Container className="container-karol" maxWidth="sm"
         style={styles.container}
       >
-        <Card className="card-karol" sx={{ maxWidth: 345 }} >
+        <Card className="card-karol" >
           <CardMedia
             style={styles.media}
             component="img"
