@@ -11,7 +11,13 @@ import IconButton from '@mui/material/IconButton';
 import "./matchCard.css";
 
 const MatchCard = (props) => {
-   const [fav, setFav] = useState(true); 
+   const [fav, setFav] = useState(JSON.parse(localStorage.getItem('fav')) || false); 
+
+   const favToggle = () => {
+    localStorage.setItem('fav', JSON.stringify(!fav));
+
+    setFav(!fav);
+  };
   // const handleFav = async () =>{
   //     setFav(props.currentUser.favorite)
   //     console.log(props.currentUser)
@@ -62,12 +68,12 @@ const MatchCard = (props) => {
               <button><ChatIcon /></button>
             </Link>
             {fav &&
-              <IconButton onClick={() => {}} aria-label="delete" color="primary">
+              <IconButton onClick={() => {favToggle()}} aria-label="delete" color="primary">
                 <FavoriteBorderIcon></FavoriteBorderIcon>
               </IconButton>
             }
             {!fav &&
-              <IconButton onClick={() => {}} aria-label="delete" color="primary">
+              <IconButton onClick={() => {favToggle()}} aria-label="delete" color="primary">
                 <FavoriteIcon></FavoriteIcon>
               </IconButton>
             }
