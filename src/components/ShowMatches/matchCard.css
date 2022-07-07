@@ -6,7 +6,7 @@
 
 .match-img {
     max-width: 100%;
-    border-radius: 5px 5px 0 0;
+    border-radius: 5px 5px 5px 5px;
 }
 
 .match-container {
@@ -34,6 +34,13 @@ h2 {
     color: red;
 }
 
-
+@media only screen and (max-width: 465px ) {
+.match-card{
+    margin: 40% auto;
+} 
+.match-img{
+    margin-top: 10%;
+}
+}
 
 
