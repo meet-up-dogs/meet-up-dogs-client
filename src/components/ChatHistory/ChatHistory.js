@@ -1,25 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Chat from "../Chat/Chat";
 import { FaAngleLeft } from "react-icons/fa";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
-import "./chatHistory.css"
+import "./chatHistory.css";
 
-const users = [
-  { username: "Evi" },
-  { username: "Farid" },
-  { username: "user" },
-];
-
-const logedninUser = "Karol";
+import { MainContext } from "../../context/MainContext";
 
 export default function ChatHistory(props) {
+  const { user, setUser } = useContext(MainContext);
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [roomId, setRoomId] = useState("");
 
   function roomIdHandle(user) {
     const room = [
-      logedninUser.toLocaleLowerCase(),
+      user.toLocaleLowerCase(),
       props.user.username.toLocaleLowerCase(),
     ]
       .sort()
@@ -45,13 +40,13 @@ export default function ChatHistory(props) {
         </p>
       ) : null}
       <div className="chathistory">
-        {!isChatOpen
+        {/* {!isChatOpen
           ? users.map((user) => (
               <p key={user.username} onClick={() => roomIdHandle(user)}>
                 {user.username}
               </p>
             ))
-          : null}
+          : null} */}
       </div>
       <div> {isChatOpen ? <Chat roomId={roomId} /> : null}</div>
       <Footer />

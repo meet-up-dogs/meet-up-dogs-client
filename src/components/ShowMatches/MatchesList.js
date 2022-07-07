@@ -1,70 +1,76 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import React from "react";
 import Header from "../Header/Header.js";
 import Footer from "../Footer/Footer";
 import "./matchList.css";
 import { NavLink } from "react-router-dom";
 import FavoriteButton from "./FavoriteButton.js";
-
+import { axiosPublic } from "../../util/axiosConfig";
+import MatchCard from "../ShowMatches/MatchCard";
+import { MainContext } from "../../context/MainContext";
 
 const MatchList = (props) => {
-//   useEffect(()=>{
-//     const checkedUser = async () => {
-//       let savedUser = await localStorage.getItem(props.matchedUser);
-//       if(savedUser) {
-//         props.setCurrentMatchedUser(props.matchedUser)
-//       }
-//     } 
-//     checkedUser()
-//   })
-  console.log(props.matchUsers)
-  console.log(props.matchedUser)
+  const [user, setUser, loading, selectedUser, setSelectedUser] =
+    useContext(MainContext);
+  const [matchUsers, setMatchUsers] = useState([]);
+  const [showCard, setShowCard] = useState(false);
+
+  const getMatchUsers = async () => {
+    const resp = await axiosPublic.get("/getMatchedUsers", {
+      withCredentials: true,
+    });
+    await setMatchUsers(resp.data);
+  };
+
+  useEffect(() => {
+    getMatchUsers();
+  }, []);
   return (
     <>
-      <Header
-        user={props.user}
-        login={props.login}
-        handleChange={props.handleChange}
-      />
-      <div className="cards">
+      {showCard ? (
+        <MatchCard />
+      ) : (
+        <>
+          <Header />
 
-        {props.matchUsers.map((user) => {
-          return (
-            <>
-              <main>              
-            {/* <FavoriteButton FavUser={props.matchUser}/> */}
-                <div
-                className="card"
-                onClick={() => {
-                  const matchedUser = props.matchUsers.find(
-                    (matchUser) => matchUser.username === user.username
-                  ) 
-                  props.setCurrentMatchedUser(
-                    matchedUser
-                  );
-                  localStorage.setItem(matchedUser)
-                }}
-              >
-                <div className="container">
-
-                  <NavLink to="/matchcard">
-                    <img src={user.userImage} alt="user-foto" className="card-img"/>
-                  </NavLink>
-                  <div className="bio">
-                  <li>{user.username}</li>
-                  <li>DogBreed:{user.dogBreed}</li>
-                  </div>
-                
+          <div className="cards">
+            {matchUsers.map((userObj) => {
+              return (
+                <div key={userObj.username}>
+                  <main>
+                    <div
+                      className="card"
+                      onClick={() => {
+                        setSelectedUser(
+                          matchUsers.find(
+                            (matchUser) =>
+                              matchUser.username === userObj.username
+                          )
+                        );
+                        setShowCard(true);
+                      }}
+                    >
+                      <div className="container">
+                        <img
+                          src={userObj.userImage}
+                          alt="user-foto"
+                          className="card-img"
+                        />
+                        <div className="bio">
+                          <li>{userObj.username}</li>
+                          <li>DogBreed:{userObj.dogBreed}</li>
+                        </div>
+                      </div>
+                    </div>
+                  </main>
                 </div>
-              </div>
-              </main>
-      
-            </>
-          );
-        })}
-      
-      </div>
-      <Footer />
+              );
+            })}
+          </div>
+
+          <Footer />
+        </>
+      )}
     </>
   );
 };

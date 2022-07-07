@@ -1,2 +1,11 @@
 body {
 }
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: red;
+  width: 100%;
+  height: 100vh;
+}
