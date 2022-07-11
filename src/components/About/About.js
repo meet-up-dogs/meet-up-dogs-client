@@ -16,7 +16,6 @@ import { MainContext } from "../../context/MainContext";
 import { useContext } from "react";
 export default function About(props) {
   const { user, setUser } = useContext(MainContext);
-  const margin = { m: 1 };
 
   const styles = {
     card: {

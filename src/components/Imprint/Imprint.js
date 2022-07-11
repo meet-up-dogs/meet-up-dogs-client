@@ -1,24 +1,46 @@
 import Header from '../Header/Header.js';
 import Footer from '../Footer/Footer.js';
+import Container from '@mui/material/Container';
+import "@fontsource/shrikhand";
 
 
+const Imprint = () => {
 
+  const styles = {
 
- const Imprint  = (props) => {
-
-  const margin = { m: 1 };
+    container: {
+      marginTop: "20vh",
+      marginBottom: "20vh",
+      height: "max-content",
+      backgroundColor: "#eee",
+    },
+    header: {
+      fontFamily: 'shrikhand',
+      marginBottom: '1rem',
+      textAlign: 'left',
+    }
+  }
 
   return (
 
     <>
 
-      <Header
-        login={props.login}
-        handleChange={props.handleChange}
-        margin={margin}
-        user={props.user}
-      />
+      <Header />
 
+      <Container maxWidth="sm" style={styles.container}>
+
+        <h2 style={styles.header}>Impressung für private Homepage</h2>
+
+        <p>Anbieter dieser Internetseite ist:</p>
+        <p>Eveline Klieber</p>
+        <p>St. Valentin 12</p>
+        <p>83324 Ruhpolding</p>
+        <p>Telefon:(0151)59496927</p>
+        <p>Email:meetupdogs@gmail.com</p>
+        <p>Inhaltlich Verantwortlicher gemäß § 18 Abs. 2 MStV: Eveline Klieber</p>
+      </Container>
+
+      <Footer />
     </>
   );
 };
