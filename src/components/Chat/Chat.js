@@ -12,6 +12,7 @@ const socket = io.connect("http://localhost:8080");
 export default function Chat() {
   const [user, setUser, loading, setLoadingm, selectedUser, setSelectedUser] =
     useContext(MainContext);
+  const [chatHistory, setChatHistory] = useState([]);
 
   const room = [
     user.username.toLocaleLowerCase(),
@@ -29,7 +30,10 @@ export default function Chat() {
     e.preventDefault();
     setConversation([...conversation, { sent: true, message: message }]);
 
-    socket.emit("send_message", { message, room });
+    socket.emit("send_message", {
+      message,
+      room,
+    });
   };
 
   socket.on("receive_message", (data) => {
@@ -37,14 +41,28 @@ export default function Chat() {
   });
 
   useEffect(() => {
-    console.log(conversation);
-    socket.emit("save", {
-      conversation: conversation,
-      room: room,
-      username: user.username,
-    });
+    if (conversation.length > 0) {
+      socket.emit("save", {
+        conversation: conversation,
+        room: room,
+        username: user.username,
+      });
+    }
   }, [conversation]);
 
+  useEffect(() => {
+    const getChat = async () => {
+      const resp = await axiosPublic.post("getChatHistory", {
+        room: room,
+        username: user.username,
+      });
+      console.log("ChatHISTORY: ", resp.data);
+      // setChatHistory(resp.data.chat);
+      setConversation(resp.data.chat);
+    };
+    console.log("usssssssssE");
+    getChat();
+  }, []);
   return (
     <>
       <div>
