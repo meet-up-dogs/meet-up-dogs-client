@@ -47,88 +47,81 @@ export default function Header() {
 
   return (
     <>
-<<<<<<< HEAD
-      <div className="header">
-        <Box sx={{ flexGrow: 1 }}>
-          <AppBar position="static" style={{ background: "#2B2B2B" }}>
-=======
-      <div className="header" >
-        <Box  sx={{ flexGrow: 1 }} >
+      {loading ? (
+        <h1>Loading</h1>
+      ) : (
+        <div className="header">
+          <Box sx={{ flexGrow: 1 }}>
+            <AppBar position="static" style={{ background: "#2B2B2B" }}>
+              <Toolbar>
+                <IconButton
+                  size="large"
+                  edge="start"
+                  color="inherit"
+                  aria-label="menu"
+                  sx={{ mr: 2 }}
+                  onClick={handleMenu}
+                >
+                  <MenuIcon />
+                </IconButton>
+                <Menu
+                  id="menu-appbar"
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "left",
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  open={Boolean(anchorEl)}
+                  onClose={handleClose}
+                >
+                  <MenuItem onClick={handleClose}>
+                    <NavLink to="/about"> About us</NavLink>
+                  </MenuItem>
 
-          <AppBar position="static" style={{background: '#2B2B2B' }}>
->>>>>>> 161188d5a1f7d929fb8a2fb62adc5f1b84cafb4d
-            <Toolbar>
-              <IconButton
-                size="large"
-                edge="start"
-                color="inherit"
-                aria-label="menu"
-                sx={{ mr: 2 }}
-                onClick={handleMenu}
-              >
-                <MenuIcon />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "left",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                open={Boolean(anchorEl)}
-                onClose={handleClose}
-              >
-                <MenuItem onClick={handleClose}>
-                  <NavLink to="/about"> About us</NavLink>
-<<<<<<< HEAD
-                </MenuItem>
-=======
-                 </MenuItem>
+                  <MenuItem onClick={handleClose}>Imprint</MenuItem>
+                  <MenuItem onClick={handleClose}>Contact us</MenuItem>
+                </Menu>
 
->>>>>>> 161188d5a1f7d929fb8a2fb62adc5f1b84cafb4d
-                <MenuItem onClick={handleClose}>Imprint</MenuItem>
-                <MenuItem onClick={handleClose}>Contact us</MenuItem>
-              </Menu>
+                <Typography
+                  variant="h6"
+                  component="div"
+                  sx={{ flexGrow: 1 }}
+                  style={{ fontFamily: "Shrikhand" }}
+                >
+                  {`Hello ${user.username}`}
+                </Typography>
 
-              <Typography
-                variant="h6"
-                component="div"
-                sx={{ flexGrow: 1 }}
-                style={{ fontFamily: "Shrikhand" }}
-              >
-                {`Hello ${user.username}`}
-              </Typography>
-
-              <FormControlLabel
-                control={
-                  <Switch
-                    checked={login}
-                    onChange={handleChange}
-                    aria-label="login switch"
-                  />
-                }
-                label={login ? "Logout" : "Login"}
-              />
-              {user.userImage ? (
-                <img
-                  className="user-image"
-                  src={user.userImage}
-                  alt=""
-                  style={{ width: "50px", height: "50px" }}
-                  // sx={{ borderRadius: '50%' }}
+                <FormControlLabel
+                  control={
+                    <Switch
+                      checked={login}
+                      onChange={handleChange}
+                      aria-label="login switch"
+                    />
+                  }
+                  label={login ? "Logout" : "Login"}
                 />
-              ) : (
-                false
-              )}
-            </Toolbar>
-          </AppBar>
-        </Box>
-        <Box name="username" label="Username" variant="standard" />
-      </div>
+                {user.userImage ? (
+                  <img
+                    className="user-image"
+                    src={user.userImage}
+                    alt=""
+                    style={{ width: "50px", height: "50px" }}
+                    // sx={{ borderRadius: '50%' }}
+                  />
+                ) : (
+                  false
+                )}
+              </Toolbar>
+            </AppBar>
+          </Box>
+          <Box name="username" label="Username" variant="standard" />
+        </div>
+      )}
     </>
   );
 }

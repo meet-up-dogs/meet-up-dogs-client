@@ -13,17 +13,15 @@ import Chat from "../Chat/Chat";
 import { MainContext } from "../../context/MainContext";
 
 const MatchCard = (props) => {
-<<<<<<< HEAD
   const [fav, setFav] = useState(true);
   const [isOpenChat, setIsOpenChat] = useState(false);
-=======
-   const [fav, setFav] = useState(JSON.parse(localStorage.getItem('fav')) || false); 
+  //  const [fav, setFav] = useState(JSON.parse(localStorage.getItem('fav')) || false);
 
-   const favToggle = () => {
-    localStorage.setItem('fav', JSON.stringify(!fav));
+  //  const favToggle = () => {
+  //   localStorage.setItem('fav', JSON.stringify(!fav));
 
-    setFav(!fav);
-  };
+  //   setFav(!fav);
+  // };
   // const handleFav = async () =>{
   //     setFav(props.currentUser.favorite)
   //     console.log(props.currentUser)
@@ -44,16 +42,15 @@ const MatchCard = (props) => {
   //       } catch (error) {
   //         console.log("Error while sending with axios", error);
   //       }
-  
+
   //     }
   //   }
   // const handleFav = () => {
   //   localStorage.setItem("fav", JSON.stringify(!fav))
   //   setFav(!fav)
   //   props.setCurrentUser(props.currentUser)
-    
+
   // }
->>>>>>> 161188d5a1f7d929fb8a2fb62adc5f1b84cafb4d
 
   const [user, setUser, loading, selectedUser, setSelectedUser] =
     useContext(MainContext);
@@ -104,41 +101,9 @@ const MatchCard = (props) => {
             </div>
           </main>
 
-<<<<<<< HEAD
           <Footer />
         </>
       )}
-=======
-        <img src={props.currentUser.userImage} alt="" className="match-img" />
-        <div className="match-container">
-          <h2>{props.currentUser.username}</h2>
-          <p>Description: <br />{props.currentUser.description}</p>
-          <p>Gender:{props.currentUser.gender}</p>
-          <div className="btns">
-            <Link to="/chat">
-              <button><ChatIcon /></button>
-            </Link>
-            {fav &&
-              <IconButton onClick={() => {favToggle()}} aria-label="delete" color="primary">
-                <FavoriteBorderIcon></FavoriteBorderIcon>
-              </IconButton>
-            }
-            {!fav &&
-              <IconButton onClick={() => {favToggle()}} aria-label="delete" color="primary">
-                <FavoriteIcon></FavoriteIcon>
-              </IconButton>
-            }
-          </div>
-        </div >
-
-
-
-
-      </main>
-
-
-      <Footer />
->>>>>>> 161188d5a1f7d929fb8a2fb62adc5f1b84cafb4d
     </>
   );
 };

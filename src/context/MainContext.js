@@ -10,22 +10,22 @@ export const MainContextProvider = (props) => {
 
   useEffect(() => {
     setLoading(true);
-
     const getUser = async () => {
       try {
         const resp = await axiosPublic.get("/currentUser", {
           withCredentials: true,
         });
+        console.log("ustawaia uzytkowniaka");
         setUser(resp.data);
       } catch (err) {
         console.log(err);
       }
-      setTimeout(() => setLoading(false), 3000);
+      setTimeout(() => setLoading(false), 500);
     };
 
     getUser();
   }, []);
-
+  console.log(user.username);
   // const [isLogin, setIsLogin] = useState(false);
   return (
     <MainContext.Provider
