@@ -12,7 +12,8 @@ import MatchesList from "./ShowMatches/MatchesList";
 import MatchCard from "./ShowMatches/MatchCard";
 import { axiosPublic } from "../util/axiosConfig";
 import Chat from "./Chat/Chat";
-import About from "./About/About";
+import About from './About/About';
+import ContactForm from "./Contact/ContactForm";
 
 function App() {
   // Variable and State to logged out Current user and delete token
@@ -64,6 +65,15 @@ function App() {
           <Route path="/userprofil" element={<UserProfil />} />
 
           <Route path="/about" element={<About />} />
+
+          <Route
+            path="/Contact"
+            element={
+              <ContactForm
+      
+              />
+            }
+          />
 
           <Route path="/redirect" element={<Navigate to="/userprofil" />} />
 

@@ -130,9 +130,9 @@ export default function About(props) {
           </CardContent>
           <CardActions>
             <Button size="small">
-              <a href="https://github.com/karolwasemann" target="_blank">
-                more about me
-              </a>
+               <a href="https://github.com/karolwasemann" target="_blank">
+               <img src="https://img.icons8.com/ios-glyphs/30/000000/github.png"/>
+              </a >
             </Button>
           </CardActions>
         </Card>
