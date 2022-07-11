@@ -25,7 +25,24 @@ export default function UserProfil(props) {
   const [bottomLeft, setBottomLeft] = useState({});
   const [topRight, setTopRight] = useState({});
   const [resizedImage, setResizedImage] = useState("");
-  const [user, setUser, loading] = useContext(MainContext);
+  const [user, setUser, loading, setLoading] = useContext(MainContext);
+
+  useEffect(() => {
+    setLoading(true);
+    const getUser = async () => {
+      try {
+        const resp = await axiosPublic.get("/currentUser", {
+          withCredentials: true,
+        });
+        setUser(resp.data);
+      } catch (err) {
+        console.log(err);
+      }
+      setLoading(false);
+    };
+
+    getUser();
+  }, []);
 
   const [userProfil, setUserProfil] = useState({
     username: "",
@@ -50,8 +67,8 @@ export default function UserProfil(props) {
       ...userProfil,
       username: user.username,
       location: {
-        bottomLeft: bottomLeft,
         topRight: topRight,
+        bottomLeft: bottomLeft,
       },
     });
   }, [bottomLeft, topRight]);

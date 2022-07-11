@@ -10,7 +10,7 @@ import MatchCard from "../ShowMatches/MatchCard";
 import { MainContext } from "../../context/MainContext";
 
 const MatchList = (props) => {
-  const [user, setUser, loading, selectedUser, setSelectedUser] =
+  const [user, setUser, loading, setLoading, selectedUser, setSelectedUser] =
     useContext(MainContext);
   const [matchUsers, setMatchUsers] = useState([]);
   const [showCard, setShowCard] = useState(false);
@@ -19,6 +19,7 @@ const MatchList = (props) => {
     const resp = await axiosPublic.get("/getMatchedUsers", {
       withCredentials: true,
     });
+    console.log(resp.data);
     await setMatchUsers(resp.data);
   };
 

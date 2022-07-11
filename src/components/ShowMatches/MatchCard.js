@@ -13,15 +13,17 @@ import Chat from "../Chat/Chat";
 import { MainContext } from "../../context/MainContext";
 
 const MatchCard = (props) => {
-  const [fav, setFav] = useState(true);
+  // const [fav, setFav] = useState(true);
   const [isOpenChat, setIsOpenChat] = useState(false);
-  //  const [fav, setFav] = useState(JSON.parse(localStorage.getItem('fav')) || false);
+  const [fav, setFav] = useState(
+    JSON.parse(localStorage.getItem("fav")) || false
+  );
 
-  //  const favToggle = () => {
-  //   localStorage.setItem('fav', JSON.stringify(!fav));
+  const favToggle = () => {
+    localStorage.setItem("fav", JSON.stringify(!fav));
 
-  //   setFav(!fav);
-  // };
+    setFav(!fav);
+  };
   // const handleFav = async () =>{
   //     setFav(props.currentUser.favorite)
   //     console.log(props.currentUser)
@@ -52,7 +54,7 @@ const MatchCard = (props) => {
 
   // }
 
-  const [user, setUser, loading, selectedUser, setSelectedUser] =
+  const [user, setUser, loading, setLoading, selectedUser, setSelectedUser] =
     useContext(MainContext);
   return (
     <>
@@ -71,17 +73,15 @@ const MatchCard = (props) => {
               </p>
               <p>Gender:{selectedUser.gender}</p>
               <div className="btns">
-                <button
-                  onClick={() => {
-                    setIsOpenChat(true);
-                  }}
-                >
+                <button onClick={() => setIsOpenChat(true)}>
                   <ChatIcon />
                 </button>
 
                 {fav && (
                   <IconButton
-                    onClick={() => {}}
+                    onClick={() => {
+                      favToggle();
+                    }}
                     aria-label="delete"
                     color="primary"
                   >
@@ -90,7 +90,9 @@ const MatchCard = (props) => {
                 )}
                 {!fav && (
                   <IconButton
-                    onClick={() => {}}
+                    onClick={() => {
+                      favToggle();
+                    }}
                     aria-label="delete"
                     color="primary"
                   >

@@ -1,7 +1,7 @@
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Alert from "@mui/material/Alert";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import React from "react";
 import "./login.css";
@@ -9,6 +9,7 @@ import HeaderLogoPaw from "../Header/HeaderLogoPaw";
 import { axiosPublic } from "../../util/axiosConfig";
 import "@fontsource/shrikhand";
 import AlertComp from "../Alert/Alert";
+import { MainContext } from "../../context/MainContext";
 
 const Login = () => {
   const [inputLogin, setInputLogin] = useState({
@@ -22,6 +23,8 @@ const Login = () => {
   });
 
   const history = useNavigate();
+  const [user, setUser, loading, selectedUser, setSelectedUser, getUser] =
+    useContext(MainContext);
 
   const loginHandler = async (e) => {
     e.preventDefault();

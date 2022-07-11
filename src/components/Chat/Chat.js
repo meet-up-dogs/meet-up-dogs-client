@@ -10,7 +10,7 @@ import { MainContext } from "../../context/MainContext";
 const socket = io.connect("http://localhost:8080");
 
 export default function Chat() {
-  const [user, setUser, loading, selectedUser, setSelectedUser] =
+  const [user, setUser, loading, setLoadingm, selectedUser, setSelectedUser] =
     useContext(MainContext);
 
   const room = [

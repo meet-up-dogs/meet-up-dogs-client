@@ -20,7 +20,7 @@ export const MainContextProvider = (props) => {
       } catch (err) {
         console.log(err);
       }
-      setTimeout(() => setLoading(false), 500);
+      setLoading(false);
     };
 
     getUser();
@@ -29,7 +29,14 @@ export const MainContextProvider = (props) => {
   // const [isLogin, setIsLogin] = useState(false);
   return (
     <MainContext.Provider
-      value={[user, setUser, loading, selectedUser, setSelectedUser]}
+      value={[
+        user,
+        setUser,
+        loading,
+        setLoading,
+        selectedUser,
+        setSelectedUser,
+      ]}
     >
       {props.children}
     </MainContext.Provider>
