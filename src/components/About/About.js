@@ -68,7 +68,7 @@ export default function About(props) {
           <CardActions>
             <Button size="small">
               <a href="https://github.com/FaridTvK" target="_blank">
-                more about me
+              <img src="https://img.icons8.com/ios-glyphs/30/000000/github.png"/>
               </a>
             </Button>
           </CardActions>
@@ -99,7 +99,7 @@ export default function About(props) {
           <CardActions>
             <Button size="small">
               <a href="https://github.com/EveKlieber" target="_blank">
-                more about me
+              <img src="https://img.icons8.com/ios-glyphs/30/000000/github.png"/>
               </a>
             </Button>
           </CardActions>
