@@ -17,10 +17,10 @@ export const MainContextProvider = (props) => {
           withCredentials: true,
         });
         setUser(resp.data);
+        setTimeout(() => setLoading(false), 1000);
       } catch (err) {
         console.log(err);
       }
-      setTimeout(() => setLoading(false), 3000);
     };
 
     getUser();

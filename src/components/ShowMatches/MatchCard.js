@@ -13,14 +13,13 @@ import Chat from "../Chat/Chat";
 import { MainContext } from "../../context/MainContext";
 
 const MatchCard = (props) => {
-<<<<<<< HEAD
-  const [fav, setFav] = useState(true);
   const [isOpenChat, setIsOpenChat] = useState(false);
-=======
-   const [fav, setFav] = useState(JSON.parse(localStorage.getItem('fav')) || false); 
+  const [fav, setFav] = useState(
+    JSON.parse(localStorage.getItem("fav")) || false
+  );
 
-   const favToggle = () => {
-    localStorage.setItem('fav', JSON.stringify(!fav));
+  const favToggle = () => {
+    localStorage.setItem("fav", JSON.stringify(!fav));
 
     setFav(!fav);
   };
@@ -44,16 +43,15 @@ const MatchCard = (props) => {
   //       } catch (error) {
   //         console.log("Error while sending with axios", error);
   //       }
-  
+
   //     }
   //   }
   // const handleFav = () => {
   //   localStorage.setItem("fav", JSON.stringify(!fav))
   //   setFav(!fav)
   //   props.setCurrentUser(props.currentUser)
-    
+
   // }
->>>>>>> 161188d5a1f7d929fb8a2fb62adc5f1b84cafb4d
 
   const [user, setUser, loading, selectedUser, setSelectedUser] =
     useContext(MainContext);
@@ -63,28 +61,35 @@ const MatchCard = (props) => {
         <Chat />
       ) : (
         <>
-          <Header />
+          <Header
+            user={props.user}
+            login={props.login}
+            handleChange={props.handleChange}
+          />
           <main className="match-card">
-            <img src={selectedUser.userImage} alt="" className="match-img" />
+            <img
+              src={props.currentUser.userImage}
+              alt=""
+              className="match-img"
+            />
             <div className="match-container">
-              <h2>{selectedUser.username}</h2>
+              <h2>{props.currentUser.username}</h2>
               <p>
                 Description: <br />
-                {selectedUser.description}
+                {props.currentUser.description}
               </p>
-              <p>Gender:{selectedUser.gender}</p>
+              <p>Gender:{props.currentUser.gender}</p>
               <div className="btns">
-                <button
-                  onClick={() => {
-                    setIsOpenChat(true);
-                  }}
-                >
-                  <ChatIcon />
-                </button>
-
+                <Link to="/chat">
+                  <button>
+                    <ChatIcon />
+                  </button>
+                </Link>
                 {fav && (
                   <IconButton
-                    onClick={() => {}}
+                    onClick={() => {
+                      favToggle();
+                    }}
                     aria-label="delete"
                     color="primary"
                   >
@@ -93,7 +98,9 @@ const MatchCard = (props) => {
                 )}
                 {!fav && (
                   <IconButton
-                    onClick={() => {}}
+                    onClick={() => {
+                      favToggle();
+                    }}
                     aria-label="delete"
                     color="primary"
                   >
@@ -103,44 +110,10 @@ const MatchCard = (props) => {
               </div>
             </div>
           </main>
-
-<<<<<<< HEAD
           <Footer />
         </>
       )}
-=======
-        <img src={props.currentUser.userImage} alt="" className="match-img" />
-        <div className="match-container">
-          <h2>{props.currentUser.username}</h2>
-          <p>Description: <br />{props.currentUser.description}</p>
-          <p>Gender:{props.currentUser.gender}</p>
-          <div className="btns">
-            <Link to="/chat">
-              <button><ChatIcon /></button>
-            </Link>
-            {fav &&
-              <IconButton onClick={() => {favToggle()}} aria-label="delete" color="primary">
-                <FavoriteBorderIcon></FavoriteBorderIcon>
-              </IconButton>
-            }
-            {!fav &&
-              <IconButton onClick={() => {favToggle()}} aria-label="delete" color="primary">
-                <FavoriteIcon></FavoriteIcon>
-              </IconButton>
-            }
-          </div>
-        </div >
-
-
-
-
-      </main>
-
-
-      <Footer />
->>>>>>> 161188d5a1f7d929fb8a2fb62adc5f1b84cafb4d
     </>
   );
 };
-
 export default MatchCard;
