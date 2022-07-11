@@ -47,9 +47,16 @@ export default function Header() {
 
   return (
     <>
+<<<<<<< HEAD
       <div className="header">
         <Box sx={{ flexGrow: 1 }}>
           <AppBar position="static" style={{ background: "#2B2B2B" }}>
+=======
+      <div className="header" >
+        <Box  sx={{ flexGrow: 1 }} >
+
+          <AppBar position="static" style={{background: '#2B2B2B' }}>
+>>>>>>> 161188d5a1f7d929fb8a2fb62adc5f1b84cafb4d
             <Toolbar>
               <IconButton
                 size="large"
@@ -77,7 +84,12 @@ export default function Header() {
               >
                 <MenuItem onClick={handleClose}>
                   <NavLink to="/about"> About us</NavLink>
+<<<<<<< HEAD
                 </MenuItem>
+=======
+                 </MenuItem>
+
+>>>>>>> 161188d5a1f7d929fb8a2fb62adc5f1b84cafb4d
                 <MenuItem onClick={handleClose}>Imprint</MenuItem>
                 <MenuItem onClick={handleClose}>Contact us</MenuItem>
               </Menu>
