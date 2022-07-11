@@ -12,7 +12,6 @@ const socket = io.connect("http://localhost:8080");
 export default function Chat() {
   const [user, setUser, loading, setLoadingm, selectedUser, setSelectedUser] =
     useContext(MainContext);
-  const [chatHistory, setChatHistory] = useState([]);
 
   const room = [
     user.username.toLocaleLowerCase(),
@@ -28,55 +27,47 @@ export default function Chat() {
 
   const sendMessage = (e) => {
     e.preventDefault();
-    setConversation([...conversation, { sent: true, message: message }]);
 
     socket.emit("send_message", {
       message,
       room,
+      username: user.username,
     });
+    console.log("send_message");
+    setTimeout(getChat, 200);
+    // getChat();
   };
 
   socket.on("receive_message", (data) => {
-    setConversation([...conversation, { sent: false, message: data.message }]);
+    getChat();
   });
 
   useEffect(() => {
-    if (conversation.length > 0) {
-      socket.emit("save", {
-        conversation: conversation,
-        room: room,
-        username: user.username,
-      });
-    }
-  }, [conversation]);
-
-  useEffect(() => {
-    const getChat = async () => {
-      const resp = await axiosPublic.post("getChatHistory", {
-        room: room,
-        username: user.username,
-      });
-      console.log("ChatHISTORY: ", resp.data);
-      // setChatHistory(resp.data.chat);
-      setConversation(resp.data.chat);
-    };
-    console.log("usssssssssE");
     getChat();
   }, []);
+
+  const getChat = async () => {
+    const resp = await axiosPublic.post("getChatHistory", {
+      room: room,
+      username: user.username,
+    });
+
+    setConversation(resp.data.chat);
+  };
   return (
     <>
       <div>
         <h2>Chat {room}</h2>
         <Form className="d-flex flex-column m-2 justify-content-center">
           <Form.Group className="d-flex flex-column  w-100 messages-box">
-            {conversation.map((con) =>
-              con.sent ? (
+            {conversation?.map((con) =>
+              con.sentBy === user.username ? (
                 <div className="message-box message-sent">
-                  <p>{con.message}</p>
+                  <p>{con.msg}</p>
                 </div>
               ) : (
                 <div className="message-box message-received">
-                  <p>{con.message}</p>
+                  <p>{con.msg}</p>
                 </div>
               )
             )}
