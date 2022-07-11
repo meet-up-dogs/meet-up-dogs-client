@@ -1,40 +1,143 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Header from '../Header/Header.js';
 import Footer from '../Footer/Footer.js';
 import "./contactform.css"
-export default function ContactForm(props){
-    const [submitted, setSubmitted] = useState(false)
-    const handleSubmit = () => {
-        setTimeout(() => {
-            setSubmitted(true)
-        }, 100);
+import { MainContext } from "../../context/MainContext";
+
+
+export default function ContactForm(props) {
+    const [status, setStatus] = useState();
+    const [user] = useContext(MainContext);
+
+
+    const handleSubmit = (e) => {
+
+        e.preventDefault();
+
+
+
+        const injectedData = {
+
+            DYNAMIC_DATA_EXAMPLE: 123,
+
+        };
+
+        const inputs = e.target.elements;
+
+        const data = {};
+
+
+        for (let i = 0; i < inputs.length; i++) {
+
+            if (inputs[i].name) {
+
+                data[inputs[i].name] = inputs[i].value;
+
+            }
+
+        }
+
+
+        Object.assign(data, injectedData);
+
+
+        fetch(FORM_ENDPOINT, {
+
+            method: "POST",
+
+            headers: {
+
+                Accept: "application/json",
+
+                "Content-Type": "application/json",
+
+            },
+
+            body: JSON.stringify(data),
+
+        })
+
+            .then((response) => {
+
+                // It's likely a spam/bot request, so bypass it to validate via captcha
+
+                if (response.status === 422) {
+
+                    Object.keys(injectedData).forEach((key) => {
+
+                        const el = document.createElement("input");
+
+                        el.type = "hidden";
+
+                        el.name = key;
+
+                        el.value = injectedData[key];
+
+
+                        e.target.appendChild(el);
+
+                    });
+
+
+                    e.target.submit();
+
+                    throw new Error("Please finish the captcha challenge");
+
+                }
+
+
+                if (response.status !== 200) {
+
+                    throw new Error(response.statusText);
+
+                }
+
+
+                return response.json();
+
+            })
+
+            .then(() => setStatus("We'll be in touch soon."))
+
+            .catch((err) => setStatus(err.toString()));
+
+    };
+
+
+    if (status) {
+
+        return (
+
+            <>
+                <Header />
+                <div className="msg">
+                    <div className="text-2xl">Thank you!</div>
+
+                    <div className="text-md">{status}</div>
+                </div>
+                <Footer />
+
+
+            </>
+
+        );
+
     }
 
-    if (submitted) {
-        return (
-            <>
-                <div className="text-2x1">Thank You</div>
-                <div className="text-md">We'll be in touch soon.</div>
-            </>
-        )
-    }const margin = { m: 1 };
+
+    const FORM_ENDPOINT = "https://public.herotofu.com/v1/89e2a010-00fd-11ed-bc36-e1ea9ccadd33";
 
     return (
         <>
-            <Header
-        login={props.login}
-        handleChange={props.handleChange}
-        margin={margin}
-        user={props.user}
-      />
+            <Header />
 
-            <form action="" onSubmit={handleSubmit} method="POST" target="" className="form">
+            <form action={FORM_ENDPOINT} onSubmit={handleSubmit} method="POST" target="_blank" className="form">
                 <div className="mb-3 pt-0">
 
                     <input
 
                         type="text"
-
+                        value={user.username}
                         placeholder="Your name"
 
                         name="name"
@@ -54,7 +157,7 @@ export default function ContactForm(props){
                         type="email"
 
                         placeholder="Email"
-
+                        value={user.email}
                         name="email"
 
                         className="px-3 py-3 placeholder-gray-400 text-gray-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"
