@@ -4,6 +4,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import Switch from "@mui/material/Switch";
+import FormGroup from "@mui/material/FormGroup";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -80,14 +81,8 @@ export default function Header() {
                     <NavLink to="/about"> About us</NavLink>
                   </MenuItem>
 
-                  <MenuItem onClick={handleClose}>
-                    <NavLink to="/imprint"> Imprint</NavLink>
-                  </MenuItem>
-
-
-                  <MenuItem onClick={handleClose}>
-                    <NavLink to="/contact">Contact Us</NavLink>
-                    </MenuItem>
+                  <MenuItem onClick={handleClose}>Imprint</MenuItem>
+                  <MenuItem onClick={handleClose}><NavLink to="/contact">Contact Us</NavLink></MenuItem>
                 </Menu>
 
                 <Typography
@@ -115,7 +110,7 @@ export default function Header() {
                     src={user.userImage}
                     alt=""
                     style={{ width: "50px", height: "50px" }}
-                  // sx={{ borderRadius: '50%' }}
+                    // sx={{ borderRadius: '50%' }}
                   />
                 ) : (
                   false
