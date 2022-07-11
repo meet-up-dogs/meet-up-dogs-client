@@ -13,6 +13,7 @@ import MatchCard from "./ShowMatches/MatchCard";
 import { axiosPublic } from "../util/axiosConfig";
 import Chat from "./Chat/Chat";
 import About from './About/About';
+import ContactForm from "./Contact/ContactForm";
 
 function App() {
   // Current User state. Get logged user from MongoDB
@@ -78,7 +79,7 @@ function App() {
     setRoomId(room);
     return room;
   }
- 
+
   return (
     <div className="App">
       <MainContextProvider>
@@ -100,6 +101,18 @@ function App() {
             path="/about"
             element={
               <About
+                handleChange={handleChange}
+                login={login}
+                user={user}
+                setUser={setUser}
+              />
+            }
+          />
+
+          <Route
+            path="/Contact"
+            element={
+              <ContactForm
                 handleChange={handleChange}
                 login={login}
                 user={user}
@@ -146,7 +159,7 @@ function App() {
                 setUser={setUser}
                 matchUsers={matchUsers}
                 setMatchUsers={setMatchUsers}
-                
+
               />
             }
           />

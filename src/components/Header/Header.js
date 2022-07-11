@@ -34,9 +34,9 @@ export default function Header(props) {
   return (
     <>
       <div className="header" >
-        <Box  sx={{ flexGrow: 1 }} >
+        <Box sx={{ flexGrow: 1 }} >
 
-          <AppBar position="static" style={{background: '#2B2B2B' }}>
+          <AppBar position="static" style={{ background: '#2B2B2B' }}>
             <Toolbar>
               <IconButton
                 size="large"
@@ -64,10 +64,12 @@ export default function Header(props) {
               >
                 <MenuItem onClick={handleClose}>
                   <NavLink to="/about"> About us</NavLink>
-                 </MenuItem>
+                </MenuItem>
 
-                <MenuItem onClick={handleClose}>Imprint</MenuItem>
-                <MenuItem onClick={handleClose}>Contact us</MenuItem>
+                <MenuItem onClick={handleClose}>
+                  <NavLink to="/contact"> Contact</NavLink>
+                  </MenuItem>
+                <MenuItem onClick={handleClose}>Impersumm</MenuItem>
               </Menu>
 
 

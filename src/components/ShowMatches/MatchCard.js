@@ -55,7 +55,7 @@ const MatchCard = (props) => {
         login={props.login}
         handleChange={props.handleChange}
       />
-
+    
       <main className="match-card">
 
         <img src={props.currentUser.userImage} alt="" className="match-img" />
