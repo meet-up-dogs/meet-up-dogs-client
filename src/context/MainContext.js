@@ -8,6 +8,7 @@ export const MainContextProvider = (props) => {
   const [user, setUser] = useState({});
   const [selectedUser, setSelectedUser] = useState({});
 
+  console.log('props main context', props)
   useEffect(() => {
     // setLoading(true);
     const getUser = async () => {

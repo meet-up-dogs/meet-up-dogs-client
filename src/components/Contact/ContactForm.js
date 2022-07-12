@@ -3,7 +3,7 @@ import Header from '../Header/Header.js';
 import Footer from '../Footer/Footer.js';
 import "./contactform.css"
 import { MainContext } from "../../context/MainContext";
-
+import Alert from "@mui/material/Alert";
 
 export default function ContactForm(props) {
     const [status, setStatus] = useState();
@@ -14,27 +14,15 @@ export default function ContactForm(props) {
 
         e.preventDefault();
 
-
-
         const injectedData = {
-
-            DYNAMIC_DATA_EXAMPLE: 123,
-
         };
-
-        const inputs = e.target.elements;
-
         const data = {};
-
-
+        const inputs = e.target.elements;
         for (let i = 0; i < inputs.length; i++) {
-
             if (inputs[i].name) {
-
                 data[inputs[i].name] = inputs[i].value;
 
             }
-
         }
 
 
@@ -93,11 +81,12 @@ export default function ContactForm(props) {
                 }
 
 
-                return response.json();
+                // return response.json();
+                return response;
 
             })
 
-            .then(() => setStatus("We'll be in touch soon."))
+            .then(() => setStatus(<Alert severity="success">This is a success alert — check it out!</Alert>))
 
             .catch((err) => setStatus(err.toString()));
 
@@ -125,7 +114,8 @@ export default function ContactForm(props) {
     }
 
 
-    const FORM_ENDPOINT = "https://public.herotofu.com/v1/89e2a010-00fd-11ed-bc36-e1ea9ccadd33";
+    // const FORM_ENDPOINT = "https://public.herotofu.com/v1/89e2a010-00fd-11ed-bc36-e1ea9ccadd33";
+    const FORM_ENDPOINT = "http://localhost:8080/postemail";
 
     return (
         <>
