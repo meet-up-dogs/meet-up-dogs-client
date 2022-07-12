@@ -28,41 +28,6 @@ export default function UserProfil(props) {
   const [user, setUser, loading, setLoading] = useContext(MainContext);
 
   useEffect(() => {
-    setLoading(true);
-    const getUser = async () => {
-      try {
-        const resp = await axiosPublic.get("/currentUser", {
-          withCredentials: true,
-        });
-        setUser(resp.data);
-      } catch (err) {
-        console.log(err);
-      }
-      setLoading(false);
-    };
-
-    getUser();
-  }, []);
-
-  const [userProfil, setUserProfil] = useState({
-    username: "",
-    gender: "",
-    language: "",
-    dogBreed: "",
-    userImage: "",
-    availability: {
-      dayTime: "",
-      weekDay: "",
-    },
-    description: "",
-    location: {
-      bottomLeft: [],
-      topRight: [],
-    },
-    favorite: [],
-  });
-
-  useEffect(() => {
     setUserProfil({
       ...userProfil,
       username: user.username,
@@ -72,6 +37,7 @@ export default function UserProfil(props) {
       },
     });
   }, [bottomLeft, topRight]);
+  const [userProfil, setUserProfil] = useState({});
 
   useEffect(() => {
     setUserProfil({
@@ -136,6 +102,22 @@ export default function UserProfil(props) {
       "base64" // blob or base64 default base64
     );
   };
+
+  useEffect(() => {
+    setLoading(true);
+    const getUser = async () => {
+      try {
+        const resp = await axiosPublic.get("/currentUser", {
+          withCredentials: true,
+        });
+        setUser(resp.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    setLoading(false);
+    getUser();
+  }, []);
 
   return (
     <>

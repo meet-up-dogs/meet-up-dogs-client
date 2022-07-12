@@ -9,7 +9,7 @@ export const MainContextProvider = (props) => {
   const [selectedUser, setSelectedUser] = useState({});
 
   useEffect(() => {
-    setLoading(true);
+    // setLoading(true);
     const getUser = async () => {
       try {
         const resp = await axiosPublic.get("/currentUser", {
@@ -20,7 +20,7 @@ export const MainContextProvider = (props) => {
       } catch (err) {
         console.log(err);
       }
-      setLoading(false);
+      // setLoading(false);
     };
 
     getUser();

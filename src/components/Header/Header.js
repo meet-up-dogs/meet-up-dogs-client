@@ -84,10 +84,9 @@ export default function Header() {
                     <NavLink to="/imprint"> Imprint</NavLink>
                   </MenuItem>
 
-
                   <MenuItem onClick={handleClose}>
                     <NavLink to="/contact">Contact Us</NavLink>
-                    </MenuItem>
+                  </MenuItem>
                 </Menu>
 
                 <Typography
@@ -115,7 +114,7 @@ export default function Header() {
                     src={user.userImage}
                     alt=""
                     style={{ width: "50px", height: "50px" }}
-                  // sx={{ borderRadius: '50%' }}
+                    // sx={{ borderRadius: '50%' }}
                   />
                 ) : (
                   false

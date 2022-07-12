@@ -26,52 +26,64 @@ const MatchList = (props) => {
   useEffect(() => {
     getMatchUsers();
   }, []);
+
   return (
     <>
-      {showCard ? (
-        <MatchCard />
-      ) : (
+      {matchUsers.length === 0 ? (
         <>
           <Header />
-
-          <div className="cards">
-            {matchUsers.map((userObj) => {
-              return (
-                <div key={userObj.username}>
-                  <main>
-                    <div
-                      className="card"
-                      onClick={() => {
-                        setSelectedUser(
-                          matchUsers.find(
-                            (matchUser) =>
-                              matchUser.username === userObj.username
-                          )
-                        );
-                        setShowCard(true);
-                      }}
-                    >
-                      <div className="container">
-                        <img
-                          src={userObj.userImage}
-                          alt="user-foto"
-                          className="card-img"
-                        />
-                        <div className="bio">
-                          <li>{userObj.username}</li>
-                          <li>DogBreed:{userObj.dogBreed}</li>
-                        </div>
-                      </div>
-                    </div>
-                  </main>
-                </div>
-              );
-            })}
-          </div>
-
+          <h2 style={{ marginTop: "10rem" }}>No Maches</h2>
           <Footer />
         </>
+      ) : (
+        <>
+          {showCard ? (
+            <MatchCard />
+          ) : (
+            <>
+              <Header />
+
+              <div className="cards">
+                {matchUsers.map((userObj) => {
+                  return (
+                    <div key={userObj.username}>
+                      <main>
+                        <div
+                          className="card"
+                          onClick={() => {
+                            setSelectedUser(
+                              matchUsers.find(
+                                (matchUser) =>
+                                  matchUser.username === userObj.username
+                              )
+                            );
+                            setShowCard(true);
+                          }}
+                        >
+                          <div className="container">
+                            <img
+                              src={userObj.userImage}
+                              alt="user-foto"
+                              className="card-img"
+                            />
+                            <div className="bio">
+                              <li>{userObj.username}</li>
+                              <li>DogBreed:{userObj.dogBreed}</li>
+                            </div>
+                          </div>
+                        </div>
+                      </main>
+                    </div>
+                  );
+                })}
+              </div>
+
+              <Footer />
+            </>
+          )}
+        </>
       )}
+      ;
     </>
   );
 };
