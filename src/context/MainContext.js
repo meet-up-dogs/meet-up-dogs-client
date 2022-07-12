@@ -9,18 +9,17 @@ export const MainContextProvider = (props) => {
   const [selectedUser, setSelectedUser] = useState({});
 
   useEffect(() => {
-    setLoading(true);
+    // setLoading(true);
     const getUser = async () => {
       try {
         const resp = await axiosPublic.get("/currentUser", {
           withCredentials: true,
         });
-        console.log("ustawaia uzytkowniaka");
         setUser(resp.data);
       } catch (err) {
         console.log(err);
       }
-      setLoading(false);
+      // setLoading(false);
     };
 
     getUser();

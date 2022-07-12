@@ -8,7 +8,7 @@
 
 .userProfilForm > div,
 .userProfilForm > label {
-  margin: 10px 0;
+  margin: 0.4rem auto;
   width: 100%;
 }
 
