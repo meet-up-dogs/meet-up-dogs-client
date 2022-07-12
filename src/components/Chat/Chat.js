@@ -5,6 +5,9 @@ import io from "socket.io-client";
 import "./chat.css";
 import { axiosPublic } from "../../util/axiosConfig";
 import { MainContext } from "../../context/MainContext";
+import { useNavigate } from "react-router-dom";
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import Header from "../Header/Header.js";
 
 // const socket = io.connect("https://meet-up-dog.herokuapp.com");
 const socket = io.connect("http://localhost:8080");
@@ -13,6 +16,8 @@ export default function Chat() {
   const [user, setUser, loading, setLoadingm, selectedUser, setSelectedUser] =
     useContext(MainContext);
 
+
+  const navigate = useNavigate()
   const room = [
     user.username.toLocaleLowerCase(),
     selectedUser.username.toLocaleLowerCase(),
@@ -56,7 +61,10 @@ export default function Chat() {
   };
   return (
     <>
+      <Header/>
       <div>
+      
+      <button style={{"margin": "15% 0"}} onClick={()=>{navigate("/chatHistory")}}><ArrowBackIosNewIcon></ArrowBackIosNewIcon></button>
         <h2>Chat {room}</h2>
         <Form className="d-flex flex-column m-2 justify-content-center">
           <Form.Group className="d-flex flex-column  w-100 messages-box">

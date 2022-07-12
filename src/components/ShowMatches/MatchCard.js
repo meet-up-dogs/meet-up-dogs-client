@@ -8,10 +8,10 @@ import ChatIcon from "@mui/icons-material/Chat";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import IconButton from "@mui/material/IconButton";
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import "./matchCard.css";
 import Chat from "../Chat/Chat";
 import { MainContext } from "../../context/MainContext";
-
 const MatchCard = (props) => {
   // const [fav, setFav] = useState(true);
   const [isOpenChat, setIsOpenChat] = useState(false);
@@ -24,6 +24,7 @@ const MatchCard = (props) => {
 
     setFav(!fav);
   };
+
   // const handleFav = async () =>{
   //     setFav(props.currentUser.favorite)
   //     console.log(props.currentUser)
@@ -63,6 +64,7 @@ const MatchCard = (props) => {
       ) : (
         <>
           <Header />
+          <button className="back" onClick={()=>{document.location.reload()}}><ArrowBackIosNewIcon></ArrowBackIosNewIcon></button>
           <main className="match-card">
             <img src={selectedUser.userImage} alt="" className="match-img" />
             <div className="match-container">

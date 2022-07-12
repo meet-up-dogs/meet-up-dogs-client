@@ -1,4 +1,6 @@
 .match-card {
+    display: flex;
+    flex-direction: column;
     margin: 10% auto;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     border-radius: 5px;
@@ -36,11 +38,18 @@ h2 {
 
 @media only screen and (max-width: 465px ) {
 .match-card{
-    margin: 40% auto;
+    margin: 1% auto;
 } 
 .match-img{
     margin-top: 10%;
 }
+}
+
+
+.back {
+    margin-left: 0;
+    margin-top: 3.9rem;
+    width: max-content;
 }
 
 
