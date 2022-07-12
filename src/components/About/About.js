@@ -30,9 +30,10 @@ export default function About(props) {
     },
     container: {
       marginTop: "10%",
-      marginBottom: "3rem",
+      marginBottom: "10%",
       height: "max-content",
       backgroundColor: "#eee",
+      borderRadius: "1%",
     },
   };
 

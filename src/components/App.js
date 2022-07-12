@@ -64,20 +64,15 @@ function App() {
           <Route path="/" element={<Login />} className="Login" />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/userprofil" element={<UserProfil />} />
-
           <Route path="/about" element={<About />} />
-
-          <Route path="/Contact" element={<ContactForm />  } />
-
+          <Route path="/contact" element={<ContactForm />  } />
           <Route path="/imprint" element={<Imprint />  } />
-
-          <Route path="/redirect" element={<Navigate to="/userprofil" />} />
-
           <Route path="/signup" element={<SignUp />} />
           <Route path="/matcheslist" element={<MatchesList />} />
           <Route path="/chatHistory" element={<ChatHistory />} />
           {/* <Route path="/matchcard" element={<MatchCard />} /> */}
           <Route path="/chat" element={<Chat />} />
+          <Route path="/redirect" element={<Navigate to="/userprofil" />} />
         </Routes>
       </MainContextProvider>
     </div>
