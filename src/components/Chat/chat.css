@@ -2,7 +2,8 @@
   height: 50vh;
   overflow: scroll;
   border: 2px solid rgba(0, 0, 0, 0.2);
-  margin: 0 auto;
+  margin: 9% auto;
+  margin-bottom: 0;
 }
 
 .message-box {
@@ -32,6 +33,51 @@
 }
 
 .chat-btn {
-  margin-bottom: 2rem;
+  align-items: center;
   z-index: 20;
 }
+
+.chat {
+  position: relative;
+}
+
+h2{
+  position: absolute;
+  top: 5rem;
+  left: 46%;
+}
+.back-btn {
+ position: absolute;
+ top: 3.7rem;
+}
+
+@media only screen and (max-width: 600px)  {
+
+
+  .messages-box {
+    height: 50vh;
+    overflow: scroll;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    margin: 26% auto;
+    margin-bottom: 0;
+  }
+
+  h2{
+    position: absolute;
+    top: 3.5rem;
+    left: 30%;
+  }
+  .back-btn {
+   position: absolute;
+   top: 3.5rem;
+
+  }
+
+  .chat-btn {
+    position: absolute;
+    left: 30%;
+    z-index: 20;
+  }
+  
+}
+
