@@ -2,13 +2,13 @@
   display: flex;
   flex-direction: column;
   padding: 0 1rem;
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
   margin-top: 5rem;
 }
 
 .userProfilForm > div,
 .userProfilForm > label {
-  margin: 0 auto;
+  margin: 10px 0;
   width: 100%;
 }
 

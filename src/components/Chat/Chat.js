@@ -62,9 +62,9 @@ export default function Chat() {
   return (
     <>
       <Header/>
-      <div>
+      <div className="chat">
       
-      <button style={{"margin": "15% 0"}} onClick={()=>{navigate("/chatHistory")}}><ArrowBackIosNewIcon></ArrowBackIosNewIcon></button>
+      <button className="back-btn" onClick={()=>{navigate("/chatHistory")}}><ArrowBackIosNewIcon></ArrowBackIosNewIcon></button>
         <h2>Chat {room}</h2>
         <Form className="d-flex flex-column m-2 justify-content-center">
           <Form.Group className="d-flex flex-column  w-100 messages-box">
