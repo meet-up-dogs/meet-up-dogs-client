@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, CSSProperties } from "react";
 import Button from "@mui/material/Button";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -9,6 +9,7 @@ import Radio from "@mui/material/Radio";
 import { useState, useContext } from "react";
 import { Outlet } from "react-router-dom";
 import InputLabel from "@mui/material/InputLabel";
+import IconButton from "@mui/material/IconButton";
 import { TextField } from "@material-ui/core";
 import Select from "@mui/material/Select";
 import { axiosPublic } from "../../util/axiosConfig";
@@ -20,12 +21,22 @@ import Toolbar from "@mui/material/Toolbar";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import { MainContext } from "../../context/MainContext";
 import "./userProfil.css";
+import SyncLoader from "react-spinners/SyncLoader";
+
+const override = {
+  display: "flex",
+  justifyContent: "center",
+  alignItem: "center",
+  margin: "20rem auto",
+  borderColor: "black",
+};
 
 export default function UserProfil(props) {
   const [bottomLeft, setBottomLeft] = useState({});
   const [topRight, setTopRight] = useState({});
   const [resizedImage, setResizedImage] = useState("");
   const [user, setUser, loading, setLoading] = useContext(MainContext);
+  let [color, setColor] = useState("#000");
 
   useEffect(() => {
     setLoading(true);
@@ -38,7 +49,10 @@ export default function UserProfil(props) {
       } catch (err) {
         console.log(err);
       }
-      setLoading(false);
+      setTimeout(() => {
+        setLoading(false);
+      }, 50);
+      // setLoading(false);
     };
 
     getUser();
@@ -67,10 +81,12 @@ export default function UserProfil(props) {
       ...userProfil,
       username: user.username,
       location: {
-        topRight: topRight,
-        bottomLeft: bottomLeft,
+        bottomLeft: [bottomLeft.lat, bottomLeft.lng],
+        topRight: [topRight.lat, topRight.lng],
       },
     });
+
+    console.log("location change");
   }, [bottomLeft, topRight]);
 
   useEffect(() => {
@@ -91,7 +107,8 @@ export default function UserProfil(props) {
       },
       favorite: [],
     });
-  }, [user]);
+    console.log("use user change");
+  }, [user, loading]);
 
   const userProfilHandler = async (e) => {
     e.preventDefault();
@@ -136,11 +153,25 @@ export default function UserProfil(props) {
       "base64" // blob or base64 default base64
     );
   };
+  const [uploadText, setUploadText] = useState("Select image with your dog");
+
+  const handleUpload = (e) => {
+    // if (e.target.file !== undefined) {
+    setUploadText(e.target.files[0].name);
+    // } else {
+    // setUploadText("Select image with your dog");
+    // } // console.log("e.target.files[0]: ", e.target.files[0]);
+  };
 
   return (
     <>
       {loading ? (
-        <h3> Loading... </h3>
+        <SyncLoader
+          color={color}
+          loading={loading}
+          cssOverride={override}
+          size={15}
+        />
       ) : (
         <>
           <Header />
@@ -285,10 +316,15 @@ export default function UserProfil(props) {
               </Select>
             </FormControl>
             {/* <input type="file" accept="image/*"  /> */}
-            <Button variant="contained" component="label">
-              Select image with your dog
+            <Button
+              variant="contained"
+              component="label"
+              onChange={handleUpload}
+            >
+              {uploadText}
               <input type="file" onChange={onFileResize} hidden />
             </Button>
+            {/* <input accept="image/*" type="file" /> */}
 
             <TextField
               className="text-field"
@@ -303,32 +339,7 @@ export default function UserProfil(props) {
               }}
             />
 
-            <Map
-              onChange={() => {
-                setUserProfil({
-                  ...userProfil,
-                  location: {
-                    bottomLeft: [bottomLeft.lat, bottomLeft.lng],
-                    topRight: [topRight.lat, topRight.lng],
-                  },
-                });
-              }}
-              setBottomLeft={setBottomLeft}
-              setTopRight={setTopRight}
-            />
-            <Button
-              onClick={() => {
-                setUserProfil({
-                  ...userProfil,
-                  location: {
-                    bottomLeft: [bottomLeft.lat, bottomLeft.lng],
-                    topRight: [topRight.lat, topRight.lng],
-                  },
-                });
-              }}
-            >
-              Save quader
-            </Button>
+            <Map setBottomLeft={setBottomLeft} setTopRight={setTopRight} />
 
             <Outlet />
             <Button type="submit" variant="contained">

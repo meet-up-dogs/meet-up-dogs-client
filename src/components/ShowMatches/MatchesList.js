@@ -23,8 +23,6 @@ const MatchList = (props) => {
     await setMatchUsers(resp.data);
   };
 
-  console.log(showCard)
-
   useEffect(() => {
     getMatchUsers();
   }, []);
@@ -33,7 +31,9 @@ const MatchList = (props) => {
       {matchUsers.length === 0 ? (
         <>
           <Header />
-          <h2 style={{ marginTop: "10rem" }}>unfortunately there are no hits for your area</h2>
+          <h2 style={{ marginTop: "10rem" }}>
+            unfortunately there are no hits for your area
+          </h2>
           <Footer />
         </>
       ) : (
