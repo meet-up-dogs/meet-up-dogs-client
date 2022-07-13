@@ -187,6 +187,7 @@ export default function UserProfil(props) {
             <FormControl>
               <FormLabel id="demo-radio-buttons-group-label">Gender</FormLabel>
               <RadioGroup
+                className="gender"
                 aria-label="demo-radio-buttons-group-label"
                 defaultValue={user.gender}
                 name="radio-buttons-group"
@@ -197,18 +198,26 @@ export default function UserProfil(props) {
                   })
                 }
                 required
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "space-evenly",
+                }}
               >
                 <FormControlLabel
+                  className="gender-item"
                   value="female"
                   control={<Radio />}
                   label="Female"
                 />
                 <FormControlLabel
+                  className="gender-item"
                   value="male"
                   control={<Radio />}
                   label="Male"
                 />
                 <FormControlLabel
+                  className="gender-item"
                   value="other"
                   control={<Radio />}
                   label="Other"

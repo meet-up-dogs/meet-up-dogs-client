@@ -1,18 +1,23 @@
 .form {
-    margin-left: 21%;
-    margin-top: 7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  /* margin-left: 21%; */
+  /* margin-top: 7rem; */
 }
 
-
 .msg {
-    width: 100px;
-    margin: 20rem 20rem;
-    
+  height: 100vh;
+  /* margin: 20rem 20rem; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @media only screen and (max-width: 390px) {
-    .msg {
-      margin: 10rem 5rem;
-    }
+  .msg {
+    /* margin: 10rem 5rem; */
   }
-
+}

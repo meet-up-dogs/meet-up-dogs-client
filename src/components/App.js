@@ -12,8 +12,8 @@ import MatchesList from "./ShowMatches/MatchesList";
 import MatchCard from "./ShowMatches/MatchCard";
 import { axiosPublic } from "../util/axiosConfig";
 import Chat from "./Chat/Chat";
-import About from './About/About';
-import Imprint from './Imprint/Imprint'
+import About from "./About/About";
+import Imprint from "./Imprint/Imprint";
 import ContactForm from "./Contact/ContactForm";
 
 function App() {
@@ -67,9 +67,9 @@ function App() {
 
           <Route path="/about" element={<About />} />
 
-          <Route path="/Contact" element={<ContactForm />  } />
+          <Route path="/Contact" element={<ContactForm />} />
 
-          <Route path="/imprint" element={<Imprint />  } />
+          <Route path="/imprint" element={<Imprint />} />
 
           <Route path="/redirect" element={<Navigate to="/userprofil" />} />
 
