@@ -12,7 +12,8 @@ import "./footer.css";
 const useStyles = makeStyles({
   root: {
     width: "100vw",
-    backgroundColor: "#8e8e8e",
+    backgroundColor: "#2B2B2B",
+    color: "#9e9e9e",
   },
 });
 
@@ -28,31 +29,34 @@ export const Footer = () => {
   return (
     <>
       <footer className="footer">
-      <BottomNavigation
-        className={classes.root}
-        showLabels
-        value={value}
-        onChange={(event, newValue) => handleChange(event, newValue)}
-      >
-        <BottomNavigationAction
-          component={NavLink}
-          label="Match"
-          to="/matcheslist"
-          icon={<TravelExploreIcon />}
-        />
-        <BottomNavigationAction
-          component={NavLink}
-          to="/chathistory"
-          label="Chat"
-          icon={<ChatBubbleOutlineIcon />}
-        />
-        <BottomNavigationAction
-          component={NavLink}
-          to="/userprofil"
-          label="Profil"
-          icon={<PersonIcon />}
-        />
-      </BottomNavigation>
+        <BottomNavigation
+          className={classes.root}
+          showLabels
+          // value={value}
+          onChange={(event, newValue) => handleChange(event, newValue)}
+        >
+          <BottomNavigationAction
+            component={NavLink}
+            className={classes.root}
+            label="Match"
+            to="/matcheslist"
+            icon={<TravelExploreIcon />}
+          />
+          <BottomNavigationAction
+            className={classes.root}
+            component={NavLink}
+            to="/chathistory"
+            label="Chat"
+            icon={<ChatBubbleOutlineIcon />}
+          />
+          <BottomNavigationAction
+            className={classes.root}
+            component={NavLink}
+            to="/userprofil"
+            label="Profil"
+            icon={<PersonIcon />}
+          />
+        </BottomNavigation>
       </footer>
     </>
   );

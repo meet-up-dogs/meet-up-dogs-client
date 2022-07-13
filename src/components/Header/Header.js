@@ -100,6 +100,7 @@ export default function Header() {
                 <FormControlLabel
                   control={
                     <Switch
+                      color="success"
                       checked={login}
                       onChange={handleChange}
                       aria-label="login switch"
@@ -113,7 +114,7 @@ export default function Header() {
                     src={user.userImage}
                     alt=""
                     style={{ width: "50px", height: "50px" }}
-                  // sx={{ borderRadius: '50%' }}
+                    // sx={{ borderRadius: '50%' }}
                   />
                 ) : (
                   false

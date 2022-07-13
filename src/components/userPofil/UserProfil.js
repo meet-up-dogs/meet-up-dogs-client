@@ -329,6 +329,7 @@ export default function UserProfil(props) {
               variant="contained"
               component="label"
               onChange={handleUpload}
+              color="success"
             >
               {uploadText}
               <input type="file" onChange={onFileResize} hidden />
@@ -351,7 +352,13 @@ export default function UserProfil(props) {
             <Map setBottomLeft={setBottomLeft} setTopRight={setTopRight} />
 
             <Outlet />
-            <Button type="submit" variant="contained">
+            <Button
+              type="submit"
+              variant="contained"
+              style={{
+                backgroundColor: "#9CDE4E",
+              }}
+            >
               Save Profil
             </Button>
           </form>
