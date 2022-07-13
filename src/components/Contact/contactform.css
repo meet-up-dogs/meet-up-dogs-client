@@ -1,18 +1,36 @@
-.form {
+.contact-form {
     margin-left: 21%;
     margin-top: 7rem;
 }
 
 
 .msg {
-    width: 100px;
-    margin: 20rem 20rem;
+    /* width: max-content; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     
 }
 
-@media only screen and (max-width: 390px) {
+
+.msg > * {
+    margin-bottom: 2.5rem;
+}
+
+.msg > div:first-child {
+    text-align: center;
+}
+
+
+/* .text-2xl {
+  text-align: center;
+} */
+
+
+@media only screen and (max-width: 412px) {
     .msg {
-      margin: 10rem 5rem;
+      margin: 10rem 0.5rem 3rem 0.5rem;
+      width: 100vw;
     }
   }
 

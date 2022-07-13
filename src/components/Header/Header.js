@@ -80,7 +80,7 @@ export default function Header() {
                   </MenuItem>
 
                   <MenuItem onClick={handleClose}>
-                    <NavLink to="/about"> Imprint</NavLink>
+                    <NavLink to="/imprint"> Imprint</NavLink>
                   </MenuItem>
 
                   <MenuItem onClick={handleClose}>

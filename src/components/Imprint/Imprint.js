@@ -13,11 +13,13 @@ const Imprint = () => {
       marginBottom: "20vh",
       height: "max-content",
       backgroundColor: "#eee",
+      color: '#2b2b2b'
     },
     header: {
       fontFamily: 'shrikhand',
       marginBottom: '1rem',
       textAlign: 'left',
+
     }
   }
 

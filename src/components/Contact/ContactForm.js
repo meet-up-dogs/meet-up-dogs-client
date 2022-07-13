@@ -86,7 +86,7 @@ export default function ContactForm(props) {
 
             })
 
-            .then(() => setStatus(<Alert severity="success">This is a success alert — check it out!</Alert>))
+            .then(() => setStatus(<Alert severity="success">your message has been sent. We will get back to you!</Alert>))
 
             .catch((err) => setStatus(err.toString()));
 
@@ -121,7 +121,7 @@ export default function ContactForm(props) {
         <>
             <Header />
 
-            <form action={FORM_ENDPOINT} onSubmit={handleSubmit} method="POST" target="_blank" className="form">
+            <form action={FORM_ENDPOINT} onSubmit={handleSubmit} method="POST" target="_blank" className="contact-form">
                 <div className="mb-3 pt-0">
 
                     <input
