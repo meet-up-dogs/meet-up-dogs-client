@@ -52,4 +52,6 @@ h2 {
     width: max-content;
 }
 
-
+.MuiAlert-message {
+    border-top: 5rem;
+}
