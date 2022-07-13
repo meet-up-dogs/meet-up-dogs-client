@@ -120,7 +120,10 @@ const Login = () => {
                 variant="filled"
                 value={inputLogin.email}
                 onChange={(e) =>
-                  setInputLogin({ ...inputLogin, email: e.target.value })
+                  setInputLogin({
+                    ...inputLogin,
+                    email: e.target.value.toLocaleLowerCase(),
+                  })
                 }
               />
               <br /> <br />

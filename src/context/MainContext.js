@@ -8,7 +8,6 @@ export const MainContextProvider = (props) => {
   const [user, setUser] = useState({});
   const [selectedUser, setSelectedUser] = useState({});
 
-  console.log('props main context', props)
   useEffect(() => {
     // setLoading(true);
     const getUser = async () => {
@@ -18,7 +17,7 @@ export const MainContextProvider = (props) => {
         });
         setUser(resp.data);
       } catch (err) {
-        console.log(err);
+        console.log(err.message);
       }
       // setLoading(false);
     };
