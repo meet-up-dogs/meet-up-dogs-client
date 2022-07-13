@@ -76,7 +76,7 @@ function App() {
         </Routes>
       </MainContextProvider>
     </div>
-  );
+  )
 }
 
 export default App;

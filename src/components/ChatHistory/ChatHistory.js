@@ -31,7 +31,7 @@ export default function ChatHistory(props) {
   const findUsers = () => {
     const usersNames = chats.map((chat) => {
       const roomName = chat.roomId;
-      const indexOfCurrentUser = roomName.split("-").indexOf("karol");
+      const indexOfCurrentUser = roomName.split("-").indexOf("user1");
 
       console.log(
         "index,",
