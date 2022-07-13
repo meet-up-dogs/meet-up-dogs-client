@@ -1,36 +1,36 @@
 .contact-form {
-    margin-left: 21%;
-    margin-top: 7rem;
-}
+  height: 100vh;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 
 .msg {
-    /* width: max-content; */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
+  /* width: max-content; */
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
-
 
 .msg > * {
-    margin-bottom: 2.5rem;
+  margin-bottom: 1.6rem;
 }
 
-.msg > div:first-child {
-    text-align: center;
-}
-
+/* .msg > div:first-child {
+  text-align: center;
+} */
 
 /* .text-2xl {
   text-align: center;
 } */
-
-
+/* 
 @media only screen and (max-width: 412px) {
-    .msg {
-      margin: 10rem 0.5rem 3rem 0.5rem;
-      width: 100vw;
-    }
+  .msg {
+    margin: 10rem 0.5rem 3rem 0.5rem;
+    width: 100vw;
   }
-
+} */
