@@ -63,7 +63,6 @@ export default function Chat() {
       <Header />
       <div className="chat">
        
-        
         <Form className="d-flex flex-column m-2 justify-content-center">
         <div
           className="back-btn"
