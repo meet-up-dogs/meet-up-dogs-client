@@ -203,11 +203,12 @@ export default function UserProfil(props) {
                   flexDirection: "row",
                   justifyContent: "space-evenly",
                 }}
+                color="success"
               >
                 <FormControlLabel
                   className="gender-item"
                   value="female"
-                  control={<Radio />}
+                  control={<Radio color="success" />}
                   label="Female"
                 />
                 <FormControlLabel
@@ -329,7 +330,9 @@ export default function UserProfil(props) {
               variant="contained"
               component="label"
               onChange={handleUpload}
-              color="success"
+              style={{
+                backgroundColor: "#9CDE4E",
+              }}
             >
               {uploadText}
               <input type="file" onChange={onFileResize} hidden />

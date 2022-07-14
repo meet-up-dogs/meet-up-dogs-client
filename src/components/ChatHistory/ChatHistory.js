@@ -7,9 +7,19 @@ import "./chatHistory.css";
 import { axiosPublic } from "../../util/axiosConfig";
 import "./chatHistory.css";
 import { MainContext } from "../../context/MainContext";
+import SyncLoader from "react-spinners/SyncLoader";
+
+const override = {
+  display: "flex",
+  justifyContent: "center",
+  alignItem: "center",
+  margin: "20rem auto",
+  borderColor: "black",
+};
 
 export default function ChatHistory(props) {
-  const { user, setUser } = useContext(MainContext);
+  const [user, setUser, loading, setLoading, selectedUser, setSelectedUser] =
+    useContext(MainContext);
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [chats, setChats] = useState([]);
   const [matchUsers, setMatchUsers] = useState([]);
@@ -28,40 +38,105 @@ export default function ChatHistory(props) {
     await setMatchUsers(resp.data);
   };
 
-  const findUsers = () => {
-    const usersNames = chats.map((chat) => {
-      const roomName = chat.roomId;
-      const indexOfCurrentUser = roomName.split("-").indexOf("karol");
-
-      console.log(
-        "index,",
-        roomName.split("-").splice(indexOfCurrentUser, 1).join("")
-      );
-    });
+  const findUser = (room) => {
+    const roomName = room.split("-");
+    const indexOfCurrentUser = roomName.indexOf(user?.username.toLowerCase());
+    roomName.splice(indexOfCurrentUser, 1);
+    const searchedUserName = roomName.join("");
+    return matchUsers?.find(
+      (user) => user.username.toLowerCase() === searchedUserName
+    );
   };
 
+  const displayTime = (time) => {
+    let resTime = "";
+    const now = new Date();
+    const sentAt = new Date(time);
+    let diff = now - sentAt;
+    if (diff > 3600e3 * 24) {
+      console.log("day");
+
+      resTime =
+        Math.floor(diff / 3600e3 / 24) <= 1
+          ? ` yesterday`
+          : ` ${Math.floor(diff / 3600e3 / 24)} days ago`;
+      return resTime;
+    }
+    if (diff > 3600e3) {
+      console.log("hour");
+
+      resTime =
+        Math.floor(diff / 3600e3) > 1
+          ? ` ${Math.floor(diff / 3600e3)} hours ago`
+          : ` ${Math.floor(diff / 3600e3)} hour ago`;
+      return resTime;
+    }
+    if (diff > 60e3) {
+      console.log("min");
+      resTime = ` ${Math.floor(diff / 60e3)} minutes ago`;
+      return resTime;
+    }
+    return resTime;
+  };
+
+  const sortedChats = chats.sort((a, b) => {
+    const aTime = new Date(a.sentAt);
+    const bTime = new Date(b.sentAt);
+    console.log("   a.sentAt - b.sentAt: ", aTime - bTime);
+    if (aTime < bTime) return 1;
+    return -1;
+  });
+  console.log(sortedChats);
   useEffect(() => {
     getChats();
     getMatchUsers();
-    findUsers();
+
+    // setTimeout(() => setLoading(false), 2000);
   }, []);
 
   return (
     <>
-      <Header />
-      <div className="chats-container">
-        {chats.map((chat) => {
-          return (
+      {loading ? (
+        <SyncLoader />
+      ) : (
+        <>
+          {isChatOpen ? (
+            <Chat />
+          ) : (
             <>
-              <div className="chat-card">
-                <p>{chat.roomId}</p>
-                <p>{chat.chat[chat.chat.length - 1].msg}</p>
+              <Header />
+              <div className="chats-container">
+                {chats.map((chat) => {
+                  const user = findUser(chat.roomId);
+                  return (
+                    <div
+                      key={user?.username}
+                      className="chat-card"
+                      onClick={() => {
+                        setIsChatOpen(true);
+                        setSelectedUser(user);
+                      }}
+                    >
+                      <img src={user?.userImage} alt="" />
+                      <aside>
+                        <p className="name">{user?.username}</p>
+                        <p className="message">
+                          {chat.chat[chat.chat.length - 1].msg
+                            .split(" ")
+                            .splice(0, 3)
+                            .join(" ")}
+                        </p>
+                      </aside>
+                      <span>{displayTime(chat.sentAt)}</span>
+                    </div>
+                  );
+                })}
               </div>
+              <Footer />
             </>
-          );
-        })}
-      </div>
-      <Footer />
+          )}
+        </>
+      )}
     </>
   );
 }

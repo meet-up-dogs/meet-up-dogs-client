@@ -100,7 +100,9 @@ export default function Header() {
                 <FormControlLabel
                   control={
                     <Switch
-                      color="success"
+                      style={{
+                        color: "#9CDE4E",
+                      }}
                       checked={login}
                       onChange={handleChange}
                       aria-label="login switch"
