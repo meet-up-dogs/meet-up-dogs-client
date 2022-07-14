@@ -49,8 +49,7 @@ export default function ContactForm(props) {
 
                 // It's likely a spam/bot request, so bypass it to validate via captcha
 
-                if (response.status === 422)     /* width: max-content; */
-                {
+                if (response.status === 422)     /* width: max-content; */ {
 
                     Object.keys(injectedData).forEach((key) => {
 
@@ -130,11 +129,8 @@ export default function ContactForm(props) {
                         type="text"
                         value={user.username}
                         placeholder="Your name"
-
                         name="name"
-
                         className="px-3 py-3 placeholder-gray-400 text-gray-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"
-
                         required
 
                     />
@@ -178,11 +174,8 @@ export default function ContactForm(props) {
                 <div className="mb-3 pt-0">
 
                     <button
-
                         className="bg-blue-500 text-white active:bg-blue-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-
                         type="submit"
-
                     >
 
                         Send a message

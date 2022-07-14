@@ -32,7 +32,6 @@ export const Footer = () => {
       <BottomNavigation
         className={classes.root}
         showLabels
-        value={value}
         onChange={(event, newValue) => handleChange(event, newValue)}
       >
         <BottomNavigationAction

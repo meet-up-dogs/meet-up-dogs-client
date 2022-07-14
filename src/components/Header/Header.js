@@ -12,10 +12,21 @@ import Box from "@mui/material/Box";
 import { NavLink } from "react-router-dom";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 import "@fontsource/shrikhand";
 import "./header.css";
 import { MainContext } from "../../context/MainContext";
+
+
+
+
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+    color: "white"
+  },
+});
 
 export default function Header() {
   const [user, setUser, loading] = useContext(MainContext);
@@ -45,6 +56,7 @@ export default function Header() {
 
   return (
     <>
+      <ThemeProvider theme={darkTheme}>
       {loading ? (
         <h1>Loading</h1>
       ) : (
@@ -125,6 +137,7 @@ export default function Header() {
           <Box name="username" label="Username" variant="standard" />
         </div>
       )}
+      </ThemeProvider>
     </>
   );
 }

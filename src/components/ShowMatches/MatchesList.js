@@ -9,6 +9,15 @@ import { axiosPublic } from "../../util/axiosConfig";
 import MatchCard from "../ShowMatches/MatchCard";
 import { MainContext } from "../../context/MainContext";
 import Alert from "@mui/material/Alert";
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+    color: "white"
+  },
+});
+
 
 const MatchList = (props) => {
   const [user, setUser, loading, setLoading, selectedUser, setSelectedUser] =
@@ -40,6 +49,7 @@ const MatchList = (props) => {
         </>
       ) : (
         <>
+        <ThemeProvider theme={darkTheme}>
           {showCard ? (
             <MatchCard />
           ) : (
@@ -84,9 +94,9 @@ const MatchList = (props) => {
               <Footer />
             </>
           )}
+    </ThemeProvider>
         </>
       )}
-      
     </>
   );
 };

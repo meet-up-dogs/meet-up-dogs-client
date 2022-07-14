@@ -9,7 +9,6 @@ import Radio from "@mui/material/Radio";
 import { useState, useContext } from "react";
 import { Outlet } from "react-router-dom";
 import InputLabel from "@mui/material/InputLabel";
-import IconButton from "@mui/material/IconButton";
 import { TextField } from "@material-ui/core";
 import Select from "@mui/material/Select";
 import { axiosPublic } from "../../util/axiosConfig";
@@ -17,11 +16,10 @@ import Map from "../Map/Map";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Compress from "react-image-file-resizer";
-import Toolbar from "@mui/material/Toolbar";
-import AccountCircle from "@mui/icons-material/AccountCircle";
 import { MainContext } from "../../context/MainContext";
 import "./userProfil.css";
 import SyncLoader from "react-spinners/SyncLoader";
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 const override = {
   display: "flex",
@@ -30,6 +28,15 @@ const override = {
   margin: "20rem auto",
   borderColor: "black",
 };
+
+
+
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+});
+
 
 export default function UserProfil(props) {
   const [bottomLeft, setBottomLeft] = useState({});
@@ -174,6 +181,7 @@ export default function UserProfil(props) {
         />
       ) : (
         <>
+        <ThemeProvider theme={darkTheme}>
           <Header />
           <form
             action="/userprofil"
@@ -185,7 +193,7 @@ export default function UserProfil(props) {
             className="userProfilForm"
           >
             <FormControl>
-              <FormLabel id="demo-radio-buttons-group-label">Gender</FormLabel>
+              <FormLabel id="demo-radio-buttons-group-label" style={{color: "darkgreen"}}>Gender</FormLabel>
               <RadioGroup
                 className="gender"
                 aria-label="demo-radio-buttons-group-label"
@@ -207,26 +215,26 @@ export default function UserProfil(props) {
                 <FormControlLabel
                   className="gender-item"
                   value="female"
-                  control={<Radio />}
+                  control={<Radio style={{color: "darkgreen"}}/>}
                   label="Female"
                 />
                 <FormControlLabel
                   className="gender-item"
                   value="male"
-                  control={<Radio />}
+                  control={<Radio style={{color: "darkgreen"}}/>}
                   label="Male"
                 />
                 <FormControlLabel
                   className="gender-item"
                   value="other"
-                  control={<Radio />}
+                  control={<Radio style={{color: "darkgreen"}}/>}
                   label="Other"
                 />
               </RadioGroup>
             </FormControl>
 
-            <FormControl>
-              <InputLabel id="demo-simple-select-autowidth-label">
+            <FormControl  className="lg">
+              <InputLabel id="demo-simple-select-autowidth-label"  style={{color: "darkgreen" }}>
                 Languages
               </InputLabel>
               <Select
@@ -242,18 +250,17 @@ export default function UserProfil(props) {
                 }}
                 autoWidth
                 label="Languages"
+                className="lg"
               >
-                <MenuItem value="">
-                  <em>None</em>
-                </MenuItem>
-                <MenuItem value={"En"}>English</MenuItem>
+              
+                <MenuItem value={"En"} >English</MenuItem>
                 <MenuItem value={"Ge"}>German</MenuItem>
                 <MenuItem value={"Tr"}>Turkey</MenuItem>
               </Select>
             </FormControl>
 
             <FormControl>
-              <InputLabel id="demo-simple-select-autowidth-label">
+              <InputLabel id="demo-simple-select-autowidth-label" style={{color: "darkgreen" }}>
                 Dog Breed
               </InputLabel>
               <Select
@@ -266,9 +273,7 @@ export default function UserProfil(props) {
                 autoWidth
                 label="Dog Breed"
               >
-                <MenuItem value="">
-                  <em>None</em>
-                </MenuItem>
+  
                 <MenuItem value={"Akita"}>Akita</MenuItem>
                 <MenuItem value={"Chinook"}>Chinook</MenuItem>
                 <MenuItem value={"Drever"}>Drever</MenuItem>
@@ -276,7 +281,7 @@ export default function UserProfil(props) {
             </FormControl>
 
             <FormControl>
-              <InputLabel id="weekDay">Week Day</InputLabel>
+              <InputLabel id="weekDay" style={{color: "darkgreen" }}>Week Day</InputLabel>
               <Select
                 labelId="weekDay"
                 id="weekDay"
@@ -301,7 +306,7 @@ export default function UserProfil(props) {
             </FormControl>
 
             <FormControl>
-              <InputLabel id="timeDay">Time Of Day</InputLabel>
+              <InputLabel id="timeDay" style={{color: "darkgreen" }}>Time Of Day</InputLabel>
               <Select
                 labelId="timeDay"
                 id="demo-simple-select-autowidth"
@@ -318,10 +323,10 @@ export default function UserProfil(props) {
                 autoWidth
                 label="Time Slot"
               >
-                <MenuItem value={"noon"}>noon</MenuItem>
-                <MenuItem value={"in the evening"}>in the evening</MenuItem>
-                <MenuItem value={"morning"}>morning</MenuItem>
-                <MenuItem value={"evening"}>evening</MenuItem>
+                <MenuItem value={"noon"}>Noon</MenuItem>
+                <MenuItem value={"in the evening"}>in the Evening</MenuItem>
+                <MenuItem value={"morning"}>Morning</MenuItem>
+                <MenuItem value={"evening"}>Evening</MenuItem>
               </Select>
             </FormControl>
             {/* <input type="file" accept="image/*"  /> */}
@@ -329,7 +334,9 @@ export default function UserProfil(props) {
               variant="contained"
               component="label"
               onChange={handleUpload}
-              color="success"
+              style={{
+                backgroundColor: "darkgreen",
+              }}
             >
               {uploadText}
               <input type="file" onChange={onFileResize} hidden />
@@ -356,13 +363,14 @@ export default function UserProfil(props) {
               type="submit"
               variant="contained"
               style={{
-                backgroundColor: "#9CDE4E",
+                backgroundColor: "darkgreen",
               }}
             >
               Save Profil
             </Button>
           </form>
           <Footer />
+          </ThemeProvider>
         </>
       )}
     </>

@@ -2,6 +2,15 @@ import Header from '../Header/Header.js';
 import Footer from '../Footer/Footer.js';
 import Container from '@mui/material/Container';
 import "@fontsource/shrikhand";
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+    color: "white"
+  },
+});
+
 
 
 const Imprint = () => {
@@ -27,8 +36,8 @@ const Imprint = () => {
 
     <>
 
+      <ThemeProvider theme={darkTheme}>
       <Header />
-
       <Container maxWidth="sm" style={styles.container}>
 
         <h2 style={styles.header}>Impressung für private Homepage</h2>
@@ -43,6 +52,7 @@ const Imprint = () => {
       </Container>
 
       <Footer />
+      </ThemeProvider>
     </>
   );
 };

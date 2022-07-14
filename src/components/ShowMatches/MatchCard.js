@@ -64,7 +64,7 @@ const MatchCard = (props) => {
       ) : (
         <>
           <Header />
-          <button className="back" onClick={()=>{document.location.reload()}}><ArrowBackIosNewIcon></ArrowBackIosNewIcon></button>
+          <div className="back" onClick={()=>{document.location.reload()}}><ArrowBackIosNewIcon></ArrowBackIosNewIcon></div>
           <main className="match-card">
             <img src={selectedUser.userImage} alt="" className="match-img" />
             <div className="match-container">
@@ -85,7 +85,7 @@ const MatchCard = (props) => {
                       favToggle();
                     }}
                     aria-label="delete"
-                    color="primary"
+                    style={{color: "darkgreen"}}
                   >
                     <FavoriteBorderIcon></FavoriteBorderIcon>
                   </IconButton>
@@ -96,7 +96,7 @@ const MatchCard = (props) => {
                       favToggle();
                     }}
                     aria-label="delete"
-                    color="primary"
+                    style={{color: "darkgreen"}}
                   >
                     <FavoriteIcon></FavoriteIcon>
                   </IconButton>

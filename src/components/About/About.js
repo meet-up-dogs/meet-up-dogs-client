@@ -24,7 +24,7 @@ export default function About(props) {
       marginTop: "10%",
     },
     media: {
-      height: "800",
+      height: "400",
       width: "200",
       margin: "0 auto",
     },

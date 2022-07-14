@@ -10,6 +10,7 @@
 .userProfilForm > label {
   margin: 0.4rem auto;
   width: 100%;
+  background-color: rgb(rgb(5, 95, 0), green, blue);
 }
 
 .userProfilForm .text-field {
@@ -22,6 +23,26 @@
 
 .userProfilForm button {
   margin: 1rem 0;
+}
+
+
+/* .lg:active {
+  border-color: darkgreen !important;
+  color: red;
+}
+
+.lg {
+  border-color: darkgreen;
+} */
+
+/* 
+die Farbe vom Border hätte besser geändert werden können aber gab es keine bessere Lösung dafür
+*/
+.css-1vrqiqu-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: darkgreen !important;
+}
+a{
+color: aliceblue;
 }
 /* 
 .gender {

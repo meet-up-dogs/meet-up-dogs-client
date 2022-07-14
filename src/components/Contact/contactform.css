@@ -20,6 +20,12 @@
   margin-bottom: 1.6rem;
 }
 
+.bg-blue-500{
+  background-color: darkgreen;
+  padding: 5px;
+  border-radius: 10% !important;
+}
+
 /* .msg > div:first-child {
   text-align: center;
 } */
