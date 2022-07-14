@@ -21,13 +21,19 @@ const Imprint = () => {
       marginTop: "20vh",
       marginBottom: "20vh",
       height: "max-content",
+      width: "70vw",
       backgroundColor: "#eee",
-      color: '#2b2b2b'
+      color: '#2b2b2b',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
     },
     header: {
       fontFamily: 'shrikhand',
+      color: '#2B2B2B',
       marginBottom: '1rem',
-      textAlign: 'left',
+      textAlign: 'center',
 
     }
   }
@@ -37,21 +43,23 @@ const Imprint = () => {
     <>
 
       <ThemeProvider theme={darkTheme}>
-      <Header />
-      <Container maxWidth="sm" style={styles.container}>
+        <Header />
 
-        <h2 style={styles.header}>Impressung für private Homepage</h2>
+        <Container maxWidth="sm" classList="imprint-container" style={styles.container}>
 
-        <p>Anbieter dieser Internetseite ist:</p>
-        <p>Eveline Klieber</p>
-        <p>St. Valentin 12</p>
-        <p>83324 Ruhpolding</p>
-        <p>Telefon:(0151)59496927</p>
-        <p>Email:meetupdogs@gmail.com</p>
-        <p>Inhaltlich Verantwortlicher gemäß § 18 Abs. 2 MStV: Eveline Klieber</p>
-      </Container>
+          <h4 classList="imprint-header" style={styles.header} >Impressung für private Homepage </h4>
+          <br></br>
+          <p>Anbieter dieser Internetseite ist:</p>
+          <p>Eveline Klieber</p>
+          <p>St. Valentin 12</p>
+          <p>83324 Ruhpolding</p>
+          <p>Telefon:(0151)59496927</p>
+          <p>Email:meetupdogs@gmail.com</p>
+          <br></br>
+          <p>Inhaltlich Verantwortlicher gemäß § 18 Abs. 2 MStV: Eveline Klieber</p>
+        </Container>
 
-      <Footer />
+        <Footer />
       </ThemeProvider>
     </>
   );

@@ -3,7 +3,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  padding-top: 62vh;
+  /* padding-top: 62vh; */
   flex-direction: column;
   width: 40vw;
   color: '#2B2B2B';
@@ -11,6 +11,17 @@
 }
 
 .body-login {
+  background-image: url(../images/happydog.jpg); 
+  height: 100vh;
+  width: 100vw;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: "Shrikhand";
+  color: #2B2B2B 
+}
+
+/* body {
   background-image: url(../images/happydog.jpg);
   height: 100vh;
   width: 100vw;
@@ -19,5 +30,23 @@
   background-size: cover;
   font-family: "Shrikhand";
   color: #2B2B2B
-}
 
+} */
+
+
+@media only screen and (max-width: 1200px){
+  .loginForm {
+    width: 55vw;
+  }
+}
+@media only screen and (max-width: 600px){
+  .loginForm {
+    width: 80vw;
+  }
+}
+@media only screen and (max-width: 425px){
+
+  .loginForm {
+    width: 100vw;
+  }
+}
