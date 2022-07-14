@@ -12,15 +12,16 @@
   margin: 0px auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
   color: "#2B2B2B";
   font-family: "Shrikhand";
-  width: 100vw;
+  width: 400px;
 }
 
-.loginForm > form * {
+.loginForm > form > * {
   width: 100%;
+  margin-bottom: 1rem;
 }
 
 .background {

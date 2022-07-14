@@ -67,7 +67,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<ContactForm />} />
           <Route path="/imprint" element={<Imprint />} />
-          <Route path="/signup" element={<SignUp />} />
+          {/* <Route path="/signup" element={<SignUp />} /> */}
           <Route path="/matcheslist" element={<MatchesList />} />
           <Route path="/chatHistory" element={<ChatHistory />} />
           {/* <Route path="/matchcard" element={<MatchCard />} /> */}
@@ -76,7 +76,7 @@ function App() {
         </Routes>
       </MainContextProvider>
     </div>
-  )
+  );
 }
 
 export default App;

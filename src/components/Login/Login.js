@@ -127,7 +127,6 @@ const Login = () => {
                   })
                 }
               />
-              <br /> <br />
               <TextField
                 name="password"
                 label="Password"
@@ -138,7 +137,6 @@ const Login = () => {
                   setInputLogin({ ...inputLogin, password: e.target.value })
                 }
               />
-              <br />
               <Button
                 type="submit"
                 variant="contained"

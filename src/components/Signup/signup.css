@@ -12,23 +12,24 @@
   margin: 0px auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
   color: "#2B2B2B";
   font-family: "Shrikhand";
-  /* width: 80vw; */
+  width: 400px;
 }
 
-.signupForm > form * {
+.signupForm > form > * {
   width: 100%;
+  margin-bottom: 1rem;
 }
 
-.background {
+.body-signup .background {
   display: flex;
   justify-content: center;
   align-items: end;
   height: 100vh;
-  padding-bottom: 7vh;
+  padding-bottom: 6vh;
 }
 
 /* body {

@@ -25,7 +25,6 @@
   margin: 1rem 0;
 }
 
-
 /* .lg:active {
   border-color: darkgreen !important;
   color: red;
@@ -38,11 +37,12 @@
 /* 
 die Farbe vom Border hätte besser geändert werden können aber gab es keine bessere Lösung dafür
 */
-.css-1vrqiqu-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+.css-1vrqiqu-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root.Mui-focused
+  .MuiOutlinedInput-notchedOutline {
   border-color: darkgreen !important;
 }
-a{
-color: aliceblue;
+a {
+  color: aliceblue;
 }
 /* 
 .gender {
