@@ -17,3 +17,11 @@
 a {
   text-decoration: none;
 }
+
+a:hover {
+  color: #fff;
+}
+
+.active {
+  color: #9cde4e !important;
+}

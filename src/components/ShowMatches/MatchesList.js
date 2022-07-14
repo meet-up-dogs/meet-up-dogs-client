@@ -8,6 +8,7 @@ import FavoriteButton from "./FavoriteButton.js";
 import { axiosPublic } from "../../util/axiosConfig";
 import MatchCard from "../ShowMatches/MatchCard";
 import { MainContext } from "../../context/MainContext";
+import Alert from "@mui/material/Alert";
 
 const MatchList = (props) => {
   const [user, setUser, loading, setLoading, selectedUser, setSelectedUser] =
@@ -31,9 +32,10 @@ const MatchList = (props) => {
       {matchUsers.length === 0 ? (
         <>
           <Header />
-          <h2 style={{ marginTop: "10rem" }}>
-            unfortunately there are no hits for your area
-          </h2>
+
+        <div className="alert-no-matches">
+          <Alert severity="warning">unfortunately there are no hits for your area!</Alert>
+          </div>
           <Footer />
         </>
       ) : (
