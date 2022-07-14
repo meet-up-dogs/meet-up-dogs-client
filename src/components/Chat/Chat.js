@@ -9,8 +9,8 @@ import { useNavigate } from "react-router-dom";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import Header from "../Header/Header.js";
 
-// const socket = io.connect("https://meet-up-dog.herokuapp.com");
-const socket = io.connect("http://localhost:8080");
+const socket = io.connect("https://meet-up-dog.herokuapp.com");
+// const socket = io.connect("http://localhost:8080");
 
 export default function Chat() {
   const [user, setUser, loading, setLoading, selectedUser, setSelectedUser] =
@@ -62,23 +62,21 @@ export default function Chat() {
     <>
       <Header />
       <div className="chat">
-       
-        
         <Form className="d-flex flex-column m-2 justify-content-center">
-        <div
-          className="back-btn"
-          onClick={() => {
-            console.log("naaaaaaaaavi");
-            if (document.location.pathname === "/chatHistory") {
-              document.location.reload();
-            } else {
-              navigate("/chatHistory");
-            }
-          }}
-        >
-          <ArrowBackIosNewIcon></ArrowBackIosNewIcon>
-        </div>
-        <h2 className="chat-title">Chat {room}</h2>
+          <div
+            className="back-btn"
+            onClick={() => {
+              console.log("naaaaaaaaavi");
+              if (document.location.pathname === "/chatHistory") {
+                document.location.reload();
+              } else {
+                navigate("/chatHistory");
+              }
+            }}
+          >
+            <ArrowBackIosNewIcon></ArrowBackIosNewIcon>
+          </div>
+          <h2 className="chat-title">Chat {room}</h2>
           <Form.Group className="d-flex flex-column  w-100 messages-box">
             {conversation?.map((con) =>
               con.sentBy === user.username ? (
@@ -110,5 +108,5 @@ export default function Chat() {
         </Form>
       </div>
     </>
-  )
+  );
 }
