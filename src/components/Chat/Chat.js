@@ -9,8 +9,8 @@ import { useNavigate } from "react-router-dom";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import Header from "../Header/Header.js";
 
-const socket = io.connect("https://meet-up-dogs.herokuapp.com");
-// const socket = io.connect("http://localhost:8080");
+// const socket = io.connect("https://meet-up-dogs.herokuapp.com");
+const socket = io.connect("http://localhost:8080");
 
 export default function Chat() {
   const [user, setUser, loading, setLoading, selectedUser, setSelectedUser] =

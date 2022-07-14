@@ -52,9 +52,9 @@ const Login = () => {
     // Info: alert is bad practise here!
     // }
     try {
-      // const resp = await fetch("http://localhost:8080/login", {
-      console.log("https://meet-up-dogs.herokuapp.com/");
-      const resp = await fetch("https://meet-up-dogs.herokuapp.com/login", {
+      const resp = await fetch("http://localhost:8080/login", {
+        // console.log("https://meet-up-dogs.herokuapp.com/");
+        // const resp = await fetch("https://meet-up-dogs.herokuapp.com/login", {
         method: "POST",
 
         credentials: "include",

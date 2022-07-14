@@ -1,14 +1,3 @@
-#signUpForm {
-  margin: 0px auto;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  flex-direction: column;
-  padding-top: 62vh;
-  width: 40vw;
-}
-
-
 .body-signup {
   background-image: url(../images/happydog.jpg);
   height: 100vh;
@@ -17,5 +6,55 @@
   background-repeat: no-repeat;
   background-size: cover;
   font-family: "Shrikhand";
-  color: #2B2B2B
+  color: #2b2b2b;
 }
+.signupForm {
+  margin: 0px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: "#2B2B2B";
+  font-family: "Shrikhand";
+  /* width: 80vw; */
+}
+
+.signupForm > form * {
+  width: 100%;
+}
+
+.background {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  height: 100vh;
+  padding-bottom: 7vh;
+}
+
+/* body {
+  background-image: url(../images/happydog.jpg);
+  height: 100vh;
+  width: 100vw;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: "Shrikhand";
+  color: #2B2B2B
+
+} */
+
+/* @media only screen and (max-width: 1200px) {
+  .loginForm {
+    width: 55vw;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .loginForm {
+    width: 80vw;
+  }
+}
+@media only screen and (max-width: 425px) {
+  .loginForm {
+    width: 100vw;
+  }
+} */

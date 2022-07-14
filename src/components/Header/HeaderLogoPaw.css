@@ -1,33 +1,22 @@
-figure {
-  position: relative;
-}
-
-
 .logo-paw {
-  /* width: 50vw; */
-  height: 20vh;
+  max-width: 70vw;
+
+  /* height: 20vh; */
   position: absolute;
-  top: 0vh;
-  right:1rem;
+  top: 2rem;
+  right: 1rem;
 }
 
-.logo-script {
-  width: 40vw;
-  position: absolute;
-  top: 0vh;
-  left: 0.5vw;
-}
-
-@media screen and (max-width: 413px) {
+/* @media screen and (min-width: 413px) {
   .logo-paw {
     height: 30vh;
     position: absolute;
     top: 5vh;
     right: 5vw;
   }
-}
+}  */
 
-@media screen and (min-width: 768px) {
+/* @media screen and (min-width: 768px) {
   .logo-paw {
     height: 50vh;
     position: absolute;
@@ -43,4 +32,4 @@ figure {
     top: 0vh;
     right: 0vw;
   }
-}
+} */

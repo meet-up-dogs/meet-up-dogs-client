@@ -57,69 +57,75 @@ const SignUp = () => {
     <>
       <div className="body-signup">
         <HeaderLogoPaw />
-        <form
-          action="/signup"
-          method="post"
-          id="signUpForm"
-          onSubmit={(e) => {
-            signUpHandler(e);
-          }}
-        >
-          <h2 style={{ color: "#2B2B2B", fontFamily: "Shrikhand" }}>Sign Up</h2>
-          {isError ? <Alert severity="error">{isError}</Alert> : null}
-          <TextField
-            name="username"
-            label="Username"
-            variant="filled"
-            required
-            sx={margin}
-            value={inputSignUp.username}
-            onChange={(e) =>
-              setInputSignUp({
-                ...inputSignUp,
-                username: e.target.value.toLocaleLowerCase(),
-              })
-            }
-          />
-          <TextField
-            name="email"
-            label="E-Mail"
-            variant="filled"
-            required
-            value={inputSignUp.email}
-            sx={margin}
-            onChange={(e) =>
-              setInputSignUp({
-                ...inputSignUp,
-                email: e.target.value.toLocaleLowerCase(),
-              })
-            }
-          />
-          <TextField
-            name="password"
-            label="Password"
-            variant="filled"
-            required
-            value={inputSignUp.password}
-            sx={margin}
-            onChange={(e) =>
-              setInputSignUp({ ...inputSignUp, password: e.target.value })
-            }
-          />
-          <Button
-            type="submit"
-            variant="contained"
-            style={{
-              color: "#f7f9ef",
-              fontFamily: "Shrikhand",
-              backgroundColor: "#2B2B2B",
-              marginTop: "1rem",
-              padding: "0.5rem",
-            }}
-          >
-            Sign Up
-          </Button>
-        </form>
+
+        <div className="background">
+          <div className="signupForm">
+            <form
+              action="/login"
+              method="post"
+              onSubmit={(e) => {
+                signUpHandler(e);
+              }}
+            >
+              <h2 style={{ color: "#2B2B2B", fontFamily: "Shrikhand" }}>
+                Sign Up
+              </h2>
+              {isError ? <Alert severity="error">{isError}</Alert> : null}
+              <TextField
+                name="username"
+                label="Username"
+                variant="filled"
+                required
+                sx={margin}
+                value={inputSignUp.username}
+                onChange={(e) =>
+                  setInputSignUp({
+                    ...inputSignUp,
+                    username: e.target.value.toLocaleLowerCase(),
+                  })
+                }
+              />
+              <TextField
+                name="email"
+                label="E-Mail"
+                variant="filled"
+                required
+                value={inputSignUp.email}
+                sx={margin}
+                onChange={(e) =>
+                  setInputSignUp({
+                    ...inputSignUp,
+                    email: e.target.value.toLocaleLowerCase(),
+                  })
+                }
+              />
+              <TextField
+                name="password"
+                label="Password"
+                variant="filled"
+                required
+                value={inputSignUp.password}
+                sx={margin}
+                onChange={(e) =>
+                  setInputSignUp({ ...inputSignUp, password: e.target.value })
+                }
+              />
+              <Button
+                type="submit"
+                variant="contained"
+                style={{
+                  color: "#f7f9ef",
+                  fontFamily: "Shrikhand",
+                  backgroundColor: "#2B2B2B",
+                  marginTop: "1rem",
+                  padding: "0.5rem",
+                }}
+              >
+                Sign Up
+              </Button>
+            </form>
+          </div>
+        </div>
       </div>
     </>
   );
