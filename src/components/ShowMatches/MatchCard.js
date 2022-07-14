@@ -74,6 +74,8 @@ const MatchCard = (props) => {
                 {selectedUser.description}
               </p>
               <p>Gender:{selectedUser.gender}</p>
+              <p>Language: {selectedUser.language}</p>
+              <p>Availability: {selectedUser.availability.weekDay} {selectedUser.availability.dayTime}</p>
               <div className="btns">
                 <button onClick={() => setIsOpenChat(true)}>
                   <ChatIcon />

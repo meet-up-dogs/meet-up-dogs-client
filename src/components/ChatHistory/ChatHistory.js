@@ -105,6 +105,7 @@ export default function ChatHistory(props) {
           ) : (
             <>
               <Header />
+              <br />
               <div className="chats-container">
                 {chats.map((chat) => {
                   const user = findUser(chat.roomId);

@@ -18,7 +18,7 @@ const Imprint = () => {
   const styles = {
 
     container: {
-      marginTop: "20vh",
+      marginTop: "4rem",
       marginBottom: "20vh",
       height: "max-content",
       backgroundColor: "#eee",
@@ -38,6 +38,7 @@ const Imprint = () => {
 
       <ThemeProvider theme={darkTheme}>
       <Header />
+      <br></br>
       <Container maxWidth="sm" style={styles.container}>
 
         <h2 style={styles.header}>Impressung für private Homepage</h2>
