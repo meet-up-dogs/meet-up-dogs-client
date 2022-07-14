@@ -68,7 +68,12 @@ export default function Chat() {
         <div
           className="back-btn"
           onClick={() => {
-            navigate("/chatHistory");
+            console.log("naaaaaaaaavi");
+            if (document.location.pathname === "/chatHistory") {
+              document.location.reload();
+            } else {
+              navigate("/chatHistory");
+            }
           }}
         >
           <ArrowBackIosNewIcon></ArrowBackIosNewIcon>

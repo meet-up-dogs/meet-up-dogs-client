@@ -8,7 +8,6 @@
   right: 0;
   z-index: 10;
   margin-bottom: 100px;
- 
 }
 
 .navlink {
@@ -22,4 +21,7 @@ a {
 
 .user-image {
   border-radius: 50%;
+}
+.MuiSwitch-track {
+  background-color: #9cde4e !important;
 }
