@@ -39,7 +39,7 @@ die Farbe vom Border hätte besser geändert werden können aber gab es keine be
 */
 .css-1vrqiqu-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root.Mui-focused
   .MuiOutlinedInput-notchedOutline {
-  border-color: darkgreen !important;
+  border-color: #9CDE4E !important;
 }
 a {
   color: aliceblue;

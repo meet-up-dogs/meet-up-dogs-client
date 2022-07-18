@@ -47,3 +47,11 @@
   font-size: 0.6rem;
   align-self: flex-end;
 }
+
+
+.alert-no-chats {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

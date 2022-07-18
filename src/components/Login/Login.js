@@ -115,7 +115,7 @@ const Login = () => {
               <h2 style={{ color: "#2B2B2B", fontFamily: "Shrikhand" }}>
                 Login
               </h2>
-              <TextField
+              <TextField style={{ color: "green", fontFamily: "Shrikhand" }}
                 name="email"
                 label="E-Mail"
                 variant="filled"

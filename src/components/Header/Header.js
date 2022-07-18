@@ -106,7 +106,7 @@ export default function Header() {
                   sx={{ flexGrow: 1 }}
                   style={{ fontFamily: "Shrikhand" }}
                 >
-                  {`Hello ${user.username}`}
+                  {user.username}
                 </Typography>
 
                 <FormControlLabel
@@ -120,6 +120,7 @@ export default function Header() {
                       aria-label="login switch"
                     />
                   }
+                  style={{fontFamily: 'Roboto sans-serif'}}
                   label={login ? "Logout" : "Login"}
                 />
                 {user.userImage ? (

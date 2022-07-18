@@ -124,7 +124,7 @@ export default function ContactForm(props) {
             <form action={FORM_ENDPOINT} onSubmit={handleSubmit} method="POST" target="_blank" className="contact-form">
                 <div className="mb-3 pt-0">
 
-                    <input
+                    <input style={{fontFamily: 'Roboto sans-serif'}}
 
                         type="text"
                         value={user.username}
@@ -139,7 +139,7 @@ export default function ContactForm(props) {
 
                 <div className="mb-3 pt-0">
 
-                    <input
+                    <input style={{fontFamily: 'Roboto sans-serif'}}
 
                         type="email"
 
@@ -157,7 +157,7 @@ export default function ContactForm(props) {
 
                 <div className="mb-3 pt-0">
 
-                    <textarea
+                    <textarea style={{fontFamily: 'Roboto sans-serif'}}
 
                         placeholder="Your message"
 
@@ -175,7 +175,7 @@ export default function ContactForm(props) {
 
                     <button
                         className="bg-blue-500 text-white active:bg-blue-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                        type="submit"
+                        type="submit" style={{fontFamily: 'Roboto sans-serif'}}
                     >
 
                         Send a message

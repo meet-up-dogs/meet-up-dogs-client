@@ -25,3 +25,7 @@ a {
 .MuiSwitch-track {
   background-color: #9cde4e !important;
 }
+
+.css-ahj2mt-MuiTypography-root {
+  font-family: 'Roboto', 'sans-serif' !important;
+}

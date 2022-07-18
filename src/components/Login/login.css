@@ -32,6 +32,19 @@
   padding-bottom: 7vh;
 }
 
+/* .css-10botns-MuiInputBase-input-MuiFilledInput-input:focus{
+  border-color: #9CDE4E !important;
+} */
+
+
+.css-o943dk-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+  color: #2b2b2b !important;
+}
+
+.css-19mk8g1-MuiInputBase-root-MuiFilledInput-root::after {
+  border-bottom: #2b2b2b !important;
+}
+
 /* body {
   background-image: url(../images/happydog.jpg);
   height: 100vh;

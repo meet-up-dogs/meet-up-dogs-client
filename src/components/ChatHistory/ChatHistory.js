@@ -8,6 +8,7 @@ import { axiosPublic } from "../../util/axiosConfig";
 import "./chatHistory.css";
 import { MainContext } from "../../context/MainContext";
 import SyncLoader from "react-spinners/SyncLoader";
+import Alert from "@mui/material/Alert";
 
 const override = {
   display: "flex",
@@ -94,50 +95,67 @@ export default function ChatHistory(props) {
     // setTimeout(() => setLoading(false), 2000);
   }, []);
 
+  console.log('chats-length', chats.length)
+
   return (
     <>
       {loading ? (
         <SyncLoader />
       ) : (
         <>
-          {isChatOpen ? (
-            <Chat />
-          ) : (
+          {chats.length === 0 ? (
             <>
               <Header />
-              <br />
-              <div className="chats-container">
-                {chats.map((chat) => {
-                  const user = findUser(chat.roomId);
-                  return (
-                    <div
-                      key={user?.username}
-                      className="chat-card"
-                      onClick={() => {
-                        setIsChatOpen(true);
-                        setSelectedUser(user);
-                      }}
-                    >
-                      <img src={user?.userImage} alt="" />
-                      <aside>
-                        <p className="name">{user?.username}</p>
-                        <p className="message">
-                          {chat.chat[chat.chat.length - 1].msg
-                            .split(" ")
-                            .splice(0, 3)
-                            .join(" ")}
-                        </p>
-                      </aside>
-                      <span>{displayTime(chat.sentAt)}</span>
-                    </div>
-                  );
-                })}
+              <div className="alert-no-chats">
+                <Alert severity="warning">you have no chats yet!</Alert>
               </div>
               <Footer />
             </>
+          ) : (
+            <>
+              {isChatOpen ? (
+                <Chat />
+
+              ) : (
+                <>
+                  <Header />
+                  <br />
+                  <div className="chats-container">
+                    {chats.map((chat) => {
+                      const user = findUser(chat.roomId);
+                      return (
+                        <div
+                          key={user?.username}
+                          className="chat-card"
+                          onClick={() => {
+                            setIsChatOpen(true);
+                            setSelectedUser(user);
+                          }}
+                        >
+                          <img src={user?.userImage} alt="" />
+                          <aside>
+                            <p className="name">{user?.username}</p>
+                            <p className="message">
+                              {chat.chat[chat.chat.length - 1].msg
+                                .split(" ")
+                                .splice(0, 3)
+                                .join(" ")}
+                            </p>
+                          </aside>
+                          <span>{displayTime(chat.sentAt)}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                  <Footer />
+                </>
+              )}
+            </>
           )}
+
         </>
       )}
     </>
+
   );
 }

@@ -1,6 +1,6 @@
 .contact-form {
   height: 100vh;
-
+  font-family: "Roboto", sans-serif !important;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,7 +18,13 @@
 
 .msg > * {
   margin-bottom: 1.6rem;
+  font-family: "Roboto", sans-serif !important;
 }
+
+.mb-3-pt-0 {
+  font-family: "Roboto", sans-serif !important;
+}
+
 
 .bg-blue-500{
   background-color: darkgreen;
