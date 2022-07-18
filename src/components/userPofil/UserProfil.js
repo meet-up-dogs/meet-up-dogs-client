@@ -349,6 +349,7 @@ export default function UserProfil(props) {
                 style={{
                   backgroundColor: "darkgreen",
                 }}
+                className="img-btn"
               >
                 {uploadText}
                 <input type="file" onChange={onFileResize} hidden />
@@ -373,10 +374,12 @@ export default function UserProfil(props) {
               <Outlet />
               <Button
                 type="submit"
-                variant="contained"
+                component="label"
                 style={{
                   backgroundColor: "darkgreen",
+                  color: "black"
                 }}
+                className="save-btn"
               >
                 Save Profil
               </Button>
