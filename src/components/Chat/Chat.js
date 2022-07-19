@@ -13,8 +13,16 @@ import Header from "../Header/Header.js";
 const socket = io.connect("http://localhost:8080");
 
 export default function Chat() {
-  const [user, setUser, loading, setLoading, selectedUser, setSelectedUser] =
-    useContext(MainContext);
+  const [
+    user,
+    setUser,
+    loading,
+    setLoading,
+    selectedUser,
+    setSelectedUser,
+    notifications,
+    setNotifications,
+  ] = useContext(MainContext);
 
   const navigate = useNavigate();
   const room = [
@@ -60,7 +68,7 @@ export default function Chat() {
   };
   return (
     <>
-      <Header />
+      <Header conversation={conversation} />
       <div className="chat">
         <Form className="d-flex flex-column m-2 justify-content-center">
           <div

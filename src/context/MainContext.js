@@ -7,6 +7,7 @@ export const MainContextProvider = (props) => {
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState({});
   const [selectedUser, setSelectedUser] = useState({});
+  const [notifications, setNotifications] = useState("");
 
   useEffect(() => {
     setLoading(true);
@@ -24,8 +25,6 @@ export const MainContextProvider = (props) => {
 
     getUser();
   }, []);
-  console.log(user.username);
-  // const [isLogin, setIsLogin] = useState(false);
   return (
     <MainContext.Provider
       value={[
@@ -35,6 +34,8 @@ export const MainContextProvider = (props) => {
         setLoading,
         selectedUser,
         setSelectedUser,
+        notifications,
+        setNotifications,
       ]}
     >
       {props.children}

@@ -27,6 +27,28 @@ a {
 }
 
 .css-ahj2mt-MuiTypography-root {
-  font-family: 'system-ui' !important;
+  font-family: "system-ui" !important;
   font-weight: bold !important;
+}
+.notification {
+  position: relative;
+  margin-right: 1.4rem;
+}
+
+.notification > span.noti {
+  position: absolute;
+  top: 0;
+  right: 0.2rem;
+  font-size: 0.6rem;
+  /* background-color: red; */
+  width: 50%;
+  height: 50%;
+  text-align: center;
+  border-radius: 50%;
+}
+
+.notification-item {
+  /* color: red; */
+  padding: 0.3rem;
+  margin: 0;
 }
