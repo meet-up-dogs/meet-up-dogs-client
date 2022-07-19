@@ -15,24 +15,29 @@
 
 .userProfilForm .text-field {
   margin-top: 1rem;
+  font-family: system-ui !important;
+  font-weight: bold !important;
 }
 .userProfilForm .text-field > div {
   /* margin: 0; */
   padding: 0.5rem;
 }
 
+.css-12wi0s0-MuiButtonBase-root-MuiMenuItem-root {
+  font-family: system-ui !important;
+}
+
+.MuiInputBase-input.MuiOutlinedInput-input.MuiInputBase-inputMultiline.MuiOutlinedInput-inputMultiline {
+  font-family: system-ui !important;
+}
+
+.MuiSelect-select.MuiSelect-outlined.MuiOutlinedInput-input.MuiInputBase-input.css-v3zyv7-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+  font-family: system-ui !important;
+}
+
 .userProfilForm button {
   margin: 1rem 0;
 }
-
-/* .lg:active {
-  border-color: darkgreen !important;
-  color: red;
-}
-
-.lg {
-  border-color: darkgreen;
-} */
 
 /* 
 die Farbe vom Border hätte besser geändert werden können aber gab es keine bessere Lösung dafür
@@ -44,12 +49,12 @@ die Farbe vom Border hätte besser geändert werden können aber gab es keine be
 a {
   color: aliceblue;
 }
-/* 
-.gender {
-  display: flex;
-  color: red;
-} */
 
+
+button {
+  font-family: system-ui !important;
+  color: white;
+}
 
 @media only screen and (max-width: 2000px )  {
   .img-btn {

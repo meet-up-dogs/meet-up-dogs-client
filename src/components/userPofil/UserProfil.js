@@ -193,7 +193,7 @@ export default function UserProfil(props) {
               <FormControl>
                 <FormLabel
                   id="demo-radio-buttons-group-label"
-                  style={{ color: "darkgreen" }}
+                  style={{ color: "#4f850d", fontFamily: "system-ui", fontWeight: "bold", lineHeight: "1em" }}
                 >
                   Gender
                 </FormLabel>
@@ -214,24 +214,24 @@ export default function UserProfil(props) {
                     flexDirection: "row",
                     justifyContent: "space-evenly",
                   }}
-                  color="success"
+                  // color="#4f850d"
                 >
                   <FormControlLabel
                     className="gender-item"
                     value="female"
-                    control={<Radio style={{ color: "darkgreen" }} />}
+                    control={<Radio style={{ color: "#4f850d" }} />}
                     label="Female"
                   />
                   <FormControlLabel
                     className="gender-item"
                     value="male"
-                    control={<Radio style={{ color: "darkgreen" }} />}
+                    control={<Radio style={{ color: "#4f850d" }} />}
                     label="Male"
                   />
                   <FormControlLabel
                     className="gender-item"
                     value="other"
-                    control={<Radio style={{ color: "darkgreen" }} />}
+                    control={<Radio style={{ color: "#4f850d" }} />}
                     label="Other"
                   />
                 </RadioGroup>
@@ -240,7 +240,7 @@ export default function UserProfil(props) {
               <FormControl className="lg">
                 <InputLabel
                   id="demo-simple-select-autowidth-label"
-                  style={{ color: "darkgreen" }}
+                  style={{ color: "#4f850d", fontFamily: "system-ui", fontWeight: "bold" }}
                 >
                   Languages
                 </InputLabel>
@@ -268,7 +268,7 @@ export default function UserProfil(props) {
               <FormControl>
                 <InputLabel
                   id="demo-simple-select-autowidth-label"
-                  style={{ color: "darkgreen" }}
+                  style={{ color: "#4f850d", fontFamily: "system-ui", fontWeight: "bold" }}
                 >
                   Dog Breed
                 </InputLabel>
@@ -289,7 +289,7 @@ export default function UserProfil(props) {
               </FormControl>
 
               <FormControl>
-                <InputLabel id="weekDay" style={{ color: "darkgreen" }}>
+                <InputLabel id="weekDay" style={{ color: "#4f850d", fontFamily: "system-ui", fontWeight: "bold" }}>
                   Week Day
                 </InputLabel>
                 <Select
@@ -316,7 +316,7 @@ export default function UserProfil(props) {
               </FormControl>
 
               <FormControl>
-                <InputLabel id="timeDay" style={{ color: "darkgreen" }}>
+                <InputLabel id="timeDay" style={{ color: "#4f850d", fontFamily: "system-ui", fontWeight: "bold" }}>
                   Time Of Day
                 </InputLabel>
                 <Select
@@ -347,14 +347,17 @@ export default function UserProfil(props) {
                 component="label"
                 onChange={handleUpload}
                 style={{
-                  backgroundColor: "darkgreen",
+                  backgroundColor: "#4f850d", fontFamily: "system-ui", fontWeight: "bold", color: '#fff', textTransform: "lowercase"
                 }}
                 className="img-btn"
               >
                 {uploadText}
                 <input type="file" onChange={onFileResize} hidden />
               </Button>
-              {/* <input accept="image/*" type="file" /> */}
+
+              <InputLabel id="timeDay" style={{ color: "#4f850d", fontFamily: "system-ui", fontWeight: "bold", lineHeight: "1em" }}>
+              something about you and your dog
+               </InputLabel>
 
               <TextField
                 className="text-field"
@@ -364,6 +367,7 @@ export default function UserProfil(props) {
                 defaultValue={user.description}
                 rows="6"
                 rowsMax="6"
+                style={{ fontFamily: "system-ui !important", fontWeight: "bold",}}
                 onChange={(e) => {
                   setUserProfil({ ...userProfil, description: e.target.value });
                 }}
@@ -376,8 +380,7 @@ export default function UserProfil(props) {
                 type="submit"
                 component="label"
                 style={{
-                  backgroundColor: "darkgreen",
-                  color: "black"
+                  backgroundColor: "#4f850d", fontFamily: "system-ui", fontWeight: "bold", color: '#fff', textTransform: "lowercase"
                 }}
                 className="save-btn"
               >

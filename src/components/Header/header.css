@@ -27,5 +27,6 @@ a {
 }
 
 .css-ahj2mt-MuiTypography-root {
-  font-family: 'Roboto', 'sans-serif' !important;
+  font-family: 'system-ui' !important;
+  font-weight: bold !important;
 }

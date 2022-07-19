@@ -1,5 +1,5 @@
 import Alert from "@mui/material/Alert";
-
+import "./alert.css"
 
 const AlertComp  = (props) => {
 
@@ -7,7 +7,9 @@ const AlertComp  = (props) => {
 
   return (
     <>
-    <Alert onClose={() => {props.setAlertOn({status: false})}}  severity="error" >{props.alertOn.error} </Alert>
+    <Alert 
+    style={{fontFamiliy: "system-ui !important", fontWeight: "bold !important"}}
+    onClose={() => {props.setAlertOn({status: false})}}  severity="error" >{props.alertOn.error} </Alert>
 
     </>
   );

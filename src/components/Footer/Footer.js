@@ -13,7 +13,9 @@ const useStyles = makeStyles({
   root: {
     width: "100vw",
     backgroundColor: "#2B2B2B",
-    color: "white"
+    color: "white",
+    fontFamily: "system-ui !important",
+    fontWeight: "bold !important",
   },
 });
 
