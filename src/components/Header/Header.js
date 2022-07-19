@@ -10,28 +10,29 @@ import MenuIcon from "@mui/icons-material/Menu";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Box from "@mui/material/Box";
 import { NavLink } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { axiosPublic } from "../../util/axiosConfig";
+import Button from "@mui/material/Button";
+import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 
 import "@fontsource/shrikhand";
 import "./header.css";
 import { MainContext } from "../../context/MainContext";
 
-
-
-
 const darkTheme = createTheme({
   palette: {
-    mode: 'dark',
-    color: "white"
+    mode: "dark",
+    color: "white",
   },
 });
 
-export default function Header() {
-  const [user, setUser, loading] = useContext(MainContext);
-
+export default function Header({ conversation }) {
+  const [user, setUser, loading, setLoading, selectedUser, setSelectedUser] =
+    useContext(MainContext);
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [notifications, setNotifications] = useState();
 
   const handleMenu = (e) => {
     console.log("handleMenu", e);
@@ -41,6 +42,18 @@ export default function Header() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  //notification
+  const [anchorNotification, setAnchorNotification] = React.useState(null);
+  const open = Boolean(anchorNotification);
+  const handleClickNotification = (event) => {
+    setAnchorNotification(event.currentTarget);
+  };
+  const handleCloseNotification = () => {
+    setAnchorNotification(null);
+    setNotifications(null);
+  };
+
+  //^notification
 
   let loginVariable = true;
   const [login, setLogin] = useState(loginVariable);
@@ -54,91 +67,139 @@ export default function Header() {
     }
   };
 
+  // const getNotifications = async () => {
+  //   const resp = await axiosPublic.get("/getNotifications", {
+  //     withCredentials: true,
+  //   });
+  //   setNotifications(resp.data);
+  //   console.log(
+  //     "head!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+  //   );
+  // };
+  useEffect(() => {
+    // console.log();
+    setNotifications(user?.notifications);
+  }, [conversation, user?.notifications, user]);
+
+  console.log(notifications);
   return (
     <>
       <ThemeProvider theme={darkTheme}>
-      {loading ? (
-        <h1>Loading</h1>
-      ) : (
-        <div className="header">
-          <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static" style={{ background: "#2B2B2B" }}>
-              <Toolbar>
-                <IconButton
-                  size="large"
-                  edge="start"
-                  color="inherit"
-                  aria-label="menu"
-                  onClick={handleMenu}
-                >
-                  <MenuIcon />
-                </IconButton>
-                <Menu
-                  id="menu-appbar"
-                  anchorOrigin={{
-                    vertical: "top",
-                    horizontal: "left",
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                  open={Boolean(anchorEl)}
-                  onClose={handleClose}
-                >
-                  <MenuItem onClick={handleClose}>
-                    <NavLink to="/about"> About us</NavLink>
-                  </MenuItem>
+        {loading ? (
+          <h1>Loading</h1>
+        ) : (
+          <div className="header">
+            <Box sx={{ flexGrow: 1 }}>
+              <AppBar position="static" style={{ background: "#2B2B2B" }}>
+                <Toolbar>
+                  <IconButton
+                    size="large"
+                    edge="start"
+                    color="inherit"
+                    aria-label="menu"
+                    onClick={handleMenu}
+                  >
+                    <MenuIcon />
+                  </IconButton>
+                  <Menu
+                    id="menu-appbar"
+                    anchorOrigin={{
+                      vertical: "top",
+                      horizontal: "left",
+                    }}
+                    keepMounted
+                    transformOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                    open={Boolean(anchorEl)}
+                    onClose={handleClose}
+                  >
+                    <MenuItem onClick={handleClose}>
+                      <NavLink to="/about"> About us</NavLink>
+                    </MenuItem>
 
-                  <MenuItem onClick={handleClose}>
-                    <NavLink to="/imprint"> Imprint</NavLink>
-                  </MenuItem>
+                    <MenuItem onClick={handleClose}>
+                      <NavLink to="/imprint"> Imprint</NavLink>
+                    </MenuItem>
 
-                  <MenuItem onClick={handleClose}>
-                    <NavLink to="/contact">Contact Us</NavLink>
-                  </MenuItem>
-                </Menu>
+                    <MenuItem onClick={handleClose}>
+                      <NavLink to="/contact">Contact Us</NavLink>
+                    </MenuItem>
+                  </Menu>
+                  <Typography
+                    variant="h6"
+                    component="div"
+                    sx={{ flexGrow: 1 }}
+                    style={{ fontFamily: "Shrikhand" }}
+                  >
+                    {`Hello ${user.username}`}
+                  </Typography>
 
-                <Typography
-                  variant="h6"
-                  component="div"
-                  sx={{ flexGrow: 1 }}
-                  style={{ fontFamily: "Shrikhand" }}
-                >
-                  {`Hello ${user.username}`}
-                </Typography>
-
-                <FormControlLabel
-                  control={
-                    <Switch
+                  <div>
+                    <Button
                       style={{
-                        color: "#9CDE4E",
+                        color: "#fff",
                       }}
-                      checked={login}
-                      onChange={handleChange}
-                      aria-label="login switch"
-                    />
-                  }
-                  label={login ? "Logout" : "Login"}
-                />
-                {user.userImage ? (
-                  <img
-                    className="user-image"
-                    src={user.userImage}
-                    alt=""
-                    style={{ width: "50px", height: "50px" }}
-                    // sx={{ borderRadius: '50%' }}
+                      className="notification"
+                      id="basic-button"
+                      aria-controls={open ? "basic-menu" : undefined}
+                      aria-haspopup="true"
+                      aria-expanded={open ? "true" : undefined}
+                      onClick={handleClickNotification}
+                    >
+                      <NotificationsNoneIcon />
+                      <span className="noti">{notifications?.length}</span>
+                    </Button>
+                    <Menu
+                      id="basic-menu"
+                      anchorEl={anchorNotification}
+                      open={open}
+                      onClose={handleCloseNotification}
+                      MenuListProps={{
+                        "aria-labelledby": "basic-button",
+                      }}
+                    >
+                      {notifications?.map((notification) => (
+                        <p
+                          className="notification-item"
+                          onClick={handleCloseNotification}
+                        >
+                          New message from {notification.sent}
+                        </p>
+                      ))}
+                    </Menu>
+                  </div>
+                  <FormControlLabel
+                    control={
+                      <Switch
+                        style={{
+                          color: "#9CDE4E",
+                        }}
+                        checked={login}
+                        onChange={handleChange}
+                        aria-label="login switch"
+                      />
+                    }
+                    label={login ? "Logout" : "Login"}
                   />
-                ) : (
-                  false
-                )}
-              </Toolbar>
-            </AppBar>
-          </Box>
-          <Box name="username" label="Username" variant="standard" />
-        </div>
-      )}
+                  {user.userImage ? (
+                    <img
+                      className="user-image"
+                      src={user.userImage}
+                      alt=""
+                      style={{ width: "50px", height: "50px" }}
+                      // sx={{ borderRadius: '50%' }}
+                    />
+                  ) : (
+                    false
+                  )}
+                </Toolbar>
+              </AppBar>
+            </Box>
+            <Box name="username" label="Username" variant="standard" />
+          </div>
+        )}
       </ThemeProvider>
     </>
   );

@@ -54,8 +54,6 @@ export default function ChatHistory(props) {
     const sentAt = new Date(time);
     let diff = now - sentAt;
     if (diff > 3600e3 * 24) {
-      console.log("day");
-
       resTime =
         Math.floor(diff / 3600e3 / 24) <= 1
           ? ` yesterday`
@@ -63,8 +61,6 @@ export default function ChatHistory(props) {
       return resTime;
     }
     if (diff > 3600e3) {
-      console.log("hour");
-
       resTime =
         Math.floor(diff / 3600e3) > 1
           ? ` ${Math.floor(diff / 3600e3)} hours ago`
@@ -72,7 +68,6 @@ export default function ChatHistory(props) {
       return resTime;
     }
     if (diff > 60e3) {
-      console.log("min");
       resTime = ` ${Math.floor(diff / 60e3)} minutes ago`;
       return resTime;
     }
@@ -82,11 +77,9 @@ export default function ChatHistory(props) {
   const sortedChats = chats.sort((a, b) => {
     const aTime = new Date(a.sentAt);
     const bTime = new Date(b.sentAt);
-    console.log("   a.sentAt - b.sentAt: ", aTime - bTime);
     if (aTime < bTime) return 1;
     return -1;
   });
-  console.log(sortedChats);
   useEffect(() => {
     getChats();
     getMatchUsers();

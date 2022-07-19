@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import L from "leaflet";
-import { Map, TileLayer, FeatureGroup } from "react-leaflet";
+import { Map, TileLayer, FeatureGroup, Rectangle } from "react-leaflet";
 import { EditControl } from "react-leaflet-draw";
 import osm from "./osm-providers";
 import { useRef } from "react";
@@ -20,13 +20,28 @@ L.Icon.Default.mergeOptions({
     "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/images/marker-shadow.png",
 });
 
-const DrawMap = ({ setBottomLeft, setTopRight }) => {
+const DrawMap = ({ setBottomLeft, setTopRight, bottomLeft, topRight }) => {
+  // console.log([
+  //   [bottomLeft.lat, bottomLeft.lng],
+  //   [topRight.lat, topRight.lng],
+  // ]);
+
   const [center, setCenter] = useState({
     lat: 52.520417,
     lng: 13.408971,
   });
   const ZOOM_LEVEL = 11;
   const mapRef = useRef();
+  // const [drawRec, setDrawRec] = useState(false);
+
+  // useEffect(() => {
+  //   if (bottomLeft && topRight) {
+  //     setTimeout(() => {
+  //       setDrawRec(true);
+  //     });
+  //   }
+  //   console.log(bottomLeft);
+  // }, []);
 
   const _created = (e) => {
     setTopRight(e.layer._bounds._northEast);
@@ -42,6 +57,7 @@ const DrawMap = ({ setBottomLeft, setTopRight }) => {
         zoom={ZOOM_LEVEL}
         ref={mapRef}
         className="map-container"
+        marker={center}
       >
         <FeatureGroup>
           <EditControl
@@ -56,6 +72,14 @@ const DrawMap = ({ setBottomLeft, setTopRight }) => {
             }}
             // onDrawStop={(e) => console.log(e.layer)}
           />
+          {/* {drawRec ? (
+            <Rectangle
+              bounds={[
+                [bottomLeft.lat, bottomLeft.lng],
+                [topRight.lat, topRight.lng],
+              ]}
+            ></Rectangle>
+          ) : null} */}
         </FeatureGroup>
         <TileLayer
           url={osm.maptiler.url}

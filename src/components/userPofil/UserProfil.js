@@ -368,7 +368,12 @@ export default function UserProfil(props) {
                 }}
               />
 
-              <Map setBottomLeft={setBottomLeft} setTopRight={setTopRight} />
+              <Map
+                setBottomLeft={setBottomLeft}
+                setTopRight={setTopRight}
+                bottomLeft={bottomLeft}
+                topRight={topRight}
+              />
 
               <Outlet />
               <Button
