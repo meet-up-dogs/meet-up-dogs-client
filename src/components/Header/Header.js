@@ -16,7 +16,8 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { axiosPublic } from "../../util/axiosConfig";
 import Button from "@mui/material/Button";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
-
+import MessageIcon from "@mui/icons-material/Message";
+import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import "@fontsource/shrikhand";
 import "./header.css";
 import { MainContext } from "../../context/MainContext";
@@ -32,7 +33,7 @@ export default function Header({ conversation }) {
   const [user, setUser, loading, setLoading, selectedUser, setSelectedUser] =
     useContext(MainContext);
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [notifications, setNotifications] = useState();
+  const [notifications, setNotifications] = useState(null);
 
   const handleMenu = (e) => {
     console.log("handleMenu", e);
@@ -41,6 +42,8 @@ export default function Header({ conversation }) {
 
   const handleClose = () => {
     setAnchorEl(null);
+    setAnchorNotification(null);
+    setNotifications(null);
   };
   //notification
   const [anchorNotification, setAnchorNotification] = React.useState(null);
@@ -51,9 +54,18 @@ export default function Header({ conversation }) {
   const handleCloseNotification = () => {
     setAnchorNotification(null);
     setNotifications(null);
+    clearNotifications();
+
+    navigate("/chatHistory");
   };
 
   //^notification
+  const clearNotifications = async () => {
+    const resp = await axiosPublic.post("/clearNotifications", {
+      username: user.username,
+    });
+    console.log(resp.msg);
+  };
 
   let loginVariable = true;
   const [login, setLogin] = useState(loginVariable);
@@ -77,11 +89,11 @@ export default function Header({ conversation }) {
   //   );
   // };
   useEffect(() => {
-    // console.log();
+    console.log("useEffffffffffffffffffffffffffffffffffffffffevct");
     setNotifications(user?.notifications);
-  }, [conversation, user?.notifications, user]);
+  }, []);
 
-  console.log(notifications);
+  console.log("notifications: ", notifications);
   return (
     <>
       <ThemeProvider theme={darkTheme}>
@@ -149,13 +161,17 @@ export default function Header({ conversation }) {
                       onClick={handleClickNotification}
                     >
                       <NotificationsNoneIcon />
-                      <span className="noti">{notifications?.length}</span>
+                      <span className="noti">
+                        {notifications?.length > 0
+                          ? notifications?.length
+                          : null}
+                      </span>
                     </Button>
                     <Menu
                       id="basic-menu"
                       anchorEl={anchorNotification}
                       open={open}
-                      onClose={handleCloseNotification}
+                      onClose={handleClose}
                       MenuListProps={{
                         "aria-labelledby": "basic-button",
                       }}
@@ -165,7 +181,8 @@ export default function Header({ conversation }) {
                           className="notification-item"
                           onClick={handleCloseNotification}
                         >
-                          New message from {notification.sent}
+                          <span className="noti-active"></span> New
+                          <MailOutlineIcon /> from {notification}
                         </p>
                       ))}
                     </Menu>

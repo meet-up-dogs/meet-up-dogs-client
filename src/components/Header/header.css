@@ -33,22 +33,39 @@ a {
 .notification {
   position: relative;
   margin-right: 1.4rem;
+  width: min-content;
+  overflow: hidden;
 }
 
 .notification > span.noti {
   position: absolute;
   top: 0;
-  right: 0.2rem;
+  right: 20%;
   font-size: 0.6rem;
   /* background-color: red; */
-  width: 50%;
-  height: 50%;
-  text-align: center;
-  border-radius: 50%;
+  /* width: 50%; */
+  /* height: 50%; */
+  /* text-align: center; */
+  /* border-radius: 50%; */
 }
 
 .notification-item {
   /* color: red; */
-  padding: 0.3rem;
-  margin: 0;
+  padding: 0.4rem 1rem;
+  margin: 0.4rem 2rem 0.4rem 1rem;
+  border-bottom: 1px solid rgb(121, 120, 120);
+  cursor: pointer;
+  transition: border 0.3s ease-in-out;
+}
+.notification-item:hover {
+  border-bottom: 1px solid #fff;
+}
+
+.noti-active {
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: green;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 0.6rem;
 }

@@ -8,6 +8,7 @@ import { MainContext } from "../../context/MainContext";
 import { useNavigate } from "react-router-dom";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import Header from "../Header/Header.js";
+import ScrollToBottom from "react-scroll-to-bottom";
 
 // const socket = io.connect("https://meet-up-dogs.herokuapp.com");
 const socket = io.connect("http://localhost:8080");
@@ -71,30 +72,40 @@ export default function Chat() {
       <Header conversation={conversation} />
       <div className="chat">
         <Form className="d-flex flex-column m-2 justify-content-center">
-          <div
-            className="back-btn"
-            onClick={() => {
-              console.log("naaaaaaaaavi");
-              if (document.location.pathname === "/chatHistory") {
-                document.location.reload();
-              } else {
-                navigate("/chatHistory");
-              }
-            }}
-          >
-            <ArrowBackIosNewIcon></ArrowBackIosNewIcon>
+          <div className="chat-label">
+            <div
+              className="back-btn"
+              onClick={() => {
+                if (document.location.pathname === "/chatHistory") {
+                  document.location.reload();
+                } else {
+                  navigate("/chatHistory");
+                }
+              }}
+            >
+              <ArrowBackIosNewIcon></ArrowBackIosNewIcon>
+            </div>
+            <div>
+              <figure>
+                <img src={selectedUser.userImage} alt="" />
+              </figure>
+              <h2 className="chat-title"> {selectedUser.username}</h2>
+            </div>
           </div>
-          <h2 className="chat-title">Chat {room}</h2>
           <Form.Group className="d-flex flex-column  w-100 messages-box">
             {conversation?.map((con) =>
               con.sentBy === user.username ? (
-                <div className="message-box message-sent">
-                  <p>{con.msg}</p>
-                </div>
+                <>
+                  <div className="message-box message-sent">
+                    <p>{con.msg}</p>
+                  </div>
+                </>
               ) : (
-                <div className="message-box message-received">
-                  <p>{con.msg}</p>
-                </div>
+                <>
+                  <div className="message-box message-received">
+                    <p>{con.msg}</p>
+                  </div>
+                </>
               )
             )}
           </Form.Group>

@@ -82,13 +82,15 @@ export default function ChatHistory(props) {
     return -1;
   });
   useEffect(() => {
+    setLoading(true);
+
     getChats();
     getMatchUsers();
-
-    // setTimeout(() => setLoading(false), 2000);
+    // setLoading(false);
+    setTimeout(() => setLoading(false), 200);
   }, []);
 
-  console.log('chats-length', chats.length)
+  console.log("chats-length", chats.length);
 
   return (
     <>
@@ -98,7 +100,10 @@ export default function ChatHistory(props) {
         <>
           {chats.length === 0 ? (
             <>
-              <Header />
+              <Header
+                setSelectedUser={setSelectedUser}
+                setIsChatOpen={setIsChatOpen}
+              />
               <div className="alert-no-chats">
                 <Alert severity="warning">you have no chats yet!</Alert>
               </div>
@@ -108,26 +113,31 @@ export default function ChatHistory(props) {
             <>
               {isChatOpen ? (
                 <Chat />
-
               ) : (
                 <>
                   <Header />
                   <br />
                   <div className="chats-container">
                     {chats.map((chat) => {
-                      const user = findUser(chat.roomId);
+                      const friend = findUser(chat.roomId);
                       return (
                         <div
-                          key={user?.username}
-                          className="chat-card"
+                          // {..user?.notifications?.includes(firend.username)? className= "chat-card new-msg":className= "chat-card new-msg"}
+                          className={
+                            user?.notifications?.includes(friend?.username)
+                              ? "chat-card new-msg"
+                              : "chat-card"
+                          }
+                          key={friend?.username}
+                          // className="chat-card"
                           onClick={() => {
                             setIsChatOpen(true);
-                            setSelectedUser(user);
+                            setSelectedUser(friend);
                           }}
                         >
-                          <img src={user?.userImage} alt="" />
+                          <img src={friend?.userImage} alt="" />
                           <aside>
-                            <p className="name">{user?.username}</p>
+                            <p className="name">{friend?.username}</p>
                             <p className="message">
                               {chat.chat[chat.chat.length - 1].msg
                                 .split(" ")
@@ -145,10 +155,8 @@ export default function ChatHistory(props) {
               )}
             </>
           )}
-
         </>
       )}
     </>
-
   );
 }
