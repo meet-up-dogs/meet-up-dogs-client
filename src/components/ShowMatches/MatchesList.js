@@ -3,13 +3,12 @@ import React from "react";
 import Header from "../Header/Header.js";
 import Footer from "../Footer/Footer";
 import "./matchList.css";
-import { NavLink } from "react-router-dom";
-import FavoriteButton from "./FavoriteButton.js";
 import { axiosPublic } from "../../util/axiosConfig";
 import MatchCard from "../ShowMatches/MatchCard";
 import { MainContext } from "../../context/MainContext";
 import Alert from "@mui/material/Alert";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import SyncLoader from "react-spinners/SyncLoader";
 
 const darkTheme = createTheme({
   palette: {
@@ -18,6 +17,13 @@ const darkTheme = createTheme({
   },
 });
 
+const override = {
+  display: "flex",
+  justifyContent: "center",
+  alignItem: "center",
+  margin: "20rem auto",
+  borderColor: "black",
+};
 
 const MatchList = (props) => {
   const [user, setUser, loading, setLoading, selectedUser, setSelectedUser] =
@@ -34,67 +40,79 @@ const MatchList = (props) => {
   };
 
   useEffect(() => {
+    setLoading(true)
     getMatchUsers();
+    setTimeout(() => setLoading(false), 200)
   }, []);
+
   return (
     <>
-      {matchUsers.length === 0 ? (
-        <>
-          <Header />
-
-        <div className="alert-no-matches">
-          <Alert severity="warning">unfortunately there are no hits for your area!</Alert>
-          </div>
-          <Footer />
-        </>
+      {loading ? (
+        <SyncLoader
+          loading={loading}
+          cssOverride={override}
+          size={15}
+        />
       ) : (
         <>
-        <ThemeProvider theme={darkTheme}>
-          {showCard ? (
-            <MatchCard />
-          ) : (
+          {matchUsers.length === 0 ? (
             <>
               <Header />
-
-              <div className="cards">
-                {matchUsers.map((userObj) => {
-                  return (
-                    <div key={userObj.username}>
-                      <main>
-                        <div
-                          className="card"
-                          onClick={() => {
-                            setSelectedUser(
-                              matchUsers.find(
-                                (matchUser) =>
-                                  matchUser.username === userObj.username
-                              )
-                            );
-                            setShowCard(true);
-                          }}
-                        >
-                          <div className="container">
-                            <img
-                              src={userObj.userImage}
-                              alt="user-foto"
-                              className="card-img"
-                            />
-                            <div className="bio">
-                              <li>{userObj.username}</li>
-                              <li>DogBreed:{userObj.dogBreed}</li>
-                            </div>
-                          </div>
-                        </div>
-                      </main>
-                    </div>
-                  );
-                })}
+              <div className="alert-no-matches">
+                <Alert severity="warning">unfortunately there are no hits for your area!</Alert>
               </div>
-
               <Footer />
             </>
+          ) : (
+            <>
+              <ThemeProvider theme={darkTheme}>
+                {showCard ? (
+                  <MatchCard />
+                ) : (
+                  <>
+                    <Header />
+
+                    <div className="cards">
+                      {matchUsers.map((userObj) => {
+                        return (
+                          <div key={userObj.username}>
+                            <main>
+                              <div
+                                className="card"
+                                onClick={() => {
+                                  setSelectedUser(
+                                    matchUsers.find(
+                                      (matchUser) =>
+                                        matchUser.username === userObj.username
+                                    )
+                                  );
+                                  setShowCard(true);
+                                }}
+                              >
+                                <div className="container">
+                                  <img
+                                    src={userObj.userImage}
+                                    alt="user-foto"
+                                    className="card-img"
+                                  />
+                                  <div className="bio">
+                                    <li>{userObj.username}</li>
+                                    <li>DogBreed:{userObj.dogBreed}</li>
+                                  </div>
+                                </div>
+                              </div>
+                            </main>
+                          </div>
+                        );
+                      })}
+                    </div>
+
+                    <Footer />
+                  </>
+                )}
+              </ThemeProvider>
+            </>
           )}
-    </ThemeProvider>
         </>
       )}
     </>

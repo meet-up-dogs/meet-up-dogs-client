@@ -82,10 +82,11 @@ export default function ChatHistory(props) {
     return -1;
   });
   useEffect(() => {
+    setLoading(true)
     getChats();
     getMatchUsers();
 
-    // setTimeout(() => setLoading(false), 2000);
+    setTimeout(() => setLoading(false), 200);
   }, []);
 
   console.log('chats-length', chats.length)
@@ -93,7 +94,12 @@ export default function ChatHistory(props) {
   return (
     <>
       {loading ? (
-        <SyncLoader />
+        <SyncLoader
+          loading={loading}
+          cssOverride={override}
+          size={15}
+          />
+        
       ) : (
         <>
           {chats.length === 0 ? (

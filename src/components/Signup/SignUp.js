@@ -114,11 +114,7 @@ const SignUp = () => {
                 type="submit"
                 variant="contained"
                 style={{
-                  color: "#f7f9ef",
-                  fontFamily: "Shrikhand",
-                  backgroundColor: "#2B2B2B",
-                  marginTop: "1rem",
-                  padding: "0.5rem",
+                  backgroundColor: "#2b2b2b", fontFamily: "system-ui", fontWeight: "bold", color: '#fff', textTransform: "lowercase", marginTop: "1rem", padding: "0.5rem"
                 }}
               >
                 Sign Up

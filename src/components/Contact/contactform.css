@@ -1,6 +1,12 @@
+.container-contact {
+  background-color: lightblue;
+}
+
+
+
 .contact-form {
   height: 100vh;
-  font-family: "Roboto", sans-serif !important;
+  font-family: "system-ui" !important;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,18 +24,26 @@
 
 .msg > * {
   margin-bottom: 1.6rem;
-  font-family: "Roboto", sans-serif !important;
+  font-family: "system-ui" !important;
 }
 
-.mb-3-pt-0 {
-  font-family: "Roboto", sans-serif !important;
+.contact-username {
+  display: flex;
+  flex-direction: column;
+  color: #4f850d;
+}
+
+.contact-message {
+  display: flex;
+  flex-direction: column;
+  color: #4f850d;
 }
 
 
-.bg-blue-500{
-  background-color: darkgreen;
-  padding: 5px;
-  border-radius: 10% !important;
+.contact-email {
+  display: flex;
+  flex-direction: column;
+  color: #4f850d;
 }
 
 /* .msg > div:first-child {

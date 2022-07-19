@@ -21,7 +21,6 @@ const Imprint = () => {
       marginBottom: "20vh",
       height: "max-content",
       width: "70vw",
-      backgroundColor: "#eee",
       color: '#2b2b2b',
       fontFamily: "system-ui",
       display: 'flex',
@@ -32,7 +31,7 @@ const Imprint = () => {
     header: {
       fontFamily: 'system-ui',
       color: '#2B2B2B',
-      marginBottom: '2rem',
+      marginBottom: '3rem',
       textAlign: 'center',
 
     }
@@ -55,7 +54,8 @@ const Imprint = () => {
           <p>83324 Ruhpolding</p>
           <p>Telefon:(0151)59496927</p>
           <p>Email:meetupdogs@gmail.com</p>
-          <p>Inhaltlich Verantwortlicher gemäß § 18 Abs. 2 MStV: Eveline Klieber</p>
+          <p>Inhaltlich Verantwortlicher gemäß § 18 Abs. 2 MStV: </p>
+          <p>Eveline Klieber</p>
         </Container>
 
         <Footer />

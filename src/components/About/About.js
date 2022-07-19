@@ -8,21 +8,17 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { Link, NavLink, useNavigate } from "react-router-dom";
 import AvatarFarid from "../images/farid.png";
 import ImageEvi from "../images/evi.jpg";
 import ImageKarol from "../images/karol.jpg";
-import { MainContext } from "../../context/MainContext";
-import { useContext } from "react";
 export default function About(props) {
-  const { user, setUser } = useContext(MainContext);
 
   const styles = {
     card: {
       maxWidth: 345,
       margin: "0 auto",
       marginTop: "10%",
-    },
+      },
     media: {
       height: "400",
       width: "200",
@@ -48,18 +44,16 @@ export default function About(props) {
       >
         <Card className="card-farid">
           <CardMedia
-            // style={{paddingBottom: '5rem'}}
             style={styles.media}
             component="img"
             image={AvatarFarid}
             alt="avatar farid"
           />
-          {/* < img src={AvatarFarid} alt="avatar farid" /> */}
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
               Farid Tavoli
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" color="text.secondary" fontFamily="system-ui">
               motivated young programmer from hamburg.... motivated young
               programmer from hamburg.... motivated young programmer from
               hamburg....
@@ -88,12 +82,11 @@ export default function About(props) {
             alt="image from evi"
           />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
+            <Typography gutterBottom variant="h5" component="div" fontFamily="system-ui">
               Eveline Klieber
             </Typography>
-            <Typography variant="body2" color="text.secondary">
-              motivated programmer from munich.... motivated programmer from
-              munich.... motivated programmer from munich....
+            <Typography variant="body2" color="text.secondary" fontFamily="system-ui">
+            I am a junior web developer from Ruhpolding. That's between Munich and Salzburg. Before that I specialized in supply chain management for 20 years and worked in some IT projects on this field.
             </Typography>
           </CardContent>
           <CardActions>
@@ -119,10 +112,10 @@ export default function About(props) {
             alt="image from karol"
           />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
+            <Typography gutterBottom variant="h5" component="div" fontFamily="system-ui">
               Karol Wasemann
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" color="text.secondary" fontFamily="system-ui">
               motivated young programmer from Berlin.... motivated young
               programmer from hamburg.... motivated young programmer from
               hamburg....

@@ -347,7 +347,7 @@ export default function UserProfil(props) {
                 component="label"
                 onChange={handleUpload}
                 style={{
-                  backgroundColor: "#4f850d", fontFamily: "system-ui", fontWeight: "bold", color: '#fff', textTransform: "lowercase"
+                  backgroundColor: "#4f850d", fontFamily: "system-ui", fontWeight: "bold", color: '#fff', textTransform: "lowercase", marginTop: "1rem", padding: "0.5rem"
                 }}
                 className="img-btn"
               >
@@ -356,7 +356,7 @@ export default function UserProfil(props) {
               </Button>
 
               <InputLabel id="timeDay" style={{ color: "#4f850d", fontFamily: "system-ui", fontWeight: "bold", lineHeight: "1em" }}>
-              something about you and your dog
+              Something about you and your dog
                </InputLabel>
 
               <TextField
@@ -367,7 +367,7 @@ export default function UserProfil(props) {
                 defaultValue={user.description}
                 rows="6"
                 rowsMax="6"
-                style={{ fontFamily: "system-ui !important", fontWeight: "bold",}}
+                style={{ fontFamily: "system-ui !important", fontWeight: "bold", marginTop: "0"}}
                 onChange={(e) => {
                   setUserProfil({ ...userProfil, description: e.target.value });
                 }}
@@ -385,7 +385,7 @@ export default function UserProfil(props) {
                 type="submit"
                 component="label"
                 style={{
-                  backgroundColor: "#4f850d", fontFamily: "system-ui", fontWeight: "bold", color: '#fff', textTransform: "lowercase"
+                  backgroundColor: "#4f850d", fontFamily: "system-ui", fontWeight: "bold", color: '#fff', textTransform: "lowercase", marginTop: "1rem", padding: "0.5rem"
                 }}
                 className="save-btn"
               >
