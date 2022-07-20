@@ -49,14 +49,14 @@ const SignUp = () => {
     if (axiosResp.data.success) {
       console.log('axios Resp status text', axiosResp.data.success)
       // setIsSuccess(axiosResp.data.success);
-      setTimeout(()=> setIsSuccess(true) , 200 ) 
-      navigate("/");
+      setIsSuccess(true)
+      setTimeout(() =>  navigate("/"), 2000);
+
     } else {
       console.log("sign up was not successfully");
     }
   };
 
- 
 
   const margin = { m: 0 };
 
@@ -78,7 +78,7 @@ const SignUp = () => {
                 Sign Up
               </h2>
               {isError ? <Alert severity="error">{isError}</Alert> : null}
-              {isSuccess ? <Alert severity="success">{isSuccess}</Alert> : null}
+              {isSuccess ? <Alert severity="success">signup was successful</Alert> : null}
               <TextField
                 name="username"
                 label="Username"
