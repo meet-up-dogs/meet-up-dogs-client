@@ -30,10 +30,17 @@ const darkTheme = createTheme({
 });
 
 export default function Header({ conversation }) {
-  const [user, setUser, loading, setLoading, selectedUser, setSelectedUser] =
-    useContext(MainContext);
+  const [
+    user,
+    setUser,
+    loading,
+    setLoading,
+    selectedUser,
+    setSelectedUser,
+    notifications,
+    setNotifications,
+  ] = useContext(MainContext);
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [notifications, setNotifications] = useState(null);
 
   const handleMenu = (e) => {
     console.log("handleMenu", e);
@@ -42,8 +49,6 @@ export default function Header({ conversation }) {
 
   const handleClose = () => {
     setAnchorEl(null);
-    setAnchorNotification(null);
-    setNotifications(null);
   };
   //notification
   const [anchorNotification, setAnchorNotification] = React.useState(null);
@@ -53,18 +58,21 @@ export default function Header({ conversation }) {
   };
   const handleCloseNotification = () => {
     setAnchorNotification(null);
-    setNotifications(null);
+    setNotifications([]);
+    clearNotifications();
+  };
+  const handleCloseNotificationNavi = () => {
+    setAnchorNotification(null);
+    setNotifications([]);
     clearNotifications();
 
     navigate("/chatHistory");
   };
-
   //^notification
   const clearNotifications = async () => {
     const resp = await axiosPublic.post("/clearNotifications", {
       username: user.username,
     });
-    console.log(resp.msg);
   };
 
   let loginVariable = true;
@@ -78,22 +86,10 @@ export default function Header({ conversation }) {
       navigate("/");
     }
   };
+  // if (window.location.href.indexOf("/chathistory")) {
+  //   clearNotifications();
+  // }
 
-  // const getNotifications = async () => {
-  //   const resp = await axiosPublic.get("/getNotifications", {
-  //     withCredentials: true,
-  //   });
-  //   setNotifications(resp.data);
-  //   console.log(
-  //     "head!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-  //   );
-  // };
-  useEffect(() => {
-    console.log("useEffffffffffffffffffffffffffffffffffffffffevct");
-    setNotifications(user?.notifications);
-  }, []);
-
-  console.log("notifications: ", notifications);
   return (
     <>
       <ThemeProvider theme={darkTheme}>
@@ -171,7 +167,7 @@ export default function Header({ conversation }) {
                       id="basic-menu"
                       anchorEl={anchorNotification}
                       open={open}
-                      onClose={handleClose}
+                      onClose={handleCloseNotification}
                       MenuListProps={{
                         "aria-labelledby": "basic-button",
                       }}
@@ -179,7 +175,7 @@ export default function Header({ conversation }) {
                       {notifications?.map((notification) => (
                         <p
                           className="notification-item"
-                          onClick={handleCloseNotification}
+                          onClick={handleCloseNotificationNavi}
                         >
                           <span className="noti-active"></span> New
                           <MailOutlineIcon /> from {notification}

@@ -90,8 +90,6 @@ export default function ChatHistory(props) {
     setTimeout(() => setLoading(false), 200);
   }, []);
 
-  console.log("chats-length", chats.length);
-
   return (
     <>
       {loading ? (
@@ -122,7 +120,6 @@ export default function ChatHistory(props) {
                       const friend = findUser(chat.roomId);
                       return (
                         <div
-                          // {..user?.notifications?.includes(firend.username)? className= "chat-card new-msg":className= "chat-card new-msg"}
                           className={
                             user?.notifications?.includes(friend?.username)
                               ? "chat-card new-msg"
