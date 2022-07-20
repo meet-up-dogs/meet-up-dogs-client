@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { useNavigate } from "react-router-dom";
@@ -19,6 +19,7 @@ const SignUp = () => {
   });
 
   const [isError, setIsError] = useState("");
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const navigate = useNavigate();
 
@@ -45,12 +46,18 @@ const SignUp = () => {
       );
     }
 
-    if (axiosResp.data) {
+    if (axiosResp.data.success) {
+      console.log('axios Resp status text', axiosResp.data.success)
+      // setIsSuccess(axiosResp.data.success);
+      setTimeout(()=> setIsSuccess(true) , 200 ) 
       navigate("/");
     } else {
       console.log("sign up was not successfully");
     }
   };
+
+ 
+
   const margin = { m: 0 };
 
   return (
@@ -71,6 +78,7 @@ const SignUp = () => {
                 Sign Up
               </h2>
               {isError ? <Alert severity="error">{isError}</Alert> : null}
+              {isSuccess ? <Alert severity="success">{isSuccess}</Alert> : null}
               <TextField
                 name="username"
                 label="Username"

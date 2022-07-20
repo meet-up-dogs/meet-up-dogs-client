@@ -70,7 +70,7 @@ const MatchCard = (props) => {
             <div className="match-container">
               <h2>{selectedUser.username}</h2>
               <p>
-                Description: <br />
+                About me and my dogs: <br />
                 {selectedUser.description}
               </p>
               <p>Gender:{selectedUser.gender}</p>
@@ -87,7 +87,7 @@ const MatchCard = (props) => {
                       favToggle();
                     }}
                     aria-label="delete"
-                    style={{color: "darkgreen"}}
+                    style={{color: "#9CDE4E"}}
                   >
                     <FavoriteBorderIcon></FavoriteBorderIcon>
                   </IconButton>
@@ -98,7 +98,7 @@ const MatchCard = (props) => {
                       favToggle();
                     }}
                     aria-label="delete"
-                    style={{color: "darkgreen"}}
+                    style={{color: "9CDE4E"}}
                   >
                     <FavoriteIcon></FavoriteIcon>
                   </IconButton>
