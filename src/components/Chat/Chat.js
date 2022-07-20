@@ -67,6 +67,17 @@ export default function Chat() {
 
     setConversation(resp.data.chat);
   };
+
+  const clearNotifications = async () => {
+    const resp = await axiosPublic.post("/clearNotifications", {
+      username: user.username,
+    });
+  };
+  useEffect(() => {
+    if (notifications.includes(selectedUser.username)) {
+      clearNotifications();
+    }
+  }, []);
   return (
     <>
       <Header conversation={conversation} />

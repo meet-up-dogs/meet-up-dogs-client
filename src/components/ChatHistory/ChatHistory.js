@@ -19,8 +19,15 @@ const override = {
 };
 
 export default function ChatHistory(props) {
-  const [user, setUser, loading, setLoading, selectedUser, setSelectedUser] =
-    useContext(MainContext);
+  const [
+    user,
+    setUser,
+    loading,
+    setLoading,
+    selectedUser,
+    setSelectedUser,
+    notifications,
+  ] = useContext(MainContext);
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [chats, setChats] = useState([]);
   const [matchUsers, setMatchUsers] = useState([]);
@@ -89,7 +96,10 @@ export default function ChatHistory(props) {
     // setLoading(false);
     setTimeout(() => setLoading(false), 200);
   }, []);
-
+  useEffect(() => {
+    getChats();
+    // setTimeout(() => setChats(chats), 1000);
+  }, [notifications]);
   return (
     <>
       {loading ? (
@@ -121,7 +131,7 @@ export default function ChatHistory(props) {
                       return (
                         <div
                           className={
-                            user?.notifications?.includes(friend?.username)
+                            notifications?.includes(friend?.username)
                               ? "chat-card new-msg"
                               : "chat-card"
                           }

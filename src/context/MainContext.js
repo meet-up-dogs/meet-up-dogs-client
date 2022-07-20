@@ -15,8 +15,8 @@ export const MainContextProvider = (props) => {
         withCredentials: true,
       });
       if (!onlyNotifications) {
-        setUser(resp.data);
         console.log("resp.data.notifications: ", resp.data.notifications);
+        setUser(resp.data);
       }
       setNotifications(resp.data.notifications);
     } catch (err) {

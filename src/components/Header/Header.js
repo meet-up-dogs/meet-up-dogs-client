@@ -86,9 +86,6 @@ export default function Header({ conversation }) {
       navigate("/");
     }
   };
-  // if (window.location.href.indexOf("/chathistory")) {
-  //   clearNotifications();
-  // }
 
   return (
     <>
