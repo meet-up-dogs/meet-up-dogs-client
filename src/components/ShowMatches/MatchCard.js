@@ -77,9 +77,9 @@ const MatchCard = (props) => {
               <p>Language: {selectedUser.language}</p>
               <p>Availability: {selectedUser.availability.weekDay} {selectedUser.availability.dayTime}</p>
               <div className="btns">
-                <button style={{color: "gray"}} onClick={() => setIsOpenChat(true)}>
+                <div style={{color: "gray" , cursor: "pointer"}} onClick={() => setIsOpenChat(true)}>
                   <ChatIcon />
-                </button>
+                </div>
 
                 {fav && (
                   <IconButton

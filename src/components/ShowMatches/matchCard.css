@@ -26,6 +26,7 @@ h2 {
     justify-content: space-around;
     margin: 0 auto;
     align-items: flex-end;
+    line-height: 0.02em;
 }
 
 .btns > *{
