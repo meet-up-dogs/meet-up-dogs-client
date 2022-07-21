@@ -20,6 +20,7 @@ import { MainContext } from "../../context/MainContext";
 import "./userProfil.css";
 import SyncLoader from "react-spinners/SyncLoader";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import Alert from "@mui/material/Alert";
 
 const override = {
   display: "flex",
@@ -41,6 +42,8 @@ export default function UserProfil(props) {
   const [resizedImage, setResizedImage] = useState("");
   const [user, setUser, loading, setLoading] = useContext(MainContext);
   let [color, setColor] = useState("#000");
+  const [isError, setIsError] = useState("");
+  const [isSuccess, setIsSuccess] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -125,11 +128,24 @@ export default function UserProfil(props) {
       if (!axiosResp) {
         console.debug("axiosResp.data:", axiosResp);
       } else {
+        console.log("setissuccess works")
+        setIsSuccess(true);
+        setTimeout(() => {    setIsSuccess(false) 
+        }, 2000);
         console.debug("axiosResp.data:", axiosResp);
       }
     } catch (error) {
+      setIsError(error.response.data.errors[0].msg);
       console.log("Error while sending with axios", error);
     }
+
+    // if (axiosResp.data.success) {
+    //   console.log('axios Resp status text', axiosResp.data.success)
+    //   // setIsSuccess(axiosResp.data.success);
+    //   setIsSuccess(true)
+    // } else {
+    //   console.log("sign up was not successfully");
+    // }
   };
 
   useEffect(() => {
@@ -214,7 +230,7 @@ export default function UserProfil(props) {
                     flexDirection: "row",
                     justifyContent: "space-evenly",
                   }}
-                  // color="#4f850d"
+                // color="#4f850d"
                 >
                   <FormControlLabel
                     className="gender-item"
@@ -344,7 +360,6 @@ export default function UserProfil(props) {
               {/* <input type="file" accept="image/*"  /> */}
               <Button
                 variant="contained"
-                component="label"
                 onChange={handleUpload}
                 style={{
                   backgroundColor: "#4f850d", fontFamily: "system-ui", fontWeight: "bold", color: '#fff', textTransform: "lowercase", marginTop: "1rem", padding: "0.5rem"
@@ -356,8 +371,8 @@ export default function UserProfil(props) {
               </Button>
 
               <InputLabel id="timeDay" style={{ color: "#4f850d", fontFamily: "system-ui", fontWeight: "bold", lineHeight: "1em" }}>
-              Something about you and your dog
-               </InputLabel>
+                Something about you and your dog
+              </InputLabel>
 
               <TextField
                 className="text-field"
@@ -367,7 +382,7 @@ export default function UserProfil(props) {
                 defaultValue={user.description}
                 rows="6"
                 rowsMax="6"
-                style={{ fontFamily: "system-ui !important", fontWeight: "bold", marginTop: "0"}}
+                style={{ fontFamily: "system-ui !important", fontWeight: "bold", marginTop: "0" }}
                 onChange={(e) => {
                   setUserProfil({ ...userProfil, description: e.target.value });
                 }}
@@ -381,9 +396,11 @@ export default function UserProfil(props) {
               />
 
               <Outlet />
+              {isError ? <Alert severity="error">{isError}</Alert> : null}
+              {isSuccess ? <Alert severity="success">userprofil saved successfully</Alert> : null}
+              
               <Button
                 type="submit"
-                component="label"
                 style={{
                   backgroundColor: "#4f850d", fontFamily: "system-ui", fontWeight: "bold", color: '#fff', textTransform: "lowercase", marginTop: "1rem", padding: "0.5rem"
                 }}
