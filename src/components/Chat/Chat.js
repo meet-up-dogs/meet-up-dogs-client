@@ -136,7 +136,7 @@ export default function Chat() {
               color="success"
               id="outlined-multiline-flexible"
               multiline
-              maxRows={3}
+              rows={3}
               label="Type here..."
               placeholder="Type here..."
               onChange={(e) => setMessage(e.target.value)}

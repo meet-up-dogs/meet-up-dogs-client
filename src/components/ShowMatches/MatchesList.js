@@ -30,8 +30,7 @@ const MatchList = (props) => {
     const resp = await axiosPublic.get("/getMatchedUsers", {
       withCredentials: true,
     });
-    console.log(resp.data);
-    await setMatchUsers(resp.data);
+    setMatchUsers(resp.data);
   };
 
   useEffect(() => {
@@ -59,7 +58,15 @@ const MatchList = (props) => {
               <>
                 <Header />
                 <div className="matches-container">
-                  <div className="matches-search"></div>
+                  {/* <div className="matches-search">
+                    <TextField
+                      label="Find User"
+                      variant="filled"
+                      color="success"
+                      focused
+                      fullWidth
+                    />
+                  </div> */}
                   <h2 className="cards-title">Matching users</h2>
                   <main className="cards">
                     {matchUsers.map((userObj) => {

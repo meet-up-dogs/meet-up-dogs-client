@@ -11,7 +11,19 @@
 }
 
 .matches-search {
-  height: 3vh;
+  padding: 2rem 1rem;
+  /* height: 3vh; */
+  background-color: #fff;
+
+  /* background-color: #000; */
+}
+
+.matches-search > div {
+  border-radius: 2rem !important;
+}
+.matches-search div > input {
+  color: black;
+  background-color: #f8f8f8;
 }
 
 .cards-title {
@@ -19,9 +31,10 @@
   margin: 0;
   padding: 2rem 1rem 1rem;
   text-align: left;
-  font-weight: bold;
-  letter-spacing: 1px;
+  color: #2b2b2b;
   border-radius: 1.2rem 1.2rem 0 0;
+
+  font-family: Shrikhand;
 }
 .cards {
   display: flex;
@@ -37,8 +50,8 @@
   margin-top: 2rem;
 }
 .card:last-child {
-  margin-top: 2rem;
-  margin-right: auto;
+  /* margin-top: 2rem; */
+  /* margin-right: 2rem; */
 }
 
 .card {
