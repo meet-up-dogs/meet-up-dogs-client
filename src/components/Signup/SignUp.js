@@ -50,7 +50,7 @@ const SignUp = () => {
       console.log('axios Resp status text', axiosResp.data.success)
       // setIsSuccess(axiosResp.data.success);
       setIsSuccess(true)
-      setTimeout(() =>  navigate("/"), 2000);
+      setTimeout(() =>  navigate("/"), 500);
 
     } else {
       console.log("sign up was not successfully");

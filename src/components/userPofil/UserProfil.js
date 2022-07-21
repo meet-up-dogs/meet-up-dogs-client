@@ -30,11 +30,49 @@ const override = {
   borderColor: "black",
 };
 
-const darkTheme = createTheme({
+const darkTheme = createTheme({  // Select Boxen + Burger Menue
   palette: {
     mode: "dark",
   },
 });
+
+const styles = {
+  AlertSuccess: {
+    fontFamily: "system-ui",
+    fontWeight: "bolder",
+    color: "darkred",
+    backgroundColor: "#e5fde6",
+    margin: "0px auto",
+    width: "400px"
+  },
+  AlertError: {
+    fontFamily: "system-ui", 
+    fontWeight: "bold", 
+    color: "ae0000", 
+    backgroundColor: "#82bf82", 
+    margin: "0px auto", 
+    width: "400px"
+  },
+  radioGroup: {
+    display: "flex", flexDirection: "row", justifyContent: "space-evenly",
+  },
+  radio: {
+    color: "#4f850d"
+  },
+  InputLabel: {
+    color: "#4f850d", fontFamily: "system-ui", fontWeight: "bold"
+  },
+  FormLabel: {
+    color: "#4f850d", fontFamily: "system-ui", fontWeight: "bold", paddingTop: "1.5rem", marginBottom: "0rem"
+  },
+  TextField: {
+    fontFamily: "system-ui", fontWeight: "bold", marginTop: "0", marginBottom: "1rem"
+  },
+  Button: {
+    backgroundColor: "#4f850d", fontFamily: "system-ui", fontWeight: "bold", color: '#fff', textTransform: "lowercase", padding: "0.5rem", marginLeft: "auto", marginRight: "auto", marginBottom: "1rem"
+  },
+}
+
 
 export default function UserProfil(props) {
   const [bottomLeft, setBottomLeft] = useState({});
@@ -130,22 +168,15 @@ export default function UserProfil(props) {
       } else {
         console.log("setissuccess works")
         setIsSuccess(true);
-        setTimeout(() => {    setIsSuccess(false) 
-        }, 2000);
+        setTimeout(() => {
+          setIsSuccess(false)
+        }, 200000);
         console.debug("axiosResp.data:", axiosResp);
       }
     } catch (error) {
       setIsError(error.response.data.errors[0].msg);
       console.log("Error while sending with axios", error);
     }
-
-    // if (axiosResp.data.success) {
-    //   console.log('axios Resp status text', axiosResp.data.success)
-    //   // setIsSuccess(axiosResp.data.success);
-    //   setIsSuccess(true)
-    // } else {
-    //   console.log("sign up was not successfully");
-    // }
   };
 
   useEffect(() => {
@@ -211,7 +242,7 @@ export default function UserProfil(props) {
                   id="demo-radio-buttons-group-label"
                   style={{ color: "#4f850d", fontFamily: "system-ui", fontWeight: "bold", lineHeight: "1em" }}
                 >
-                  Gender
+                  Your gender:
                 </FormLabel>
                 <RadioGroup
                   className="gender"
@@ -225,29 +256,24 @@ export default function UserProfil(props) {
                     })
                   }
                   required
-                  style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    justifyContent: "space-evenly",
-                  }}
-                // color="#4f850d"
+                  style={styles.radioGroup}
                 >
                   <FormControlLabel
                     className="gender-item"
                     value="female"
-                    control={<Radio style={{ color: "#4f850d" }} />}
+                    control={<Radio style={styles.radio} />}
                     label="Female"
                   />
                   <FormControlLabel
                     className="gender-item"
                     value="male"
-                    control={<Radio style={{ color: "#4f850d" }} />}
+                    control={<Radio style={styles.radio} />}
                     label="Male"
                   />
                   <FormControlLabel
                     className="gender-item"
                     value="other"
-                    control={<Radio style={{ color: "#4f850d" }} />}
+                    control={<Radio style={styles.radio} />}
                     label="Other"
                   />
                 </RadioGroup>
@@ -256,9 +282,9 @@ export default function UserProfil(props) {
               <FormControl className="lg">
                 <InputLabel
                   id="demo-simple-select-autowidth-label"
-                  style={{ color: "#4f850d", fontFamily: "system-ui", fontWeight: "bold" }}
+                  style={styles.InputLabel}
                 >
-                  Languages
+                  Your spoken languages:
                 </InputLabel>
                 <Select
                   labelId="Languages"
@@ -275,18 +301,21 @@ export default function UserProfil(props) {
                   label="Languages"
                   className="lg"
                 >
+                  <MenuItem value={"Ca"}>Chinese</MenuItem>
                   <MenuItem value={"En"}>English</MenuItem>
+                  <MenuItem value={"FR"}>French</MenuItem>
                   <MenuItem value={"Ge"}>German</MenuItem>
                   <MenuItem value={"Tr"}>Turkey</MenuItem>
+                  <MenuItem value={"ES"}>Spanish</MenuItem>
                 </Select>
               </FormControl>
 
               <FormControl>
                 <InputLabel
                   id="demo-simple-select-autowidth-label"
-                  style={{ color: "#4f850d", fontFamily: "system-ui", fontWeight: "bold" }}
+                  style={styles.InputLabel}
                 >
-                  Dog Breed
+                  Your dogs breeds:
                 </InputLabel>
                 <Select
                   labelId="DogBreed"
@@ -299,14 +328,22 @@ export default function UserProfil(props) {
                   label="Dog Breed"
                 >
                   <MenuItem value={"Akita"}>Akita</MenuItem>
+                  <MenuItem value={"Border Colloie"}>Border Collie</MenuItem>
                   <MenuItem value={"Chinook"}>Chinook</MenuItem>
                   <MenuItem value={"Drever"}>Drever</MenuItem>
+                  <MenuItem value={"Terrier"}>Terrier</MenuItem>
                 </Select>
               </FormControl>
 
+              <FormLabel
+                style={{ color: "#4f850d", fontFamily: "system-ui", fontWeight: "bold", paddingTop: "1.5rem", marginBottom: "0rem" }}
+              >
+                Your time slot for dog walking:
+              </FormLabel>
+
               <FormControl>
                 <InputLabel id="weekDay" style={{ color: "#4f850d", fontFamily: "system-ui", fontWeight: "bold" }}>
-                  Week Day
+                  Week Day:
                 </InputLabel>
                 <Select
                   labelId="weekDay"
@@ -332,8 +369,8 @@ export default function UserProfil(props) {
               </FormControl>
 
               <FormControl>
-                <InputLabel id="timeDay" style={{ color: "#4f850d", fontFamily: "system-ui", fontWeight: "bold" }}>
-                  Time Of Day
+                <InputLabel id="timeDay" style={styles.InputLabel}>
+                  Time Of Day:
                 </InputLabel>
                 <Select
                   labelId="timeDay"
@@ -351,26 +388,14 @@ export default function UserProfil(props) {
                   autoWidth
                   label="Time Slot"
                 >
-                  <MenuItem value={"noon"}>Noon</MenuItem>
-                  <MenuItem value={"in the evening"}>in the Evening</MenuItem>
-                  <MenuItem value={"morning"}>Morning</MenuItem>
-                  <MenuItem value={"evening"}>Evening</MenuItem>
+                  <MenuItem value={"noon"}>Midday 10-13pm</MenuItem>
+                  <MenuItem value={"in the evening"}>Afternoon 13-18pm</MenuItem>
+                  <MenuItem value={"morning"}>Morning 6-11pm</MenuItem>
+                  <MenuItem value={"evening"}>Evening 18-22pm</MenuItem>
                 </Select>
               </FormControl>
-              {/* <input type="file" accept="image/*"  /> */}
-              <Button
-                variant="contained"
-                onChange={handleUpload}
-                style={{
-                  backgroundColor: "#4f850d", fontFamily: "system-ui", fontWeight: "bold", color: '#fff', textTransform: "lowercase", marginTop: "1rem", padding: "0.5rem"
-                }}
-                className="img-btn"
-              >
-                {uploadText}
-                <input type="file" onChange={onFileResize} hidden />
-              </Button>
 
-              <InputLabel id="timeDay" style={{ color: "#4f850d", fontFamily: "system-ui", fontWeight: "bold", lineHeight: "1em" }}>
+              <InputLabel id="about" style={styles.InputLabel}>
                 Something about you and your dog
               </InputLabel>
 
@@ -382,11 +407,23 @@ export default function UserProfil(props) {
                 defaultValue={user.description}
                 rows="6"
                 rowsMax="6"
-                style={{ fontFamily: "system-ui !important", fontWeight: "bold", marginTop: "0" }}
+                style={styles.TextField}
                 onChange={(e) => {
                   setUserProfil({ ...userProfil, description: e.target.value });
                 }}
               />
+
+              <Button
+                variant="contained"
+                component="label"  //hier notwendig für Input File Upload!
+                onChange={handleUpload}
+                style={styles.Button}
+                className="img-btn"
+              >
+                {uploadText}
+                <input type="file" onChange={onFileResize} hidden />
+              </Button>
+
 
               <Map
                 setBottomLeft={setBottomLeft}
@@ -396,14 +433,20 @@ export default function UserProfil(props) {
               />
 
               <Outlet />
-              {isError ? <Alert severity="error">{isError}</Alert> : null}
-              {isSuccess ? <Alert severity="success">userprofil saved successfully</Alert> : null}
-              
+
+              {isError ? <Alert
+                severity="error"
+                style={styles.AlertError}
+              >{isError}</Alert> : null}
+              {isSuccess ? <Alert
+                className="alertSuccess"
+                severity="success"
+                style={styles.AlertSuccess}
+              >userprofil saved successfully</Alert> : null}
+
               <Button
                 type="submit"
-                style={{
-                  backgroundColor: "#4f850d", fontFamily: "system-ui", fontWeight: "bold", color: '#fff', textTransform: "lowercase", marginTop: "1rem", padding: "0.5rem"
-                }}
+                style={styles.Button}
                 className="save-btn"
               >
                 Save Profil
