@@ -30,7 +30,8 @@ const override = {
   borderColor: "black",
 };
 
-const darkTheme = createTheme({  // Select Boxen + Burger Menue
+const darkTheme = createTheme({
+  // Select Boxen + Burger Menue
   palette: {
     mode: "dark",
   },
@@ -43,7 +44,7 @@ const styles = {
     color: "darkred",
     backgroundColor: "#e5fde6",
     margin: "0px auto",
-    width: "400px"
+    width: "400px",
   },
   AlertError: {
     fontFamily: "system-ui",
@@ -51,27 +52,46 @@ const styles = {
     color: "ae0000",
     backgroundColor: "#82bf82",
     margin: "0px auto",
-    width: "400px"
+    width: "400px",
   },
   radioGroup: {
-    display: "flex", flexDirection: "row", justifyContent: "space-evenly",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-evenly",
   },
   radio: {
-    color: "#4f850d"
+    color: "#4f850d",
   },
   InputLabel: {
-    color: "#4f850d", fontFamily: "system-ui", fontWeight: "bold"
+    color: "#4f850d",
+    fontFamily: "system-ui",
+    fontWeight: "bold",
   },
   FormLabel: {
-    color: "#4f850d", fontFamily: "system-ui", fontWeight: "bold", paddingTop: "1.5rem", marginBottom: "0rem"
+    color: "#4f850d",
+    fontFamily: "system-ui",
+    fontWeight: "bold",
+    paddingTop: "1.5rem",
+    marginBottom: "0rem",
   },
   TextField: {
-    fontFamily: "system-ui", fontWeight: "bold", marginTop: "0", marginBottom: "1rem"
+    fontFamily: "system-ui",
+    fontWeight: "bold",
+    marginTop: "0",
+    marginBottom: "1rem",
   },
   Button: {
-    backgroundColor: "#4f850d", fontFamily: "system-ui", fontWeight: "bold", color: '#fff', textTransform: "lowercase", padding: "0.5rem", marginLeft: "auto", marginRight: "auto", marginBottom: "1rem"
+    backgroundColor: "#4f850d",
+    fontFamily: "system-ui",
+    fontWeight: "bold",
+    color: "#fff",
+    textTransform: "lowercase",
+    padding: "0.5rem",
+    marginLeft: "auto",
+    marginRight: "auto",
+    marginBottom: "1rem",
   },
-}
+};
 
 export default function UserProfil(props) {
   const [bottomLeft, setBottomLeft] = useState({});
@@ -155,6 +175,7 @@ export default function UserProfil(props) {
 
   const userProfilHandler = async (e) => {
     e.preventDefault();
+    console.log("submit");
 
     try {
       const axiosResp = await axiosPublic.post("/userprofil", userProfil, {
@@ -164,10 +185,10 @@ export default function UserProfil(props) {
       if (!axiosResp) {
         console.debug("axiosResp.data:", axiosResp);
       } else {
-        console.log("setissuccess works")
+        console.log("setissuccess works");
         setIsSuccess(true);
         setTimeout(() => {
-          setIsSuccess(false)
+          setIsSuccess(false);
         }, 200000);
         console.debug("axiosResp.data:", axiosResp);
       }
@@ -190,9 +211,9 @@ export default function UserProfil(props) {
     await Compress.imageFileResizer(
       file, // the file from input
       300, // width
-      300, // height
+      400, // height
       "JPEG", // compress format WEBP, JPEG, PNG
-      80, // quality
+      90, // quality
       0, // rotation
       (uri) => {
         // console.log(uri);
@@ -238,7 +259,12 @@ export default function UserProfil(props) {
               <FormControl>
                 <FormLabel
                   id="demo-radio-buttons-group-label"
-                  style={{ color: "#4f850d", fontFamily: "system-ui", fontWeight: "bold", lineHeight: "1em" }}
+                  style={{
+                    color: "#4f850d",
+                    fontFamily: "system-ui",
+                    fontWeight: "bold",
+                    lineHeight: "1em",
+                  }}
                 >
                   Your gender:
                 </FormLabel>
@@ -332,9 +358,7 @@ export default function UserProfil(props) {
                 </Select>
               </FormControl>
 
-              <FormLabel
-                style={styles.FormLabel}
-              >
+              <FormLabel style={styles.FormLabel}>
                 Your time slot for dog walking:
               </FormLabel>
 
@@ -386,7 +410,9 @@ export default function UserProfil(props) {
                   label="Time Slot"
                 >
                   <MenuItem value={"noon"}>Midday 10-13pm</MenuItem>
-                  <MenuItem value={"in the evening"}>Afternoon 13-18pm</MenuItem>
+                  <MenuItem value={"in the evening"}>
+                    Afternoon 13-18pm
+                  </MenuItem>
                   <MenuItem value={"morning"}>Morning 6-11pm</MenuItem>
                   <MenuItem value={"evening"}>Evening 18-22pm</MenuItem>
                 </Select>
@@ -412,7 +438,7 @@ export default function UserProfil(props) {
 
               <Button
                 variant="contained"
-                component="label"  //hier notwendig für Input File Upload!
+                component="label" //hier notwendig für Input File Upload!
                 onChange={handleUpload}
                 style={styles.Button}
                 className="img-btn"
@@ -430,21 +456,22 @@ export default function UserProfil(props) {
 
               <Outlet />
 
-              {isError ? <Alert
-                severity="error"
-                style={styles.AlertError}
-              >{isError}</Alert> : null}
-              {isSuccess ? <Alert
-                className="alertSuccess"
-                severity="success"
-                style={styles.AlertSuccess}
-              >userprofil saved successfully</Alert> : null}
+              {isError ? (
+                <Alert severity="error" style={styles.AlertError}>
+                  {isError}
+                </Alert>
+              ) : null}
+              {isSuccess ? (
+                <Alert
+                  className="alertSuccess"
+                  severity="success"
+                  style={styles.AlertSuccess}
+                >
+                  userprofil saved successfully
+                </Alert>
+              ) : null}
 
-              <Button
-                type="submit"
-                style={styles.Button}
-                className="save-btn"
-              >
+              <Button type="submit" style={styles.Button} className="save-btn">
                 Save Profil
               </Button>
             </form>

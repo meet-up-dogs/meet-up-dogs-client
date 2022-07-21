@@ -16,7 +16,8 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { axiosPublic } from "../../util/axiosConfig";
 import Button from "@mui/material/Button";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
-
+import MessageIcon from "@mui/icons-material/Message";
+import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import "@fontsource/shrikhand";
 import "./header.css";
 import { MainContext } from "../../context/MainContext";
@@ -29,10 +30,17 @@ const darkTheme = createTheme({
 });
 
 export default function Header({ conversation }) {
-  const [user, setUser, loading, setLoading, selectedUser, setSelectedUser] =
-    useContext(MainContext);
+  const [
+    user,
+    setUser,
+    loading,
+    setLoading,
+    selectedUser,
+    setSelectedUser,
+    notifications,
+    setNotifications,
+  ] = useContext(MainContext);
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [notifications, setNotifications] = useState();
 
   const handleMenu = (e) => {
     console.log("handleMenu", e);
@@ -50,10 +58,22 @@ export default function Header({ conversation }) {
   };
   const handleCloseNotification = () => {
     setAnchorNotification(null);
-    setNotifications(null);
+    setNotifications([]);
+    clearNotifications();
   };
+  const handleCloseNotificationNavi = () => {
+    setAnchorNotification(null);
+    setNotifications([]);
+    clearNotifications();
 
+    navigate("/chatHistory");
+  };
   //^notification
+  const clearNotifications = async () => {
+    const resp = await axiosPublic.post("/clearNotifications", {
+      username: user.username,
+    });
+  };
 
   let loginVariable = true;
   const [login, setLogin] = useState(loginVariable);
@@ -67,29 +87,14 @@ export default function Header({ conversation }) {
     }
   };
 
-  // const getNotifications = async () => {
-  //   const resp = await axiosPublic.get("/getNotifications", {
-  //     withCredentials: true,
-  //   });
-  //   setNotifications(resp.data);
-  //   console.log(
-  //     "head!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-  //   );
-  // };
-  useEffect(() => {
-    // console.log();
-    setNotifications(user?.notifications);
-  }, [conversation, user?.notifications, user]);
-
-  console.log(notifications);
   return (
     <>
       <ThemeProvider theme={darkTheme}>
         {loading ? (
           <h1>Loading</h1>
         ) : (
-          <div className="header">
-            <Box sx={{ flexGrow: 1 }}>
+          <>
+            <Box className="header">
               <AppBar position="static" style={{ background: "#2B2B2B" }}>
                 <Toolbar>
                   <IconButton
@@ -149,7 +154,11 @@ export default function Header({ conversation }) {
                       onClick={handleClickNotification}
                     >
                       <NotificationsNoneIcon />
-                      <span className="noti">{notifications?.length}</span>
+                      <span className="noti">
+                        {notifications?.length > 0
+                          ? notifications?.length
+                          : null}
+                      </span>
                     </Button>
                     <Menu
                       id="basic-menu"
@@ -163,9 +172,11 @@ export default function Header({ conversation }) {
                       {notifications?.map((notification) => (
                         <p
                           className="notification-item"
-                          onClick={handleCloseNotification}
+                          onClick={handleCloseNotificationNavi}
                         >
-                          New message from {notification.sent}
+                          <span className="noti-active"></span>
+                          <span>New </span>
+                          <MailOutlineIcon /> from {notification}
                         </p>
                       ))}
                     </Menu>
@@ -198,7 +209,7 @@ export default function Header({ conversation }) {
               </AppBar>
             </Box>
             <Box name="username" label="Username" variant="standard" />
-          </div>
+          </>
         )}
       </ThemeProvider>
     </>

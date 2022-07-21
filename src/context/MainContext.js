@@ -7,24 +7,38 @@ export const MainContextProvider = (props) => {
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState({});
   const [selectedUser, setSelectedUser] = useState({});
-  const [notifications, setNotifications] = useState("");
+  const [notifications, setNotifications] = useState([]);
+
+  const getUser = async (onlyNotifications) => {
+    try {
+      const resp = await axiosPublic.get("/currentUser", {
+        withCredentials: true,
+      });
+      if (!onlyNotifications) {
+        console.log("resp.data.notifications: ", resp.data.notifications);
+        setUser(resp.data);
+      }
+      setNotifications(resp.data.notifications);
+    } catch (err) {
+      console.log("%%%%%%%%%%%%ERRROR");
+      console.log(err.message);
+    }
+    if (!onlyNotifications) setLoading(false);
+  };
 
   useEffect(() => {
     setLoading(true);
-    const getUser = async () => {
-      try {
-        const resp = await axiosPublic.get("/currentUser", {
-          withCredentials: true,
-        });
-        setUser(resp.data);
-      } catch (err) {
-        console.log(err.message);
-      }
-      setLoading(false);
-    };
 
     getUser();
   }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      getUser(true);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <MainContext.Provider
       value={[

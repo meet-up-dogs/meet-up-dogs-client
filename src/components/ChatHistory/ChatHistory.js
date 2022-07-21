@@ -19,8 +19,15 @@ const override = {
 };
 
 export default function ChatHistory(props) {
-  const [user, setUser, loading, setLoading, selectedUser, setSelectedUser] =
-    useContext(MainContext);
+  const [
+    user,
+    setUser,
+    loading,
+    setLoading,
+    selectedUser,
+    setSelectedUser,
+    notifications,
+  ] = useContext(MainContext);
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [chats, setChats] = useState([]);
   const [matchUsers, setMatchUsers] = useState([]);
@@ -82,29 +89,28 @@ export default function ChatHistory(props) {
     return -1;
   });
   useEffect(() => {
-    setLoading(true)
+    setLoading(true);
     getChats();
     getMatchUsers();
 
     setTimeout(() => setLoading(false), 200);
   }, []);
-
-  console.log('chats-length', chats.length)
-
+  useEffect(() => {
+    getChats();
+    // setTimeout(() => setChats(chats), 1000);
+  }, [notifications]);
   return (
     <>
       {loading ? (
-        <SyncLoader
-          loading={loading}
-          cssOverride={override}
-          size={15}
-          />
-        
+        <SyncLoader loading={loading} cssOverride={override} size={15} />
       ) : (
         <>
           {chats.length === 0 ? (
             <>
-              <Header />
+              <Header
+                setSelectedUser={setSelectedUser}
+                setIsChatOpen={setIsChatOpen}
+              />
               <div className="alert-no-chats">
                 <Alert severity="warning">you have no chats yet!</Alert>
               </div>
@@ -114,26 +120,30 @@ export default function ChatHistory(props) {
             <>
               {isChatOpen ? (
                 <Chat />
-
               ) : (
                 <>
                   <Header />
                   <br />
                   <div className="chats-container">
                     {chats.map((chat) => {
-                      const user = findUser(chat.roomId);
+                      const friend = findUser(chat.roomId);
                       return (
                         <div
-                          key={user?.username}
-                          className="chat-card"
+                          className={
+                            notifications?.includes(friend?.username)
+                              ? "chat-card new-msg"
+                              : "chat-card"
+                          }
+                          key={friend?.username}
+                          // className="chat-card"
                           onClick={() => {
                             setIsChatOpen(true);
-                            setSelectedUser(user);
+                            setSelectedUser(friend);
                           }}
                         >
-                          <img src={user?.userImage} alt="" />
+                          <img src={friend?.userImage} alt="" />
                           <aside>
-                            <p className="name">{user?.username}</p>
+                            <p className="name">{friend?.username}</p>
                             <p className="message">
                               {chat.chat[chat.chat.length - 1].msg
                                 .split(" ")
@@ -151,10 +161,8 @@ export default function ChatHistory(props) {
               )}
             </>
           )}
-
         </>
       )}
     </>
-
   );
 }

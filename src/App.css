@@ -1,7 +1,10 @@
 body {
   background-color: #f5f4e9;
-  font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  background-color: #fbfbfb;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", sans-serif;
   /* background-color: whitesmoke; */
+  height: 100vh;
 }
 
 .center {
