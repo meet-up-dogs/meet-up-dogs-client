@@ -1,13 +1,9 @@
-.header {
-  bottom: 0;
-  height: 50px;
-  opacity: 1;
+.header > header {
+  height: 8vh;
+  line-height: 8vh;
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  inset: 0;
   z-index: 10;
-  margin-bottom: 100px;
 }
 
 .navlink {

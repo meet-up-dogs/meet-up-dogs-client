@@ -116,6 +116,7 @@ export default function UserProfil(props) {
 
   const userProfilHandler = async (e) => {
     e.preventDefault();
+    console.log("submit");
 
     try {
       const axiosResp = await axiosPublic.post("/userprofil", userProfil, {
@@ -193,7 +194,12 @@ export default function UserProfil(props) {
               <FormControl>
                 <FormLabel
                   id="demo-radio-buttons-group-label"
-                  style={{ color: "#4f850d", fontFamily: "system-ui", fontWeight: "bold", lineHeight: "1em" }}
+                  style={{
+                    color: "#4f850d",
+                    fontFamily: "system-ui",
+                    fontWeight: "bold",
+                    lineHeight: "1em",
+                  }}
                 >
                   Gender
                 </FormLabel>
@@ -240,7 +246,11 @@ export default function UserProfil(props) {
               <FormControl className="lg">
                 <InputLabel
                   id="demo-simple-select-autowidth-label"
-                  style={{ color: "#4f850d", fontFamily: "system-ui", fontWeight: "bold" }}
+                  style={{
+                    color: "#4f850d",
+                    fontFamily: "system-ui",
+                    fontWeight: "bold",
+                  }}
                 >
                   Languages
                 </InputLabel>
@@ -268,7 +278,11 @@ export default function UserProfil(props) {
               <FormControl>
                 <InputLabel
                   id="demo-simple-select-autowidth-label"
-                  style={{ color: "#4f850d", fontFamily: "system-ui", fontWeight: "bold" }}
+                  style={{
+                    color: "#4f850d",
+                    fontFamily: "system-ui",
+                    fontWeight: "bold",
+                  }}
                 >
                   Dog Breed
                 </InputLabel>
@@ -289,7 +303,14 @@ export default function UserProfil(props) {
               </FormControl>
 
               <FormControl>
-                <InputLabel id="weekDay" style={{ color: "#4f850d", fontFamily: "system-ui", fontWeight: "bold" }}>
+                <InputLabel
+                  id="weekDay"
+                  style={{
+                    color: "#4f850d",
+                    fontFamily: "system-ui",
+                    fontWeight: "bold",
+                  }}
+                >
                   Week Day
                 </InputLabel>
                 <Select
@@ -316,7 +337,14 @@ export default function UserProfil(props) {
               </FormControl>
 
               <FormControl>
-                <InputLabel id="timeDay" style={{ color: "#4f850d", fontFamily: "system-ui", fontWeight: "bold" }}>
+                <InputLabel
+                  id="timeDay"
+                  style={{
+                    color: "#4f850d",
+                    fontFamily: "system-ui",
+                    fontWeight: "bold",
+                  }}
+                >
                   Time Of Day
                 </InputLabel>
                 <Select
@@ -347,7 +375,11 @@ export default function UserProfil(props) {
                 component="label"
                 onChange={handleUpload}
                 style={{
-                  backgroundColor: "#4f850d", fontFamily: "system-ui", fontWeight: "bold", color: '#fff', textTransform: "lowercase"
+                  backgroundColor: "#4f850d",
+                  fontFamily: "system-ui",
+                  fontWeight: "bold",
+                  color: "#fff",
+                  textTransform: "lowercase",
                 }}
                 className="img-btn"
               >
@@ -355,9 +387,17 @@ export default function UserProfil(props) {
                 <input type="file" onChange={onFileResize} hidden />
               </Button>
 
-              <InputLabel id="timeDay" style={{ color: "#4f850d", fontFamily: "system-ui", fontWeight: "bold", lineHeight: "1em" }}>
-              something about you and your dog
-               </InputLabel>
+              <InputLabel
+                id="timeDay"
+                style={{
+                  color: "#4f850d",
+                  fontFamily: "system-ui",
+                  fontWeight: "bold",
+                  lineHeight: "1em",
+                }}
+              >
+                something about you and your dog
+              </InputLabel>
 
               <TextField
                 className="text-field"
@@ -367,7 +407,10 @@ export default function UserProfil(props) {
                 defaultValue={user.description}
                 rows="6"
                 rowsMax="6"
-                style={{ fontFamily: "system-ui !important", fontWeight: "bold",}}
+                style={{
+                  fontFamily: "system-ui !important",
+                  fontWeight: "bold",
+                }}
                 onChange={(e) => {
                   setUserProfil({ ...userProfil, description: e.target.value });
                 }}
@@ -383,9 +426,16 @@ export default function UserProfil(props) {
               <Outlet />
               <Button
                 type="submit"
-                component="label"
+                // onClick={(e) => {
+                //   userProfilHandler(e);
+                // }}
+
                 style={{
-                  backgroundColor: "#4f850d", fontFamily: "system-ui", fontWeight: "bold", color: '#fff', textTransform: "lowercase"
+                  backgroundColor: "#4f850d",
+                  fontFamily: "system-ui",
+                  fontWeight: "bold",
+                  color: "#fff",
+                  textTransform: "lowercase",
                 }}
                 className="save-btn"
               >

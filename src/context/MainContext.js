@@ -20,6 +20,7 @@ export const MainContextProvider = (props) => {
       }
       setNotifications(resp.data.notifications);
     } catch (err) {
+      console.log("%%%%%%%%%%%%ERRROR");
       console.log(err.message);
     }
     if (!onlyNotifications) setLoading(false);

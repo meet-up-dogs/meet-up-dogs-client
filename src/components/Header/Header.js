@@ -93,8 +93,8 @@ export default function Header({ conversation }) {
         {loading ? (
           <h1>Loading</h1>
         ) : (
-          <div className="header">
-            <Box sx={{ flexGrow: 1 }}>
+          <>
+            <Box className="header">
               <AppBar position="static" style={{ background: "#2B2B2B" }}>
                 <Toolbar>
                   <IconButton
@@ -174,7 +174,8 @@ export default function Header({ conversation }) {
                           className="notification-item"
                           onClick={handleCloseNotificationNavi}
                         >
-                          <span className="noti-active"></span> New
+                          <span className="noti-active"></span>
+                          <span>New </span>
                           <MailOutlineIcon /> from {notification}
                         </p>
                       ))}
@@ -208,7 +209,7 @@ export default function Header({ conversation }) {
               </AppBar>
             </Box>
             <Box name="username" label="Username" variant="standard" />
-          </div>
+          </>
         )}
       </ThemeProvider>
     </>
