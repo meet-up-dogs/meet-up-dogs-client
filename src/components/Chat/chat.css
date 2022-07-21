@@ -63,7 +63,8 @@
 .messages-box {
   display: flex;
   flex-direction: column;
-  height: 70vh;
+  min-height: 50vh;
+  max-height: 65vh;
   padding: 1rem !important;
 
   overflow: scroll;
@@ -106,18 +107,29 @@
 .send-section {
   margin-top: 2rem;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
-  gap: 1rem;
+  /* gap: 2rem; */
   /* color: #fff !important; */
 }
 
+.send-section > div {
+  width: 80vw;
+}
 .send-section fieldset {
-  background-color: #464646;
-  border-radius: 2rem;
-  /* color: white; */
+  /* background-color: #464646; */
+  /* border-radius: 2rem; */
   /* margin: 0 auto; */
-  /* width: 80%; */
+  /* width: 80vw.; */
+  background-color: #3c3c3c;
+  /* max-height: 20vh; */
+}
+.send-section .MuiOutlinedInput-input {
+  color: whitesmoke !important;
+  z-index: 2;
+}
+.MuiFormControl-root {
+  /* width */
 }
 
 #outlined-basic-label {

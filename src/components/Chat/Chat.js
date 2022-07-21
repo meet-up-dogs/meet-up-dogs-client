@@ -134,9 +134,10 @@ export default function Chat() {
           <FormLabel className="send-section">
             <TextField
               color="success"
-              id="outlined-basic"
+              id="outlined-multiline-flexible"
+              multiline
+              maxRows={3}
               label="Type here..."
-              variant="outlined"
               placeholder="Type here..."
               onChange={(e) => setMessage(e.target.value)}
             />

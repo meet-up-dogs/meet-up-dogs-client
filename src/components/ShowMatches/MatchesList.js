@@ -9,15 +9,16 @@ import { axiosPublic } from "../../util/axiosConfig";
 import MatchCard from "../ShowMatches/MatchCard";
 import { MainContext } from "../../context/MainContext";
 import Alert from "@mui/material/Alert";
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import TextField from "@mui/material/TextField";
+
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 const darkTheme = createTheme({
   palette: {
-    mode: 'dark',
-    color: "white"
+    mode: "dark",
+    color: "white",
   },
 });
-
 
 const MatchList = (props) => {
   const [user, setUser, loading, setLoading, selectedUser, setSelectedUser] =
@@ -42,26 +43,32 @@ const MatchList = (props) => {
         <>
           <Header />
 
-        <div className="alert-no-matches">
-          <Alert severity="warning">unfortunately there are no hits for your area!</Alert>
+          <div className="alert-no-matches">
+            <Alert severity="warning">
+              unfortunately there are no hits for your area!
+            </Alert>
           </div>
           <Footer />
         </>
       ) : (
         <>
-        <ThemeProvider theme={darkTheme}>
-          {showCard ? (
-            <MatchCard />
-          ) : (
-            <>
-              <Header />
-
-              <div className="cards">
-                {matchUsers.map((userObj) => {
-                  return (
-                    <div key={userObj.username}>
-                      <main>
+          <ThemeProvider theme={darkTheme}>
+            {showCard ? (
+              <MatchCard />
+            ) : (
+              <>
+                <Header />
+                <div className="matches-container">
+                  <div className="matches-search"></div>
+                  <h2 className="cards-title">Matching users</h2>
+                  <main className="cards">
+                    {matchUsers.map((userObj) => {
+                      return (
                         <div
+                          style={{
+                            backgroundImage: `url( ${userObj.userImage})`,
+                          }}
+                          key={userObj.username}
                           className="card"
                           onClick={() => {
                             setSelectedUser(
@@ -73,28 +80,24 @@ const MatchList = (props) => {
                             setShowCard(true);
                           }}
                         >
-                          <div className="container">
-                            <img
-                              src={userObj.userImage}
-                              alt="user-foto"
-                              className="card-img"
-                            />
-                            <div className="bio">
-                              <li>{userObj.username}</li>
-                              <li>DogBreed:{userObj.dogBreed}</li>
-                            </div>
+                          {/* <img
+                          src={userObj.userImage}
+                          alt="user-foto"
+                          className="card-img"
+                        /> */}
+                          <div className="card-bio">
+                            <p>{userObj.username}</p>
+                            <p>{userObj.dogBreed}</p>
                           </div>
                         </div>
-                      </main>
-                    </div>
-                  );
-                })}
-              </div>
-
-              <Footer />
-            </>
-          )}
-    </ThemeProvider>
+                      );
+                    })}
+                  </main>
+                </div>
+                <Footer />
+              </>
+            )}
+          </ThemeProvider>
         </>
       )}
     </>

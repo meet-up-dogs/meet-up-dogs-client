@@ -146,9 +146,9 @@ export default function UserProfil(props) {
     await Compress.imageFileResizer(
       file, // the file from input
       300, // width
-      300, // height
+      400, // height
       "JPEG", // compress format WEBP, JPEG, PNG
-      80, // quality
+      90, // quality
       0, // rotation
       (uri) => {
         // console.log(uri);
