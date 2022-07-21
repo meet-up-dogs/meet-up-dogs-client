@@ -1,4 +1,4 @@
-import React, { useEffect, CSSProperties } from "react";
+import React, { useEffect } from "react";
 import Button from "@mui/material/Button";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -46,11 +46,11 @@ const styles = {
     width: "400px"
   },
   AlertError: {
-    fontFamily: "system-ui", 
-    fontWeight: "bold", 
-    color: "ae0000", 
-    backgroundColor: "#82bf82", 
-    margin: "0px auto", 
+    fontFamily: "system-ui",
+    fontWeight: "bold",
+    color: "ae0000",
+    backgroundColor: "#82bf82",
+    margin: "0px auto",
     width: "400px"
   },
   radioGroup: {
@@ -72,7 +72,6 @@ const styles = {
     backgroundColor: "#4f850d", fontFamily: "system-ui", fontWeight: "bold", color: '#fff', textTransform: "lowercase", padding: "0.5rem", marginLeft: "auto", marginRight: "auto", marginBottom: "1rem"
   },
 }
-
 
 export default function UserProfil(props) {
   const [bottomLeft, setBottomLeft] = useState({});
@@ -97,7 +96,6 @@ export default function UserProfil(props) {
       setTimeout(() => {
         setLoading(false);
       }, 50);
-      // setLoading(false);
     };
 
     getUser();
@@ -293,7 +291,6 @@ export default function UserProfil(props) {
                   onChange={(e) => {
                     setUserProfil({
                       ...userProfil,
-                      // username: user.username,
                       language: e.target.value,
                     });
                   }}
@@ -336,13 +333,13 @@ export default function UserProfil(props) {
               </FormControl>
 
               <FormLabel
-                style={{ color: "#4f850d", fontFamily: "system-ui", fontWeight: "bold", paddingTop: "1.5rem", marginBottom: "0rem" }}
+                style={styles.FormLabel}
               >
                 Your time slot for dog walking:
               </FormLabel>
 
               <FormControl>
-                <InputLabel id="weekDay" style={{ color: "#4f850d", fontFamily: "system-ui", fontWeight: "bold" }}>
+                <InputLabel id="weekDay" style={styles.InputLabel}>
                   Week Day:
                 </InputLabel>
                 <Select
@@ -396,7 +393,7 @@ export default function UserProfil(props) {
               </FormControl>
 
               <InputLabel id="about" style={styles.InputLabel}>
-                Something about you and your dog
+                Something about you and your dog:
               </InputLabel>
 
               <TextField
@@ -423,7 +420,6 @@ export default function UserProfil(props) {
                 {uploadText}
                 <input type="file" onChange={onFileResize} hidden />
               </Button>
-
 
               <Map
                 setBottomLeft={setBottomLeft}
