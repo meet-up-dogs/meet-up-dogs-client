@@ -77,7 +77,7 @@ const MatchCard = (props) => {
               <p>Language: {selectedUser.language}</p>
               <p>Availability: {selectedUser.availability.weekDay} {selectedUser.availability.dayTime}</p>
               <div className="btns">
-                <button onClick={() => setIsOpenChat(true)}>
+                <button style={{color: "gray"}} onClick={() => setIsOpenChat(true)}>
                   <ChatIcon />
                 </button>
 
@@ -87,7 +87,7 @@ const MatchCard = (props) => {
                       favToggle();
                     }}
                     aria-label="delete"
-                    style={{color: "#9CDE4E"}}
+                    style={{color: "red"}}
                   >
                     <FavoriteBorderIcon></FavoriteBorderIcon>
                   </IconButton>
@@ -98,7 +98,7 @@ const MatchCard = (props) => {
                       favToggle();
                     }}
                     aria-label="delete"
-                    style={{color: "9CDE4E"}}
+                    style={{color: "red"}}
                   >
                     <FavoriteIcon></FavoriteIcon>
                   </IconButton>
