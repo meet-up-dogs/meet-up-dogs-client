@@ -31,9 +31,9 @@ const MatchCard = (props) => {
     Button: {
       backgroundColor: "#4f850d",
       fontFamily: "system-ui",
-      fontWeight: "bold",
+      // fontWeight: "bold",
       color: "#fff",
-      textTransform: "lowercase",
+      // textTransform: "lowercase",
       padding: "0.5rem",
       marginTop: "2rem",
     },

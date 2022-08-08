@@ -58,6 +58,7 @@ a {
   border-bottom: 1px solid rgb(121, 120, 120);
   cursor: pointer;
   transition: border 0.3s ease-in-out;
+  font-size: 1rem;
 }
 .notification-item:hover {
   border-bottom: 1px solid #fff;

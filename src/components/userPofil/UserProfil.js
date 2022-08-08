@@ -85,7 +85,7 @@ const styles = {
     fontFamily: "system-ui",
     fontWeight: "bold",
     color: "#fff",
-    textTransform: "lowercase",
+    // textTransform: "lowercase",
     padding: "0.5rem",
     marginLeft: "auto",
     marginRight: "auto",
@@ -448,7 +448,7 @@ export default function UserProfil(props) {
               </Button>
 
               <InputLabel id="user-area" style={styles.InputLabel}>
-              Your area for a dog walk together:
+                Your area for a dog walk together:
               </InputLabel>
 
               <Map
@@ -471,7 +471,7 @@ export default function UserProfil(props) {
                   severity="success"
                   style={styles.AlertSuccess}
                 >
-                  userprofil saved successfully
+                  User Profile saved successfully
                 </Alert>
               ) : null}
 
