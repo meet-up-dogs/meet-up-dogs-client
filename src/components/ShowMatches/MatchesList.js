@@ -10,6 +10,8 @@ import Alert from "@mui/material/Alert";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import SyncLoader from "react-spinners/SyncLoader";
 import TextField from "@mui/material/TextField";
+import PetsIcon from "@mui/icons-material/Pets";
+import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 
 const darkTheme = createTheme({
   palette: {
@@ -106,8 +108,14 @@ const MatchList = (props) => {
                           className="card-img"
                         /> */}
                               <div className="card-bio">
-                                <p>{userObj.username}</p>
-                                <p>{userObj.dogBreed}</p>
+                                <p>
+                                  <PersonOutlineIcon />
+                                  {userObj.username}
+                                </p>
+                                <p>
+                                  <PetsIcon />
+                                  {userObj.dogBreed}
+                                </p>
                               </div>
                             </div>
                           );

@@ -100,6 +100,13 @@
   letter-spacing: 1px;
   padding-left: 0.6rem;
   text-shadow: 1px 1px 6px rgba(255, 255, 255, 0.4);
+  line-height: 1.4rem;
+}
+
+.card-bio p > * {
+  margin-right: 0.5rem;
+  font-size: 1.2rem;
+  line-height: 2rem;
 }
 .card-bio p::first-letter {
   text-transform: capitalize;

@@ -1,59 +1,84 @@
 .match-card {
-    display: flex;
-    flex-direction: column;
-    margin: 10% auto;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
+  padding: 8vh 0 6vh 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .match-img {
-    max-width: 100%;
-    border-radius: 5px 5px 5px 5px;
+  height: 50vh;
+  background-size: cover;
+  background-position: center center;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0.5rem 0;
+  border-radius: 0 0 1.4rem 1.4rem;
+}
+
+.match-img > div {
+  border: 0.1rem solid rgba(255, 255, 255, 0.73);
+  line-height: 1.2rem;
+  height: 2rem;
+  padding: 0.2rem;
+  border-radius: 0.2rem;
+  color: white;
+  cursor: pointer;
+}
+.match-img > div button {
+  padding: 0;
 }
 
 .match-container {
-padding: 2em 2em;
+  padding: 1rem 1.4rem;
+  display: flex;
+  flex-direction: column;
 }
 
 h2 {
-    font-family: "Shrikhand";
-    color: #2b2b2b;
-    text-align: center;
+  font-family: "Shrikhand";
+  color: #2b2b2b;
+  font-size: 1.8rem;
+  padding-bottom: 0.5rem;
 }
 
-.btns {
-    display: flex;
-    justify-content: space-around;
-    margin: 0 auto;
-    align-items: flex-end;
-    line-height: 0.02em;
+.match-container h4 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+.match-container .desc {
+  color: #2e2e2e;
+
+  font-size: 0.8rem;
 }
 
-.btns > *{
-    font-size: 1rem;
-    margin: 10px;
+.match-details {
+  display: flex;
+  font-size: 0.8rem;
+  justify-content: space-evenly;
 }
 
-.FavoriteIcon {
-    color: rgb(111, 8, 8);
+.match-details > div {
+  border: 2px solid rgb(206, 206, 206);
+  padding: 0.5rem 0.8rem;
+  border-radius: 0.2rem;
+  color: #2e2e2e;
 }
 
-@media only screen and (max-width: 465px ) {
-.match-card{
-    margin: 1% auto;
-} 
-.match-img{
-    margin-top: 10%;
-}
+.match-details > div p {
+  padding: 0;
+  margin: 0;
+  color: #2b2b2b;
+  font-weight: 600;
 }
 
-.back {
-    margin-left: 0;
-    margin-top: 3.9rem;
-    width: max-content;
-    cursor: pointer;
+.match-container button {
+  /* align-self: center; */
+  line-height: 1.2rem;
+  width: 100% !important;
 }
-
-.MuiAlert-message {
-    border-top: 5rem;
+.match-container button::first-letter {
+  text-transform: uppercase !important;
+}
+.match-container button > svg {
+  margin-left: 0.5rem;
+  font-size: 1.2rem;
 }

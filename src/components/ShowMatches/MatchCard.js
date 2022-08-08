@@ -8,10 +8,12 @@ import ChatIcon from "@mui/icons-material/Chat";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import IconButton from "@mui/material/IconButton";
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import "./matchCard.css";
 import Chat from "../Chat/Chat";
 import { MainContext } from "../../context/MainContext";
+import Button from "@mui/material/Button";
+
 const MatchCard = (props) => {
   // const [fav, setFav] = useState(true);
   const [isOpenChat, setIsOpenChat] = useState(false);
@@ -25,6 +27,17 @@ const MatchCard = (props) => {
     setFav(!fav);
   };
 
+  const styles = {
+    Button: {
+      backgroundColor: "#4f850d",
+      fontFamily: "system-ui",
+      fontWeight: "bold",
+      color: "#fff",
+      textTransform: "lowercase",
+      padding: "0.5rem",
+      marginTop: "2rem",
+    },
+  };
   // const handleFav = async () =>{
   //     setFav(props.currentUser.favorite)
   //     console.log(props.currentUser)
@@ -64,30 +77,29 @@ const MatchCard = (props) => {
       ) : (
         <>
           <Header />
-          <div className="back" onClick={()=>{document.location.reload()}}><ArrowBackIosNewIcon></ArrowBackIosNewIcon></div>
           <main className="match-card">
-            <img src={selectedUser.userImage} alt="" className="match-img" />
-            <div className="match-container">
-              <h2>{selectedUser.username}</h2>
-              <p>
-                About me and my dogs: <br />
-                {selectedUser.description}
-              </p>
-              <p>Gender:{selectedUser.gender}</p>
-              <p>Language: {selectedUser.language}</p>
-              <p>Availability: {selectedUser.availability.weekDay} {selectedUser.availability.dayTime}</p>
-              <div className="btns">
-                <div style={{color: "gray" , cursor: "pointer"}} onClick={() => setIsOpenChat(true)}>
-                  <ChatIcon />
-                </div>
-
+            <div
+              className="match-img"
+              style={{
+                backgroundImage: `url( ${selectedUser.userImage})`,
+              }}
+            >
+              <div
+                className="back"
+                onClick={() => {
+                  document.location.reload();
+                }}
+              >
+                <ArrowBackIcon />
+              </div>
+              <div className="fav">
                 {fav && (
                   <IconButton
                     onClick={() => {
                       favToggle();
                     }}
                     aria-label="delete"
-                    style={{color: "red"}}
+                    style={{ color: "white" }}
                   >
                     <FavoriteBorderIcon></FavoriteBorderIcon>
                   </IconButton>
@@ -98,12 +110,41 @@ const MatchCard = (props) => {
                       favToggle();
                     }}
                     aria-label="delete"
-                    style={{color: "red"}}
+                    style={{ color: "white" }}
                   >
                     <FavoriteIcon></FavoriteIcon>
                   </IconButton>
                 )}
               </div>
+            </div>
+            <div className="match-container">
+              <h2>Hi I'm {selectedUser.username}</h2>
+              <h4>Description:</h4>
+              <p className="desc">{selectedUser.description}</p>
+
+              <div className="match-details">
+                <div>
+                  <p>{selectedUser.gender}</p>
+                  <span>Gender</span>
+                </div>
+                <div>
+                  <p>{selectedUser.language}</p>
+                  <span>Language</span>
+                </div>
+
+                <div>
+                  <p>{selectedUser.availability.weekDay} </p>
+                  <span>Availability</span>
+                </div>
+              </div>
+              <Button
+                fullWidth
+                style={styles.Button}
+                className="save-btn"
+                onClick={() => setIsOpenChat(true)}
+              >
+                Start Chat <ChatIcon />
+              </Button>
             </div>
           </main>
 

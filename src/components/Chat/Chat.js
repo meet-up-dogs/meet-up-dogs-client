@@ -74,6 +74,7 @@ export default function Chat() {
     });
 
     setConversation(resp.data.chat);
+    console.log(resp.data.chat);
   };
 
   const clearNotifications = async () => {
