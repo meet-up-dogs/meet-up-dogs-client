@@ -183,8 +183,10 @@ export default function Header({ conversation }) {
                           onClick={handleCloseNotificationNavi}
                         >
                           <span className="noti-active"></span>
-                          <span>New </span>
-                          <MailOutlineIcon /> from {notification}
+                          <MailOutlineIcon />
+                          <span> from </span>
+
+                          <span>{notification}</span>
                         </p>
                       ))}
                     </Menu>

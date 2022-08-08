@@ -12,21 +12,20 @@ import AvatarFarid from "../images/farid.png";
 import ImageEvi from "../images/evi.jpg";
 import ImageKarol from "../images/karol.jpg";
 export default function About(props) {
-
   const styles = {
     card: {
       maxWidth: 345,
       margin: "0 auto",
       marginTop: "10%",
-      },
+    },
     media: {
       height: "400",
       width: "200",
       margin: "0 auto",
     },
     container: {
-      marginTop: "10%",
-      marginBottom: "10%",
+      marginTop: "15%",
+      marginBottom: "20%",
       height: "max-content",
       backgroundColor: "#eee",
       borderRadius: "1%",
@@ -40,7 +39,7 @@ export default function About(props) {
       <Container
         className="container-farid"
         maxWidth="sm"
-        style={styles.container}
+        style={(styles.container, { paddingTop: "10vh" })}
       >
         <Card className="card-farid">
           <CardMedia
@@ -53,7 +52,11 @@ export default function About(props) {
             <Typography gutterBottom variant="h5" component="div">
               Farid Tavoli
             </Typography>
-            <Typography variant="body2" color="text.secondary" fontFamily="system-ui">
+            <Typography
+              variant="body2"
+              color="text.secondary"
+              fontFamily="system-ui"
+            >
               motivated young programmer from hamburg.... motivated young
               programmer from hamburg.... motivated young programmer from
               hamburg....
@@ -62,7 +65,7 @@ export default function About(props) {
           <CardActions>
             <Button size="small">
               <a href="https://github.com/FaridTvK" target="_blank">
-              <img src="https://img.icons8.com/ios-glyphs/30/000000/github.png"/>
+                <img src="https://img.icons8.com/ios-glyphs/30/000000/github.png" />
               </a>
             </Button>
           </CardActions>
@@ -82,17 +85,28 @@ export default function About(props) {
             alt="image from evi"
           />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="div" fontFamily="system-ui">
+            <Typography
+              gutterBottom
+              variant="h5"
+              component="div"
+              fontFamily="system-ui"
+            >
               Eveline Klieber
             </Typography>
-            <Typography variant="body2" color="text.secondary" fontFamily="system-ui">
-            I am a junior web developer from Ruhpolding. That's between Munich and Salzburg. Before that I specialized in supply chain management for 20 years and worked in some IT projects on this field.
+            <Typography
+              variant="body2"
+              color="text.secondary"
+              fontFamily="system-ui"
+            >
+              I am a junior web developer from Ruhpolding. That's between Munich
+              and Salzburg. Before that I specialized in supply chain management
+              for 20 years and worked in some IT projects on this field.
             </Typography>
           </CardContent>
           <CardActions>
             <Button size="small">
               <a href="https://github.com/EveKlieber" target="_blank">
-              <img src="https://img.icons8.com/ios-glyphs/30/000000/github.png"/>
+                <img src="https://img.icons8.com/ios-glyphs/30/000000/github.png" />
               </a>
             </Button>
           </CardActions>
@@ -102,7 +116,7 @@ export default function About(props) {
       <Container
         className="container-karol"
         maxWidth="sm"
-        style={styles.container}
+        style={(styles.container, { paddingBottom: "10vh" })}
       >
         <Card className="card-karol">
           <CardMedia
@@ -112,20 +126,31 @@ export default function About(props) {
             alt="image from karol"
           />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="div" fontFamily="system-ui">
+            <Typography
+              gutterBottom
+              variant="h5"
+              component="div"
+              fontFamily="system-ui"
+            >
               Karol Wasemann
             </Typography>
-            <Typography variant="body2" color="text.secondary" fontFamily="system-ui">
-              motivated young programmer from Berlin.... motivated young
-              programmer from hamburg.... motivated young programmer from
-              hamburg....
+            <Typography
+              variant="body2"
+              color="text.secondary"
+              fontFamily="system-ui"
+            >
+              Full-Stack-Webentwickler mit einem Jahr Erfahrung in der
+              Telekommunikationsbranche als Berater und Verkäufer. Zurzeit
+              besuche ich einen einjährigen Kurs in Full-Stack- Entwicklung. Auf
+              der Suche nach neuen Herausforderungen und Entwicklung im Bereich
+              der Web-Entwicklung und Team- Managemen
             </Typography>
           </CardContent>
           <CardActions>
             <Button size="small">
-               <a href="https://github.com/karolwasemann" target="_blank">
-               <img src="https://img.icons8.com/ios-glyphs/30/000000/github.png"/>
-              </a >
+              <a href="https://github.com/karolwasemann" target="_blank">
+                <img src="https://img.icons8.com/ios-glyphs/30/000000/github.png" />
+              </a>
             </Button>
           </CardActions>
         </Card>
