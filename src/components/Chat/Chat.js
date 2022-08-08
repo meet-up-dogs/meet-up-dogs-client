@@ -6,7 +6,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import TextField from "@mui/material/TextField";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useRef } from "react";
 import io from "socket.io-client";
 import "./chat.css";
 import { axiosPublic } from "../../util/axiosConfig";
@@ -44,7 +44,9 @@ export default function Chat() {
   // Messages States
   const [message, setMessage] = useState("");
   const [conversation, setConversation] = useState([]);
+  // const [lastMsgTime, setLastMsgTime] = useState({});
   socket.emit("join_room", room);
+  const lastMsg = useRef();
 
   const sendMessage = (e) => {
     e.preventDefault();
@@ -57,6 +59,7 @@ export default function Chat() {
     console.log("send_message");
     setTimeout(getChat, 200);
     // getChat();
+    setMessage("");
   };
 
   socket.on("receive_message", (data) => {
@@ -74,7 +77,7 @@ export default function Chat() {
     });
 
     setConversation(resp.data.chat);
-    console.log(resp.data.chat);
+    // setLastMsgTime(resp.data.sentAt);
   };
 
   const clearNotifications = async () => {
@@ -87,6 +90,11 @@ export default function Chat() {
       clearNotifications();
     }
   }, []);
+
+  useEffect(() => {
+    lastMsg.current.scrollIntoView({ block: "start", behavior: "smooth" });
+  }, [conversation]);
+
   return (
     <>
       <Header conversation={conversation} />
@@ -131,6 +139,7 @@ export default function Chat() {
                 </>
               )
             )}
+            <div className="dummy-last-msg" ref={lastMsg}></div>
           </FormLabel>
           <FormLabel className="send-section">
             <TextField
@@ -141,6 +150,7 @@ export default function Chat() {
               label="Type here..."
               placeholder="Type here..."
               onChange={(e) => setMessage(e.target.value)}
+              value={message}
             />
             <SendIcon
               className="send-icon"

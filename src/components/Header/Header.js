@@ -153,7 +153,9 @@ export default function Header({ conversation }) {
                       aria-expanded={open ? "true" : undefined}
                       onClick={handleClickNotification}
                     >
-                      <NotificationsNoneIcon />
+                      <NotificationsNoneIcon
+                        color={notifications?.length > 0 ? "success" : ""}
+                      />
                       <span className="noti">
                         {notifications?.length > 0
                           ? notifications?.length

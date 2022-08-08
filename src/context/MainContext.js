@@ -23,13 +23,15 @@ export const MainContextProvider = (props) => {
       console.log("%%%%%%%%%%%%ERRROR");
       console.log(err.message);
     }
-    if (!onlyNotifications) setLoading(false);
+    // if (!onlyNotifications);
   };
 
   useEffect(() => {
     setLoading(true);
-
     getUser();
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
   }, []);
 
   useEffect(() => {

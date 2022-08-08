@@ -93,7 +93,9 @@ export default function ChatHistory(props) {
     getChats();
     getMatchUsers();
 
-    setTimeout(() => setLoading(false), 200);
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
   }, []);
   useEffect(() => {
     getChats();
@@ -111,9 +113,13 @@ export default function ChatHistory(props) {
                 setSelectedUser={setSelectedUser}
                 setIsChatOpen={setIsChatOpen}
               />
-              <div className="alert-no-chats">
-                <Alert severity="warning">you have no chats yet!</Alert>
-              </div>
+              {setTimeout(() => {
+                return (
+                  <div className="alert-no-chats">
+                    <Alert severity="warning">you have no chats yet!</Alert>
+                  </div>
+                );
+              }, 1000)}
               <Footer />
             </>
           ) : (

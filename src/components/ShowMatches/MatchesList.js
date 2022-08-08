@@ -44,7 +44,10 @@ const MatchList = (props) => {
   useEffect(() => {
     setLoading(true);
     getMatchUsers();
-    setTimeout(() => setLoading(false), 200);
+
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
   }, []);
 
   return (
@@ -53,18 +56,7 @@ const MatchList = (props) => {
         <SyncLoader loading={loading} cssOverride={override} size={15} />
       ) : (
         <>
-          {matchUsers.length === 0 ? (
-            <>
-              <Header />
-
-              <div className="alert-no-matches">
-                <Alert severity="warning">
-                  unfortunately there are no hits for your area!
-                </Alert>
-              </div>
-              <Footer />
-            </>
-          ) : (
+          {matchUsers.length !== 0 ? (
             <>
               <ThemeProvider theme={darkTheme}>
                 {showCard ? (
@@ -126,6 +118,21 @@ const MatchList = (props) => {
                   </>
                 )}
               </ThemeProvider>
+            </>
+          ) : (
+            <>
+              <Header />
+
+              {setTimeout(() => {
+                return (
+                  <div className="alert-no-matches">
+                    <Alert severity="warning">
+                      unfortunately there are no hits for your area!
+                    </Alert>
+                  </div>
+                );
+              }, 500)}
+              <Footer />
             </>
           )}
         </>
