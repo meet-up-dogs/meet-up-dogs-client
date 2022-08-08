@@ -16,7 +16,6 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { axiosPublic } from "../../util/axiosConfig";
 import Button from "@mui/material/Button";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
-import MessageIcon from "@mui/icons-material/Message";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import "@fontsource/shrikhand";
 import "./header.css";
@@ -125,12 +124,18 @@ export default function Header({ conversation }) {
                     </MenuItem>
 
                     <MenuItem onClick={handleClose}>
+                      <NavLink to="/contact">Contact Us</NavLink>
+                    </MenuItem>
+
+                    <MenuItem onClick={handleClose}>
                       <NavLink to="/imprint"> Imprint</NavLink>
                     </MenuItem>
 
                     <MenuItem onClick={handleClose}>
-                      <NavLink to="/contact">Contact Us</NavLink>
+                      <NavLink to="/gethelp"> Get Help</NavLink>
                     </MenuItem>
+
+
                   </Menu>
                   <Typography
                     variant="h6"
@@ -154,8 +159,9 @@ export default function Header({ conversation }) {
                       onClick={handleClickNotification}
                     >
                       <NotificationsNoneIcon
-                        color={notifications?.length > 0 ? "success" : ""}
-                      />
+                        // color={notifications?.length > 0 ? "success" : ""}
+                        className={notifications?.length > 0 ? "css-ej8u3f-MuiSvgIcon-root" : ""}
+                        />
                       <span className="noti">
                         {notifications?.length > 0
                           ? notifications?.length

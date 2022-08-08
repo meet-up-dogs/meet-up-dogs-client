@@ -9,11 +9,11 @@ import { MainContextProvider } from "../context/MainContext";
 import Login from "./Login/Login";
 import "../App.css";
 import MatchesList from "./ShowMatches/MatchesList";
-import MatchCard from "./ShowMatches/MatchCard";
 import { axiosPublic } from "../util/axiosConfig";
 import Chat from "./Chat/Chat";
 import About from "./About/About";
 import Imprint from "./Imprint/Imprint";
+import GetHelp from "./GetHelp/GetHelp";
 import ContactForm from "./Contact/ContactForm";
 
 function App() {
@@ -67,6 +67,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<ContactForm />} />
           <Route path="/imprint" element={<Imprint />} />
+          <Route path="/gethelp" element={<GetHelp />} />
           {/* <Route path="/signup" element={<SignUp />} /> */}
           <Route path="/matcheslist" element={<MatchesList />} />
           <Route path="/chatHistory" element={<ChatHistory />} />

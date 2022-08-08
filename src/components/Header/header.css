@@ -22,6 +22,10 @@ a {
   background-color: #9cde4e !important;
 }
 
+.css-ej8u3f-MuiSvgIcon-root {
+  color: #9cde4e !important;
+}
+
 .css-ahj2mt-MuiTypography-root {
   font-family: "system-ui" !important;
   font-weight: bold !important;
@@ -38,6 +42,8 @@ a {
   top: 0;
   right: 20%;
   font-size: 0.6rem;
+  color: #9cde4e;
+  font-weight: bold;
   /* background-color: red; */
   /* width: 50%; */
   /* height: 50%; */
@@ -60,7 +66,8 @@ a {
 .noti-active {
   width: 0.5rem;
   height: 0.5rem;
-  background-color: green;
+  background-color: #9cde4e;
+  font-weight: bold;
   border-radius: 50%;
   display: inline-block;
   margin-right: 0.6rem;
