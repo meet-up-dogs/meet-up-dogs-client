@@ -189,7 +189,7 @@ export default function UserProfil(props) {
         setIsSuccess(true);
         setTimeout(() => {
           setIsSuccess(false);
-        }, 200000);
+        }, 1000);
         console.debug("axiosResp.data:", axiosResp);
       }
     } catch (error) {
@@ -446,6 +446,10 @@ export default function UserProfil(props) {
                 {uploadText}
                 <input type="file" onChange={onFileResize} hidden />
               </Button>
+
+              <InputLabel id="user-area" style={styles.InputLabel}>
+              Your area for a dog walk together:
+              </InputLabel>
 
               <Map
                 setBottomLeft={setBottomLeft}
