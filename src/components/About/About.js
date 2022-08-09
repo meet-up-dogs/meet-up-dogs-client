@@ -8,7 +8,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import AvatarFarid from "../images/farid.png";
+import AvatarFarid from "../images/farid.jpeg";
 import ImageEvi from "../images/evi.jpg";
 import ImageKarol from "../images/karol.jpg";
 export default function About(props) {
@@ -50,16 +50,16 @@ export default function About(props) {
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
-              Farid Tavoli
+              Farid Tavakoli Ghinani
             </Typography>
             <Typography
               variant="body2"
               color="text.secondary"
               fontFamily="system-ui"
             >
-              motivated young programmer from hamburg.... motivated young
-              programmer from hamburg.... motivated young programmer from
-              hamburg....
+              Full-stack Web Developer
+              Motivierter und lernfähiger Hamburger mit einem Jahr Erfahrung der auf der Suche nach neuen Herausforderungen | HTML | CSS | JavaScript | React| ES6 | Node.js | Express.js | MongoDB
+              
             </Typography>
           </CardContent>
           <CardActions>
