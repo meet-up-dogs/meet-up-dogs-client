@@ -134,6 +134,7 @@ const MatchCard = (props) => {
 
                 <div>
                   <p>{selectedUser.availability.weekDay} </p>
+                  <p>{selectedUser.availability.dayTime}</p>
                   <span>Availability</span>
                 </div>
               </div>

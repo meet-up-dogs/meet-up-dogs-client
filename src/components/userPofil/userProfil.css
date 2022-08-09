@@ -10,6 +10,7 @@
 .userProfilForm > label {
   margin: 0.4rem auto;
   width: 100%;
+  padding: 7px;
   background-color: rgb(rgb(5, 95, 0), green, blue);
 }
 
