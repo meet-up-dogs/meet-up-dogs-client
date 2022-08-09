@@ -52,9 +52,9 @@ const Login = () => {
     // Info: alert is bad practise here!
     // }
     try {
-      const resp = await fetch("http://localhost:8080/login", {
-        // console.log("https://meet-up-dogs.herokuapp.com/");
-        // const resp = await fetch("https://meet-up-dogs.herokuapp.com/login", {
+      // const resp = await fetch("http://localhost:8080/login", {
+      // console.log("https://meet-up-dogs.herokuapp.com/");
+      const resp = await fetch("https://meet-up-dogs.herokuapp.com/login", {
         method: "POST",
 
         credentials: "include",
@@ -115,7 +115,8 @@ const Login = () => {
               <h2 style={{ color: "#2B2B2B", fontFamily: "Shrikhand" }}>
                 Login
               </h2>
-              <TextField style={{ color: "green", fontFamily: "Shrikhand" }}
+              <TextField
+                style={{ color: "green", fontFamily: "Shrikhand" }}
                 name="email"
                 label="E-Mail"
                 variant="filled"
@@ -141,7 +142,13 @@ const Login = () => {
                 type="submit"
                 variant="contained"
                 style={{
-                  backgroundColor: "#2B2B2d", fontFamily: "system-ui", fontWeight: "bold", color: '#fff', textTransform: "lowercase", marginTop: "1rem", padding: "0.5rem"
+                  backgroundColor: "#2B2B2d",
+                  fontFamily: "system-ui",
+                  fontWeight: "bold",
+                  color: "#fff",
+                  textTransform: "lowercase",
+                  marginTop: "1rem",
+                  padding: "0.5rem",
                 }}
               >
                 Log In

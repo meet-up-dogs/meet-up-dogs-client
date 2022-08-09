@@ -18,8 +18,8 @@ import ScrollToBottom from "react-scroll-to-bottom";
 import CallOutlinedIcon from "@mui/icons-material/CallOutlined";
 import VideocamOutlinedIcon from "@mui/icons-material/VideocamOutlined";
 import SendIcon from "@mui/icons-material/Send";
-// const socket = io.connect("https://meet-up-dogs.herokuapp.com");
-const socket = io.connect("http://localhost:8080");
+const socket = io.connect("https://meet-up-dogs.herokuapp.com");
+// const socket = io.connect("http://localhost:8080");
 
 export default function Chat() {
   const [
