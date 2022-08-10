@@ -88,7 +88,7 @@ export default function ContactForm(props) {
   }
 
   // const FORM_ENDPOINT = "https://public.herotofu.com/v1/89e2a010-00fd-11ed-bc36-e1ea9ccadd33";
-  const FORM_ENDPOINT = "http://localhost:8080/postemail";
+  const FORM_ENDPOINT = "https://meet-up-dogs.herokuapp.com/postemail";
 
   return (
     <>
