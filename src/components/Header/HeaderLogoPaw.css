@@ -1,0 +1,35 @@
+.logo-paw {
+  max-width: 70vw;
+
+  /* height: 20vh; */
+  position: absolute;
+  top: 2rem;
+  right: 1rem;
+}
+
+/* @media screen and (min-width: 413px) {
+  .logo-paw {
+    height: 30vh;
+    position: absolute;
+    top: 5vh;
+    right: 5vw;
+  }
+}  */
+
+/* @media screen and (min-width: 768px) {
+  .logo-paw {
+    height: 50vh;
+    position: absolute;
+    top: 2vh;
+    right: 2vw;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .logo-paw {
+    height: 50vh;
+    position: absolute;
+    top: 0vh;
+    right: 0vw;
+  }
+} */

@@ -12,7 +12,10 @@ import "./footer.css";
 const useStyles = makeStyles({
   root: {
     width: "100vw",
-    backgroundColor: "#8e8e8e",
+    backgroundColor: "#2B2B2B",
+    color: "white",
+    fontFamily: "system-ui !important",
+    fontWeight: "bold !important",
   },
 });
 
@@ -31,23 +34,25 @@ export const Footer = () => {
       <BottomNavigation
         className={classes.root}
         showLabels
-        value={value}
         onChange={(event, newValue) => handleChange(event, newValue)}
       >
         <BottomNavigationAction
           component={NavLink}
           label="Match"
           to="/matcheslist"
+          className={classes.root}
           icon={<TravelExploreIcon />}
         />
         <BottomNavigationAction
           component={NavLink}
+          className={classes.root}
           to="/chathistory"
           label="Chat"
           icon={<ChatBubbleOutlineIcon />}
         />
         <BottomNavigationAction
           component={NavLink}
+          className={classes.root}
           to="/userprofil"
           label="Profil"
           icon={<PersonIcon />}

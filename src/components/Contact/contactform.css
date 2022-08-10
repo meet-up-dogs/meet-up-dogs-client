@@ -1,0 +1,62 @@
+.container-contact {
+  background-color: lightblue;
+}
+
+
+
+.contact-form {
+  height: 100vh;
+  font-family: "system-ui" !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.msg {
+  /* width: max-content; */
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.msg > * {
+  margin-bottom: 1.6rem;
+  font-family: "system-ui" !important;
+}
+
+.contact-username {
+  display: flex;
+  flex-direction: column;
+  color: #4f850d;
+}
+
+.contact-message {
+  display: flex;
+  flex-direction: column;
+  color: #4f850d;
+}
+
+
+.contact-email {
+  display: flex;
+  flex-direction: column;
+  color: #4f850d;
+}
+
+/* .msg > div:first-child {
+  text-align: center;
+} */
+
+/* .text-2xl {
+  text-align: center;
+} */
+/* 
+@media only screen and (max-width: 412px) {
+  .msg {
+    margin: 10rem 0.5rem 3rem 0.5rem;
+    width: 100vw;
+  }
+} */

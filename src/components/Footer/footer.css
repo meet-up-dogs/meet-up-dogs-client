@@ -1,12 +1,21 @@
 .footer {
   bottom: 0;
-  height: 50px;
-  opacity: 1;
+  /* height: 50px; */
+  /* opacity: 1; */
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
   z-index: 10;
+
+  /* height: 6vh; */
+}
+
+.footer > div {
+  height: 6vh;
+  display: flex;
+  padding-top: 0.5rem;
+  /* line-height: 8vh; */
 }
 
 .navlink {
@@ -16,4 +25,12 @@
 
 a {
   text-decoration: none;
+}
+
+a:hover {
+  color: #fff;
+}
+
+.active {
+  color: #9cde4e !important;
 }

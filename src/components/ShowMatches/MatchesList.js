@@ -1,80 +1,142 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import React from "react";
 import Header from "../Header/Header.js";
 import Footer from "../Footer/Footer";
 import "./matchList.css";
-import BottomNavigation from "@mui/material/BottomNavigation";
-import BottomNavigationAction from "@mui/material/BottomNavigationAction";
-import { NavLink } from "react-router-dom";
+import { axiosPublic } from "../../util/axiosConfig";
+import MatchCard from "../ShowMatches/MatchCard";
+import { MainContext } from "../../context/MainContext";
+import Alert from "@mui/material/Alert";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import SyncLoader from "react-spinners/SyncLoader";
+import TextField from "@mui/material/TextField";
+import PetsIcon from "@mui/icons-material/Pets";
+import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
+
+const darkTheme = createTheme({
+  palette: {
+    mode: "dark",
+    color: "white",
+  },
+});
+
+const override = {
+  display: "flex",
+  justifyContent: "center",
+  alignItem: "center",
+  margin: "20rem auto",
+  borderColor: "black",
+};
 
 const MatchList = (props) => {
-  const [value, setValue] = React.useState(0);
+  const [user, setUser, loading, setLoading, selectedUser, setSelectedUser] =
+    useContext(MainContext);
+  const [matchUsers, setMatchUsers] = useState([]);
+  const [showCard, setShowCard] = useState(false);
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
+  const getMatchUsers = async () => {
+    const resp = await axiosPublic.get("/getMatchedUsers", {
+      withCredentials: true,
+    });
+    setMatchUsers(resp.data);
   };
+
+  useEffect(() => {
+    setLoading(true);
+    getMatchUsers();
+
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
+  }, []);
 
   return (
     <>
-      <Header
-        user={props.user}
-        login={props.login}
-        handleChange={props.handleChange}
-      />
-      <div className="cards">
-
-        {props.matchUsers.map((user) => {
-          return (
+      {loading ? (
+        <SyncLoader loading={loading} cssOverride={override} size={15} />
+      ) : (
+        <>
+          {matchUsers.length !== 0 ? (
             <>
-              <main>              
-                <div
-                className="card"
-                onClick={() => {
-                  props.setCurrentMatchedUser(
-                    props.matchUsers.find(
-                      (matchUser) => matchUser.username === user.username
-                    )
-                  );
-                }}
-              >
-                <p className="card-desc">{user.description}</p>
-                <div className="container">
-
-                  <BottomNavigation
-                    showLabels
-                    value={value}
-                    onChange={(event, newValue) =>
-                      handleChange(event, newValue)
-                    }
-                  >
-                    <BottomNavigationAction
-                      component={NavLink}
-                      to="/matchcard"
-                      label=""
-                      icon={
-                        <img
-                          src={user.userImage}
-                          alt="userPhoto"
-                          className="card-img"
-                        />
-                      }
+              <ThemeProvider theme={darkTheme}>
+                {showCard ? (
+                  <MatchCard />
+                ) : (
+                  <>
+                    <Header />
+                    <div className="matches-container">
+                      {/* <div className="matches-search">
+                    <TextField
+                      label="Find User"
+                      variant="filled"
+                      color="success"
+                      focused
+                      fullWidth
                     />
-                  </BottomNavigation>
-                  <li>{user.username}</li>
-                  <li>DogBreed:{user.dogBreed}</li>
-                  <li>Availability:{user.availability.weekDay}<span>({user.availability.dayTime})</span></li>
-
-                </div>
-              </div>
-              </main>
-
+                  </div> */}
+                      <h2 className="cards-title">Matching users</h2>
+                      <main className="cards">
+                        {matchUsers.map((userObj) => {
+                          return (
+                            <div
+                              style={{
+                                backgroundImage: `url( ${userObj.userImage})`,
+                              }}
+                              key={userObj.username}
+                              className="card"
+                              onClick={() => {
+                                setSelectedUser(
+                                  matchUsers.find(
+                                    (matchUser) =>
+                                      matchUser.username === userObj.username
+                                  )
+                                );
+                                setShowCard(true);
+                              }}
+                            >
+                              {/* <img
+                          src={userObj.userImage}
+                          alt="user-foto"
+                          className="card-img"
+                        /> */}
+                              <div className="card-bio">
+                                <p>
+                                  <PersonOutlineIcon />
+                                  {userObj.username}
+                                </p>
+                                <p>
+                                  <PetsIcon />
+                                  {userObj.dogBreed}
+                                </p>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </main>
+                    </div>
+                    <Footer />
+                  </>
+                )}
+              </ThemeProvider>
             </>
-          );
-        })}
+          ) : (
+            <>
+              <Header />
 
-      </div>
-
-      <Footer />
+              {setTimeout(() => {
+                return (
+                  <div className="alert-no-matches">
+                    <Alert severity="warning">
+                      unfortunately there are no hits for your area!
+                    </Alert>
+                  </div>
+                );
+              }, 500)}
+              <Footer />
+            </>
+          )}
+        </>
+      )}
     </>
   );
 };

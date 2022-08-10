@@ -1,89 +1,191 @@
 * {
-    margin: 0;
-    padding: 0;
-    font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+}
+.matches-container {
+  padding: 08vh 0 8vh;
+  /* padding: 0 0.8rem; */
+  width: 100vw;
+  background-color: #f8f8f8;
 }
 
-main {
-    margin-bottom: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
+.matches-search {
+  padding: 2rem 1rem;
+  /* height: 3vh; */
+  background-color: #fff;
 
-  .cards {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+  /* background-color: #000; */
+}
+
+.matches-search > div {
+  border-radius: 2rem !important;
+}
+.matches-search div > input {
+  color: black;
+  background-color: #f8f8f8;
+}
+
+.cards-title {
+  background-color: #fff;
+  margin: 0;
+  padding: 2rem 1rem 1rem;
+  text-align: left;
+  color: #2b2b2b;
+  border-radius: 1.2rem 1.2rem 0 0;
+
+  font-family: Shrikhand;
+}
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: start;
+  gap: 0.2rem;
+  padding: 1rem 0.8rem;
+
+  background-color: #fff;
+}
+.card:nth-child(even) {
+  margin-top: 2rem;
+}
+.card:last-child {
+  /* margin-top: 2rem; */
+  /* margin-right: 2rem; */
+}
+
+.card {
+  min-height: 28vh;
+  min-width: 44vw;
+  position: relative;
+  border: none;
+  box-shadow: 0 4px 6px -60px rgb(104, 104, 104);
+  background-size: cover;
+  border-radius: 1rem;
+  background-position: center center;
+  cursor: pointer;
+}
+
+.card::after {
+  border-radius: 1rem;
+
+  content: "";
+  position: absolute;
+  inset: 0;
+  display: block;
+  /* background-color: red; */
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.6) 1%,
+    rgba(255, 255, 255, 0) 20%,
+    rgba(255, 255, 255, 0) 70%,
+    rgba(0, 0, 0, 0.85) 95%
+  );
+}
+
+.card-bio {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: white;
+  padding: 0.5rem;
+  z-index: 1;
+}
+
+.card-bio p {
+  margin: 0;
+  font-weight: 500;
+  width: 100%;
+  letter-spacing: 1px;
+  padding-left: 0.6rem;
+  text-shadow: 1px 1px 6px rgba(255, 255, 255, 0.4);
+  line-height: 1.4rem;
+}
+
+.card-bio p > * {
+  margin-right: 0.5rem;
+  font-size: 1.2rem;
+  line-height: 2rem;
+}
+.card-bio p::first-letter {
+  text-transform: capitalize;
+}
+/* 
+.card {
+  position: relative;
+  width: 400px;
+  height: 500px;
+}
+
+.card-img {
+  margin-bottom: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0 40px 60px -6px rgb(104, 104, 104);
+}
+
+.bio {
+  color: #fff;
+  font-size: 2rem;
+  width: 400px;
+  position: absolute;
+  bottom: 0;
+  left: -50px;
+  opacity: 1;
+  z-index: 1;
+}
+
+.card li {
+  margin-left: 20%;
+  padding: 5px 5px;
+  list-style-type: none;
+}
+
+h1 {
+  font-size: 2.8rem;
+  color: #fff;
+  margin: 40px 0 20px 0;
+  text-align: center;
+} */
+
+.alert-no-matches {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .cards-title {
+    padding: 2rem 2rem 1rem;
+    font-size: 3rem;
   }
-  
   .card {
-    margin: 40px;
-    position: relative;
-    width: 400px;
-    height: 500px;
-    box-shadow: 0 40px 60px -6px rgb(142, 140, 140);
-    border-radius: 10%;
+    min-height: 50vh;
+  }
+  .cards {
+    padding: 2rem 1.4rem;
+  }
+  .card-bio p {
+    font-size: 1.4rem;
+  }
 }
 
-
-
-  .card-img {
-    margin-top: 550px;
-    margin-bottom: 0;
-    width: 250px;
-    height: 200px;
-    object-fit: cover;
-    display: block;
-    position: relative;
-    border-radius: 25%;
+@media (min-width: 1024px) {
+  .card {
+    min-height: 60vh;
   }
-
-  .card li {
-      margin-left: 20%;
-      padding: 5px 5px;
-      list-style-type: none;
+  .cards {
+    padding: 2rem 1.4rem;
   }
-
-  .card li:nth-child(2){
-      font-size: large;
-      font-size: 2rem;
-      color: rgb(5, 49, 136);
+  .card-bio p {
+    font-size: 1.4rem;
   }
-
-  .container {
-     
-  }
-
-
-  .card-desc {
-    display: block;
-    font-size: 1.2rem;
-    position: absolute;
-    height: 0;
-    top: 0;
-    opacity: 0;
-    padding: 18px 8%;
-    background-color: white;
-    overflow-y: scroll;
-    transition: 0.8s ease;
-  }
-
-
-  .card:hover .card-desc {
-    opacity: 1;
-    width: 100%;
-    height: 50%;
-  }
- 
-  
-  h1 {
-    font-size: 2.8rem;
-    color: #fff;
-    margin: 40px 0 20px 0;
-    text-align: center;
-  }
-  
-  
+}

@@ -1,6 +1,75 @@
-.header {
-  padding: 0;
-  margin: 0;
-  max-width: 100vw;
+.header > header {
+  height: 8vh;
+  line-height: 8vh;
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+}
+
+.navlink {
+  /* margin: 0 auto; */
+  padding: 2rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+.user-image {
+  border-radius: 50%;
+}
+.MuiSwitch-track {
+  background-color: #9cde4e !important;
+}
+
+.css-ej8u3f-MuiSvgIcon-root {
+  color: #9cde4e !important;
+}
+
+.css-ahj2mt-MuiTypography-root {
+  font-family: "system-ui" !important;
+  font-weight: bold !important;
+}
+.notification {
+  position: relative;
+  margin-right: 1.4rem;
+  width: min-content;
   overflow: hidden;
+}
+
+.notification > span.noti {
+  position: absolute;
+  top: 0;
+  right: 20%;
+  font-size: 0.6rem;
+  color: #9cde4e;
+  font-weight: bold;
+  /* background-color: red; */
+  /* width: 50%; */
+  /* height: 50%; */
+  /* text-align: center; */
+  /* border-radius: 50%; */
+}
+
+.notification-item {
+  /* color: red; */
+  padding: 0.4rem 1rem;
+  margin: 0.4rem 2rem 0.4rem 1rem;
+  border-bottom: 1px solid rgb(121, 120, 120);
+  cursor: pointer;
+  transition: border 0.3s ease-in-out;
+  font-size: 1rem;
+}
+.notification-item:hover {
+  border-bottom: 1px solid #fff;
+}
+
+.noti-active {
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: #9cde4e;
+  font-weight: bold;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 0.6rem;
 }
