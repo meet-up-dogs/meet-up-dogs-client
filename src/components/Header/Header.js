@@ -134,8 +134,6 @@ export default function Header({ conversation }) {
                     <MenuItem onClick={handleClose}>
                       <NavLink to="/gethelp"> Get Help</NavLink>
                     </MenuItem>
-
-
                   </Menu>
                   <Typography
                     variant="h6"
@@ -160,8 +158,12 @@ export default function Header({ conversation }) {
                     >
                       <NotificationsNoneIcon
                         // color={notifications?.length > 0 ? "success" : ""}
-                        className={notifications?.length > 0 ? "css-ej8u3f-MuiSvgIcon-root" : ""}
-                        />
+                        className={
+                          notifications?.length > 0
+                            ? "css-ej8u3f-MuiSvgIcon-root"
+                            : ""
+                        }
+                      />
                       <span className="noti">
                         {notifications?.length > 0
                           ? notifications?.length
