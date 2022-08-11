@@ -57,8 +57,9 @@ export default function About(props) {
               color="text.secondary"
               fontFamily="system-ui"
             >
-              Full-stack Web Developer
-              Motivierter und lernfähiger Hamburger mit einem Jahr Erfahrung der auf der Suche nach neuen Herausforderungen | HTML | CSS | JavaScript | React| ES6 | Node.js | Express.js | MongoDB
+              Full-stack Web Developer.
+              Motivierter und lernfähiger Hamburger mit einem Jahr Erfahrung, auf der Suche nach neuen Herausforderungen.
+              <br></br>HTML | CSS | JavaScript | React| ES6 | Node.js | Express.js | MongoDB
               
             </Typography>
           </CardContent>
@@ -98,9 +99,9 @@ export default function About(props) {
               color="text.secondary"
               fontFamily="system-ui"
             >
-              I am a junior web developer from Ruhpolding. That's between Munich
-              and Salzburg. Before that I specialized in supply chain management
-              for 20 years and worked in some IT projects on this field.
+              Full-stack junior web developer from Ruhpolding. This is situated between Munich
+              and Salzburg. Before I specialized in supply chain management
+              for 20 years and worked in some IT projects on this field. I am versatile and love to learn and develop - personally and professionally.
             </Typography>
           </CardContent>
           <CardActions>
@@ -141,9 +142,9 @@ export default function About(props) {
             >
               Full-Stack-Webentwickler mit einem Jahr Erfahrung in der
               Telekommunikationsbranche als Berater und Verkäufer. Zurzeit
-              besuche ich einen einjährigen Kurs in Full-Stack- Entwicklung. Auf
+              besuche ich einen einjährigen Kurs in Full-Stack-Entwicklung. Auf
               der Suche nach neuen Herausforderungen und Entwicklung im Bereich
-              der Web-Entwicklung und Team- Managemen
+              der Web-Entwicklung und Team-Management.
             </Typography>
           </CardContent>
           <CardActions>
