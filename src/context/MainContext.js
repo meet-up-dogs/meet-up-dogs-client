@@ -36,7 +36,7 @@ export const MainContextProvider = (props) => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      getUser();
+      getUser(true);
     }, 3000);
     return () => clearInterval(interval);
   }, []);
