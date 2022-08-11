@@ -9,18 +9,15 @@ export const MainContextProvider = (props) => {
   const [selectedUser, setSelectedUser] = useState({});
   const [notifications, setNotifications] = useState([]);
 
-  const getUser = async () => {
+  const getUser = async (onlyNotifications) => {
     try {
-      const resp = await fetch(
-        "https://meet-up-dogs.herokuapp.com/currentUser",
-        {
-          method: "GET",
-          credentials: "include",
-        }
-      );
-
-      setUser(resp.data);
-
+      const resp = await axiosPublic.get("/currentUser", {
+        withCredentials: true,
+      });
+      if (!onlyNotifications) {
+        console.log("resp.data.notifications: ", resp.data.notifications);
+        setUser(resp.data);
+      }
       setNotifications(resp.data.notifications);
     } catch (err) {
       console.log("%%%%%%%%%%%%ERRROR");
@@ -28,23 +25,6 @@ export const MainContextProvider = (props) => {
     }
     // if (!onlyNotifications);
   };
-
-  // const getUser = async (onlyNotifications) => {
-  //   try {
-  //     const resp = await axiosPublic.get("/currentUser", {
-  //       withCredentials: true,
-  //     });
-  //     if (!onlyNotifications) {
-  //       console.log("resp.data.notifications: ", resp.data.notifications);
-  //       setUser(resp.data);
-  //     }
-  //     setNotifications(resp.data.notifications);
-  //   } catch (err) {
-  //     console.log("%%%%%%%%%%%%ERRROR");
-  //     console.log(err.message);
-  //   }
-  //   // if (!onlyNotifications);
-  // };
 
   useEffect(() => {
     setLoading(true);
