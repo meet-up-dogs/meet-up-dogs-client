@@ -32,7 +32,6 @@ a {
 }
 .notification {
   position: relative;
-  margin-right: 1.4rem;
   width: min-content;
   overflow: hidden;
 }
@@ -72,4 +71,8 @@ a {
   border-radius: 50%;
   display: inline-block;
   margin-right: 0.6rem;
+}
+
+.css-6txy7e {
+  min-width: none !important;
 }
