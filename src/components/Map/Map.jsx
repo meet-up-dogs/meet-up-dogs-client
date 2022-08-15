@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import L from "leaflet";
 import { Map, TileLayer, FeatureGroup, Rectangle } from "react-leaflet";
 import { EditControl } from "react-leaflet-draw";
-// import osm from "./osm-providers";
+import osm from "./osm-providers";
 import { useRef } from "react";
 import "leaflet/dist/leaflet.css";
 import "leaflet-draw/dist/leaflet.draw.css";
@@ -81,10 +81,10 @@ const DrawMap = ({ setBottomLeft, setTopRight, bottomLeft, topRight }) => {
             ></Rectangle>
           ) : null} */}
         </FeatureGroup>
-        {/* <TileLayer
-        // url={osm.maptiler.url}
-        // attribution={osm.maptiler.attribution}
-        /> */}
+        <TileLayer
+          url={osm.maptiler.url}
+          attribution={osm.maptiler.attribution}
+        />
       </Map>
     </>
   );
