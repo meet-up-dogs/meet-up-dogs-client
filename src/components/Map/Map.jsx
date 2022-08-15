@@ -81,10 +81,10 @@ const DrawMap = ({ setBottomLeft, setTopRight, bottomLeft, topRight }) => {
             ></Rectangle>
           ) : null} */}
         </FeatureGroup>
-        <TileLayer
+        {/* <TileLayer
         // url={osm.maptiler.url}
         // attribution={osm.maptiler.attribution}
-        />
+        /> */}
       </Map>
     </>
   );
