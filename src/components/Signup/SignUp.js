@@ -47,16 +47,14 @@ const SignUp = () => {
     }
 
     if (axiosResp.data.success) {
-      console.log('axios Resp status text', axiosResp.data.success)
+      console.log("axios Resp status text", axiosResp.data.success);
       // setIsSuccess(axiosResp.data.success);
-      setIsSuccess(true)
-      setTimeout(() =>  navigate("/"), 500);
-
+      setIsSuccess(true);
+      setTimeout(() => navigate("/"), 500);
     } else {
       console.log("sign up was not successfully");
     }
   };
-
 
   const margin = { m: 0 };
 
@@ -78,7 +76,9 @@ const SignUp = () => {
                 Sign Up
               </h2>
               {isError ? <Alert severity="error">{isError}</Alert> : null}
-              {isSuccess ? <Alert severity="success">signup was successful</Alert> : null}
+              {isSuccess ? (
+                <Alert severity="success">signup was successful</Alert>
+              ) : null}
               <TextField
                 name="username"
                 label="Username"
@@ -110,6 +110,7 @@ const SignUp = () => {
               <TextField
                 name="password"
                 label="Password"
+                type="password"
                 variant="filled"
                 required
                 value={inputSignUp.password}
@@ -122,7 +123,13 @@ const SignUp = () => {
                 type="submit"
                 variant="contained"
                 style={{
-                  backgroundColor: "#2b2b2b", fontFamily: "system-ui", fontWeight: "bold", color: '#fff', textTransform: "lowercase", marginTop: "1rem", padding: "0.5rem"
+                  backgroundColor: "#2b2b2b",
+                  fontFamily: "system-ui",
+                  fontWeight: "bold",
+                  color: "#fff",
+                  textTransform: "lowercase",
+                  marginTop: "1rem",
+                  padding: "0.5rem",
                 }}
               >
                 Sign Up

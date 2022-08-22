@@ -132,6 +132,7 @@ const Login = () => {
                 name="password"
                 label="Password"
                 variant="filled"
+                type="password"
                 style={{ color: "#f7f9ef", fontFamily: "Shrikhand" }}
                 value={inputLogin.password}
                 onChange={(e) =>
